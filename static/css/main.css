@@ -1,0 +1,273 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+/* Change the screen size to use different css */
+@media only screen and (max-width: 1700px) {
+    html {
+        font-size: 10px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+}
+/* Screen size is larger than 1701px */
+@media only screen and (min-width: 1701px) {
+    html {
+        font-size: 15px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+}
+h1 {
+    font-family: Verdana,Geneva,sans-serif; 
+    line-height: 2;
+    font-size: 3rem;
+    font-weight: 600;
+}
+
+h2 { 
+    font-family: sans-serif; 
+    font-size: 1.2rem; 
+    font-weight: 100; 
+    line-height: 1.5; 
+}
+h3 { 
+    font-family: sans-serif; 
+    font-size: 2.5rem; 
+    font-weight: 100; 
+    line-height: 1.5; 
+}
+body {
+    background-color: #F1F5F9;
+}
+.container {
+    width: 170rem;
+    position: relative;
+}
+/* .w is the main part of each page, that is, the center of the page */
+.w {
+    width: 150rem;
+    margin: 0rem 7rem auto 13rem;
+}
+.w .logo {
+    width: 150rem;
+    height: 11rem;
+    padding-top: 3rem;
+}
+.w .tags {
+    width: 150rem;
+    height: 5rem;
+}
+.w .tit {
+    width: 150rem;
+    height: 8rem;
+    display: flex;
+    justify-content: space-between;
+}
+.w .tit .titles {
+    width: 45rem;
+    height: 8rem;
+}
+.w .tit .titles .titName {
+    float: left;
+    width: 10rem;
+    height: 8rem;
+    font-family: sans-serif; 
+    font-size: 2.5rem; 
+    font-weight: 100; 
+    line-height: 12rem;
+}
+.w .tit .titles .vis {
+    float: right;
+    width: 35rem;
+    height: 8rem;
+}
+.w .codes {
+    width: 150rem;
+    height: 60rem;
+    display: flex;
+    justify-content: space-between;
+    overflow-y: auto;
+}
+.w .codes .codeCol {
+    width: 45rem;
+}
+.w .codes .codeCol .codeRange {
+    width: 45rem;
+    height: 60rem;
+}
+.w .codes .codeCol .codeRange .codeBlock {
+    width: 45rem;
+    height: 55rem;
+    box-sizing: border-box;
+    padding: 2rem;
+    border-radius: 1rem;
+    background-color: #fff;
+    overflow-y: auto;
+    word-wrap: break-word;
+}
+.container .hierBtn {
+    position: absolute;
+    width: 25.5rem;
+    height: 4.5rem;
+    left: -10.5rem;
+    top: 50%;
+    font-family: Verdana,Geneva,sans-serif; 
+    line-height: 1.5;
+    font-size: 3rem;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+    background-color: #F3B8FF;
+    border-radius: 0rem 0rem 1rem 1rem;
+    transform: rotate(270deg);
+    cursor: pointer;
+}
+.container .hierBtn:hover {
+    background-color: #1479FF;
+}
+.container .menu {
+    position: absolute;
+    left: 0rem;
+    top: 0rem;
+    width: 62.1rem;
+    height: 100vh;
+    background-color: #fff;
+    box-shadow: 0 0.6rem 2rem 0 rgba(0, 0, 0, 0.19);
+    display: none;
+}
+.container .menu .menuW {
+    width: 52.7rem;
+    margin: 0rem 4.7rem;
+}
+.container .menu .menuW .menuTop {
+    width: 52.7rem;
+}
+.container .menu .menuW .menuTop #close {
+    float: right;
+    margin-top: 2rem;
+    width: 3rem;
+    height: 3rem;
+    font-family: sans-serif; 
+    font-size: 3rem; 
+    font-weight: 100; 
+    line-height: 3rem;
+    text-align: center;
+    cursor: pointer;
+}
+.container .menu .menuW .menuTop #close:hover {
+    background-color: black;
+    color: #fff;
+}
+.container .menu .menuW h1 {
+    line-height: 11rem;
+    display: inline-block;
+}
+.container .menu .menuW .domainBtn {
+    width: 52.7rem;
+    height: 3rem;
+    margin: 0.5rem auto;
+    background-color: #F2F2F2;
+    border-radius: 0.5rem;
+    display: inline-flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.container .menu .menuW .domainBtn .domainB {
+    width: 25.5rem;
+    height: 2.5rem;
+    border-radius: 0.5rem;
+    font-family: sans-serif; 
+    font-size: 1.5rem; 
+    font-weight: 100; 
+    line-height: 2.5rem;
+    color: #BFBFBF;
+    text-align: center;
+    cursor: pointer;
+}
+.container .menu .menuW .domainBtn .activated {
+    color: black;
+    background-color: #fff;
+}
+.container .menu .menuW .libs {
+    width: 52.7rem;
+    height: 4.2rem;
+    margin: 0.5rem auto;
+    display: flex;
+    justify-content: space-between;
+}
+.container .menu .menuW .libsT {
+    width: 6rem;
+    height: 2rem;
+    font-family: sans-serif; 
+    font-size: 1.5rem; 
+    font-weight: 100; 
+    line-height: 2rem;
+}
+.container .menu .menuW .lib {
+    width: 14rem;
+    height: 2rem;
+    border-radius: 2rem;
+    font-family: sans-serif; 
+    font-size: 1.5rem; 
+    font-weight: 600; 
+    line-height: 2rem;
+    color: #fff;
+    background-color: #F3B8FF;
+    text-align: center;
+}
+.container .menu .menuW .hierarchy {
+    width: 52.7rem;
+    height: 58rem;
+    overflow-y: auto;
+}
+.container .menu .menuW .hierarchy .hDiv {
+    float: right;
+    height: 3rem;
+    cursor: pointer;
+}
+.container .menu .menuW .hierarchy .firH {
+    width: 52.7rem;
+}
+.container .menu .menuW .hierarchy .secH {
+    width: 48.7rem;
+}
+.container .menu .menuW .hierarchy .hDiv:hover {
+    background-color: #F1F5F9 !important; 
+}
+.container .menu .menuW .hierarchy .hName {
+    box-sizing: border-box;
+    width: 20rem;
+    height: 3rem;
+    float: left;
+    padding-left: 0.7rem;
+    font-family: sans-serif; 
+    font-size: 1.5rem; 
+    font-weight: 100; 
+    line-height: 3rem;
+    pointer-events:none
+}
+.container .menu .menuW .hierarchy .hVis {
+    box-sizing: border-box;
+    padding-right: 0.7rem;
+    width: 28rem;
+    height: 3rem;
+    float: right;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    pointer-events:none
+}
+.container .menu .menuW .hierarchy .hVis .hVisOut {
+    width: 9rem;
+    height: 1.5rem;
+}
+.container .menu .menuW .hierarchy .hVis .hVisOut .hVisIn {
+    height: 1.5rem;
+    border-radius: 2rem;
+    background-color: #F3B8FF;
+    font-family: sans-serif; 
+    font-size: 1.2rem; 
+    font-weight: 100; 
+    line-height: 1.5rem;
+    color: #fff;
+    text-align: center;
+}

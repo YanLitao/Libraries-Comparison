@@ -1,4 +1,5 @@
-var data = {"nlp": {}, "vis": {}},
+var currentDomain = "nlp",
+    data = {"nlp": {}, "vis": {}},
     libraries = {
         "nlp": ["NLTK", "TextBlob", "SpaCy"],
         "vis": ["D3.js", "Chart.js", "Recharts"]
@@ -6,6 +7,7 @@ var data = {"nlp": {}, "vis": {}},
     doms = {"nlp": "NLP", "vis": "Visualization"},
     cf = {},
     hc = {},
+    lines = {"nlp": {"fir": [], "sec": [], "thr": []}, "vis": {"fir": [], "sec": [], "thr": []}},
     colorArr = ["#F3B8FF", "#BDE0FE", "#ACDDDE", "#CAF1DE", "#E1F8DC", "#FEF8DD", "#EAF2D7", "#FFE7C7", "#F7D8BA", "#E69E8F", " #FFC8DD", "#FFAFCC"];
 function closeHierarchy() {
     document.getElementById("menu").style.display = 'none';
@@ -54,12 +56,11 @@ function genHier(tem) {
 }
 function genCode(tem) {
     for (var file in tem) {
-        var lib = file.split("_")[0];
-        var rangeDiv = document.getElementById(lib+"Code");
+        var rangeDiv = document.getElementById(file.split("_")[0]+"Code");
         var codeBlock = document.createElement("div");
         codeBlock.className = "codeRange";
         codeBlock.innerHTML = tem[file];
-        codeBlock.id = file.split(".")[0];
+        codeBlock.id = file;
         rangeDiv.appendChild(codeBlock);
     }
 }
@@ -89,6 +90,8 @@ function switchDomain(domain) {
     //Add codes and distributions
     getData(domain);
     addHListener();
+    genLineVis(domain);
+    currentDomain = domain;
 }
 function genCF(tem) {
     // generate two objects: cf and hc (for hierarchy selections)
@@ -128,7 +131,7 @@ function clickT(event) {
     var codes = document.getElementsByClassName("codeRange");
     [...codes].forEach(function(c) {c.style.display = "none"});
     for (var i=0; i<cf[hId].length; i++) {
-        document.getElementById(cf[hId][i].split(".")[0]).style.display = "block";
+        document.getElementById(cf[hId][i]).style.display = "block";
     }
     // remove original highlights
     var hls = document.getElementsByClassName("highlights");
@@ -147,6 +150,7 @@ function clickT(event) {
         var highlights = document.getElementsByClassName(hc[event.target.id.replace("tag_", "")][t]);
         [...highlights].forEach(function(h) {h.style.backgroundColor = colorArr[t]});
     }
+    genConceptVis(event.target.id.replace("tag_", ""));
 }
 // hierarchy click functions
 function clickH(event) {
@@ -161,7 +165,7 @@ function clickH(event) {
     var codes = document.getElementsByClassName("codeRange");
     [...codes].forEach(function(c) {c.style.display = "none"});
     for (var i=0; i<cf[hId].length; i++) {
-        document.getElementById(cf[hId][i].split(".")[0]).style.display = "block";
+        document.getElementById(cf[hId][i]).style.display = "block";
     }
     // add tags
     var tags = document.getElementsByClassName("tag");
@@ -177,6 +181,7 @@ function clickH(event) {
         var highlights = document.getElementsByClassName(hc[event.target.id][t]);
         [...highlights].forEach(function(h) {h.style.backgroundColor = colorArr[t]});
     }
+    genConceptVis(event.target.id);
 };
 function addHListener() {
     var firH = document.getElementsByClassName("firH"),
@@ -184,11 +189,59 @@ function addHListener() {
     [...firH].forEach(function(f) {f.addEventListener('click', clickH, false)});
     [...secH].forEach(function(f) {f.addEventListener('click', clickH, false)});
 }
+function processLineData(domain) {
+    for (var i=1; i<31; i++) {
+        for (var o in lines[domain]) {
+            var f = o+"_"+i;
+            if (f in data[domain]["file info"]) {
+                lines[domain][o].push(data[domain]["file info"][f]["nlines"]);
+            } else {
+                lines[domain][o].push(0);
+            }
+        }
+    }
+}
+function genConceptVis(concept) {
+    const trueFiles = new Set();
+    for (var o in data[currentDomain]["api templates"]) {
+        for (const a of data[currentDomain]["api templates"][o]) {
+            for (var conceptName in a) {
+                if (concept == conceptName) {
+                    for (const f of a[conceptName]["codes"]) {
+                        trueFiles.add(f.replace("_", ""));
+                    }
+                }
+            }
+        }
+    }
+    var visRange = document.getElementsByClassName("visRange");
+    [...visRange].forEach(function(v) {
+        if (trueFiles.has(v.id.replace("vis", ""))) {
+            v.style.display = "flex";
+        } else {
+            v.style.display = "none";
+        }
+    });
+}
+function genLineVis(domain) {
+    var visRange = document.getElementsByClassName("visRange");
+    [...visRange].forEach(function(v) {v.innerHTML = ""});
+    for (var o in lines[domain]) {
+        var maxLine = Math.max(...lines[domain][o]);
+        for (var i=0; i<30; i++) {
+            var visBar = document.createElement("div");
+            visBar.className = "visBar";
+            visBar.style.height = lines[domain][o][i]/maxLine*8+"rem";
+            document.getElementById(o+(i+1)+"vis").appendChild(visBar);
+        }
+    }
+}
 // function call
 $.getJSON("static/data/vis_tem.json", function(obj) {
     data["vis"] = obj;
     getData("vis");
     genCF(data["vis"]["api templates"]);
+    processLineData("vis");
 });
 // interface will show the NLP domain as default
 $.getJSON("static/data/nlp_tem.json", function(obj) {
@@ -197,5 +250,7 @@ $.getJSON("static/data/nlp_tem.json", function(obj) {
     genCF(data["nlp"]["api templates"]);
     switchDomain("nlp");
     addHListener();
+    processLineData("nlp");
+    genLineVis("nlp");
 });
 

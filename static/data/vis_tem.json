@@ -1252,5 +1252,1118 @@
     "thr_9.js": "<div class=\"codeBlock hljs javascript\" id=\"thr_9\"><pre id=\"thr_9_code\" ><code class=\"python\"><span class=\"hljs-keyword\">import</span> React, { Component } <span class=\"hljs-keyword\">from</span> <span class=\"hljs-string\">\"react\"</span>;\n<span class=\"hljs-keyword\">import</span> {\n  YAxis,\n  XAxis,\n  HorizontalGridLines,\n  VerticalGridLines,\n  XYPlot,\n  AreaSeries,\n  Crosshair\n} <span class=\"hljs-keyword\">from</span> <span class=\"hljs-string\">\"react-vis\"</span>;\n<span class=\"hljs-keyword\">import</span> styles <span class=\"hljs-keyword\">from</span> <span class=\"hljs-string\">\"./styles\"</span>;\n<span class=\"hljs-keyword\">import</span> <span class=\"hljs-string\">\"react-vis/dist/style.css\"</span>;\n<span class=\"hljs-keyword\">import</span> { simpleData } <span class=\"hljs-keyword\">from</span> <span class=\"hljs-string\">\"../util\"</span>;\n<span class=\"hljs-keyword\">import</span> moment <span class=\"hljs-keyword\">from</span> <span class=\"hljs-string\">\"moment\"</span>;\n\n<span class=\"hljs-keyword\">export</span> <span class=\"hljs-class\"><span class=\"hljs-keyword\">class</span> <span class=\"hljs-title\">ReactVisArea</span> <span class=\"hljs-keyword\">extends</span> <span class=\"hljs-title\">Component</span> </span>{\n  state = {\n    <span class=\"hljs-attr\">data</span>: [\n      simpleData().map(<span class=\"hljs-function\">(<span class=\"hljs-params\">{ x, y }</span>) =&gt;</span> ({ <span class=\"hljs-attr\">x</span>: <span class=\"hljs-keyword\">new</span> <span class=\"hljs-built_in\">Date</span>(x).getTime(), y })),\n      simpleData().map(<span class=\"hljs-function\">(<span class=\"hljs-params\">{ x, y }</span>) =&gt;</span> ({ <span class=\"hljs-attr\">x</span>: <span class=\"hljs-keyword\">new</span> <span class=\"hljs-built_in\">Date</span>(x).getTime(), y }))\n    ],\n    <span class=\"hljs-attr\">crosshairValues</span>: []\n  };\n\n  _onMouseLeave = <span class=\"hljs-function\">() =&gt;</span> {\n    <span class=\"hljs-built_in\">this</span>.setState({ <span class=\"hljs-attr\">crosshairValues</span>: [] });\n  };\n  _onNearestX = <span class=\"hljs-function\">(<span class=\"hljs-params\">{ x, y }, e</span>) =&gt;</span> {\n    <span class=\"hljs-built_in\">this</span>.setState({ <span class=\"hljs-attr\">crosshairValues</span>: <span class=\"hljs-built_in\">this</span>.state.data.map(<span class=\"hljs-function\">(<span class=\"hljs-params\">d</span>) =&gt;</span> d[e.index]) });\n  };\n\n  <span class=\"hljs-function\"><span class=\"hljs-title\">render</span>(<span class=\"hljs-params\"></span>)</span> {\n    <span class=\"hljs-keyword\">const</span> { data, crosshairValues } = <span class=\"hljs-built_in\">this</span>.state;\n\n    <span class=\"hljs-keyword\">return</span> (\n      <span class=\"xml\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">div</span> <span class=\"hljs-attr\">style</span>=<span class=\"hljs-string\">{styles.container}</span>&gt;</span>\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">h3</span> <span class=\"hljs-attr\">style</span>=<span class=\"hljs-string\">{styles.title}</span>&gt;</span>React-vis Stacked Area Chart<span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">h3</span>&gt;</span>\n        <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">XYPlot</span>\n          <span class=\"hljs-attr\"></span><div style=\"display: inline;\" id=\"Canvas_0\" class=\"highlights fea_Canvas\"><span class=\"hljs-attr\">height</span>=<span class=\"hljs-string\">{400}</span>\n          <span class=\"hljs-attr\">width</span>=<span class=\"hljs-string\">{800}</span>\n          <span class=\"hljs-attr\">margin</span>=<span class=\"hljs-string\">{{</span> <span class=\"hljs-attr\">right:</span> <span class=\"hljs-attr\">32</span>, <span class=\"hljs-attr\">bottom:</span> <span class=\"hljs-attr\">60</span> }}</div>\n          <span class=\"hljs-attr\">stackedBy</span>=<span class=\"hljs-string\">\"y\"</span>\n          <span class=\"hljs-attr\">domain</span>=<span class=\"hljs-string\">{[0,</span> <span class=\"hljs-attr\">200</span>]}\n        &gt;</span>\n          <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">VerticalGridLines</span> /&gt;</span>\n          <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">HorizontalGridLines</span> /&gt;</span>\n          <span class=\"hljs-tag\"></span><div style=\"display: inline;\" id=\"Axis_0\" class=\"highlights fea_Axis\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">XAxis</span>\n            <span class=\"hljs-attr\">tickTotal</span>=<span class=\"hljs-string\">{10}</span>\n            <span class=\"hljs-attr\">tickFormat</span>=<span class=\"hljs-string\">{function</span> <span class=\"hljs-attr\">tickFormat</span>(<span class=\"hljs-attr\">d</span>) {\n              <span class=\"hljs-attr\">return</span> <span class=\"hljs-attr\">moment</span>(<span class=\"hljs-attr\">new</span> <span class=\"hljs-attr\">Date</span>(<span class=\"hljs-attr\">d</span>))<span class=\"hljs-attr\">.format</span>(\"<span class=\"hljs-attr\">mm:ss</span>\");\n            }}\n          /&gt;</span>\n          <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">YAxis</span> /&gt;</span>\n          <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">AreaSeries</span>\n            <span class=\"hljs-attr\">data</span>=<span class=\"hljs-string\">{data[0]}</span>\n            <span class=\"hljs-attr\">onNearestX</span>=<span class=\"hljs-string\">{this._onNearestX}</span>\n            <span class=\"hljs-attr\">color</span>=<span class=\"hljs-string\">\"steelblue\"</span>\n            <span class=\"hljs-attr\">opacity</span>=<span class=\"hljs-string\">{0.5}</span>\n          /&gt;</span></div><span class=\"hljs-tag\"></span>\n        <div style=\"display: inline;\" id=\"Shapes_0\" class=\"highlights fea_Shapes\">  <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">AreaSeries</span> <span class=\"hljs-attr\">data</span>=<span class=\"hljs-string\">{data[1]}</span> <span class=\"hljs-attr\">color</span>=<span class=\"hljs-string\">\"slateblue\"</span> <span class=\"hljs-attr\">opacity</span>=<span class=\"hljs-string\">{0.5}</span> /&gt;</span>\n          <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">Crosshair</span> <span class=\"hljs-attr\">values</span>=<span class=\"hljs-string\">{crosshairValues}</span> /&gt;</span><span class=\"hljs-tag\"></span></div><span class=\"hljs-tag\"></span>\n        <span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">XYPlot</span>&gt;</span>\n      <span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">div</span>&gt;</span></span>\n    );\n  }\n}\n</code></pre></div>",
     "thr_12.js": "<div class=\"codeBlock hljs typescript\" id=\"thr_12\"><pre id=\"thr_12_code\" ><code class=\"python\"><span class=\"hljs-keyword\">import</span> React <span class=\"hljs-keyword\">from</span> <span class=\"hljs-string\">\"react\"</span>;\n<span class=\"hljs-keyword\">import</span> { render } <span class=\"hljs-keyword\">from</span> <span class=\"hljs-string\">\"react-dom\"</span>;\n\n<span class=\"hljs-keyword\">import</span> { LineChart, Line, XAxis, YAxis, ReferenceLine } <span class=\"hljs-keyword\">from</span> <span class=\"hljs-string\">\"recharts\"</span>;\n\n<span class=\"hljs-keyword\">const</span> styles = {\n  <span class=\"hljs-attr\">fontFamily</span>: <span class=\"hljs-string\">\"sans-serif\"</span>,\n  <span class=\"hljs-attr\">textAlign</span>: <span class=\"hljs-string\">\"center\"</span>\n};\n\n<span class=\"hljs-keyword\">const</span> data = [];\n<span class=\"hljs-keyword\">const</span> launchDate = <span class=\"hljs-number\">2004</span>;\n\n<span class=\"hljs-keyword\">const</span> rand = <span class=\"hljs-number\">300</span>;\n<span class=\"hljs-keyword\">for</span> (<span class=\"hljs-keyword\">let</span> i = <span class=\"hljs-number\">0</span>; i &lt; <span class=\"hljs-number\">7</span>; i++) {\n  <span class=\"hljs-keyword\">const</span> year = <span class=\"hljs-number\">2000</span> + i;\n  <span class=\"hljs-keyword\">const</span> value = <span class=\"hljs-built_in\">Math</span>.random() * (rand + <span class=\"hljs-number\">50</span>) + <span class=\"hljs-number\">100</span>;\n  <span class=\"hljs-keyword\">let</span> d = {\n    <span class=\"hljs-attr\">year</span>: year,\n    <span class=\"hljs-attr\">value</span>: value,\n    <span class=\"hljs-attr\">beforeLaunch</span>: year &lt;= launchDate ? value : <span class=\"hljs-literal\">undefined</span>\n  };\n\n  data.push(d);\n}\n\n<span class=\"hljs-comment\">// change type to see that the overlap might not be appropriate towards the</span>\n<span class=\"hljs-comment\">// end of the shorter chart</span>\n<span class=\"hljs-keyword\">const</span> <span class=\"hljs-keyword\">type</span> = <span class=\"hljs-string\">\"monotone\"</span>;\n\n<span class=\"hljs-keyword\">const</span> App = <span class=\"hljs-function\">() =&gt;</span> (\n  <span class=\"xml\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">div</span> <span class=\"hljs-attr\">style</span>=<span class=\"hljs-string\">{styles}</span>&gt;</span>\n    <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">LineChart</span>\n      <span class=\"hljs-attr\"></span><div style=\"display: inline;\" id=\"Canvas_0\" class=\"highlights fea_Canvas\"><span class=\"hljs-attr\">width</span>=<span class=\"hljs-string\">{500}</span>\n      <span class=\"hljs-attr\">height</span>=<span class=\"hljs-string\">{300}</span>\n      <span class=\"hljs-attr\">data</span>=<span class=\"hljs-string\">{data}</span>\n      <span class=\"hljs-attr\">margin</span>=<span class=\"hljs-string\">{{</span> <span class=\"hljs-attr\">top:</span> <span class=\"hljs-attr\">5</span>, <span class=\"hljs-attr\">right:</span> <span class=\"hljs-attr\">20</span>, <span class=\"hljs-attr\">bottom:</span> <span class=\"hljs-attr\">5</span>, <span class=\"hljs-attr\">left:</span> <span class=\"hljs-attr\">0</span> }}</div>\n    &gt;</span>\n      <span class=\"hljs-tag\"></span><div style=\"display: inline;\" id=\"Shapes_0\" class=\"highlights fea_Shapes\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">Line</span> <span class=\"hljs-attr\">type</span>=<span class=\"hljs-string\">{type}</span> <span class=\"hljs-attr\">dataKey</span>=<span class=\"hljs-string\">\"value\"</span> <span class=\"hljs-attr\">stroke</span>=<span class=\"hljs-string\">\"#8884d8\"</span> <span class=\"hljs-attr\">dot</span>=<span class=\"hljs-string\">{false}</span> /&gt;</span>\n      <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">Line</span> <span class=\"hljs-attr\">type</span>=<span class=\"hljs-string\">{type}</span> <span class=\"hljs-attr\">dataKey</span>=<span class=\"hljs-string\">\"beforeLaunch\"</span> <span class=\"hljs-attr\">stroke</span>=<span class=\"hljs-string\">\"red\"</span> <span class=\"hljs-attr\">dot</span>=<span class=\"hljs-string\">{false}</span> /&gt;</span></div><span class=\"hljs-tag\"></span>\n      <span class=\"hljs-tag\"></span><div style=\"display: inline;\" id=\"Axis_0\" class=\"highlights fea_Axis\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">XAxis</span> <span class=\"hljs-attr\">dataKey</span>=<span class=\"hljs-string\">\"year\"</span> /&gt;</span>\n      <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">YAxis</span> /&gt;</span></div><span class=\"hljs-tag\"></span>\n      <span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">ReferenceLine</span> <span class=\"hljs-attr\">x</span>=<span class=\"hljs-string\">{launchDate}</span> <span class=\"hljs-attr\">label</span>=<span class=\"hljs-string\">\"iPhone\"</span> /&gt;</span>\n    <span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">LineChart</span>&gt;</span>\n  <span class=\"hljs-tag\">&lt;/<span class=\"hljs-name\">div</span>&gt;</span></span>\n);\n\nrender(<span class=\"xml\"><span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">App</span> /&gt;</span></span>, <span class=\"hljs-built_in\">document</span>.getElementById(<span class=\"hljs-string\">\"root\"</span>));\n</code></pre></div>",
     "thr_19.js": "<div class=\"codeBlock hljs yaml\" id=\"thr_19\"><pre id=\"thr_19_code\" ><code class=\"python\"><span class=\"hljs-string\">/*</span> <span class=\"hljs-string\">eslint-disable</span> <span class=\"hljs-string\">max-classes-per-file</span> <span class=\"hljs-string\">*/</span>\n<span class=\"hljs-string\">import</span> <span class=\"hljs-string\">React,</span> { <span class=\"hljs-string\">PureComponent</span> } <span class=\"hljs-string\">from</span> <span class=\"hljs-string\">'react'</span><span class=\"hljs-string\">;</span>\n<span class=\"hljs-string\">import</span> { <span class=\"hljs-string\">Treemap</span>, <span class=\"hljs-string\">ResponsiveContainer</span> } <span class=\"hljs-string\">from</span> <span class=\"hljs-string\">'recharts'</span><span class=\"hljs-string\">;</span>\n\n<span class=\"hljs-string\">const</span> <span class=\"hljs-string\">data</span> <span class=\"hljs-string\">=</span> [\n  {\n    <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'axis'</span>,\n    <span class=\"hljs-attr\">children:</span> [\n      { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'Axes'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">1302</span> },\n      { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'Axis'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">24593</span> },\n      { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'AxisGridLine'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">652</span> },\n      { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'AxisLabel'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">636</span> },\n      { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'CartesianAxes'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">6703</span> },\n    ],\n  },\n  {\n    <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'controls'</span>,\n    <span class=\"hljs-attr\">children:</span> [\n      { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'AnchorControl'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">2138</span> },\n      { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'ClickControl'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">3824</span> },\n      { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'Control'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">1353</span> },\n      { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'ControlList'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">4665</span> },\n      { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'DragControl'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">2649</span> },\n      { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'ExpandControl'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">2832</span> },\n      { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'HoverControl'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">4896</span> },\n      { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'IControl'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">763</span> },\n      { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'PanZoomControl'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">5222</span> },\n      { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'SelectionControl'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">7862</span> },\n      { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'TooltipControl'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">8435</span> },\n    ],\n  },\n  {\n    <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'data'</span>,\n    <span class=\"hljs-attr\">children:</span> [\n      { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'Data'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">20544</span> },\n      { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'DataList'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">19788</span> },\n      { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'DataSprite'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">10349</span> },\n      { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'EdgeSprite'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">3301</span> },\n      { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'NodeSprite'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">19382</span> },\n      {\n        <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'render'</span>,\n        <span class=\"hljs-attr\">children:</span> [\n          { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'ArrowType'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">698</span> },\n          { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'EdgeRenderer'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">5569</span> },\n          { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'IRenderer'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">353</span> },\n          { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'ShapeRenderer'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">2247</span> },\n        ],\n      },\n      { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'ScaleBinding'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">11275</span> },\n      { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'Tree'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">7147</span> },\n      { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'TreeBuilder'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">9930</span> },\n    ],\n  },\n  {\n    <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'events'</span>,\n    <span class=\"hljs-attr\">children:</span> [\n      { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'DataEvent'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">7313</span> },\n      { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'SelectionEvent'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">6880</span> },\n      { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'TooltipEvent'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">3701</span> },\n      { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'VisualizationEvent'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">2117</span> },\n    ],\n  },\n  {\n    <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'legend'</span>,\n    <span class=\"hljs-attr\">children:</span> [\n      { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'Legend'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">20859</span> },\n      { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'LegendItem'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">4614</span> },\n      { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'LegendRange'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">10530</span> },\n    ],\n  },\n  {\n    <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'operator'</span>,\n    <span class=\"hljs-attr\">children:</span> [\n      {\n        <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'distortion'</span>,\n        <span class=\"hljs-attr\">children:</span> [\n          { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'BifocalDistortion'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">4461</span> },\n          { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'Distortion'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">6314</span> },\n          { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'FisheyeDistortion'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">3444</span> },\n        ],\n      },\n      {\n        <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'encoder'</span>,\n        <span class=\"hljs-attr\">children:</span> [\n          { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'ColorEncoder'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">3179</span> },\n          { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'Encoder'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">4060</span> },\n          { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'PropertyEncoder'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">4138</span> },\n          { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'ShapeEncoder'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">1690</span> },\n          { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'SizeEncoder'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">1830</span> },\n        ],\n      },\n      {\n        <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'filter'</span>,\n        <span class=\"hljs-attr\">children:</span> [\n          { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'FisheyeTreeFilter'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">5219</span> },\n          { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'GraphDistanceFilter'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">3165</span> },\n          { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'VisibilityFilter'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">3509</span> },\n        ],\n      },\n      { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'IOperator'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">1286</span> },\n      {\n        <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'label'</span>,\n        <span class=\"hljs-attr\">children:</span> [\n          { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'Labeler'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">9956</span> },\n          { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'RadialLabeler'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">3899</span> },\n          { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'StackedAreaLabeler'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">3202</span> },\n        ],\n      },\n      {\n        <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'layout'</span>,\n        <span class=\"hljs-attr\">children:</span> [\n          { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'AxisLayout'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">6725</span> },\n          { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'BundledEdgeRouter'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">3727</span> },\n          { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'CircleLayout'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">9317</span> },\n          { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'CirclePackingLayout'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">12003</span> },\n          { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'DendrogramLayout'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">4853</span> },\n          { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'ForceDirectedLayout'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">8411</span> },\n          { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'IcicleTreeLayout'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">4864</span> },\n          { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'IndentedTreeLayout'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">3174</span> },\n          { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'Layout'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">7881</span> },\n          { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'NodeLinkTreeLayout'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">12870</span> },\n          { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'PieLayout'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">2728</span> },\n          { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'RadialTreeLayout'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">12348</span> },\n          { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'RandomLayout'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">870</span> },\n          { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'StackedAreaLayout'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">9121</span> },\n          { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'TreeMapLayout'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">9191</span> },\n        ],\n      },\n      { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'Operator'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">2490</span> },\n      { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'OperatorList'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">5248</span> },\n      { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'OperatorSequence'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">4190</span> },\n      { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'OperatorSwitch'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">2581</span> },\n      { <span class=\"hljs-attr\">name:</span> <span class=\"hljs-string\">'SortOperator'</span>, <span class=\"hljs-attr\">size:</span> <span class=\"hljs-number\">2023</span> },\n    ],\n  },\n]<span class=\"hljs-string\">;</span>\n\n<span class=\"hljs-string\">const</span> <span class=\"hljs-string\">COLORS</span> <span class=\"hljs-string\">=</span> [<span class=\"hljs-string\">'#8889DD'</span>, <span class=\"hljs-string\">'#9597E4'</span>, <span class=\"hljs-string\">'#8DC77B'</span>, <span class=\"hljs-string\">'#A5D297'</span>, <span class=\"hljs-string\">'#E2CF45'</span>, <span class=\"hljs-string\">'#F8C12D'</span>]<span class=\"hljs-string\">;</span>\n\n<span class=\"hljs-string\">class</span> <span class=\"hljs-string\">CustomizedContent</span> <span class=\"hljs-string\">extends</span> <span class=\"hljs-string\">PureComponent</span> {\n  <span class=\"hljs-string\">render()</span> {\n    <span class=\"hljs-string\">const</span> { <span class=\"hljs-string\">root</span>, <span class=\"hljs-string\">depth</span>, <span class=\"hljs-string\">x</span>, <span class=\"hljs-string\">y</span>, <span class=\"hljs-string\">width</span>, <span class=\"hljs-string\">height</span>, <span class=\"hljs-string\">index</span>, <span class=\"hljs-string\">payload</span>, <span class=\"hljs-string\">colors</span>, <span class=\"hljs-string\">rank</span>, <span class=\"hljs-string\">name</span> } <span class=\"hljs-string\">=</span> <span class=\"hljs-string\">this.props;</span>\n\n    <span class=\"hljs-string\">return</span> <span class=\"hljs-string\">(</span>\n      <span class=\"hljs-string\">&lt;g&gt;</span>\n        <span class=\"hljs-string\"></span><div style=\"display: inline;\" id=\"Shapes_0\" class=\"highlights fea_Shapes\"><span class=\"hljs-string\">&lt;rect</span>\n          <span class=\"hljs-string\"></span><span class=\"hljs-string\">x=</span>{<span class=\"hljs-string\">x</span>}\n          <span class=\"hljs-string\">y=</span>{<span class=\"hljs-string\">y</span>}\n          <span class=\"hljs-string\">width=</span>{<span class=\"hljs-string\">width</span>}\n          <span class=\"hljs-string\">height=</span>{<span class=\"hljs-string\">height</span>}\n          <span class=\"hljs-string\">style=<span class=\"hljs-template-variable\">{{\n            fill: depth &lt; 2 ? colors[Math.floor((index / root.children.length) * 6)] : 'none',\n            stroke: '#fff',\n            strokeWidth: 2 / (depth + 1e-10),\n            strokeOpacity: 1 / (depth + 1e-10),\n          }}</span></span>\n        <span class=\"hljs-string\">/&gt;</span></div><span class=\"hljs-string\"></span>\n        {<span class=\"hljs-string\">depth</span> <span class=\"hljs-string\">===</span> <span class=\"hljs-number\">1</span> <span class=\"hljs-string\">?</span> <span class=\"hljs-string\">(</span>\n          <span class=\"hljs-string\">&lt;text</span> <span class=\"hljs-string\">x=</span>{<span class=\"hljs-string\">x</span> <span class=\"hljs-string\">+</span> <span class=\"hljs-string\">width</span> <span class=\"hljs-string\">/</span> <span class=\"hljs-number\">2</span>} <span class=\"hljs-string\">y=</span>{<span class=\"hljs-string\">y</span> <span class=\"hljs-string\">+</span> <span class=\"hljs-string\">height</span> <span class=\"hljs-string\">/</span> <span class=\"hljs-number\">2</span> <span class=\"hljs-string\">+</span> <span class=\"hljs-number\">7</span>} <span class=\"hljs-string\">textAnchor=\"middle\"</span> <span class=\"hljs-string\">fill=\"#fff\"</span> <span class=\"hljs-string\">fontSize=</span>{<span class=\"hljs-number\">14</span>}<span class=\"hljs-string\">&gt;\n            {name}\n</span>          <span class=\"hljs-string\">&lt;/text&gt;</span>\n        <span class=\"hljs-string\">)</span> <span class=\"hljs-string\">:</span> <span class=\"hljs-literal\">null</span>}\n        {<span class=\"hljs-string\">depth</span> <span class=\"hljs-string\">===</span> <span class=\"hljs-number\">1</span> <span class=\"hljs-string\">?</span> <span class=\"hljs-string\">(</span>\n          <span class=\"hljs-string\">&lt;text</span> <span class=\"hljs-string\">x=</span>{<span class=\"hljs-string\">x</span> <span class=\"hljs-string\">+</span> <span class=\"hljs-number\">4</span>} <span class=\"hljs-string\">y=</span>{<span class=\"hljs-string\">y</span> <span class=\"hljs-string\">+</span> <span class=\"hljs-number\">18</span>} <span class=\"hljs-string\">fill=\"#fff\"</span> <span class=\"hljs-string\">fontSize=</span>{<span class=\"hljs-number\">16</span>} <span class=\"hljs-string\">fillOpacity=</span>{<span class=\"hljs-number\">0.9</span>}<span class=\"hljs-string\">&gt;\n            {index + 1}\n</span>          <span class=\"hljs-string\">&lt;/text&gt;</span>\n        <span class=\"hljs-string\">)</span> <span class=\"hljs-string\">:</span> <span class=\"hljs-literal\">null</span>}\n      <span class=\"hljs-string\">&lt;/g&gt;</span>\n    <span class=\"hljs-string\">);</span>\n  }\n}\n\n<span class=\"hljs-string\">export</span> <span class=\"hljs-string\">default</span> <span class=\"hljs-string\">class</span> <span class=\"hljs-string\">Example</span> <span class=\"hljs-string\">extends</span> <span class=\"hljs-string\">PureComponent</span> {\n  <span class=\"hljs-string\">static</span> <span class=\"hljs-string\">demoUrl</span> <span class=\"hljs-string\">=</span> <span class=\"hljs-string\">'https://codesandbox.io/s/treemap-with-customized-content-7qxfp'</span><span class=\"hljs-string\">;</span>\n\n  <span class=\"hljs-string\">render()</span> {\n    <span class=\"hljs-string\">return</span> <span class=\"hljs-string\">(</span>\n      <span class=\"hljs-string\">&lt;ResponsiveContainer</span> <span class=\"hljs-string\">width=\"100%\"</span> <span class=\"hljs-string\">height=\"100%\"&gt;</span>\n        <span class=\"hljs-string\"></span><div style=\"display: inline;\" id=\"Shapes_1\" class=\"highlights fea_Shapes\"><span class=\"hljs-string\">&lt;Treemap</span>\n          <span class=\"hljs-string\">width=</span>{<span class=\"hljs-number\">400</span>}\n          <span class=\"hljs-string\">height=</span>{<span class=\"hljs-number\">200</span>}\n          <span class=\"hljs-string\">data=</span>{<span class=\"hljs-string\">data</span>}\n          <span class=\"hljs-string\">dataKey=\"size\"</span>\n          <span class=\"hljs-string\">ratio=</span>{<span class=\"hljs-number\">4</span> <span class=\"hljs-string\">/</span> <span class=\"hljs-number\">3</span>}\n          <span class=\"hljs-string\">stroke=\"#fff\"</span>\n          <span class=\"hljs-string\">fill=\"#8884d8\"</span>\n          <span class=\"hljs-string\">content=</span>{<span class=\"hljs-string\">&lt;CustomizedContent</span> <span class=\"hljs-string\">colors=</span>{<span class=\"hljs-string\">COLORS</span>} <span class=\"hljs-string\">/&gt;</span>}\n        <span class=\"hljs-string\">/&gt;</span></div><span class=\"hljs-string\"></span>\n      <span class=\"hljs-string\">&lt;/ResponsiveContainer&gt;</span>\n    <span class=\"hljs-string\">);</span>\n  }\n}\n<span class=\"hljs-string\">//https://recharts.org/en-US/examples/CustomContentTreemap</span></code></pre></div>"
+  },
+  "file concepts": {
+    "fir_14.js": [
+      "cat_Customizable_Components",
+      "fea_Multiple_Chars",
+      "fea_Axis",
+      "fea_Canvas",
+      "fea_Shapes",
+      "cat_Data_Processing",
+      "fea_Data_Format",
+      "fea_Import_Data",
+      "fea_Data_Transformation"
+    ],
+    "fir_3.js": [
+      "cat_Customizable_Components",
+      "fea_Legend",
+      "fea_Axis",
+      "fea_Canvas",
+      "fea_Shapes",
+      "cat_Data_Processing",
+      "fea_Data_Format",
+      "fea_Import_Data",
+      "fea_Data_Transformation"
+    ],
+    "fir_6.js": [
+      "cat_Customizable_Components",
+      "fea_Legend",
+      "fea_Text",
+      "fea_Axis",
+      "fea_Canvas",
+      "fea_Shapes",
+      "cat_Data_Processing",
+      "fea_Data_Format",
+      "fea_Data_Filtering",
+      "fea_Data_Transformation",
+      "cat_Interactions_and_Animations",
+      "fea_Mouse_Events"
+    ],
+    "fir_13.js": [
+      "cat_Customizable_Components",
+      "fea_Legend",
+      "fea_Text",
+      "fea_Axis",
+      "fea_Canvas",
+      "fea_Shapes",
+      "cat_Data_Processing",
+      "fea_Data_Filtering",
+      "fea_Data_Transformation",
+      "fea_Data_Grouping"
+    ],
+    "fir_21.js": [
+      "cat_Customizable_Components",
+      "fea_Legend",
+      "fea_Text",
+      "fea_Axis",
+      "fea_Canvas",
+      "fea_Shapes",
+      "cat_Data_Processing",
+      "fea_Import_Data"
+    ],
+    "fir_5.js": [
+      "cat_Customizable_Components",
+      "fea_Tooltip",
+      "fea_Text",
+      "fea_Axis",
+      "fea_Canvas",
+      "fea_Shapes",
+      "cat_Data_Processing",
+      "fea_Data_Format",
+      "fea_Import_Data",
+      "fea_Data_Grouping",
+      "cat_Interactions_and_Animations",
+      "fea_Mouse_Events",
+      "fea_Animations"
+    ],
+    "fir_16.js": [
+      "cat_Customizable_Components",
+      "fea_Tooltip",
+      "fea_Text",
+      "fea_Axis",
+      "fea_Canvas",
+      "fea_Shapes",
+      "cat_Data_Processing",
+      "fea_Data_Format",
+      "fea_Import_Data",
+      "fea_Data_Transformation",
+      "cat_Interactions_and_Animations",
+      "fea_Mouse_Events"
+    ],
+    "fir_29.js": [
+      "cat_Customizable_Components",
+      "fea_Tooltip",
+      "fea_Text",
+      "fea_Axis",
+      "fea_Canvas",
+      "fea_Shapes",
+      "cat_Data_Processing",
+      "fea_Import_Data",
+      "fea_Data_Transformation",
+      "cat_Interactions_and_Animations",
+      "fea_Mouse_Events"
+    ],
+    "fir_7.js": [
+      "cat_Customizable_Components",
+      "fea_Text",
+      "fea_Axis",
+      "fea_Canvas",
+      "fea_Shapes",
+      "cat_Data_Processing",
+      "fea_Data_Format",
+      "fea_Import_Data",
+      "fea_Data_Transformation",
+      "fea_Data_Grouping"
+    ],
+    "fir_9.js": [
+      "cat_Customizable_Components",
+      "fea_Text",
+      "fea_Axis",
+      "fea_Canvas",
+      "fea_Shapes",
+      "cat_Data_Processing",
+      "fea_Data_Format",
+      "fea_Import_Data",
+      "fea_Data_Transformation",
+      "cat_Interactions_and_Animations",
+      "fea_Mouse_Events"
+    ],
+    "fir_11.js": [
+      "cat_Customizable_Components",
+      "fea_Text",
+      "fea_Axis",
+      "fea_Canvas",
+      "fea_Shapes",
+      "cat_Data_Processing",
+      "fea_Data_Format",
+      "fea_Import_Data",
+      "fea_Data_Transformation",
+      "cat_Interactions_and_Animations",
+      "fea_Mouse_Events"
+    ],
+    "fir_12.js": [
+      "cat_Customizable_Components",
+      "fea_Text",
+      "fea_Axis",
+      "fea_Canvas",
+      "fea_Shapes"
+    ],
+    "fir_15.js": [
+      "cat_Customizable_Components",
+      "fea_Text",
+      "fea_Axis",
+      "fea_Canvas",
+      "fea_Shapes",
+      "cat_Data_Processing",
+      "fea_Import_Data",
+      "cat_Interactions_and_Animations",
+      "fea_Mouse_Events"
+    ],
+    "fir_17.js": [
+      "cat_Customizable_Components",
+      "fea_Text",
+      "fea_Axis",
+      "fea_Canvas",
+      "fea_Shapes",
+      "cat_Data_Processing",
+      "fea_Data_Transformation"
+    ],
+    "fir_24.js": [
+      "cat_Customizable_Components",
+      "fea_Text",
+      "fea_Canvas",
+      "fea_Shapes",
+      "cat_Data_Processing",
+      "fea_Import_Data",
+      "cat_Interactions_and_Animations",
+      "fea_Selection"
+    ],
+    "fir_25.js": [
+      "cat_Customizable_Components",
+      "fea_Text",
+      "fea_Axis",
+      "fea_Canvas",
+      "fea_Shapes",
+      "cat_Data_Processing",
+      "fea_Import_Data",
+      "cat_Interactions_and_Animations",
+      "fea_Mouse_Events"
+    ],
+    "fir_26.js": [
+      "cat_Customizable_Components",
+      "fea_Text",
+      "fea_Canvas",
+      "fea_Shapes",
+      "cat_Data_Processing",
+      "fea_Data_Format",
+      "fea_Import_Data",
+      "fea_Data_Grouping",
+      "cat_Interactions_and_Animations",
+      "fea_Mouse_Events"
+    ],
+    "fir_28.js": [
+      "cat_Customizable_Components",
+      "fea_Text",
+      "fea_Axis",
+      "fea_Canvas",
+      "fea_Shapes",
+      "cat_Data_Processing",
+      "fea_Import_Data"
+    ],
+    "fir_1.js": [
+      "cat_Customizable_Components",
+      "fea_Axis",
+      "fea_Canvas",
+      "fea_Shapes",
+      "cat_Data_Processing",
+      "fea_Data_Format",
+      "fea_Import_Data",
+      "fea_Data_Transformation"
+    ],
+    "fir_2.js": [
+      "cat_Customizable_Components",
+      "fea_Axis",
+      "fea_Canvas",
+      "fea_Shapes",
+      "cat_Data_Processing",
+      "fea_Import_Data"
+    ],
+    "fir_4.js": [
+      "cat_Customizable_Components",
+      "fea_Axis",
+      "fea_Canvas",
+      "fea_Shapes",
+      "cat_Data_Processing",
+      "fea_Data_Format",
+      "fea_Import_Data",
+      "fea_Data_Grouping"
+    ],
+    "fir_8.js": [
+      "cat_Customizable_Components",
+      "fea_Axis",
+      "fea_Canvas",
+      "fea_Shapes",
+      "cat_Data_Processing",
+      "fea_Data_Format",
+      "fea_Import_Data",
+      "fea_Data_Filtering",
+      "fea_Data_Transformation",
+      "fea_Data_Grouping",
+      "cat_Interactions_and_Animations",
+      "fea_Animations"
+    ],
+    "fir_10.js": [
+      "cat_Customizable_Components",
+      "fea_Axis",
+      "fea_Canvas",
+      "fea_Shapes",
+      "cat_Data_Processing",
+      "fea_Data_Format",
+      "fea_Import_Data",
+      "cat_Interactions_and_Animations",
+      "fea_Zoom"
+    ],
+    "fir_19.js": [
+      "cat_Customizable_Components",
+      "fea_Axis",
+      "fea_Shapes",
+      "cat_Data_Processing",
+      "fea_Import_Data"
+    ],
+    "fir_20.js": [
+      "cat_Customizable_Components",
+      "fea_Axis",
+      "fea_Canvas",
+      "fea_Shapes"
+    ],
+    "fir_23.js": [
+      "cat_Customizable_Components",
+      "fea_Axis",
+      "fea_Canvas",
+      "fea_Shapes",
+      "cat_Data_Processing",
+      "fea_Import_Data",
+      "fea_Data_Transformation",
+      "cat_Interactions_and_Animations",
+      "fea_Mouse_Events"
+    ],
+    "fir_30.js": [
+      "cat_Customizable_Components",
+      "fea_Axis",
+      "fea_Canvas",
+      "fea_Shapes",
+      "cat_Data_Processing",
+      "fea_Import_Data",
+      "fea_Data_Grouping"
+    ],
+    "fir_22.js": [
+      "cat_Customizable_Components",
+      "fea_Canvas",
+      "fea_Shapes",
+      "cat_Data_Processing",
+      "fea_Import_Data",
+      "cat_Interactions_and_Animations",
+      "fea_Selection"
+    ],
+    "fir_27.js": [
+      "cat_Customizable_Components",
+      "fea_Canvas",
+      "fea_Shapes"
+    ],
+    "fir_18.js": [
+      "cat_Customizable_Components",
+      "fea_Shapes",
+      "cat_Data_Processing",
+      "fea_Data_Grouping"
+    ],
+    "sec_8.js": [
+      "cat_Customizable_Components",
+      "fea_Legend",
+      "fea_Tooltip",
+      "fea_Axis",
+      "fea_Shapes"
+    ],
+    "sec_14.js": [
+      "cat_Customizable_Components",
+      "fea_Legend",
+      "fea_Tooltip",
+      "fea_Axis",
+      "fea_Canvas",
+      "fea_Shapes",
+      "cat_Interactions_and_Animations",
+      "fea_Animations"
+    ],
+    "sec_17.js": [
+      "cat_Customizable_Components",
+      "fea_Legend",
+      "fea_Tooltip",
+      "fea_Canvas",
+      "fea_Shapes"
+    ],
+    "sec_18.js": [
+      "cat_Customizable_Components",
+      "fea_Legend",
+      "fea_Axis",
+      "fea_Shapes",
+      "cat_Interactions_and_Animations",
+      "fea_Animations"
+    ],
+    "sec_21.js": [
+      "cat_Customizable_Components",
+      "fea_Legend",
+      "fea_Tooltip",
+      "fea_Shapes",
+      "cat_Interactions_and_Animations",
+      "fea_Mouse_Events"
+    ],
+    "sec_25.js": [
+      "cat_Customizable_Components",
+      "fea_Legend",
+      "fea_Tooltip",
+      "fea_Shapes",
+      "cat_Data_Processing",
+      "fea_Data_Transformation",
+      "fea_Data_Grouping",
+      "cat_Interactions_and_Animations",
+      "fea_Mouse_Events"
+    ],
+    "sec_26.js": [
+      "cat_Customizable_Components",
+      "fea_Legend",
+      "fea_Text",
+      "fea_Shapes"
+    ],
+    "sec_27.js": [
+      "cat_Customizable_Components",
+      "fea_Legend",
+      "fea_Text",
+      "fea_Shapes"
+    ],
+    "sec_30.js": [
+      "cat_Customizable_Components",
+      "fea_Legend",
+      "fea_Text",
+      "fea_Shapes"
+    ],
+    "sec_2.js": [
+      "cat_Customizable_Components",
+      "fea_Tooltip",
+      "fea_Shapes",
+      "cat_Interactions_and_Animations",
+      "fea_Animations"
+    ],
+    "sec_5.js": [
+      "cat_Customizable_Components",
+      "fea_Tooltip",
+      "fea_Text",
+      "fea_Axis",
+      "fea_Shapes",
+      "cat_Interactions_and_Animations",
+      "fea_Mouse_Events",
+      "fea_Animations"
+    ],
+    "sec_9.js": [
+      "cat_Customizable_Components",
+      "fea_Tooltip",
+      "fea_Text",
+      "fea_Axis",
+      "fea_Shapes",
+      "cat_Interactions_and_Animations",
+      "fea_Mouse_Events",
+      "fea_Animations"
+    ],
+    "sec_12.js": [
+      "cat_Customizable_Components",
+      "fea_Tooltip",
+      "fea_Text",
+      "fea_Axis",
+      "fea_Shapes",
+      "cat_Data_Processing",
+      "fea_Data_Grouping",
+      "cat_Interactions_and_Animations",
+      "fea_Mouse_Events"
+    ],
+    "sec_16.js": [
+      "cat_Customizable_Components",
+      "fea_Tooltip",
+      "fea_Shapes",
+      "cat_Interactions_and_Animations",
+      "fea_Mouse_Events"
+    ],
+    "sec_19.js": [
+      "cat_Customizable_Components",
+      "fea_Tooltip",
+      "fea_Text",
+      "fea_Axis",
+      "fea_Shapes",
+      "cat_Data_Processing",
+      "fea_Data_Transformation"
+    ],
+    "sec_11.js": [
+      "cat_Customizable_Components",
+      "fea_Text",
+      "fea_Shapes",
+      "cat_Interactions_and_Animations",
+      "fea_Mouse_Events",
+      "fea_Animations"
+    ],
+    "sec_15.js": [
+      "cat_Customizable_Components",
+      "fea_Text",
+      "fea_Axis",
+      "cat_Interactions_and_Animations",
+      "fea_Animations"
+    ],
+    "sec_22.js": [
+      "cat_Customizable_Components",
+      "fea_Text",
+      "fea_Axis",
+      "fea_Shapes"
+    ],
+    "sec_23.js": [
+      "cat_Customizable_Components",
+      "fea_Text",
+      "fea_Axis",
+      "fea_Shapes",
+      "cat_Data_Processing",
+      "fea_Data_Transformation"
+    ],
+    "sec_24.js": [
+      "cat_Customizable_Components",
+      "fea_Text",
+      "fea_Shapes",
+      "cat_Data_Processing",
+      "fea_Data_Transformation"
+    ],
+    "sec_28.js": [
+      "cat_Customizable_Components",
+      "fea_Text",
+      "fea_Axis",
+      "fea_Shapes"
+    ],
+    "sec_29.js": [
+      "cat_Customizable_Components",
+      "fea_Text",
+      "fea_Axis",
+      "fea_Shapes"
+    ],
+    "sec_3.js": [
+      "cat_Customizable_Components",
+      "fea_Axis",
+      "fea_Shapes"
+    ],
+    "sec_6.js": [
+      "cat_Customizable_Components",
+      "fea_Axis",
+      "fea_Shapes",
+      "cat_Interactions_and_Animations",
+      "fea_Animations"
+    ],
+    "sec_13.js": [
+      "cat_Customizable_Components",
+      "fea_Axis",
+      "fea_Shapes",
+      "cat_Interactions_and_Animations",
+      "fea_Mouse_Events"
+    ],
+    "sec_20.js": [
+      "cat_Customizable_Components",
+      "fea_Axis",
+      "fea_Shapes",
+      "cat_Data_Processing",
+      "fea_Data_Transformation",
+      "cat_Interactions_and_Animations",
+      "fea_Animations"
+    ],
+    "sec_1.js": [
+      "cat_Customizable_Components",
+      "fea_Shapes",
+      "cat_Interactions_and_Animations",
+      "fea_Animations"
+    ],
+    "sec_4.js": [
+      "cat_Customizable_Components",
+      "fea_Shapes"
+    ],
+    "sec_10.js": [
+      "cat_Customizable_Components",
+      "fea_Shapes",
+      "cat_Interactions_and_Animations",
+      "fea_Animations"
+    ],
+    "thr_14.js": [
+      "cat_Customizable_Components",
+      "fea_Multiple_Chars",
+      "fea_Tooltip",
+      "fea_Text",
+      "fea_Axis",
+      "fea_Shapes"
+    ],
+    "thr_2.js": [
+      "cat_Customizable_Components",
+      "fea_Legend",
+      "fea_Tooltip",
+      "fea_Axis",
+      "fea_Canvas",
+      "fea_Shapes"
+    ],
+    "thr_3.js": [
+      "cat_Customizable_Components",
+      "fea_Legend",
+      "fea_Tooltip",
+      "fea_Axis",
+      "fea_Canvas",
+      "fea_Shapes"
+    ],
+    "thr_8.js": [
+      "cat_Customizable_Components",
+      "fea_Legend",
+      "fea_Tooltip",
+      "fea_Axis",
+      "fea_Canvas",
+      "fea_Shapes"
+    ],
+    "thr_13.js": [
+      "cat_Customizable_Components",
+      "fea_Legend",
+      "fea_Tooltip",
+      "fea_Axis",
+      "fea_Canvas",
+      "fea_Shapes"
+    ],
+    "thr_16.js": [
+      "cat_Customizable_Components",
+      "fea_Legend",
+      "fea_Tooltip",
+      "fea_Axis",
+      "fea_Canvas",
+      "fea_Shapes"
+    ],
+    "thr_17.js": [
+      "cat_Customizable_Components",
+      "fea_Legend",
+      "fea_Shapes"
+    ],
+    "thr_18.js": [
+      "cat_Customizable_Components",
+      "fea_Legend",
+      "fea_Shapes"
+    ],
+    "thr_20.js": [
+      "cat_Customizable_Components",
+      "fea_Legend",
+      "fea_Tooltip",
+      "fea_Axis",
+      "fea_Canvas",
+      "fea_Shapes"
+    ],
+    "thr_21.js": [
+      "cat_Customizable_Components",
+      "fea_Legend",
+      "fea_Tooltip",
+      "fea_Axis",
+      "fea_Canvas",
+      "fea_Shapes"
+    ],
+    "thr_24.js": [
+      "cat_Customizable_Components",
+      "fea_Legend",
+      "fea_Tooltip",
+      "fea_Axis",
+      "fea_Canvas",
+      "fea_Shapes"
+    ],
+    "thr_25.js": [
+      "cat_Customizable_Components",
+      "fea_Legend",
+      "fea_Tooltip",
+      "fea_Axis",
+      "fea_Canvas",
+      "fea_Shapes"
+    ],
+    "thr_26.js": [
+      "cat_Customizable_Components",
+      "fea_Legend",
+      "fea_Tooltip",
+      "fea_Axis",
+      "fea_Canvas",
+      "fea_Shapes"
+    ],
+    "thr_28.js": [
+      "cat_Customizable_Components",
+      "fea_Legend",
+      "fea_Axis",
+      "fea_Canvas",
+      "fea_Shapes"
+    ],
+    "thr_1.js": [
+      "cat_Customizable_Components",
+      "fea_Tooltip",
+      "fea_Axis",
+      "fea_Shapes"
+    ],
+    "thr_4.js": [
+      "cat_Customizable_Components",
+      "fea_Tooltip",
+      "fea_Axis",
+      "fea_Canvas",
+      "fea_Shapes"
+    ],
+    "thr_5.js": [
+      "cat_Customizable_Components",
+      "fea_Tooltip",
+      "fea_Text",
+      "fea_Axis",
+      "fea_Canvas",
+      "fea_Shapes",
+      "cat_Interactions_and_Animations",
+      "fea_Mouse_Events",
+      "fea_Animations"
+    ],
+    "thr_10.js": [
+      "cat_Customizable_Components",
+      "fea_Tooltip",
+      "fea_Axis",
+      "fea_Shapes",
+      "cat_Interactions_and_Animations",
+      "fea_Animations"
+    ],
+    "thr_11.js": [
+      "cat_Customizable_Components",
+      "fea_Tooltip",
+      "fea_Axis",
+      "fea_Canvas",
+      "fea_Shapes"
+    ],
+    "thr_15.js": [
+      "cat_Customizable_Components",
+      "fea_Tooltip",
+      "fea_Axis",
+      "fea_Canvas",
+      "fea_Shapes",
+      "cat_Interactions_and_Animations",
+      "fea_Zoom",
+      "fea_Mouse_Events"
+    ],
+    "thr_22.js": [
+      "cat_Customizable_Components",
+      "fea_Tooltip",
+      "fea_Shapes"
+    ],
+    "thr_23.js": [
+      "cat_Customizable_Components",
+      "fea_Tooltip",
+      "fea_Axis",
+      "fea_Canvas",
+      "fea_Shapes"
+    ],
+    "thr_27.js": [
+      "cat_Customizable_Components",
+      "fea_Tooltip",
+      "fea_Axis",
+      "fea_Canvas",
+      "fea_Shapes"
+    ],
+    "thr_29.js": [
+      "cat_Customizable_Components",
+      "fea_Tooltip",
+      "fea_Axis",
+      "fea_Canvas",
+      "fea_Shapes",
+      "cat_Data_Processing",
+      "fea_Import_Data"
+    ],
+    "thr_30.js": [
+      "cat_Customizable_Components",
+      "fea_Tooltip",
+      "fea_Axis",
+      "fea_Canvas",
+      "fea_Shapes",
+      "cat_Data_Processing",
+      "fea_Import_Data",
+      "cat_Interactions_and_Animations",
+      "fea_Mouse_Events"
+    ],
+    "thr_6.js": [
+      "cat_Customizable_Components",
+      "fea_Axis",
+      "fea_Canvas",
+      "fea_Shapes",
+      "cat_Interactions_and_Animations",
+      "fea_Mouse_Events"
+    ],
+    "thr_7.js": [
+      "cat_Customizable_Components",
+      "fea_Axis",
+      "fea_Canvas",
+      "fea_Shapes",
+      "cat_Interactions_and_Animations",
+      "fea_Mouse_Events"
+    ],
+    "thr_9.js": [
+      "cat_Customizable_Components",
+      "fea_Axis",
+      "fea_Canvas",
+      "fea_Shapes"
+    ],
+    "thr_12.js": [
+      "cat_Customizable_Components",
+      "fea_Axis",
+      "fea_Canvas",
+      "fea_Shapes"
+    ],
+    "thr_19.js": [
+      "cat_Customizable_Components",
+      "fea_Shapes"
+    ]
+  },
+  "file info": {
+    "fir_14.js": {
+      "nlines": 98,
+      "nchara": 8229
+    },
+    "fir_3.js": {
+      "nlines": 71,
+      "nchara": 6682
+    },
+    "fir_6.js": {
+      "nlines": 263,
+      "nchara": 19080
+    },
+    "fir_13.js": {
+      "nlines": 259,
+      "nchara": 29286
+    },
+    "fir_21.js": {
+      "nlines": 109,
+      "nchara": 11550
+    },
+    "fir_5.js": {
+      "nlines": 108,
+      "nchara": 11908
+    },
+    "fir_16.js": {
+      "nlines": 227,
+      "nchara": 28144
+    },
+    "fir_29.js": {
+      "nlines": 119,
+      "nchara": 10668
+    },
+    "fir_7.js": {
+      "nlines": 78,
+      "nchara": 8328
+    },
+    "fir_9.js": {
+      "nlines": 94,
+      "nchara": 9879
+    },
+    "fir_11.js": {
+      "nlines": 122,
+      "nchara": 10517
+    },
+    "fir_12.js": {
+      "nlines": 109,
+      "nchara": 11349
+    },
+    "fir_15.js": {
+      "nlines": 102,
+      "nchara": 8265
+    },
+    "fir_17.js": {
+      "nlines": 60,
+      "nchara": 9515
+    },
+    "fir_24.js": {
+      "nlines": 68,
+      "nchara": 7218
+    },
+    "fir_25.js": {
+      "nlines": 104,
+      "nchara": 10205
+    },
+    "fir_26.js": {
+      "nlines": 133,
+      "nchara": 12233
+    },
+    "fir_28.js": {
+      "nlines": 70,
+      "nchara": 7331
+    },
+    "fir_1.js": {
+      "nlines": 51,
+      "nchara": 4871
+    },
+    "fir_2.js": {
+      "nlines": 55,
+      "nchara": 4951
+    },
+    "fir_4.js": {
+      "nlines": 54,
+      "nchara": 5152
+    },
+    "fir_8.js": {
+      "nlines": 122,
+      "nchara": 10776
+    },
+    "fir_10.js": {
+      "nlines": 135,
+      "nchara": 10302
+    },
+    "fir_19.js": {
+      "nlines": 118,
+      "nchara": 10807
+    },
+    "fir_20.js": {
+      "nlines": 99,
+      "nchara": 6307
+    },
+    "fir_23.js": {
+      "nlines": 71,
+      "nchara": 7241
+    },
+    "fir_30.js": {
+      "nlines": 100,
+      "nchara": 9692
+    },
+    "fir_22.js": {
+      "nlines": 51,
+      "nchara": 6292
+    },
+    "fir_27.js": {
+      "nlines": 54,
+      "nchara": 4349
+    },
+    "fir_18.js": {
+      "nlines": 259,
+      "nchara": 24315
+    },
+    "sec_8.js": {
+      "nlines": 80,
+      "nchara": 6799
+    },
+    "sec_14.js": {
+      "nlines": 75,
+      "nchara": 6272
+    },
+    "sec_17.js": {
+      "nlines": 113,
+      "nchara": 6849
+    },
+    "sec_18.js": {
+      "nlines": 87,
+      "nchara": 5756
+    },
+    "sec_21.js": {
+      "nlines": 106,
+      "nchara": 7587
+    },
+    "sec_25.js": {
+      "nlines": 88,
+      "nchara": 6962
+    },
+    "sec_26.js": {
+      "nlines": 110,
+      "nchara": 5872
+    },
+    "sec_27.js": {
+      "nlines": 110,
+      "nchara": 5873
+    },
+    "sec_30.js": {
+      "nlines": 112,
+      "nchara": 5661
+    },
+    "sec_2.js": {
+      "nlines": 49,
+      "nchara": 4815
+    },
+    "sec_5.js": {
+      "nlines": 545,
+      "nchara": 32499
+    },
+    "sec_9.js": {
+      "nlines": 185,
+      "nchara": 14556
+    },
+    "sec_12.js": {
+      "nlines": 120,
+      "nchara": 8433
+    },
+    "sec_16.js": {
+      "nlines": 100,
+      "nchara": 8373
+    },
+    "sec_19.js": {
+      "nlines": 132,
+      "nchara": 13797
+    },
+    "sec_11.js": {
+      "nlines": 251,
+      "nchara": 22931
+    },
+    "sec_15.js": {
+      "nlines": 773,
+      "nchara": 85960
+    },
+    "sec_22.js": {
+      "nlines": 79,
+      "nchara": 6947
+    },
+    "sec_23.js": {
+      "nlines": 117,
+      "nchara": 5965
+    },
+    "sec_24.js": {
+      "nlines": 83,
+      "nchara": 4834
+    },
+    "sec_28.js": {
+      "nlines": 74,
+      "nchara": 6116
+    },
+    "sec_29.js": {
+      "nlines": 76,
+      "nchara": 5846
+    },
+    "sec_3.js": {
+      "nlines": 255,
+      "nchara": 17282
+    },
+    "sec_6.js": {
+      "nlines": 93,
+      "nchara": 9379
+    },
+    "sec_13.js": {
+      "nlines": 75,
+      "nchara": 6237
+    },
+    "sec_20.js": {
+      "nlines": 76,
+      "nchara": 6966
+    },
+    "sec_1.js": {
+      "nlines": 51,
+      "nchara": 4997
+    },
+    "sec_4.js": {
+      "nlines": 16,
+      "nchara": 1768
+    },
+    "sec_10.js": {
+      "nlines": 65,
+      "nchara": 5214
+    },
+    "thr_14.js": {
+      "nlines": 163,
+      "nchara": 15234
+    },
+    "thr_2.js": {
+      "nlines": 178,
+      "nchara": 17831
+    },
+    "thr_3.js": {
+      "nlines": 178,
+      "nchara": 18397
+    },
+    "thr_8.js": {
+      "nlines": 70,
+      "nchara": 6699
+    },
+    "thr_13.js": {
+      "nlines": 184,
+      "nchara": 20630
+    },
+    "thr_16.js": {
+      "nlines": 108,
+      "nchara": 8969
+    },
+    "thr_17.js": {
+      "nlines": 76,
+      "nchara": 6156
+    },
+    "thr_18.js": {
+      "nlines": 61,
+      "nchara": 5930
+    },
+    "thr_20.js": {
+      "nlines": 113,
+      "nchara": 9320
+    },
+    "thr_21.js": {
+      "nlines": 86,
+      "nchara": 7052
+    },
+    "thr_24.js": {
+      "nlines": 88,
+      "nchara": 12567
+    },
+    "thr_25.js": {
+      "nlines": 105,
+      "nchara": 8781
+    },
+    "thr_26.js": {
+      "nlines": 79,
+      "nchara": 6810
+    },
+    "thr_28.js": {
+      "nlines": 94,
+      "nchara": 11782
+    },
+    "thr_1.js": {
+      "nlines": 71,
+      "nchara": 6447
+    },
+    "thr_4.js": {
+      "nlines": 123,
+      "nchara": 9774
+    },
+    "thr_5.js": {
+      "nlines": 188,
+      "nchara": 17951
+    },
+    "thr_10.js": {
+      "nlines": 196,
+      "nchara": 16742
+    },
+    "thr_11.js": {
+      "nlines": 131,
+      "nchara": 10712
+    },
+    "thr_15.js": {
+      "nlines": 167,
+      "nchara": 17083
+    },
+    "thr_22.js": {
+      "nlines": 46,
+      "nchara": 5594
+    },
+    "thr_23.js": {
+      "nlines": 63,
+      "nchara": 9760
+    },
+    "thr_27.js": {
+      "nlines": 78,
+      "nchara": 7148
+    },
+    "thr_29.js": {
+      "nlines": 123,
+      "nchara": 10079
+    },
+    "thr_30.js": {
+      "nlines": 152,
+      "nchara": 17251
+    },
+    "thr_6.js": {
+      "nlines": 59,
+      "nchara": 5492
+    },
+    "thr_7.js": {
+      "nlines": 59,
+      "nchara": 5492
+    },
+    "thr_9.js": {
+      "nlines": 67,
+      "nchara": 6331
+    },
+    "thr_12.js": {
+      "nlines": 49,
+      "nchara": 5076
+    },
+    "thr_19.js": {
+      "nlines": 193,
+      "nchara": 21566
+    }
   }
 }

@@ -1184,5 +1184,754 @@
     "thr_8.py": "<div class=\"codeBlock hljs coffeescript\" id=\"thr_8\"><pre id=\"thr_8_code\" ><code class=\"python\"><span class=\"hljs-keyword\">import</span> spacy\n<span class=\"hljs-keyword\">import</span> contextualSpellCheck\n\nnlp = spacy.load(<span class=\"hljs-string\">'en_core_web_sm'</span>)\n<div style=\"display: inline;\" id=\"spellcheck_0\" class=\"highlights fea_spellcheck\">contextualSpellCheck.add_to_pipe(nlp)</div>\ndoc = nlp(<span class=\"hljs-string\">'Income was $9.4 milion compared to the prior year of $2.7 milion.'</span>)\n\n<span class=\"hljs-built_in\">print</span>(doc._.performed_spellCheck) <span class=\"hljs-comment\">#Should be True</span>\n<span class=\"hljs-built_in\">print</span>(doc._.outcome_spellCheck) <span class=\"hljs-comment\">#Income was $9.4 million compared to the prior year of $2.7 million.</span>\n<span class=\"hljs-comment\">#https://spacy.io/universe/project/contextualSpellCheck</span></code></pre></div>",
     "thr_7.py": "<div class=\"codeBlock hljs rust\" id=\"thr_7\"><pre id=\"thr_7_code\" ><code class=\"python\">import spacy\nfrom spacytextblob.spacytextblob import SpacyTextBlob\n\nnlp = spacy.load(<span class=\"hljs-symbol\">'en_core_web_sm</span>')\nnlp.add_pipe(<span class=\"hljs-symbol\">'spacytextblob</span>')\ntext = <span class=\"hljs-symbol\">'I</span> had a really horrible day. It was the worst day ever! But every now and then I have a really good day that makes me happy.'\ndoc = nlp(text)\n<div style=\"display: inline;\" id=\"sentiment_analysis_0\" class=\"highlights fea_sentiment_analysis\">doc._.polarity      # Polarity: -<span class=\"hljs-number\">0.125</span>\ndoc._.subjectivity</div>  # Sujectivity: <span class=\"hljs-number\">0.9</span>\n<div style=\"display: inline;\" id=\"text_scoring_0\" class=\"highlights fea_text_scoring\">doc._.assessments</div>   # Assessments: [([<span class=\"hljs-symbol\">'really</span>', <span class=\"hljs-symbol\">'horrible</span>'], -<span class=\"hljs-number\">1.0</span>, <span class=\"hljs-number\">1.0</span>, <span class=\"hljs-literal\">None</span>), ([<span class=\"hljs-symbol\">'worst</span>', <span class=\"hljs-string\">'!'</span>], -<span class=\"hljs-number\">1.0</span>, <span class=\"hljs-number\">1.0</span>, <span class=\"hljs-literal\">None</span>), ([<span class=\"hljs-symbol\">'really</span>', <span class=\"hljs-symbol\">'good</span>'], <span class=\"hljs-number\">0.7</span>, <span class=\"hljs-number\">0.6000000000000001</span>, <span class=\"hljs-literal\">None</span>), ([<span class=\"hljs-symbol\">'happy</span>'], <span class=\"hljs-number\">0.8</span>, <span class=\"hljs-number\">1.0</span>, <span class=\"hljs-literal\">None</span>)]\n#https:<span class=\"hljs-comment\">//spacy.io/universe/project/spacy-textblob</span></code></pre></div>",
     "thr_9.py": "<div class=\"codeBlock hljs python\" id=\"thr_9\"><pre id=\"thr_9_code\" ><code class=\"python\"><span class=\"hljs-keyword\">import</span> spacy\n<span class=\"hljs-keyword\">from</span> spacy_langdetect <span class=\"hljs-keyword\">import</span> LanguageDetector\nnlp = spacy.load(<span class=\"hljs-string\">'en'</span>)\n<div style=\"display: inline;\" id=\"language_detection_0\" class=\"highlights fea_language_detection\">nlp.add_pipe(LanguageDetector(), name=<span class=\"hljs-string\">'language_detector'</span>, last=<span class=\"hljs-literal\">True</span>)</div>\ntext = <span class=\"hljs-string\">'This is an english text.'</span>\ndoc = nlp(text)\n<span class=\"hljs-comment\"># document level language detection. Think of it like average language of the document!</span>\nprint(doc._.language)\n<span class=\"hljs-comment\"># sentence level language detection</span>\n<span class=\"hljs-keyword\">for</span> sent <span class=\"hljs-keyword\">in</span> doc.sents:\n   print(sent, sent._.language)\n   <span class=\"hljs-comment\">#https://spacy.io/universe/project/spacy-langdetect</span></code></pre></div>"
+  },
+  "file concepts": {
+    "fir_4.py": [
+      "cat_Preprocessing",
+      "fea_parsing",
+      "fea_tokenization",
+      "fea_lemmatization",
+      "fea_tagger",
+      "cat_Basic_Analysis",
+      "fea_Part_of_Speech",
+      "fea_named_entity_recognition",
+      "fea_dependency_parsing"
+    ],
+    "fir_16.py": [
+      "cat_Preprocessing",
+      "fea_parsing",
+      "fea_tokenization",
+      "cat_Basic_Analysis",
+      "fea_Part_of_Speech"
+    ],
+    "fir_17.py": [
+      "cat_Preprocessing",
+      "fea_parsing",
+      "fea_tokenization",
+      "cat_Basic_Analysis",
+      "fea_Part_of_Speech"
+    ],
+    "fir_23.py": [
+      "cat_Preprocessing",
+      "fea_parsing",
+      "fea_tokenization",
+      "cat_Basic_Analysis",
+      "fea_Part_of_Speech"
+    ],
+    "fir_1.py": [
+      "cat_Preprocessing",
+      "fea_tokenization",
+      "fea_lemmatization",
+      "fea_nlp_datasets"
+    ],
+    "fir_2.py": [
+      "cat_Preprocessing",
+      "fea_tokenization",
+      "fea_nlp_datasets",
+      "fea_stemming"
+    ],
+    "fir_3.py": [
+      "cat_Preprocessing",
+      "fea_tokenization",
+      "fea_lemmatization",
+      "fea_nlp_datasets",
+      "cat_Advanced_Analysis",
+      "fea_summarizer"
+    ],
+    "fir_6.py": [
+      "cat_Preprocessing",
+      "fea_tokenization",
+      "fea_lemmatization",
+      "fea_tagger",
+      "fea_n_grams",
+      "cat_Basic_Analysis",
+      "fea_Part_of_Speech"
+    ],
+    "fir_8.py": [
+      "cat_Preprocessing",
+      "fea_tokenization",
+      "fea_nlp_datasets",
+      "fea_stemming",
+      "cat_Basic_Analysis",
+      "fea_text_scoring",
+      "cat_Advanced_Analysis",
+      "fea_summarizer"
+    ],
+    "fir_9.py": [
+      "cat_Preprocessing",
+      "fea_tokenization",
+      "fea_lemmatization",
+      "fea_nlp_datasets",
+      "cat_Advanced_Analysis",
+      "fea_chatbot"
+    ],
+    "fir_10.py": [
+      "cat_Preprocessing",
+      "fea_tokenization",
+      "fea_lemmatization"
+    ],
+    "fir_11.py": [
+      "cat_Preprocessing",
+      "fea_tokenization",
+      "cat_Basic_Analysis",
+      "fea_Part_of_Speech"
+    ],
+    "fir_12.py": [
+      "cat_Preprocessing",
+      "fea_tokenization",
+      "fea_lemmatization",
+      "fea_nlp_datasets",
+      "cat_Basic_Analysis",
+      "fea_Part_of_Speech"
+    ],
+    "fir_13.py": [
+      "cat_Preprocessing",
+      "fea_tokenization",
+      "fea_nlp_datasets"
+    ],
+    "fir_14.py": [
+      "cat_Preprocessing",
+      "fea_tokenization",
+      "fea_lemmatization",
+      "fea_nlp_datasets"
+    ],
+    "fir_18.py": [
+      "cat_Preprocessing",
+      "fea_tokenization"
+    ],
+    "fir_19.py": [
+      "cat_Preprocessing",
+      "fea_tokenization",
+      "cat_Basic_Analysis",
+      "fea_text_similarity"
+    ],
+    "fir_20.py": [
+      "cat_Preprocessing",
+      "fea_tokenization",
+      "fea_nlp_datasets",
+      "fea_stemming",
+      "cat_Basic_Analysis",
+      "fea_text_scoring"
+    ],
+    "fir_21.py": [
+      "cat_Preprocessing",
+      "fea_tokenization",
+      "fea_nlp_datasets",
+      "fea_stemming",
+      "cat_Basic_Analysis",
+      "fea_text_scoring",
+      "cat_Advanced_Analysis",
+      "fea_summarizer"
+    ],
+    "fir_25.py": [
+      "cat_Preprocessing",
+      "fea_tokenization",
+      "fea_lemmatization"
+    ],
+    "fir_29.py": [
+      "cat_Preprocessing",
+      "fea_tokenization",
+      "fea_lemmatization",
+      "fea_nlp_datasets",
+      "cat_Basic_Analysis",
+      "fea_text_scoring"
+    ],
+    "fir_30.py": [
+      "cat_Preprocessing",
+      "fea_tokenization",
+      "fea_lemmatization",
+      "fea_nlp_datasets",
+      "cat_Basic_Analysis",
+      "fea_Part_of_Speech",
+      "cat_Advanced_Analysis",
+      "fea_classification"
+    ],
+    "fir_24.py": [
+      "cat_Preprocessing",
+      "fea_lemmatization",
+      "fea_nlp_datasets",
+      "fea_word_frequency",
+      "cat_Basic_Analysis",
+      "fea_Part_of_Speech",
+      "cat_Advanced_Analysis",
+      "fea_classification"
+    ],
+    "fir_5.py": [
+      "cat_Preprocessing",
+      "fea_nlp_datasets",
+      "fea_regular_expression"
+    ],
+    "fir_7.py": [
+      "cat_Preprocessing",
+      "fea_nlp_datasets"
+    ],
+    "fir_28.py": [
+      "cat_Preprocessing",
+      "fea_nlp_datasets",
+      "cat_Advanced_Analysis",
+      "fea_sentiment_analysis",
+      "fea_classification"
+    ],
+    "fir_22.py": [
+      "cat_Preprocessing",
+      "fea_word_frequency",
+      "cat_Advanced_Analysis",
+      "fea_classification"
+    ],
+    "fir_27.py": [
+      "cat_Preprocessing",
+      "fea_word_frequency",
+      "fea_tagger",
+      "cat_Advanced_Analysis",
+      "fea_classification"
+    ],
+    "fir_26.py": [
+      "cat_Preprocessing",
+      "fea_n_grams"
+    ],
+    "fir_15.py": [
+      "cat_Advanced_Analysis",
+      "fea_classification"
+    ],
+    "sec_7.py": [
+      "cat_Preprocessing",
+      "fea_parsing"
+    ],
+    "sec_10.py": [
+      "cat_Preprocessing",
+      "fea_parsing",
+      "fea_tagger"
+    ],
+    "sec_2.py": [
+      "cat_Preprocessing",
+      "fea_lemmatization",
+      "fea_text_simplify",
+      "cat_Basic_Analysis",
+      "fea_Part_of_Speech"
+    ],
+    "sec_12.py": [
+      "cat_Preprocessing",
+      "fea_lemmatization",
+      "cat_Basic_Analysis",
+      "fea_spellcheck",
+      "cat_Advanced_Analysis",
+      "fea_translation",
+      "fea_language_detection"
+    ],
+    "sec_6.py": [
+      "cat_Preprocessing",
+      "fea_tagger",
+      "cat_Basic_Analysis",
+      "fea_Part_of_Speech"
+    ],
+    "sec_9.py": [
+      "cat_Preprocessing",
+      "fea_text_simplify",
+      "cat_Advanced_Analysis",
+      "fea_classification"
+    ],
+    "sec_27.py": [
+      "cat_Preprocessing",
+      "fea_text_simplify",
+      "fea_n_grams"
+    ],
+    "sec_1.py": [
+      "cat_Preprocessing",
+      "fea_n_grams"
+    ],
+    "sec_8.py": [
+      "cat_Preprocessing",
+      "fea_n_grams"
+    ],
+    "sec_17.py": [
+      "cat_Basic_Analysis",
+      "fea_spellcheck"
+    ],
+    "sec_26.py": [
+      "cat_Basic_Analysis",
+      "fea_text_scoring",
+      "cat_Advanced_Analysis",
+      "fea_sentiment_analysis"
+    ],
+    "sec_29.py": [
+      "cat_Basic_Analysis",
+      "fea_text_scoring",
+      "cat_Advanced_Analysis",
+      "fea_sentiment_analysis"
+    ],
+    "sec_15.py": [
+      "cat_Advanced_Analysis",
+      "fea_sentiment_analysis"
+    ],
+    "sec_20.py": [
+      "cat_Advanced_Analysis",
+      "fea_sentiment_analysis",
+      "fea_classification"
+    ],
+    "sec_21.py": [
+      "cat_Advanced_Analysis",
+      "fea_sentiment_analysis"
+    ],
+    "sec_24.py": [
+      "cat_Advanced_Analysis",
+      "fea_sentiment_analysis"
+    ],
+    "sec_25.py": [
+      "cat_Advanced_Analysis",
+      "fea_sentiment_analysis"
+    ],
+    "sec_28.py": [
+      "cat_Advanced_Analysis",
+      "fea_sentiment_analysis"
+    ],
+    "sec_30.py": [
+      "cat_Advanced_Analysis",
+      "fea_sentiment_analysis"
+    ],
+    "sec_14.py": [
+      "cat_Advanced_Analysis",
+      "fea_translation"
+    ],
+    "sec_16.py": [
+      "cat_Advanced_Analysis",
+      "fea_translation"
+    ],
+    "sec_19.py": [
+      "cat_Advanced_Analysis",
+      "fea_translation",
+      "fea_language_detection"
+    ],
+    "sec_22.py": [
+      "cat_Advanced_Analysis",
+      "fea_translation"
+    ],
+    "sec_23.py": [
+      "cat_Advanced_Analysis",
+      "fea_translation",
+      "fea_language_detection"
+    ],
+    "sec_11.py": [
+      "cat_Advanced_Analysis",
+      "fea_language_detection"
+    ],
+    "sec_18.py": [
+      "cat_Advanced_Analysis",
+      "fea_language_detection"
+    ],
+    "sec_4.py": [
+      "cat_Advanced_Analysis",
+      "fea_classification"
+    ],
+    "sec_5.py": [
+      "cat_Advanced_Analysis",
+      "fea_classification"
+    ],
+    "sec_13.py": [
+      "cat_Advanced_Analysis",
+      "fea_classification"
+    ],
+    "thr_17.py": [
+      "cat_Preprocessing",
+      "fea_parsing",
+      "fea_lemmatization",
+      "fea_word_vectors",
+      "fea_nlp_datasets",
+      "cat_Advanced_Analysis",
+      "fea_classification"
+    ],
+    "thr_10.py": [
+      "cat_Preprocessing",
+      "fea_tokenization",
+      "cat_Basic_Analysis",
+      "fea_text_similarity"
+    ],
+    "thr_12.py": [
+      "cat_Preprocessing",
+      "fea_tokenization",
+      "fea_lemmatization",
+      "cat_Basic_Analysis",
+      "fea_Part_of_Speech"
+    ],
+    "thr_18.py": [
+      "cat_Preprocessing",
+      "fea_tokenization",
+      "cat_Basic_Analysis",
+      "fea_named_entity_recognition"
+    ],
+    "thr_20.py": [
+      "cat_Preprocessing",
+      "fea_tokenization"
+    ],
+    "thr_27.py": [
+      "cat_Preprocessing",
+      "fea_tokenization",
+      "fea_regular_expression",
+      "fea_text_simplify"
+    ],
+    "thr_22.py": [
+      "cat_Preprocessing",
+      "fea_lemmatization"
+    ],
+    "thr_26.py": [
+      "cat_Preprocessing",
+      "fea_lemmatization"
+    ],
+    "thr_13.py": [
+      "cat_Preprocessing",
+      "fea_word_vectors"
+    ],
+    "thr_5.py": [
+      "cat_Preprocessing",
+      "fea_nlp_datasets"
+    ],
+    "thr_6.py": [
+      "cat_Preprocessing",
+      "fea_nlp_datasets",
+      "cat_Advanced_Analysis",
+      "fea_summarizer"
+    ],
+    "thr_25.py": [
+      "cat_Preprocessing",
+      "fea_word_frequency"
+    ],
+    "thr_24.py": [
+      "cat_Preprocessing",
+      "fea_tagger",
+      "fea_n_grams",
+      "cat_Basic_Analysis",
+      "fea_Part_of_Speech"
+    ],
+    "thr_11.py": [
+      "cat_Preprocessing",
+      "fea_n_grams"
+    ],
+    "thr_19.py": [
+      "cat_Preprocessing",
+      "fea_n_grams"
+    ],
+    "thr_8.py": [
+      "cat_Basic_Analysis",
+      "fea_spellcheck"
+    ],
+    "thr_7.py": [
+      "cat_Basic_Analysis",
+      "fea_text_scoring",
+      "cat_Advanced_Analysis",
+      "fea_sentiment_analysis"
+    ],
+    "thr_9.py": [
+      "cat_Advanced_Analysis",
+      "fea_language_detection"
+    ]
+  },
+  "file info": {
+    "fir_4.py": {
+      "nlines": 427,
+      "nchara": 30785
+    },
+    "fir_16.py": {
+      "nlines": 186,
+      "nchara": 11394
+    },
+    "fir_17.py": {
+      "nlines": 215,
+      "nchara": 14346
+    },
+    "fir_23.py": {
+      "nlines": 119,
+      "nchara": 9583
+    },
+    "fir_1.py": {
+      "nlines": 62,
+      "nchara": 3897
+    },
+    "fir_2.py": {
+      "nlines": 61,
+      "nchara": 5381
+    },
+    "fir_3.py": {
+      "nlines": 230,
+      "nchara": 18194
+    },
+    "fir_6.py": {
+      "nlines": 542,
+      "nchara": 44964
+    },
+    "fir_8.py": {
+      "nlines": 169,
+      "nchara": 40050
+    },
+    "fir_9.py": {
+      "nlines": 64,
+      "nchara": 6301
+    },
+    "fir_10.py": {
+      "nlines": 64,
+      "nchara": 6077
+    },
+    "fir_11.py": {
+      "nlines": 80,
+      "nchara": 4754
+    },
+    "fir_12.py": {
+      "nlines": 108,
+      "nchara": 8623
+    },
+    "fir_13.py": {
+      "nlines": 158,
+      "nchara": 17324
+    },
+    "fir_14.py": {
+      "nlines": 160,
+      "nchara": 17858
+    },
+    "fir_18.py": {
+      "nlines": 178,
+      "nchara": 13017
+    },
+    "fir_19.py": {
+      "nlines": 180,
+      "nchara": 12899
+    },
+    "fir_20.py": {
+      "nlines": 242,
+      "nchara": 18329
+    },
+    "fir_21.py": {
+      "nlines": 144,
+      "nchara": 13685
+    },
+    "fir_25.py": {
+      "nlines": 74,
+      "nchara": 6426
+    },
+    "fir_29.py": {
+      "nlines": 119,
+      "nchara": 9361
+    },
+    "fir_30.py": {
+      "nlines": 439,
+      "nchara": 34069
+    },
+    "fir_24.py": {
+      "nlines": 123,
+      "nchara": 8968
+    },
+    "fir_5.py": {
+      "nlines": 143,
+      "nchara": 12738
+    },
+    "fir_7.py": {
+      "nlines": 215,
+      "nchara": 13964
+    },
+    "fir_28.py": {
+      "nlines": 50,
+      "nchara": 4219
+    },
+    "fir_22.py": {
+      "nlines": 37,
+      "nchara": 2671
+    },
+    "fir_27.py": {
+      "nlines": 33,
+      "nchara": 2733
+    },
+    "fir_26.py": {
+      "nlines": 40,
+      "nchara": 4039
+    },
+    "fir_15.py": {
+      "nlines": 435,
+      "nchara": 25111
+    },
+    "sec_7.py": {
+      "nlines": 5,
+      "nchara": 683
+    },
+    "sec_10.py": {
+      "nlines": 162,
+      "nchara": 16542
+    },
+    "sec_2.py": {
+      "nlines": 21,
+      "nchara": 1792
+    },
+    "sec_12.py": {
+      "nlines": 75,
+      "nchara": 5423
+    },
+    "sec_6.py": {
+      "nlines": 6,
+      "nchara": 720
+    },
+    "sec_9.py": {
+      "nlines": 50,
+      "nchara": 5532
+    },
+    "sec_27.py": {
+      "nlines": 98,
+      "nchara": 7517
+    },
+    "sec_1.py": {
+      "nlines": 21,
+      "nchara": 2388
+    },
+    "sec_8.py": {
+      "nlines": 6,
+      "nchara": 671
+    },
+    "sec_17.py": {
+      "nlines": 20,
+      "nchara": 1373
+    },
+    "sec_26.py": {
+      "nlines": 147,
+      "nchara": 13678
+    },
+    "sec_29.py": {
+      "nlines": 111,
+      "nchara": 8876
+    },
+    "sec_15.py": {
+      "nlines": 48,
+      "nchara": 5194
+    },
+    "sec_20.py": {
+      "nlines": 80,
+      "nchara": 6910
+    },
+    "sec_21.py": {
+      "nlines": 61,
+      "nchara": 3753
+    },
+    "sec_24.py": {
+      "nlines": 127,
+      "nchara": 9000
+    },
+    "sec_25.py": {
+      "nlines": 52,
+      "nchara": 3712
+    },
+    "sec_28.py": {
+      "nlines": 52,
+      "nchara": 3472
+    },
+    "sec_30.py": {
+      "nlines": 147,
+      "nchara": 13371
+    },
+    "sec_14.py": {
+      "nlines": 14,
+      "nchara": 1650
+    },
+    "sec_16.py": {
+      "nlines": 42,
+      "nchara": 3889
+    },
+    "sec_19.py": {
+      "nlines": 141,
+      "nchara": 7667
+    },
+    "sec_22.py": {
+      "nlines": 163,
+      "nchara": 11450
+    },
+    "sec_23.py": {
+      "nlines": 37,
+      "nchara": 2815
+    },
+    "sec_11.py": {
+      "nlines": 33,
+      "nchara": 2506
+    },
+    "sec_18.py": {
+      "nlines": 28,
+      "nchara": 2630
+    },
+    "sec_4.py": {
+      "nlines": 39,
+      "nchara": 2994
+    },
+    "sec_5.py": {
+      "nlines": 39,
+      "nchara": 3301
+    },
+    "sec_13.py": {
+      "nlines": 67,
+      "nchara": 4194
+    },
+    "thr_17.py": {
+      "nlines": 83,
+      "nchara": 6607
+    },
+    "thr_10.py": {
+      "nlines": 23,
+      "nchara": 1770
+    },
+    "thr_12.py": {
+      "nlines": 129,
+      "nchara": 7019
+    },
+    "thr_18.py": {
+      "nlines": 18,
+      "nchara": 1742
+    },
+    "thr_20.py": {
+      "nlines": 26,
+      "nchara": 2326
+    },
+    "thr_27.py": {
+      "nlines": 20,
+      "nchara": 1723
+    },
+    "thr_22.py": {
+      "nlines": 17,
+      "nchara": 1530
+    },
+    "thr_26.py": {
+      "nlines": 10,
+      "nchara": 902
+    },
+    "thr_13.py": {
+      "nlines": 11,
+      "nchara": 894
+    },
+    "thr_5.py": {
+      "nlines": 8,
+      "nchara": 571
+    },
+    "thr_6.py": {
+      "nlines": 40,
+      "nchara": 3965
+    },
+    "thr_25.py": {
+      "nlines": 30,
+      "nchara": 2747
+    },
+    "thr_24.py": {
+      "nlines": 8,
+      "nchara": 874
+    },
+    "thr_11.py": {
+      "nlines": 127,
+      "nchara": 10367
+    },
+    "thr_19.py": {
+      "nlines": 6,
+      "nchara": 610
+    },
+    "thr_8.py": {
+      "nlines": 10,
+      "nchara": 909
+    },
+    "thr_7.py": {
+      "nlines": 11,
+      "nchara": 1738
+    },
+    "thr_9.py": {
+      "nlines": 12,
+      "nchara": 1074
+    }
   }
 }

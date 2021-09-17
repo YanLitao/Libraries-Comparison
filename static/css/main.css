@@ -22,7 +22,6 @@ h1 {
     font-size: 3rem;
     font-weight: 600;
 }
-
 h2 { 
     font-family: sans-serif; 
     font-size: 1.2rem; 
@@ -55,6 +54,28 @@ body {
 .w .tags {
     width: 150rem;
     height: 5rem;
+}
+.w .tags .tag {
+    float: left;
+    width: -moz-fit-content;
+    width: fit-content;
+    height: 2.5rem;
+    border-radius: 1.5rem;
+    background-color: #F3B8FF;
+    box-sizing: border-box;
+    padding: 0rem 1rem;
+    margin: 1.25rem 1.5rem 1.25rem 0rem;
+    font-family: sans-serif; 
+    font-size: 1.5rem; 
+    font-weight: 600; 
+    line-height: 2.5rem;
+    color: #fff; 
+    text-align: center;
+    cursor: pointer;
+    opacity: 0.8;
+}
+.w .tags .tag:hover {
+    opacity: 1.0 !important;
 }
 .w .tit {
     width: 150rem;

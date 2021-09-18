@@ -102,21 +102,17 @@ body {
     height: 8rem;
     display: flex;
     justify-content: space-around;
+    align-items: flex-end;
 }
 .w .tit .titles .vis .visRange {
     width: 1rem;
     height: 8rem;
-    display: flex;
-    flex-direction: column-reverse;
-    justify-content: start;
-}
-.w .tit .titles .vis .visRange .visBar {
-    width: 1rem;
     border-radius: 0.5rem;
     background-color: #F3B8FF;
     opacity: 0.8;
+    cursor: pointer;
 }
-.w .tit .titles .vis .visRange .visBar:hover {
+.w .tit .titles .vis .visRange:hover {
     opacity: 1.0;
 }
 .w .codes {
@@ -129,6 +125,8 @@ body {
 }
 .w .codes .codeCol {
     width: 45rem;
+    height: 60rem;
+    overflow-y: auto;
 }
 .w .codes .codeCol .codeRange {
     width: 45rem;

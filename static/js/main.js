@@ -224,17 +224,43 @@ function genConceptVis(concept) {
     });
 }
 function genLineVis(domain) {
-    var visRange = document.getElementsByClassName("visRange");
-    [...visRange].forEach(function(v) {v.innerHTML = ""});
+    var vis = document.getElementsByClassName("vis");
+    [...vis].forEach(function(v) {v.innerHTML = ""});
     for (var o in lines[domain]) {
+        var visDiv = document.getElementById(o+"Vis");
         var maxLine = Math.max(...lines[domain][o]);
         for (var i=0; i<30; i++) {
-            var visBar = document.createElement("div");
-            visBar.className = "visBar";
-            visBar.style.height = lines[domain][o][i]/maxLine*8+"rem";
-            document.getElementById(o+(i+1)+"vis").appendChild(visBar);
+            var visRange = document.createElement("div");
+            visRange.id = o+(i+1)+"vis";
+            visRange.className = "visRange "+o+"visRange";
+            visRange.style.height = lines[domain][o][i]/maxLine*8+"rem";
+            visDiv.appendChild(visRange);
         }
     }
+    var viss = document.getElementsByClassName("visRange");
+    [...viss].forEach(function(v) {v.addEventListener('click', clickVis, false)});
+}
+function clickVis(event) {
+    var visId = event.target.id.replace("vis", "");
+    var targetId = visId.slice(0, 3) + "_" + visId.slice(3);
+    document.getElementById(targetId).scrollIntoView({behavior: "smooth"});
+    var viss = document.getElementsByClassName(visId.slice(0, 3)+"visRange");
+    [...viss].forEach(function(v) {v.style.opacity = "0.3"});
+    event.target.style.opacity = "1.0";
+}
+function scrollElement(event) {
+    var viss = document.getElementsByClassName(event.target.id.slice(0, 3)+"visRange");
+    [...viss].forEach(function(v) {v.style.opacity = "0.3"});
+    var codes = event.target.querySelectorAll('.codeRange');
+    var visableTop = event.target.getBoundingClientRect().top, 
+        visableBottom = event.target.getBoundingClientRect().bottom;
+    [...codes].forEach(function(c) {
+        var elementTop = c.getBoundingClientRect().top,
+            elementBottom = c.getBoundingClientRect().bottom;
+        if ((visableTop <= elementTop && elementTop < visableBottom) || (visableTop < elementBottom && elementBottom < visableBottom)) {
+            document.getElementById(c.id.replace("_", "")+"vis").style.opacity = "1.0";
+        }
+    });
 }
 // function call
 $.getJSON("static/data/vis_tem.json", function(obj) {

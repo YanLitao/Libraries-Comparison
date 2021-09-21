@@ -12,11 +12,9 @@ The user interface for multiple libraries comparison with the same domain.
 - [Contributing](#contributing)
 - [License](#license)
 
-### Any optional sections
-
 ## Background
 
-
+Paper abstract
 
 ## Install
 

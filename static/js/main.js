@@ -5,15 +5,32 @@ var currentDomain = "nlp",
         "vis": ["D3.js", "Chart.js", "Recharts"]
     },
     doms = {"nlp": "NLP", "vis": "Visualization"},
+    fo = {"nlp": {"fir": [], "sec": [], "thr": []}, "vis": {"fir": [], "sec": [], "thr": []}},
     cf = {},
     hc = {},
     lines = {"nlp": {"fir": [], "sec": [], "thr": []}, "vis": {"fir": [], "sec": [], "thr": []}},
-    colorArr = ["#F3B8FF", "#BDE0FE", "#ACDDDE", "#CAF1DE", "#E1F8DC", "#FEF8DD", "#EAF2D7", "#FFE7C7", "#F7D8BA", "#E69E8F", " #FFC8DD", "#FFAFCC"];
+    colorArr = ["#F3B8FF", "#BDE0FE", "#ACDDDE", "#CAF1DE", "#E1F8DC", "#FEF8DD", "#EAF2D7", "#FFE7C7", "#F7D8BA", "#E69E8F", " #FFC8DD", "#FFAFCC"],
+    cc = {"nlp": {}, "vis": {}};
 function closeHierarchy() {
     document.getElementById("menu").style.display = 'none';
 }
 function showHierarchy() {
     document.getElementById("menu").style.display = 'block';
+}
+function sortFiles(domain) {
+    var temp = {"fir": [], "sec": [], "thr": []};
+    for (var f in data[domain]["file info"]) {
+        var obj = {"name": f, "nlines": data[domain]["file info"][f]["nlines"]};
+        temp[f.split("_")[0]].push(obj);
+    }
+    for (var l in temp) {
+        temp[l].sort(function(a, b) { 
+            return b.nlines - a.nlines;
+        })
+        for(var i in temp[l]) {
+           fo[domain][l].push(temp[l][i].name);
+        }   
+    }
 }
 function genHVis(hVis, tem) {
     const n = ["fir", "sec", "thr"];
@@ -54,43 +71,45 @@ function genHier(tem) {
         hierDiv.appendChild(hDiv);
     }
 }
-function genCode(tem) {
-    for (var file in tem) {
-        var rangeDiv = document.getElementById(file.split("_")[0]+"Code");
-        var codeBlock = document.createElement("div");
-        codeBlock.className = "codeRange";
-        codeBlock.innerHTML = tem[file];
-        codeBlock.id = file;
-        var codeMarker = document.createElement("div");
-        codeMarker.className = "marker";
-        codeBlock.appendChild(codeMarker);
-        rangeDiv.appendChild(codeBlock);
+function genCode(domain) {
+    for (var l in fo[domain]) {
+        var rangeDiv = document.getElementById(l+"Code");
+        for (var f of fo[domain][l]) {
+            var codeBlock = document.createElement("div");
+            codeBlock.className = "codeRange";
+            codeBlock.innerHTML = data[domain]["labeled files"][f];
+            codeBlock.id = f;
 
-        var colorfulStuff = codeBlock.querySelectorAll(".highlights");
+            var codeMarker = document.createElement("div");
+            codeMarker.className = "marker";
+            codeBlock.appendChild(codeMarker);
+            rangeDiv.appendChild(codeBlock);
 
-        var containerHeight = codeMarker.offsetHeight;
-        var codeHight = codeBlock.querySelector("code").offsetHeight;
-        if (codeHight<containerHeight) {
-            codeHight = containerHeight;
+            var colorfulStuff = codeBlock.querySelectorAll(".highlights");
+            var containerHeight = codeMarker.offsetHeight;
+            var codeHight = codeBlock.querySelector("code").offsetHeight;
+            if (codeHight<containerHeight) {
+                codeHight = containerHeight;
+            }
+            colorfulStuff.forEach(function (h) { // loop to create each marker
+                
+                var hTop = h.offsetTop;
+                var hBottom = hTop + h.offsetHeight;       
+                var markerTop = Math.ceil(hTop * containerHeight / codeHight);
+                var markerBottom = Math.ceil(hBottom * containerHeight / codeHight);
+                
+                var markerElement = document.createElement("span"); // create the marker, set color and position and put it there
+                markerElement.className = "markerSpan "+h.id.replace(h.id.slice(-1),"marker ");
+                markerElement.style.top = markerTop + "px"
+                markerElement.style.height = (markerBottom - markerTop) + "px"
+                codeMarker.appendChild(markerElement);       
+            })
         }
-        colorfulStuff.forEach(function (h) { // loop to create each marker
-            
-            var hTop = h.offsetTop;
-            var hBottom = hTop + h.offsetHeight;       
-            var markerTop = Math.ceil(hTop * containerHeight / codeHight);
-            var markerBottom = Math.ceil(hBottom * containerHeight / codeHight);
-            
-            var markerElement = document.createElement("span"); // create the marker, set color and position and put it there
-            markerElement.className = "markerSpan "+h.id.replace(h.id.slice(-1),"marker ");
-            markerElement.style.top = markerTop + "px"
-            markerElement.style.height = (markerBottom - markerTop) + "px"
-            codeMarker.appendChild(markerElement);       
-        })
     }
 }
 function getData(domain) {
     genHier(data[domain]['all templates']);
-    genCode(data[domain]['labeled files']);
+    genCode(domain);
 }
 function switchDomain(domain) {
     var div = document.getElementById(domain+"Btn");
@@ -117,8 +136,9 @@ function switchDomain(domain) {
     genLineVis(domain);
     currentDomain = domain;
 }
-function genCF(tem) {
-    // generate two objects: cf and hc (for hierarchy selections)
+function genData(tem) {
+    // generate three objects: cf, cc and hc (for hierarchy selections)
+    var colorFlag = 0;
     for (var i=0; i<tem["fir"].length; i++) {
         var concept = Object.keys(tem["fir"][i])[0];
         var level = concept.split("_")[0];
@@ -129,10 +149,13 @@ function genCF(tem) {
             }
             var currentCat = concept,
                 catArr = [concept];
+            colorFlag = 0;
         } else {
             hc[concept] = [currentCat, concept];
             catArr.push(concept);
         }
+        cc[concept] = colorArr[colorFlag];
+        colorFlag += 1;
         cf[name] = [];
         cf[name] = cf[name].concat(
             tem["fir"][i][concept]["codes"],
@@ -163,25 +186,35 @@ function clickT(event) {
     var spans = document.getElementsByClassName("markerSpan");
     [...spans].forEach(function(s) {s.style.opacity = "0"});
     // add tags
+    var tagConcept = event.target.id.replace("tag_", "");
     var tags = document.getElementsByClassName("tag");
-    [...tags].forEach(function(t) {t.remove()});
-    for (var t = 0; t<hc[event.target.id.replace("tag_", "")].length; t++) {
-        var tag = document.createElement("div");
-        tag.id = "tag_"+hc[event.target.id.replace("tag_", "")][t];
-        tag.className = "tag";
-        tag.innerText = hc[event.target.id.replace("tag_", "")][t].replace(hc[event.target.id.replace("tag_", "")][t].split("_")[0]+"_", "").replace(/_/g, " ");
-        tag.style.backgroundColor = colorArr[t];
-        document.getElementById("tags").appendChild(tag);
-        tag.addEventListener('click', clickT, false);
-        var highlights = document.getElementsByClassName(hc[event.target.id.replace("tag_", "")][t]);
-        [...highlights].forEach(function(h) {h.style.backgroundColor = colorArr[t]});
-        var makers = document.getElementsByClassName(hc[event.target.id.replace("tag_", "")][t].slice(4)+"_marker");
+    var tagColor = cc[tagConcept];
+    var viss = document.getElementsByClassName("visRange");
+    [...viss].forEach(function(v) {v.style.backgroundColor = tagColor});
+    if (tagConcept.split("_")[0] == "cat") {
+        for (var t of hc[tagConcept]) {
+            document.getElementById("tag_"+t).style.opacity = "0.8";
+            var highlights = document.getElementsByClassName(t);
+            [...highlights].forEach(function(h) {h.style.backgroundColor = cc[t]});
+            var makers = document.getElementsByClassName(t.slice(4)+"_marker");
+            [...makers].forEach(function(m) {
+                m.style.backgroundColor = cc[t];
+                m.style.opacity = "1.0";
+            });
+            
+        }
+    } else {
+        [...tags].forEach(function(t) {t.style.opacity = "0.3"});
+        event.target.style.opacity = "1.0";
+        var highlights = document.getElementsByClassName(tagConcept);
+        [...highlights].forEach(function(h) {h.style.backgroundColor = tagColor});
+        var makers = document.getElementsByClassName(tagConcept.slice(4)+"_marker");
         [...makers].forEach(function(m) {
-            m.style.backgroundColor = colorArr[t];
+            m.style.backgroundColor = tagColor;
             m.style.opacity = "1.0";
         });
     }
-    genConceptVis(event.target.id.replace("tag_", ""));
+    genConceptVis(tagConcept);
 }
 // hierarchy click functions
 function clickH(event) {
@@ -205,22 +238,47 @@ function clickH(event) {
     // add tags
     var tags = document.getElementsByClassName("tag");
     [...tags].forEach(function(t) {t.remove()});
-    for (var t = 0; t<hc[event.target.id].length; t++) {
-        var tag = document.createElement("div");
-        tag.id = "tag_"+hc[event.target.id][t];
+    var tagConcept = event.target.id.replace("tag_", "");
+    var allTags = hc[hc[tagConcept][0]],
+        tagColor = cc[tagConcept]
+        level = tagConcept.split("_")[0];
+    var viss = document.getElementsByClassName("visRange");
+    [...viss].forEach(function(v) {v.style.backgroundColor = tagColor});
+    var highlights = document.getElementsByClassName(tagConcept);
+    [...highlights].forEach(function(h) {h.style.backgroundColor = tagColor});
+    var makers = document.getElementsByClassName(tagConcept.slice(4)+"_marker");
+    [...makers].forEach(function(m) {
+        m.style.backgroundColor = tagColor;
+        m.style.opacity = "1.0";
+    });
+    for (var t = 0; t<allTags.length; t++) {
+        var tag = document.createElement("div"),
+        tagConcept = allTags[t];
+        tag.id = "tag_"+tagConcept;
         tag.className = "tag";
-        tag.innerText = hc[event.target.id][t].replace(hc[event.target.id][t].split("_")[0]+"_", "").replace(/_/g, " ");
-        tag.style.backgroundColor = colorArr[t];
+        tag.innerText = tagConcept.replace(tagConcept.split("_")[0]+"_", "").replace(/_/g, " ");
+        if (tagConcept == event.target.id.replace("tag_", "")) {
+            tag.style.opacity = "0.8";
+        } else {
+            tag.style.opacity = "0.3";
+        }
+        tag.style.backgroundColor = cc[tagConcept];
         document.getElementById("tags").appendChild(tag);
         tag.addEventListener('click', clickT, false);
-        var highlights = document.getElementsByClassName(hc[event.target.id][t]);
-        [...highlights].forEach(function(h) {h.style.backgroundColor = colorArr[t]});
-        var makers = document.getElementsByClassName(hc[event.target.id.replace("tag_", "")][t].slice(4)+"_marker");
-        [...makers].forEach(function(m) {
-            m.style.backgroundColor = colorArr[t];
-            m.style.opacity = "1.0";
-        });
+
+        if (level == "cat") {
+            tag.style.opacity = "0.8";
+            var highlights = document.getElementsByClassName(tagConcept);
+            [...highlights].forEach(function(h) {h.style.backgroundColor = cc[tagConcept]});
+            var makers = document.getElementsByClassName(hc[event.target.id.replace("tag_", "")][t].slice(4)+"_marker");
+            [...makers].forEach(function(m) {
+                m.style.backgroundColor = cc[tagConcept];
+                m.style.opacity = "1.0";
+            });
+        }
     }
+    
+    
     genConceptVis(event.target.id);
 };
 function addHListener() {
@@ -270,11 +328,13 @@ function genLineVis(domain) {
         var visDiv = document.getElementById(o+"Vis");
         var maxLine = Math.max(...lines[domain][o]);
         for (var i=0; i<30; i++) {
-            var visRange = document.createElement("div");
-            visRange.id = o+(i+1)+"vis";
-            visRange.className = "visRange "+o+"visRange";
-            visRange.style.height = lines[domain][o][i]/maxLine*8+"rem";
-            visDiv.appendChild(visRange);
+            if (i<fo[domain][o].length) {
+                var visRange = document.createElement("div");
+                visRange.id = fo[domain][o][i].replace("_", "")+"vis";
+                visRange.className = "visRange "+o+"visRange";
+                visRange.style.height = data[domain]["file info"][fo[domain][o][i]]["nlines"]/maxLine*8+"rem";
+                visDiv.appendChild(visRange);
+            }
         }
     }
     var viss = document.getElementsByClassName("visRange");
@@ -306,14 +366,16 @@ function scrollElement(event) {
 $.getJSON("static/data/vis_tem.json", function(obj) {
     data["vis"] = obj;
     getData("vis");
-    genCF(data["vis"]["api templates"]);
+    genData(data["vis"]["api templates"]);
+    sortFiles("vis");
     processLineData("vis");
 });
 // interface will show the NLP domain as default
 $.getJSON("static/data/nlp_tem.json", function(obj) {
     data["nlp"] = obj;
     getData("nlp");
-    genCF(data["nlp"]["api templates"]);
+    genData(data["nlp"]["api templates"]);
+    sortFiles("nlp");
     switchDomain("nlp");
     addHListener();
     processLineData("nlp");

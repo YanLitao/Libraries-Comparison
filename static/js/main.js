@@ -10,7 +10,8 @@ var currentDomain = "nlp",
     hc = {},
     lines = {"nlp": {"fir": [], "sec": [], "thr": []}, "vis": {"fir": [], "sec": [], "thr": []}},
     colorArr = ["#F3B8FF", "#BDE0FE", "#ACDDDE", "#CAF1DE", "#E1F8DC", "#FEF8DD", "#EAF2D7", "#FFE7C7", "#F7D8BA", "#E69E8F", " #FFC8DD", "#FFAFCC"],
-    cc = {"nlp": {}, "vis": {}};
+    colorCatArr = ["#CACACA", "#d2d7d8", "#c7c3ba"],
+    cc = {};
 function closeHierarchy() {
     document.getElementById("menu").style.display = 'none';
 }
@@ -111,6 +112,33 @@ function getData(domain) {
     genHier(data[domain]['all templates']);
     genCode(domain);
 }
+function showAllFirstLevelConcepts() {
+    var viss = document.getElementsByClassName("visRange");
+    [...viss].forEach(function(v) {v.style.backgroundColor = "#02CCFE"});
+    document.getElementById("tags").innerHTML = "";
+    for (var temp of data[currentDomain]["all templates"]) {
+        if (temp.name.split("_")[0]=="cat") {
+            var tag = document.createElement("div");
+            tag.id = "tag_"+temp.name;
+            tag.className = "tag";
+            tag.innerText = temp.name.replace("cat_", "").replace(/_/g, " ");
+            
+            tag.style.backgroundColor = cc[temp.name];
+            document.getElementById("tags").appendChild(tag);
+            tag.addEventListener('click', clickT, false);
+
+            for (var t of hc[temp.name]) {
+                var highlights = document.getElementsByClassName(t);
+                [...highlights].forEach(function(h) {h.style.backgroundColor = cc[temp.name]});
+                var makers = document.getElementsByClassName(t.slice(4)+"_marker");
+                [...makers].forEach(function(m) {
+                    m.style.backgroundColor = cc[temp.name];
+                    m.style.opacity = "1.0";
+                });
+            }
+        }
+    }
+}
 function switchDomain(domain) {
     var div = document.getElementById(domain+"Btn");
     var btns = document.getElementsByClassName("domainB");
@@ -135,10 +163,12 @@ function switchDomain(domain) {
     addHListener();
     genLineVis(domain);
     currentDomain = domain;
+    showAllFirstLevelConcepts(domain);
 }
 function genData(tem) {
     // generate three objects: cf, cc and hc (for hierarchy selections)
-    var colorFlag = 0;
+    var colorFlag = 0,
+        catFlag = 0;
     for (var i=0; i<tem["fir"].length; i++) {
         var concept = Object.keys(tem["fir"][i])[0];
         var level = concept.split("_")[0];
@@ -150,11 +180,13 @@ function genData(tem) {
             var currentCat = concept,
                 catArr = [concept];
             colorFlag = 0;
+            cc[concept] = colorCatArr[catFlag];
+            catFlag += 1;
         } else {
             hc[concept] = [currentCat, concept];
             catArr.push(concept);
+            cc[concept] = colorArr[colorFlag];
         }
-        cc[concept] = colorArr[colorFlag];
         colorFlag += 1;
         cf[name] = [];
         cf[name] = cf[name].concat(
@@ -187,21 +219,31 @@ function clickT(event) {
     [...spans].forEach(function(s) {s.style.opacity = "0"});
     // add tags
     var tagConcept = event.target.id.replace("tag_", "");
-    var tags = document.getElementsByClassName("tag");
     var tagColor = cc[tagConcept];
+    var tags = document.getElementsByClassName("tag");
     var viss = document.getElementsByClassName("visRange");
     [...viss].forEach(function(v) {v.style.backgroundColor = tagColor});
     if (tagConcept.split("_")[0] == "cat") {
-        for (var t of hc[tagConcept]) {
-            document.getElementById("tag_"+t).style.opacity = "0.8";
-            var highlights = document.getElementsByClassName(t);
-            [...highlights].forEach(function(h) {h.style.backgroundColor = cc[t]});
-            var makers = document.getElementsByClassName(t.slice(4)+"_marker");
-            [...makers].forEach(function(m) {
-                m.style.backgroundColor = cc[t];
-                m.style.opacity = "1.0";
-            });
-            
+        if (event.target.parentNode.firstChild.nextSibling.id.includes("fea_")) {
+            showAllFirstLevelConcepts();
+        } else {
+            [...tags].forEach(function(t) {t.remove()});
+            for (var t of hc[tagConcept]) {
+                var tag = document.createElement("div");
+                tag.id = "tag_"+t;
+                tag.className = "tag";
+                tag.innerText = t.replace(t.split("_")[0]+"_", "").replace(/_/g, " ");
+                tag.style.backgroundColor = cc[t];
+                document.getElementById("tags").appendChild(tag);
+                tag.addEventListener('click', clickT, false);
+                var highlights = document.getElementsByClassName(t);
+                [...highlights].forEach(function(h) {h.style.backgroundColor = cc[t]});
+                var makers = document.getElementsByClassName(t.slice(4)+"_marker");
+                [...makers].forEach(function(m) {
+                    m.style.backgroundColor = cc[t];
+                    m.style.opacity = "1.0";
+                }); 
+            }
         }
     } else {
         [...tags].forEach(function(t) {t.style.opacity = "0.3"});
@@ -236,8 +278,7 @@ function clickH(event) {
     var spans = document.getElementsByClassName("markerSpan");
     [...spans].forEach(function(s) {s.style.opacity = "0"});
     // add tags
-    var tags = document.getElementsByClassName("tag");
-    [...tags].forEach(function(t) {t.remove()});
+    document.getElementById("tags").innerHTML = "";
     var tagConcept = event.target.id.replace("tag_", "");
     var allTags = hc[hc[tagConcept][0]],
         tagColor = cc[tagConcept]
@@ -277,8 +318,6 @@ function clickH(event) {
             });
         }
     }
-    
-    
     genConceptVis(event.target.id);
 };
 function addHListener() {

@@ -53,9 +53,30 @@ body {
 }
 .w .tags {
     width: 150rem;
-    height: 5rem;
+    height: 6rem;
+    margin-bottom: 1rem;
 }
-.w .tags .tag {
+.w .tags .tagName {
+    float: left;
+    width: 18rem;
+    height: 3rem;
+    font-family: sans-serif; 
+    font-size: 1.5rem; 
+    font-weight: 100; 
+    line-height: 3rem;
+}
+.w .tags .levelTag {
+    display: inline-block;
+    width: 132rem;
+    height: 2.5rem;
+}
+.w .tags #firTag {
+    margin-bottom: 0.5rem;
+}
+.w .tags #secTag {
+    margin-top: 0.5rem;
+}
+.w .tags .levelTag .tag {
     float: left;
     width: -moz-fit-content;
     width: fit-content;
@@ -64,7 +85,6 @@ body {
     background-color: #02CCFE;
     box-sizing: border-box;
     padding: 0rem 1rem;
-    margin: 1.25rem 1.5rem 1.25rem 0rem;
     font-family: sans-serif; 
     font-size: 1.5rem; 
     font-weight: 600; 
@@ -73,6 +93,12 @@ body {
     text-align: center;
     cursor: pointer;
     opacity: 0.8;
+}
+.w .tags #firTag .tag {
+    margin: 0rem 1.5rem 0rem 0rem;
+}
+.w .tags #secTag .tag {
+    margin: 0rem 1.0rem 0rem 0rem;
 }
 .w .tags .tag:hover {
     opacity: 1.0 !important;

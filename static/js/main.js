@@ -115,7 +115,8 @@ function getData(domain) {
 function showAllFirstLevelConcepts() {
     var viss = document.getElementsByClassName("visRange");
     [...viss].forEach(function(v) {v.style.backgroundColor = "#02CCFE"});
-    document.getElementById("tags").innerHTML = "";
+    document.getElementById("firTag").innerHTML = "";
+    document.getElementById("secTag").innerHTML = "";
     for (var temp of data[currentDomain]["all templates"]) {
         if (temp.name.split("_")[0]=="cat") {
             var tag = document.createElement("div");
@@ -124,7 +125,7 @@ function showAllFirstLevelConcepts() {
             tag.innerText = temp.name.replace("cat_", "").replace(/_/g, " ");
             
             tag.style.backgroundColor = cc[temp.name];
-            document.getElementById("tags").appendChild(tag);
+            document.getElementById("firTag").appendChild(tag);
             tag.addEventListener('click', clickT, false);
 
             for (var t of hc[temp.name]) {
@@ -147,7 +148,6 @@ function switchDomain(domain) {
             btn.classList.remove("activated");
         }
     }); 
-    document.getElementById("tags").innerHTML = "";
     div.classList.add("activated");
     document.getElementById("webTitle").innerText = doms[domain]+" Libraries Comparison";
     var libs = document.getElementsByClassName("lib"),
@@ -220,32 +220,36 @@ function clickT(event) {
     // add tags
     var tagConcept = event.target.id.replace("tag_", "");
     var tagColor = cc[tagConcept];
-    var tags = document.getElementsByClassName("tag");
     var viss = document.getElementsByClassName("visRange");
     [...viss].forEach(function(v) {v.style.backgroundColor = tagColor});
     if (tagConcept.split("_")[0] == "cat") {
-        if (event.target.parentNode.firstChild.nextSibling.id.includes("fea_")) {
-            showAllFirstLevelConcepts();
-        } else {
-            [...tags].forEach(function(t) {t.remove()});
-            for (var t of hc[tagConcept]) {
-                var tag = document.createElement("div");
-                tag.id = "tag_"+t;
-                tag.className = "tag";
-                tag.innerText = t.replace(t.split("_")[0]+"_", "").replace(/_/g, " ");
-                tag.style.backgroundColor = cc[t];
-                document.getElementById("tags").appendChild(tag);
-                tag.addEventListener('click', clickT, false);
-                var highlights = document.getElementsByClassName(t);
-                [...highlights].forEach(function(h) {h.style.backgroundColor = cc[t]});
-                var makers = document.getElementsByClassName(t.slice(4)+"_marker");
-                [...makers].forEach(function(m) {
-                    m.style.backgroundColor = cc[t];
-                    m.style.opacity = "1.0";
-                }); 
+        var tags = document.querySelectorAll("#firTag > .tag");
+        console.log(tags);
+        [...tags].forEach(function(t) {t.style.opacity = "0.3"});
+        event.target.style.opacity = "1.0";
+        document.getElementById("secTag").innerHTML = "";
+        for (var t of hc[tagConcept]) {
+            if (t.split("_")[0]=="cat") {
+                continue;
             }
+            var tag = document.createElement("div");
+            tag.id = "tag_"+t;
+            tag.className = "tag";
+            tag.innerText = t.replace(t.split("_")[0]+"_", "").replace(/_/g, " ");
+            tag.style.backgroundColor = cc[t];
+            document.getElementById("secTag").appendChild(tag);
+            tag.addEventListener('click', clickT, false);
+            var highlights = document.getElementsByClassName(t);
+            [...highlights].forEach(function(h) {h.style.backgroundColor = cc[t]});
+            var makers = document.getElementsByClassName(t.slice(4)+"_marker");
+            [...makers].forEach(function(m) {
+                m.style.backgroundColor = cc[t];
+                m.style.opacity = "1.0";
+            }); 
         }
+        
     } else {
+        var tags = document.querySelectorAll("#secTag > .tag");
         [...tags].forEach(function(t) {t.style.opacity = "0.3"});
         event.target.style.opacity = "1.0";
         var highlights = document.getElementsByClassName(tagConcept);
@@ -278,7 +282,7 @@ function clickH(event) {
     var spans = document.getElementsByClassName("markerSpan");
     [...spans].forEach(function(s) {s.style.opacity = "0"});
     // add tags
-    document.getElementById("tags").innerHTML = "";
+    document.getElementById("secTag").innerHTML = "";
     var tagConcept = event.target.id.replace("tag_", "");
     var allTags = hc[hc[tagConcept][0]],
         tagColor = cc[tagConcept]
@@ -292,7 +296,7 @@ function clickH(event) {
         m.style.backgroundColor = tagColor;
         m.style.opacity = "1.0";
     });
-    for (var t = 0; t<allTags.length; t++) {
+    for (var t = 1; t<allTags.length; t++) {
         var tag = document.createElement("div"),
         tagConcept = allTags[t];
         tag.id = "tag_"+tagConcept;
@@ -304,7 +308,7 @@ function clickH(event) {
             tag.style.opacity = "0.3";
         }
         tag.style.backgroundColor = cc[tagConcept];
-        document.getElementById("tags").appendChild(tag);
+        document.getElementById("secTag").appendChild(tag);
         tag.addEventListener('click', clickT, false);
 
         if (level == "cat") {

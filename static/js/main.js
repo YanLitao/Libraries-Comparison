@@ -9,8 +9,7 @@ var currentDomain = "nlp",
     cf = {},
     hc = {},
     lines = {"nlp": {"fir": [], "sec": [], "thr": []}, "vis": {"fir": [], "sec": [], "thr": []}},
-    colorArr = ["#F3B8FF", "#BDE0FE", "#ACDDDE", "#CAF1DE", "#E1F8DC", "#FEF8DD", "#EAF2D7", "#FFE7C7", "#F7D8BA", "#E69E8F", " #FFC8DD", "#FFAFCC"],
-    colorCatArr = ["#CACACA", "#d2d7d8", "#c7c3ba"],
+    colorArr = ["#F3B8FF", "#BDE0FE", "#ACDDDE", "#CAF1DE", "#A1E991", "#C5E1A5", "#F8DE7E", "#FFE7C7", "#F7D8BA", "#E69E8F", " #FFC8DD", "#FFAFCC"],
     cc = {};
 function closeHierarchy() {
     document.getElementById("menu").style.display = 'none';
@@ -26,7 +25,7 @@ function sortFiles(domain) {
     }
     for (var l in temp) {
         temp[l].sort(function(a, b) { 
-            return b.nlines - a.nlines;
+            return a.nlines - b.nlines;
         })
         for(var i in temp[l]) {
            fo[domain][l].push(temp[l][i].name);
@@ -168,7 +167,7 @@ function switchDomain(domain) {
 function genData(tem) {
     // generate three objects: cf, cc and hc (for hierarchy selections)
     var colorFlag = 0,
-        catFlag = 0;
+        catFlag = 1;
     for (var i=0; i<tem["fir"].length; i++) {
         var concept = Object.keys(tem["fir"][i])[0];
         var level = concept.split("_")[0];
@@ -180,7 +179,7 @@ function genData(tem) {
             var currentCat = concept,
                 catArr = [concept];
             colorFlag = 0;
-            cc[concept] = colorCatArr[catFlag];
+            cc[concept] = colorArr[catFlag];
             catFlag += 1;
         } else {
             hc[concept] = [currentCat, concept];
@@ -388,12 +387,12 @@ function clickVis(event) {
     var targetId = visId.slice(0, 3) + "_" + visId.slice(3);
     document.getElementById(targetId).scrollIntoView({behavior: "smooth"});
     var viss = document.getElementsByClassName(visId.slice(0, 3)+"visRange");
-    [...viss].forEach(function(v) {v.style.opacity = "0.3"});
+    [...viss].forEach(function(v) {v.style.opacity = "0.5"});
     event.target.style.opacity = "1.0";
 }
 function scrollElement(event) {
     var viss = document.getElementsByClassName(event.target.id.slice(0, 3)+"visRange");
-    [...viss].forEach(function(v) {v.style.opacity = "0.3"});
+    [...viss].forEach(function(v) {v.style.opacity = "0.5"});
     var codes = event.target.querySelectorAll('.codeRange');
     var visableTop = event.target.getBoundingClientRect().top, 
         visableBottom = event.target.getBoundingClientRect().bottom;

@@ -82,7 +82,6 @@ body {
     width: fit-content;
     height: 2.5rem;
     border-radius: 1.5rem;
-    background-color: #02CCFE;
     box-sizing: border-box;
     padding: 0rem 1rem;
     font-family: sans-serif; 
@@ -125,10 +124,11 @@ body {
 }
 .w .tit .titles .axisName {
     position: absolute;
+    transform: rotate(-90deg);
     height: 2rem;
     width: 8rem;
-    top: 4rem;
-    left: 10rem;
+    top: 3rem;
+    right: 0rem;
     text-align: start;
     font-family: sans-serif; 
     font-size: 1.0rem; 
@@ -136,6 +136,7 @@ body {
     line-height: 2rem;
 }
 .w .tit .titles .vis {
+    float: left;
     width: 35rem;
     height: 8rem;
     display: flex;
@@ -145,8 +146,8 @@ body {
 .w .tit .titles .vis .visRange {
     width: 1rem;
     height: 8rem;
-    border-radius: 0.5rem;
-    background-color: #02CCFE;
+    border-radius: 0.2rem;
+    background-color: #5d5f5f;
     opacity: 0.8;
     cursor: pointer;
 }
@@ -168,7 +169,7 @@ body {
 }
 .w .codes .codeCol .codeRange {
     margin: 0rem;
-    width: 45rem;
+    width: 47rem;
     height: 60rem;
     position: relative;
 }
@@ -189,7 +190,7 @@ body {
     opacity: 0;
 }
 .w .codes .codeCol .codeRange .codeBlock {
-    width: 45rem;
+    width: 47rem;
     height: 55rem;
     box-sizing: border-box;
     padding: 2rem;
@@ -214,13 +215,13 @@ body {
     font-weight: 600;
     color: #fff;
     text-align: center;
-    background-color: #02CCFE;
+    background-color: #7a7a7a;
     border-radius: 0rem 0rem 1rem 1rem;
     transform: rotate(270deg);
     cursor: pointer;
 }
 .container .hierBtn:hover {
-    background-color: #1479FF;
+    background-color: #5d5f5f;
 }
 .container .menu {
     position: absolute;
@@ -250,10 +251,10 @@ body {
     line-height: 3rem;
     text-align: center;
     cursor: pointer;
-    color: #02CCFE;
+    color: black;
 }
 .container .menu .menuW .menuTop #close:hover {
-    background-color: #02CCFE;
+    background-color: black;
     color: #fff;
 }
 .container .menu .menuW h1 {
@@ -310,7 +311,7 @@ body {
     font-weight: 600; 
     line-height: 2rem;
     color: #fff;
-    background-color: #02CCFE;
+    background-color: #5d5f5f;
     text-align: center;
 }
 .container .menu .menuW .hierarchy {
@@ -362,7 +363,7 @@ body {
 .container .menu .menuW .hierarchy .hVis .hVisOut .hVisIn {
     height: 1.5rem;
     border-radius: 2rem;
-    background-color: #02CCFE;
+    background-color: #5d5f5f;
     font-family: sans-serif; 
     font-size: 1.2rem; 
     font-weight: 100; 

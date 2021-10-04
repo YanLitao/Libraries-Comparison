@@ -113,7 +113,7 @@ function getData(domain) {
 }
 function showAllFirstLevelConcepts() {
     var viss = document.getElementsByClassName("visRange");
-    [...viss].forEach(function(v) {v.style.backgroundColor = "#02CCFE"});
+    [...viss].forEach(function(v) {v.style.backgroundColor = "#5d5f5f"});
     document.getElementById("firTag").innerHTML = "";
     document.getElementById("secTag").innerHTML = "";
     for (var temp of data[currentDomain]["all templates"]) {
@@ -320,6 +320,16 @@ function clickH(event) {
                 m.style.opacity = "1.0";
             });
         }
+    }
+    if (level == "fea") {
+        var firTags = document.getElementById("firTag").querySelectorAll('.tag');
+        [...firTags].forEach(function(f) {
+            if (f.id.replace("tag_", "") == hc[tagConcept][0]) {
+                f.style.opacity = "0.8";
+            } else {
+                f.style.opacity = "0.3";
+            }
+        })
     }
     genConceptVis(event.target.id);
 };

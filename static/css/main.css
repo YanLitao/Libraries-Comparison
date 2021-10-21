@@ -203,6 +203,12 @@ body {
     display: block;
     width: 41rem;
 }
+.w .codes .codeCol .codeRange .codeBlock .highlights .udl {
+    text-decoration: underline;
+}
+.w .codes .codeCol .codeRange .codeBlock .highlights .blodFunc {
+    font-weight: 600;
+}
 .container .hierBtn {
     position: absolute;
     width: 25.5rem;

@@ -414,6 +414,19 @@ function scrollElement(event) {
         }
     });
 }
+// within library comparison
+function switchWithin() {
+    // first step: find selected features and generate the examples
+    var feaArr = {};
+    var feas = document.getElementsByClassName("secTag");
+    [...feas].forEach(function(f) {
+        
+    });
+    // second step: highlight the functions
+    // last step: show withinCodes and hide acrossCodes
+    document.getElementById("withinCodes").style.display = "block";
+    document.getElementById("acrossCodes").style.display = "none";
+}
 // function call
 $.getJSON("static/data/vis_tem.json", function(obj) {
     data["vis"] = obj;

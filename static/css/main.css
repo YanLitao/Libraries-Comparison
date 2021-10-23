@@ -162,6 +162,9 @@ body {
     justify-content: space-between;
     overflow-y: auto;
 }
+.w #withinCodes {
+    display: none;
+}
 .w .codes .codeCol {
     width: 50rem;
     height: 60rem;

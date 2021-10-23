@@ -223,7 +223,6 @@ function clickT(event) {
     [...viss].forEach(function(v) {v.style.backgroundColor = tagColor});
     if (tagConcept.split("_")[0] == "cat") {
         var tags = document.querySelectorAll("#firTag > .tag");
-        console.log(tags);
         [...tags].forEach(function(t) {t.style.opacity = "0.3"});
         event.target.style.opacity = "1.0";
         document.getElementById("secTag").innerHTML = "";
@@ -415,14 +414,46 @@ function scrollElement(event) {
     });
 }
 // within library comparison
-function switchWithin() {
+function switchWithin(lib) {
     // first step: find selected features and generate the examples
-    var feaArr = {};
-    var feas = document.getElementsByClassName("secTag");
+    var feaArr = new Set([]);
+    var feas = document.getElementById("secTag").querySelectorAll(".tag");
     [...feas].forEach(function(f) {
-        
+        console.log(f.style.opacity, f.style.opacity==1);
+        if (f.style.opacity == 1) {
+            feaArr.add(f.id.replace("tag_", ""));
+        }
     });
+    
     // second step: highlight the functions
+    var acc = document.getElementById(lib+"Code");
+    var withinCol = document.getElementById(acc.id+"Within");
+    var codeRange = acc.querySelectorAll(".codeRange");
+    [...codeRange].forEach(function(c) {
+        if (c.style.display !== "none") {
+            var smallRange = document.createElement("div");
+            smallRange.className = "smallRange";
+            smallRange.id = c.id
+            var smallBlock = document.createElement("div");
+            smallBlock.className = "smallBlock";
+            smallBlock.id = c.id
+            var preDiv = document.getElementById(c.id+"_code");
+            var newCodeDiv = document.createElement("code");
+            newCodeDiv.className = preDiv.childNodes[0].className;
+            var highDiv = preDiv.childNodes[0].querySelectorAll(".highlights");
+            [...highDiv].forEach(function(h) {
+                if (feaArr.has(h.classList[1])) {
+                    newCodeDiv.appendChild(h.cloneNode(true));
+                }
+            })
+            var newPreDiv = document.createElement("pre");
+            newPreDiv.id = preDiv.id+"_within";
+            newPreDiv.appendChild(newCodeDiv);
+            smallBlock.appendChild(newPreDiv);
+            smallRange.appendChild(smallBlock);
+            withinCol.appendChild(smallRange);
+        }
+    })
     // last step: show withinCodes and hide acrossCodes
     document.getElementById("withinCodes").style.display = "block";
     document.getElementById("acrossCodes").style.display = "none";

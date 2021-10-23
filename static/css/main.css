@@ -202,15 +202,31 @@ body {
     overflow-y: auto;
     word-wrap: break-word;
 }
-.w .codes .codeCol .codeRange .codeBlock code {
+.w .codes .codeCol code {
     display: block;
     width: 41rem;
 }
-.w .codes .codeCol .codeRange .codeBlock .highlights .udl {
+.w .codes .codeCol .udl {
     text-decoration: underline;
 }
-.w .codes .codeCol .codeRange .codeBlock .highlights .blodFunc {
+.w .codes .codeCol .blodFunc {
     font-weight: 600;
+}
+.w #withinCodes .withinCol .smallRange{
+    margin: 0rem;
+    width: 47rem;
+    height: 10rem;
+    position: relative;
+}
+.w #withinCodes .withinCol .smallRange .smallBlock {
+    width: 47rem;
+    height: 9rem;
+    box-sizing: border-box;
+    padding: 2rem;
+    border-radius: 1rem;
+    background-color: #fff;
+    overflow-y: auto;
+    word-wrap: break-word;
 }
 .container .hierBtn {
     position: absolute;

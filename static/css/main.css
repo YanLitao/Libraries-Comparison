@@ -73,12 +73,11 @@ body {
 .w .tags #firTag {
     margin-bottom: 0.5rem;
 }
-.w .tags #secTag {
+.w .tags #secTagContainer {
     margin-top: 0.5rem;
 }
 .w .tags .levelTag .tag {
     float: left;
-    width: -moz-fit-content;
     width: fit-content;
     height: 2.5rem;
     border-radius: 0.5rem;
@@ -96,7 +95,7 @@ body {
 .w .tags #firTag .tag {
     margin: 0rem 1.5rem 0rem 0rem;
 }
-.w .tags #secTag .tag {
+.w .tags #secTagContainer .secTag .tag {
     margin: 0rem 1.0rem 0rem 0rem;
 }
 .w .tags .tag:hover {
@@ -212,21 +211,24 @@ body {
 .w .codes .codeCol .blodFunc {
     font-weight: 600;
 }
-.w #withinCodes .withinCol .smallRange{
-    margin: 0rem;
-    width: 47rem;
-    height: 10rem;
-    position: relative;
+.w #withinCodes .withinCol {
+    width: 50rem;
+    height: 60rem;
+    overflow-y: auto;
 }
-.w #withinCodes .withinCol .smallRange .smallBlock {
+.w #withinCodes .withinCol .smallBlock {
     width: 47rem;
     height: 9rem;
     box-sizing: border-box;
-    padding: 2rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
     border-radius: 1rem;
     background-color: #fff;
     overflow-y: auto;
     word-wrap: break-word;
+}
+.w #withinCodes .withinCol .smallBlock .highlights {
+    display: block;
 }
 .container .hierBtn {
     position: absolute;

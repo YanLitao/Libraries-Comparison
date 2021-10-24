@@ -10,7 +10,8 @@ var currentDomain = "nlp",
     hc = {},
     lines = {"nlp": {"fir": [], "sec": [], "thr": []}, "vis": {"fir": [], "sec": [], "thr": []}},
     colorArr = ["#F3B8FF", "#BDE0FE", "#ACDDDE", "#CAF1DE", "#A1E991", "#C5E1A5", "#F8DE7E", "#FFE7C7", "#F7D8BA", "#E69E8F", " #FFC8DD", "#FFAFCC"],
-    cc = {};
+    cc = {},
+    initialSelection = true;
 function closeHierarchy() {
     document.getElementById("menu").style.display = 'none';
 }
@@ -73,21 +74,22 @@ function genHier(tem) {
 }
 function genCode(domain) {
     for (var l in fo[domain]) {
-        var rangeDiv = document.getElementById(l+"Code");
+        var colDiv = document.getElementById(l+"Code"),
+            withinCol = document.getElementById(l+"CodeWithin");
         for (var f of fo[domain][l]) {
-            var codeBlock = document.createElement("div");
-            codeBlock.className = "codeRange";
-            codeBlock.innerHTML = data[domain]["labeled files"][f];
-            codeBlock.id = f;
+            var codeRange = document.createElement("div");
+            codeRange.className = "codeRange";
+            codeRange.innerHTML = data[domain]["labeled files"][f];
+            codeRange.id = f;
 
             var codeMarker = document.createElement("div");
             codeMarker.className = "marker";
-            codeBlock.appendChild(codeMarker);
-            rangeDiv.appendChild(codeBlock);
+            codeRange.appendChild(codeMarker);
+            colDiv.appendChild(codeRange);
 
-            var colorfulStuff = codeBlock.querySelectorAll(".highlights");
+            var colorfulStuff = codeRange.querySelectorAll(".highlights");
             var containerHeight = codeMarker.offsetHeight;
-            var codeHight = codeBlock.querySelector("code").offsetHeight;
+            var codeHight = codeRange.querySelector("code").offsetHeight;
             if (codeHight<containerHeight) {
                 codeHight = containerHeight;
             }
@@ -104,6 +106,23 @@ function genCode(domain) {
                 markerElement.style.height = (markerBottom - markerTop) + "px"
                 codeMarker.appendChild(markerElement);       
             })
+
+            // add within codes
+            var withinBlock = document.createElement("div");
+            withinBlock.className = "smallBlock";
+            withinBlock.id = f+"_within_block";
+            var preDiv = document.getElementById(f+"_code");
+            var newCodeDiv = document.createElement("code");
+            newCodeDiv.className = preDiv.childNodes[0].className;
+            var highDiv = preDiv.childNodes[0].querySelectorAll(".highlights");
+            [...highDiv].forEach(function(h) {
+                newCodeDiv.appendChild(h.cloneNode(true));
+            })
+            var newPreDiv = document.createElement("pre");
+            newPreDiv.id = preDiv.id+"_within";
+            newPreDiv.appendChild(newCodeDiv);
+            withinBlock.appendChild(newPreDiv);
+            withinCol.appendChild(withinBlock);
         }
     }
 }
@@ -115,7 +134,7 @@ function showAllFirstLevelConcepts() {
     var viss = document.getElementsByClassName("visRange");
     [...viss].forEach(function(v) {v.style.backgroundColor = "#5d5f5f"});
     document.getElementById("firTag").innerHTML = "";
-    document.getElementById("secTag").innerHTML = "";
+    document.getElementById("secTagContainer").innerHTML = "";
     for (var temp of data[currentDomain]["all templates"]) {
         if (temp.name.split("_")[0]=="cat") {
             var tag = document.createElement("div");
@@ -127,7 +146,22 @@ function showAllFirstLevelConcepts() {
             document.getElementById("firTag").appendChild(tag);
             tag.addEventListener('click', clickT, false);
 
+            var secTag = document.createElement("div");
+            secTag.id = "sec_"+tag.id;
+            secTag.className = "levelTag secTag";
+            secTag.style.display = "none";
+
             for (var t of hc[temp.name]) {
+                if (t.split("_")[0] !== "cat") {
+                    var feaTag = document.createElement("div");
+                    feaTag.id = "tag_"+t;
+                    feaTag.innerHTML = t.replace("fea_", "").replace(/_/g, " ");
+                    feaTag.className = "tag";
+                    feaTag.style.backgroundColor = cc[t];
+                    secTag.appendChild(feaTag);
+                    secTag.addEventListener('click', clickT, false);
+                }
+
                 var highlights = document.getElementsByClassName(t);
                 [...highlights].forEach(function(h) {h.style.backgroundColor = cc[temp.name]});
                 var makers = document.getElementsByClassName(t.slice(4)+"_marker");
@@ -136,6 +170,8 @@ function showAllFirstLevelConcepts() {
                     m.style.opacity = "1.0";
                 });
             }
+
+            document.getElementById("secTagContainer").appendChild(secTag);
         }
     }
 }
@@ -158,6 +194,7 @@ function switchDomain(domain) {
     var blank = document.getElementsByClassName("codeRange");
     [...blank].forEach(function(b) {b.remove()});
     //Add codes and distributions
+    initialSelection = true;
     getData(domain);
     addHListener();
     genLineVis(domain);
@@ -197,146 +234,56 @@ function genData(tem) {
     // append last cat to hc
     hc[currentCat] = catArr;
 }
-// tag click functions
+// tag or hierarchy click functions
 function clickT(event) {
-    var firH = document.getElementsByClassName("firH"),
-        secH = document.getElementsByClassName("secH");
-    [...firH].forEach(function(f) {f.style.backgroundColor = "#fff"});
-    [...secH].forEach(function(f) {f.style.backgroundColor = "#fff"});
-    document.getElementById(event.target.id.replace("tag_", "")).style.backgroundColor = "#F1F5F9";
-    // filter the code examples
-    var hId = event.target.id.replace("tag_"+event.target.id.split("_")[1]+"_", "");
-    var codes = document.getElementsByClassName("codeRange");
-    [...codes].forEach(function(c) {c.style.display = "none"});
-    for (var i=0; i<cf[hId].length; i++) {
-        document.getElementById(cf[hId][i]).style.display = "block";
+    if (event.target.id.includes("tag_")) {
+        var tagConcept = event.target.id.replace("tag_", "");
+    } else {
+        var tagConcept = event.target.id;
     }
-    // remove original highlights
-    var hls = document.getElementsByClassName("highlights");
-    [...hls].forEach(function(h) {h.style.backgroundColor = "#fff"});
-    var spans = document.getElementsByClassName("markerSpan");
-    [...spans].forEach(function(s) {s.style.opacity = "0"});
-    // add tags
-    var tagConcept = event.target.id.replace("tag_", "");
-    var tagColor = cc[tagConcept];
-    var viss = document.getElementsByClassName("visRange");
-    [...viss].forEach(function(v) {v.style.backgroundColor = tagColor});
+    
     if (tagConcept.split("_")[0] == "cat") {
         var tags = document.querySelectorAll("#firTag > .tag");
         [...tags].forEach(function(t) {t.style.opacity = "0.3"});
-        event.target.style.opacity = "1.0";
-        document.getElementById("secTag").innerHTML = "";
-        for (var t of hc[tagConcept]) {
-            if (t.split("_")[0]=="cat") {
-                continue;
-            }
-            var tag = document.createElement("div");
-            tag.id = "tag_"+t;
-            tag.className = "tag";
-            tag.innerText = t.replace(t.split("_")[0]+"_", "").replace(/_/g, " ");
-            tag.style.backgroundColor = cc[t];
-            document.getElementById("secTag").appendChild(tag);
-            tag.addEventListener('click', clickT, false);
-            var highlights = document.getElementsByClassName(t);
-            [...highlights].forEach(function(h) {h.style.backgroundColor = cc[t]});
-            var makers = document.getElementsByClassName(t.slice(4)+"_marker");
-            [...makers].forEach(function(m) {
-                m.style.backgroundColor = cc[t];
-                m.style.opacity = "1.0";
-            }); 
-        }
-        
+        document.getElementById("tag_"+tagConcept).style.opacity = "1.0";
+        document.getElementById(tagConcept).style.backgroundColor = "#F1F5F9";
+        var secTags = document.getElementsByClassName("secTag");
+        [...secTags].forEach(function(t) {t.style.display = "none"});
+        document.getElementById("sec_tag_"+tagConcept).style.display = "block";
     } else {
-        var tags = document.querySelectorAll("#secTag > .tag");
-        [...tags].forEach(function(t) {t.style.opacity = "0.3"});
-        event.target.style.opacity = "1.0";
-        var highlights = document.getElementsByClassName(tagConcept);
-        [...highlights].forEach(function(h) {h.style.backgroundColor = tagColor});
-        var makers = document.getElementsByClassName(tagConcept.slice(4)+"_marker");
-        [...makers].forEach(function(m) {
-            m.style.backgroundColor = tagColor;
-            m.style.opacity = "1.0";
-        });
-    }
-    genConceptVis(tagConcept);
-}
-// hierarchy click functions
-function clickH(event) {
-    // add background to the selected hierarchy
-    var firH = document.getElementsByClassName("firH"),
-        secH = document.getElementsByClassName("secH");
-    [...firH].forEach(function(f) {f.style.backgroundColor = "#fff"});
-    [...secH].forEach(function(f) {f.style.backgroundColor = "#fff"});
-    event.target.style.backgroundColor = "#F1F5F9";
-    // filter the code examples
-    var hId = event.target.id.replace(event.target.id.split("_")[0]+"_", "");
-    var codes = document.getElementsByClassName("codeRange");
-    [...codes].forEach(function(c) {c.style.display = "none"});
-    for (var i=0; i<cf[hId].length; i++) {
-        document.getElementById(cf[hId][i]).style.display = "block";
-    }
-    var hls = document.getElementsByClassName("highlights");
-    [...hls].forEach(function(h) {h.style.backgroundColor = "#fff"});
-    var spans = document.getElementsByClassName("markerSpan");
-    [...spans].forEach(function(s) {s.style.opacity = "0"});
-    // add tags
-    document.getElementById("secTag").innerHTML = "";
-    var tagConcept = event.target.id.replace("tag_", "");
-    var allTags = hc[hc[tagConcept][0]],
-        tagColor = cc[tagConcept]
-        level = tagConcept.split("_")[0];
-    var viss = document.getElementsByClassName("visRange");
-    [...viss].forEach(function(v) {v.style.backgroundColor = tagColor});
-    var highlights = document.getElementsByClassName(tagConcept);
-    [...highlights].forEach(function(h) {h.style.backgroundColor = tagColor});
-    var makers = document.getElementsByClassName(tagConcept.slice(4)+"_marker");
-    [...makers].forEach(function(m) {
-        m.style.backgroundColor = tagColor;
-        m.style.opacity = "1.0";
-    });
-    for (var t = 1; t<allTags.length; t++) {
-        var tag = document.createElement("div"),
-        tagConcept = allTags[t];
-        tag.id = "tag_"+tagConcept;
-        tag.className = "tag";
-        tag.innerText = tagConcept.replace(tagConcept.split("_")[0]+"_", "").replace(/_/g, " ");
-        if (tagConcept == event.target.id.replace("tag_", "")) {
-            tag.style.opacity = "0.8";
+        var tags = document.getElementById("secTagContainer").querySelectorAll(".secTag > .tag");
+        if (initialSelection) {
+            [...tags].forEach(function(t) {t.style.opacity = "0.3"});
+            document.getElementById("tag_"+tagConcept).style.opacity = "0.8";
+            document.getElementById(tagConcept).style.backgroundColor = "#F1F5F9";
+            initialSelection = false;
         } else {
-            tag.style.opacity = "0.3";
-        }
-        tag.style.backgroundColor = cc[tagConcept];
-        document.getElementById("secTag").appendChild(tag);
-        tag.addEventListener('click', clickT, false);
-
-        if (level == "cat") {
-            tag.style.opacity = "0.8";
-            var highlights = document.getElementsByClassName(tagConcept);
-            [...highlights].forEach(function(h) {h.style.backgroundColor = cc[tagConcept]});
-            var makers = document.getElementsByClassName(hc[event.target.id.replace("tag_", "")][t].slice(4)+"_marker");
-            [...makers].forEach(function(m) {
-                m.style.backgroundColor = cc[tagConcept];
-                m.style.opacity = "1.0";
-            });
-        }
-    }
-    if (level == "fea") {
-        var firTags = document.getElementById("firTag").querySelectorAll('.tag');
-        [...firTags].forEach(function(f) {
-            if (f.id.replace("tag_", "") == hc[tagConcept][0]) {
-                f.style.opacity = "0.8";
+            if (document.getElementById("tag_"+tagConcept).style.opacity == "0.8") {
+                document.getElementById("tag_"+tagConcept).style.opacity = "0.3";
+                document.getElementById(tagConcept).style.backgroundColor = "#fff";
+                var flag = 0;
+                [...tags].forEach(function(t) {
+                    if (t.style.opacity == "0.8") {
+                        flag = 1;
+                    }
+                });
+                if (flag == 0) {
+                    [...tags].forEach(function(t) {t.style.opacity = "0.8"});
+                    initialSelection = true;
+                }
             } else {
-                f.style.opacity = "0.3";
+                document.getElementById("tag_"+tagConcept).style.opacity = "0.8";
+                document.getElementById(tagConcept).style.backgroundColor = "#F1F5F9";
             }
-        })
+        }
+        conceptFiles();
     }
-    genConceptVis(event.target.id);
-};
+}
 function addHListener() {
     var firH = document.getElementsByClassName("firH"),
         secH = document.getElementsByClassName("secH");
-    [...firH].forEach(function(f) {f.addEventListener('click', clickH, false)});
-    [...secH].forEach(function(f) {f.addEventListener('click', clickH, false)});
+    [...firH].forEach(function(f) {f.addEventListener('click', clickT, false)});
+    [...secH].forEach(function(f) {f.addEventListener('click', clickT, false)});
 }
 function processLineData(domain) {
     for (var i=1; i<31; i++) {
@@ -349,28 +296,6 @@ function processLineData(domain) {
             }
         }
     }
-}
-function genConceptVis(concept) {
-    const trueFiles = new Set();
-    for (var o in data[currentDomain]["api templates"]) {
-        for (const a of data[currentDomain]["api templates"][o]) {
-            for (var conceptName in a) {
-                if (concept == conceptName) {
-                    for (const f of a[conceptName]["codes"]) {
-                        trueFiles.add(f.replace("_", ""));
-                    }
-                }
-            }
-        }
-    }
-    var visRange = document.getElementsByClassName("visRange");
-    [...visRange].forEach(function(v) {
-        if (trueFiles.has(v.id.replace("vis", ""))) {
-            v.style.display = "flex";
-        } else {
-            v.style.display = "none";
-        }
-    });
 }
 function genLineVis(domain) {
     var vis = document.getElementsByClassName("vis");
@@ -414,48 +339,74 @@ function scrollElement(event) {
     });
 }
 // within library comparison
-function switchWithin(lib) {
-    // first step: find selected features and generate the examples
-    var feaArr = new Set([]);
-    var feas = document.getElementById("secTag").querySelectorAll(".tag");
-    [...feas].forEach(function(f) {
-        console.log(f.style.opacity, f.style.opacity==1);
-        if (f.style.opacity == 1) {
-            feaArr.add(f.id.replace("tag_", ""));
+function conceptFiles() {
+    if (initialSelection) {
+        var codes = document.getElementsByClassName("codeRange");
+        [...codes].forEach(function(c) {c.style.display = "block"});
+        var codesWithin = document.getElementsByClassName("smallBlock");
+        [...codesWithin].forEach(function(c) {c.style.display = "block"});
+        var hlsWthin = document.getElementById("withinCodes").querySelectorAll(".highlights");
+        [...hlsWthin].forEach(function(h) {h.style.display = "block"});
+        var visRange = document.getElementsByClassName("visRange");
+        [...visRange].forEach(function(v) {v.style.display = "flex"});
+        return;
+    }
+    // get files that contains all selected concepts
+    var codes = document.getElementsByClassName("codeRange");
+    [...codes].forEach(function(c) {c.style.display = "none"});
+    var codesWithin = document.getElementsByClassName("smallBlock");
+    [...codesWithin].forEach(function(c) {c.style.display = "none"});
+    var hls = document.getElementById("acrossCodes").querySelectorAll(".highlights");
+    [...hls].forEach(function(h) {h.style.backgroundColor = "#fff"});
+    var hlsWthin = document.getElementById("withinCodes").querySelectorAll(".highlights");
+    [...hlsWthin].forEach(function(h) {h.style.display = "none"});
+    var spans = document.getElementsByClassName("markerSpan");
+    [...spans].forEach(function(s) {s.style.opacity = "0"});
+    var visRange = document.getElementsByClassName("visRange");
+    [...visRange].forEach(function(v) {v.style.display = "none";});
+    // get all selected concepts
+    var conceptArr = new Set(),
+        conceptColor = "#5d5f5f";
+    var concepts = document.getElementById("secTagContainer").querySelectorAll(".secTag > .tag");
+    [...concepts].forEach(function(c) {
+        if (c.style.opacity != "0.3") {
+            var conceptName = c.id.replace("tag_", "");
+            var conceptLevel = conceptName.split("_")[0];
+            var conceptColor = cc[conceptName];
+            conceptArr.add(conceptName); // cat_preprocessing
+            // make all elements related to concepts visable
+            // highlights
+            var conceptHighlights = document.getElementById("acrossCodes").querySelectorAll("."+conceptName);
+            [...conceptHighlights].forEach(function(c) {c.style.backgroundColor = conceptColor});
+            var withinHighlights = document.getElementById("withinCodes").querySelectorAll("."+conceptName);
+            [...withinHighlights].forEach(function(c) {c.style.display = "block"});
+            // minimaps
+            var conceptMarkers = document.getElementsByClassName(conceptName.replace(conceptLevel+"_", "")+"_marker");
+            [...conceptMarkers].forEach(function(c) {
+                c.style.opacity = "1.0";
+            })
         }
     });
-    
-    // second step: highlight the functions
-    var acc = document.getElementById(lib+"Code");
-    var withinCol = document.getElementById(acc.id+"Within");
-    var codeRange = acc.querySelectorAll(".codeRange");
-    [...codeRange].forEach(function(c) {
-        if (c.style.display !== "none") {
-            var smallRange = document.createElement("div");
-            smallRange.className = "smallRange";
-            smallRange.id = c.id
-            var smallBlock = document.createElement("div");
-            smallBlock.className = "smallBlock";
-            smallBlock.id = c.id
-            var preDiv = document.getElementById(c.id+"_code");
-            var newCodeDiv = document.createElement("code");
-            newCodeDiv.className = preDiv.childNodes[0].className;
-            var highDiv = preDiv.childNodes[0].querySelectorAll(".highlights");
-            [...highDiv].forEach(function(h) {
-                if (feaArr.has(h.classList[1])) {
-                    newCodeDiv.appendChild(h.cloneNode(true));
-                }
-            })
-            var newPreDiv = document.createElement("pre");
-            newPreDiv.id = preDiv.id+"_within";
-            newPreDiv.appendChild(newCodeDiv);
-            smallBlock.appendChild(newPreDiv);
-            smallRange.appendChild(smallBlock);
-            withinCol.appendChild(smallRange);
+    // filter the files
+    var fileMatched = [];
+    for (var f in data[currentDomain]["file concepts"]) {
+        if ([...conceptArr].every(val => data[currentDomain]["file concepts"][f].includes(val))) {
+            fileMatched.push(f);
+            // make matched code examples visable
+            document.getElementById(f).style.display = "block";
+            document.getElementById(f+"_within_block").style.display = "block";
+            document.getElementById(f.replace("_", "")+"vis").style.display = "flex";
+            if (conceptArr.size == 1) {
+                document.getElementById(f.replace("_", "")+"vis").style.backgroundColor = conceptColor;
+            } else {
+                document.getElementById(f.replace("_", "")+"vis").style.backgroundColor = "#5d5f5f";
+            }
         }
-    })
-    // last step: show withinCodes and hide acrossCodes
-    document.getElementById("withinCodes").style.display = "block";
+    }
+}
+function switchWithin(lib) {
+    conceptFiles();
+    document.getElementById("withinCodes").style.display = "flex";
     document.getElementById("acrossCodes").style.display = "none";
 }
 // function call

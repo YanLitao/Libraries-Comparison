@@ -116,7 +116,9 @@ function genCode(domain) {
             newCodeDiv.className = preDiv.childNodes[0].className;
             var highDiv = preDiv.childNodes[0].querySelectorAll(".highlights");
             [...highDiv].forEach(function(h) {
-                newCodeDiv.appendChild(h.cloneNode(true));
+                var cloneHighlight = h.cloneNode(true);
+                cloneHighlight.style.backgroundColor = cc[h.classList[1]];
+                newCodeDiv.appendChild(cloneHighlight);
             })
             var newPreDiv = document.createElement("pre");
             newPreDiv.id = preDiv.id+"_within";
@@ -162,7 +164,7 @@ function showAllFirstLevelConcepts() {
                     secTag.addEventListener('click', clickT, false);
                 }
 
-                var highlights = document.getElementsByClassName(t);
+                var highlights = document.getElementById("acrossCodes").querySelectorAll("."+t);
                 [...highlights].forEach(function(h) {h.style.backgroundColor = cc[temp.name]});
                 var makers = document.getElementsByClassName(t.slice(4)+"_marker");
                 [...makers].forEach(function(m) {

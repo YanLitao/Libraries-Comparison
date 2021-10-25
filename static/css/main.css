@@ -103,13 +103,13 @@ body {
 }
 .w .tit {
     width: 150rem;
-    height: 8rem;
+    height: 11rem;
     display: flex;
     justify-content: space-between;
 }
 .w .tit .titles {
     width: 50rem;
-    height: 8rem;
+    height: 11rem;
     position: relative;
 }
 .w .tit .titles .titName {
@@ -153,6 +153,66 @@ body {
 .w .tit .titles .vis .visRange:hover {
     opacity: 1.0;
 }
+.w .tit .titles .switch-btn {
+    width: 50rem;
+    height: 3rem;
+    position: absolute;
+    bottom: 0rem;
+    left: 0rem;
+    line-height: 2rem;
+    font-size: 1.2rem;
+}
+.w .tit .titles .switch-btn .switch {
+    margin: 1rem 1.5rem;
+    position: relative;
+    display: inline-block;
+    width: 5rem;
+    height: 2rem;
+}
+.w .tit .titles .switch-btn .switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.w .tit .titles .switch-btn .switch .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+.w .tit .titles .switch-btn .switch .slider:before {
+    position: absolute;
+    content: "";
+    height: 1.6rem;
+    width: 1.6rem;
+    left: 0.2rem;
+    bottom: 0.2rem;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+.w .tit .titles .switch-btn .switch input:checked + .slider {
+    background-color: #2196F3;
+}
+.w .tit .titles .switch-btn .switch input:focus + .slider {
+    box-shadow: 0 0 0.1rem #2196F3;
+}
+.w .tit .titles .switch-btn .switch input:checked + .slider:before {
+    -webkit-transform: translateX(3rem);
+    -ms-transform: translateX(3rem);
+    transform: translateX(3rem);
+}
+.w .tit .titles .switch-btn .switch .slider.round {
+    border-radius: 2rem;
+}
+.w .tit .titles .switch-btn .switch .slider.round:before {
+    border-radius: 50%;
+}
 .w .codes {
     width: 150rem;
     height: 60rem;
@@ -161,21 +221,22 @@ body {
     justify-content: space-between;
     overflow-y: auto;
 }
-.w #withinCodes {
-    display: none;
+.w .codes .codeColumns {
+    width: 50rem;
+    height: 60rem;
 }
-.w .codes .codeCol {
+.w .codes .codeColumns .codeCol {
     width: 50rem;
     height: 60rem;
     overflow-y: auto;
 }
-.w .codes .codeCol .codeRange {
+.w .codes .codeColumns .codeCol .codeRange {
     margin: 0rem;
     width: 47rem;
     height: 60rem;
     position: relative;
 }
-.w .codes .codeCol .codeRange .marker {
+.w .codes .codeColumns .codeCol .codeRange .marker {
     position: absolute;
     top: 0rem;
     right: 0rem;
@@ -185,13 +246,13 @@ body {
     background-color: #F1F5F9;
     opacity: 0.8;
 }
-.w .codes .codeCol .codeRange .marker .markerSpan {
+.w .codes .codeColumns .codeCol .codeRange .marker .markerSpan {
     position: absolute;
     width: 100%;
     background-color: #BDE0FE;
     opacity: 0;
 }
-.w .codes .codeCol .codeRange .codeBlock {
+.w .codes .codeColumns .codeCol .codeRange .codeBlock {
     width: 47rem;
     height: 55rem;
     box-sizing: border-box;
@@ -201,22 +262,23 @@ body {
     overflow-y: auto;
     word-wrap: break-word;
 }
-.w .codes .codeCol code {
+.w .codes .codeColumns .codeCol code {
     display: block;
     width: 41rem;
 }
-.w .codes .codeCol .udl {
+.w .codes .codeColumns .codeCol .udl {
     text-decoration: underline;
 }
-.w .codes .codeCol .blodFunc {
+.w .codes .codeColumns .codeCol .blodFunc {
     font-weight: 600;
 }
-.w #withinCodes .withinCol {
+.w .codeColumns .withinCol {
     width: 50rem;
     height: 60rem;
     overflow-y: auto;
+    display: none;
 }
-.w #withinCodes .withinCol .smallBlock {
+.w .codeColumns .withinCol .smallBlock {
     width: 47rem;
     height: 9rem;
     box-sizing: border-box;
@@ -227,7 +289,7 @@ body {
     overflow-y: auto;
     word-wrap: break-word;
 }
-.w #withinCodes .withinCol .smallBlock .highlights {
+.w .codeColumns .withinCol .smallBlock .highlights {
     display: block;
 }
 .container .hierBtn {

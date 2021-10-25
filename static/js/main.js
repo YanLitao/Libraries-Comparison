@@ -90,11 +90,10 @@ function genCode(domain) {
             var colorfulStuff = codeRange.querySelectorAll(".highlights");
             var containerHeight = codeMarker.offsetHeight;
             var codeHight = codeRange.querySelector("code").offsetHeight;
-            if (codeHight<containerHeight) {
+            if (codeHight < containerHeight) {
                 codeHight = containerHeight;
             }
             colorfulStuff.forEach(function (h) { // loop to create each marker
-                
                 var hTop = h.offsetTop;
                 var hBottom = hTop + h.offsetHeight;       
                 var markerTop = Math.ceil(hTop * containerHeight / codeHight);
@@ -163,9 +162,11 @@ function showAllFirstLevelConcepts() {
                     secTag.appendChild(feaTag);
                     secTag.addEventListener('click', clickT, false);
                 }
-
-                var highlights = document.getElementById("acrossCodes").querySelectorAll("."+t);
-                [...highlights].forEach(function(h) {h.style.backgroundColor = cc[temp.name]});
+                var acrossCol = document.getElementsByClassName("acrossCol");
+                [...acrossCol].forEach(function(a) {
+                    var hls = a.querySelectorAll("."+t);
+                    [...hls].forEach(function(h) {h.style.backgroundColor = cc[temp.name]});
+                });
                 var makers = document.getElementsByClassName(t.slice(4)+"_marker");
                 [...makers].forEach(function(m) {
                     m.style.backgroundColor = cc[temp.name];
@@ -342,26 +343,33 @@ function scrollElement(event) {
 }
 // within library comparison
 function conceptFiles() {
+    var acrossCol = document.getElementsByClassName("acrossCol"),
+        withinCol = document.getElementsByClassName("withinCol");
     if (initialSelection) {
         var codes = document.getElementsByClassName("codeRange");
         [...codes].forEach(function(c) {c.style.display = "block"});
         var codesWithin = document.getElementsByClassName("smallBlock");
         [...codesWithin].forEach(function(c) {c.style.display = "block"});
-        var hlsWthin = document.getElementById("withinCodes").querySelectorAll(".highlights");
-        [...hlsWthin].forEach(function(h) {h.style.display = "block"});
+        [...withinCol].forEach(function(w) {
+            var hlsWthin = w.querySelectorAll(".highlights");
+            [...hlsWthin].forEach(function(h) {h.style.display = "block"});
+        })
         var visRange = document.getElementsByClassName("visRange");
         [...visRange].forEach(function(v) {v.style.display = "flex"});
         return;
     }
-    // get files that contains all selected concepts
     var codes = document.getElementsByClassName("codeRange");
     [...codes].forEach(function(c) {c.style.display = "none"});
     var codesWithin = document.getElementsByClassName("smallBlock");
     [...codesWithin].forEach(function(c) {c.style.display = "none"});
-    var hls = document.getElementById("acrossCodes").querySelectorAll(".highlights");
-    [...hls].forEach(function(h) {h.style.backgroundColor = "#fff"});
-    var hlsWthin = document.getElementById("withinCodes").querySelectorAll(".highlights");
-    [...hlsWthin].forEach(function(h) {h.style.display = "none"});
+    [...acrossCol].forEach(function(a) {
+        var hls = a.querySelectorAll(".highlights");
+        [...hls].forEach(function(h) {h.style.backgroundColor = "#fff"});
+    });
+    [...withinCol].forEach(function(w) {
+        var hlsWthin = w.querySelectorAll(".highlights");
+        [...hlsWthin].forEach(function(h) {h.style.display = "none"});
+    });
     var spans = document.getElementsByClassName("markerSpan");
     [...spans].forEach(function(s) {s.style.opacity = "0"});
     var visRange = document.getElementsByClassName("visRange");
@@ -378,14 +386,19 @@ function conceptFiles() {
             conceptArr.add(conceptName); // cat_preprocessing
             // make all elements related to concepts visable
             // highlights
-            var conceptHighlights = document.getElementById("acrossCodes").querySelectorAll("."+conceptName);
-            [...conceptHighlights].forEach(function(c) {c.style.backgroundColor = conceptColor});
-            var withinHighlights = document.getElementById("withinCodes").querySelectorAll("."+conceptName);
-            [...withinHighlights].forEach(function(c) {c.style.display = "block"});
+            [...acrossCol].forEach(function(a) {
+                var hls = a.querySelectorAll("."+conceptName);
+                [...hls].forEach(function(h) {h.style.backgroundColor = conceptColor});
+            });
+            [...withinCol].forEach(function(w) {
+                var hlsWthin = w.querySelectorAll("."+conceptName);
+                [...hlsWthin].forEach(function(h) {h.style.display = "block"});
+            });
             // minimaps
             var conceptMarkers = document.getElementsByClassName(conceptName.replace(conceptLevel+"_", "")+"_marker");
             [...conceptMarkers].forEach(function(c) {
                 c.style.opacity = "1.0";
+                c.style.backgroundColor = conceptColor;
             })
         }
     });
@@ -405,11 +418,6 @@ function conceptFiles() {
             }
         }
     }
-}
-function switchWithin(lib) {
-    conceptFiles();
-    document.getElementById("withinCodes").style.display = "flex";
-    document.getElementById("acrossCodes").style.display = "none";
 }
 // function call
 $.getJSON("static/data/vis_tem.json", function(obj) {
@@ -431,3 +439,18 @@ $.getJSON("static/data/nlp_tem.json", function(obj) {
     genLineVis("nlp");
 });
 
+const toggleSwitch = document.querySelectorAll('.switch input[type="checkbox"]');
+    
+function switchMode(e) {
+    conceptFiles();
+    var targetId = e.target.id.substring(0, 3)+"Code";
+    if (e.target.checked) {
+        document.getElementById(targetId+"Within").style.display = "none";
+        document.getElementById(targetId).style.display = "block";
+    }
+    else {
+        document.getElementById(targetId+"Within").style.display = "block";
+        document.getElementById(targetId).style.display = "none";
+    } 
+}
+[...toggleSwitch].forEach(function(t) {addEventListener('change', switchMode, false)});

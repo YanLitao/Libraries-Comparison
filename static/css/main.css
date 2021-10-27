@@ -101,15 +101,72 @@ body {
 .w .tags .tag:hover {
     opacity: 1.0 !important;
 }
+.w .switch-btn {
+    width: 50rem;
+    height: 3rem;
+    line-height: 2rem;
+    font-size: 1.2rem;
+}
+.w .switch-btn .switch {
+    margin: 1rem 1.5rem;
+    position: relative;
+    display: inline-block;
+    width: 5rem;
+    height: 2rem;
+}
+.w .switch-btn .switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.w .switch-btn .switch .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+.w .switch-btn .switch .slider:before {
+    position: absolute;
+    content: "";
+    height: 1.6rem;
+    width: 1.6rem;
+    left: 0.2rem;
+    bottom: 0.2rem;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+.w .switch-btn .switch input:checked + .slider {
+    background-color: #2196F3;
+}
+.w .switch-btn .switch input:focus + .slider {
+    box-shadow: 0 0 0.1rem #2196F3;
+}
+.w .switch-btn .switch input:checked + .slider:before {
+    -webkit-transform: translateX(3rem);
+    -ms-transform: translateX(3rem);
+    transform: translateX(3rem);
+}
+.w .switch-btn .switch .slider.round {
+    border-radius: 2rem;
+}
+.w .switch-btn .switch .slider.round:before {
+    border-radius: 50%;
+}
 .w .tit {
     width: 150rem;
-    height: 11rem;
+    height: 8rem;
     display: flex;
     justify-content: space-between;
 }
 .w .tit .titles {
     width: 50rem;
-    height: 11rem;
+    height: 8rem;
     position: relative;
 }
 .w .tit .titles .titName {
@@ -153,66 +210,6 @@ body {
 .w .tit .titles .vis .visRange:hover {
     opacity: 1.0;
 }
-.w .tit .titles .switch-btn {
-    width: 50rem;
-    height: 3rem;
-    position: absolute;
-    bottom: 0rem;
-    left: 0rem;
-    line-height: 2rem;
-    font-size: 1.2rem;
-}
-.w .tit .titles .switch-btn .switch {
-    margin: 1rem 1.5rem;
-    position: relative;
-    display: inline-block;
-    width: 5rem;
-    height: 2rem;
-}
-.w .tit .titles .switch-btn .switch input { 
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-.w .tit .titles .switch-btn .switch .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    -webkit-transition: .4s;
-    transition: .4s;
-}
-.w .tit .titles .switch-btn .switch .slider:before {
-    position: absolute;
-    content: "";
-    height: 1.6rem;
-    width: 1.6rem;
-    left: 0.2rem;
-    bottom: 0.2rem;
-    background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
-}
-.w .tit .titles .switch-btn .switch input:checked + .slider {
-    background-color: #2196F3;
-}
-.w .tit .titles .switch-btn .switch input:focus + .slider {
-    box-shadow: 0 0 0.1rem #2196F3;
-}
-.w .tit .titles .switch-btn .switch input:checked + .slider:before {
-    -webkit-transform: translateX(3rem);
-    -ms-transform: translateX(3rem);
-    transform: translateX(3rem);
-}
-.w .tit .titles .switch-btn .switch .slider.round {
-    border-radius: 2rem;
-}
-.w .tit .titles .switch-btn .switch .slider.round:before {
-    border-radius: 50%;
-}
 .w .codes {
     width: 150rem;
     height: 60rem;
@@ -233,7 +230,8 @@ body {
 .w .codes .codeColumns .codeCol .codeRange {
     margin: 0rem;
     width: 47rem;
-    height: 60rem;
+    height: fit-content;
+    padding-bottom: 5rem;
     position: relative;
 }
 .w .codes .codeColumns .codeCol .codeRange .marker {
@@ -241,7 +239,7 @@ body {
     top: 0rem;
     right: 0rem;
     width: 1rem;
-    height: 55rem;
+    height: 100%;
     border-radius: 1.5rem;
     background-color: #F1F5F9;
     opacity: 0.8;
@@ -254,7 +252,7 @@ body {
 }
 .w .codes .codeColumns .codeCol .codeRange .codeBlock {
     width: 47rem;
-    height: 55rem;
+    height: fit-content;
     box-sizing: border-box;
     padding: 2rem;
     border-radius: 1rem;
@@ -267,7 +265,7 @@ body {
     width: 41rem;
 }
 .w .codes .codeColumns .codeCol .udl {
-    text-decoration: underline;
+    font-weight: 600;
 }
 .w .codes .codeColumns .codeCol .blodFunc {
     font-weight: 600;
@@ -280,7 +278,7 @@ body {
 }
 .w .codeColumns .withinCol .smallBlock {
     width: 47rem;
-    height: 9rem;
+    height: fit-content;
     box-sizing: border-box;
     padding: 1rem;
     margin-bottom: 1rem;

@@ -303,9 +303,15 @@ function processLineData(domain) {
 function genLineVis(domain) {
     var vis = document.getElementsByClassName("vis");
     [...vis].forEach(function(v) {v.innerHTML = ""});
+    var maxLine = 0;
+    for (var lib in lines[domain]) {
+        var libMax = Math.max(...lines[domain][lib]);
+        if (libMax > maxLine) {
+            maxLine = libMax;
+        }
+    }
     for (var o in lines[domain]) {
         var visDiv = document.getElementById(o+"Vis");
-        var maxLine = Math.max(...lines[domain][o]);
         for (var i=0; i<30; i++) {
             if (i<fo[domain][o].length) {
                 var visRange = document.createElement("div");
@@ -342,7 +348,23 @@ function scrollElement(event) {
     });
 }
 // within library comparison
-function conceptFiles() {
+function controlCommonWords(w, name="", flag="") {
+    if (flag == "") {
+        var udls = w.querySelectorAll(".udl");
+        [...udls].forEach(function(u) {u.style.fontWeight = "normal"});
+        var blodFuncs = w.querySelectorAll(".blodFunc");
+        [...blodFuncs].forEach(function(b) {b.style.fontWeight = "normal"});
+    } else {
+        if (flag == "within") {
+            var blodFuncs = w.querySelectorAll("."+name+"_funcs");
+            [...blodFuncs].forEach(function(b) {b.style.fontWeight = "600"});
+        } else {
+            var udls = w.querySelectorAll("."+name+"_keys");
+            [...udls].forEach(function(u) {u.style.fontWeight = "600"});
+        }
+    }
+}
+function conceptFiles(flag="") {
     var acrossCol = document.getElementsByClassName("acrossCol"),
         withinCol = document.getElementsByClassName("withinCol");
     if (initialSelection) {
@@ -353,6 +375,7 @@ function conceptFiles() {
         [...withinCol].forEach(function(w) {
             var hlsWthin = w.querySelectorAll(".highlights");
             [...hlsWthin].forEach(function(h) {h.style.display = "block"});
+            controlCommonWords(w);
         })
         var visRange = document.getElementsByClassName("visRange");
         [...visRange].forEach(function(v) {v.style.display = "flex"});
@@ -365,10 +388,12 @@ function conceptFiles() {
     [...acrossCol].forEach(function(a) {
         var hls = a.querySelectorAll(".highlights");
         [...hls].forEach(function(h) {h.style.backgroundColor = "#fff"});
+        controlCommonWords(a);
     });
     [...withinCol].forEach(function(w) {
         var hlsWthin = w.querySelectorAll(".highlights");
         [...hlsWthin].forEach(function(h) {h.style.display = "none"});
+        controlCommonWords(w);
     });
     var spans = document.getElementsByClassName("markerSpan");
     [...spans].forEach(function(s) {s.style.opacity = "0"});
@@ -389,10 +414,12 @@ function conceptFiles() {
             [...acrossCol].forEach(function(a) {
                 var hls = a.querySelectorAll("."+conceptName);
                 [...hls].forEach(function(h) {h.style.backgroundColor = conceptColor});
+                controlCommonWords(a, conceptName, flag);
             });
             [...withinCol].forEach(function(w) {
                 var hlsWthin = w.querySelectorAll("."+conceptName);
                 [...hlsWthin].forEach(function(h) {h.style.display = "block"});
+                controlCommonWords(w, conceptName, flag);
             });
             // minimaps
             var conceptMarkers = document.getElementsByClassName(conceptName.replace(conceptLevel+"_", "")+"_marker");
@@ -439,18 +466,20 @@ $.getJSON("static/data/nlp_tem.json", function(obj) {
     genLineVis("nlp");
 });
 
-const toggleSwitch = document.querySelectorAll('.switch input[type="checkbox"]');
+const toggleSwitch = document.getElementById('switch');
+toggleSwitch.addEventListener('change', switchMode, false);
     
 function switchMode(e) {
-    conceptFiles();
-    var targetId = e.target.id.substring(0, 3)+"Code";
+    var acrossCol = document.getElementsByClassName("acrossCol"),
+        withinCol = document.getElementsByClassName("withinCol");
     if (e.target.checked) {
-        document.getElementById(targetId+"Within").style.display = "none";
-        document.getElementById(targetId).style.display = "block";
+        conceptFiles("across");
+        [...acrossCol].forEach(function(a) {a.style.display = "block";});
+        [...withinCol].forEach(function(w) {w.style.display = "none";});
     }
     else {
-        document.getElementById(targetId+"Within").style.display = "block";
-        document.getElementById(targetId).style.display = "none";
+        conceptFiles("within");
+        [...acrossCol].forEach(function(a) {a.style.display = "none";});
+        [...withinCol].forEach(function(w) {w.style.display = "block";});
     } 
 }
-[...toggleSwitch].forEach(function(t) {addEventListener('change', switchMode, false)});

@@ -6,11 +6,11 @@ var currentDomain = "nlp",
     },
     doms = {"nlp": "NLP", "vis": "Visualization"},
     fo = {"nlp": {"fir": [], "sec": [], "thr": []}, "vis": {"fir": [], "sec": [], "thr": []}},
-    cf = {},
-    hc = {},
+    hierarchyConcept = {},
     lines = {"nlp": {"fir": [], "sec": [], "thr": []}, "vis": {"fir": [], "sec": [], "thr": []}},
     colorArr = ["#F3B8FF", "#BDE0FE", "#ACDDDE", "#CAF1DE", "#A1E991", "#C5E1A5", "#F8DE7E", "#FFE7C7", "#F7D8BA", "#E69E8F", " #FFC8DD", "#FFAFCC"],
-    cc = {},
+    conceptColors = {},
+    initialColors = {},
     initialSelection = true;
 function closeHierarchy() {
     document.getElementById("menu").style.display = 'none';
@@ -110,19 +110,18 @@ function genCode(domain) {
             var withinBlock = document.createElement("div");
             withinBlock.className = "smallBlock";
             withinBlock.id = f+"_within_block";
-            var preDiv = document.getElementById(f+"_code");
-            var newCodeDiv = document.createElement("code");
-            newCodeDiv.className = preDiv.childNodes[0].className;
-            var highDiv = preDiv.childNodes[0].querySelectorAll(".highlights");
-            [...highDiv].forEach(function(h) {
-                var cloneHighlight = h.cloneNode(true);
-                cloneHighlight.style.backgroundColor = cc[h.classList[1]];
-                newCodeDiv.appendChild(cloneHighlight);
+            withinBlock.innerHTML = data[domain]["within files"][f];
+            var withinHighlights = withinBlock.querySelectorAll(".highlights");
+            var newPre = document.createElement("pre");
+            newPre.id = f+"_code_within_pre";
+            var newCode = document.createElement("code");
+            [...withinHighlights].forEach(function(w) {
+                newCode.appendChild(w);
             })
-            var newPreDiv = document.createElement("pre");
-            newPreDiv.id = preDiv.id+"_within";
-            newPreDiv.appendChild(newCodeDiv);
-            withinBlock.appendChild(newPreDiv);
+            newCode.className = withinBlock.querySelector("code").className;
+            withinBlock.innerHTML = "";
+            newPre.appendChild(newCode);
+            withinBlock.appendChild(newPre);
             withinCol.appendChild(withinBlock);
         }
     }
@@ -143,7 +142,7 @@ function showAllFirstLevelConcepts() {
             tag.className = "tag";
             tag.innerText = temp.name.replace("cat_", "").replace(/_/g, " ");
             
-            tag.style.backgroundColor = cc[temp.name];
+            tag.style.backgroundColor = conceptColors[temp.name];
             document.getElementById("firTag").appendChild(tag);
             tag.addEventListener('click', clickT, false);
 
@@ -152,24 +151,29 @@ function showAllFirstLevelConcepts() {
             secTag.className = "levelTag secTag";
             secTag.style.display = "none";
 
-            for (var t of hc[temp.name]) {
+            for (var t of hierarchyConcept[temp.name]) {
                 if (t.split("_")[0] !== "cat") {
                     var feaTag = document.createElement("div");
                     feaTag.id = "tag_"+t;
                     feaTag.innerHTML = t.replace("fea_", "").replace(/_/g, " ");
                     feaTag.className = "tag";
-                    feaTag.style.backgroundColor = cc[t];
+                    feaTag.style.backgroundColor = conceptColors[t];
                     secTag.appendChild(feaTag);
                     secTag.addEventListener('click', clickT, false);
                 }
                 var acrossCol = document.getElementsByClassName("acrossCol");
                 [...acrossCol].forEach(function(a) {
                     var hls = a.querySelectorAll("."+t);
-                    [...hls].forEach(function(h) {h.style.backgroundColor = cc[temp.name]});
+                    [...hls].forEach(function(h) {h.style.backgroundColor = conceptColors[temp.name]});
+                });
+                var withinCol = document.getElementsByClassName("withinCol");
+                [...withinCol].forEach(function(a) {
+                    var hls = a.querySelectorAll("."+t);
+                    [...hls].forEach(function(h) {h.style.backgroundColor = conceptColors[temp.name]});
                 });
                 var makers = document.getElementsByClassName(t.slice(4)+"_marker");
                 [...makers].forEach(function(m) {
-                    m.style.backgroundColor = cc[temp.name];
+                    m.style.backgroundColor = conceptColors[temp.name];
                     m.style.opacity = "1.0";
                 });
             }
@@ -205,37 +209,31 @@ function switchDomain(domain) {
     showAllFirstLevelConcepts(domain);
 }
 function genData(tem) {
-    // generate three objects: cf, cc and hc (for hierarchy selections)
+    // generate three objects: conceptColors and hierarchyConcept (for hierarchy selections)
     var colorFlag = 0,
         catFlag = 1;
     for (var i=0; i<tem["fir"].length; i++) {
         var concept = Object.keys(tem["fir"][i])[0];
         var level = concept.split("_")[0];
-        var name = concept.replace(level+"_", "");
         if (level == "cat") {
             if (i > 0) {
-                hc[currentCat] = catArr;
+                hierarchyConcept[currentCat] = catArr;
             }
             var currentCat = concept,
                 catArr = [concept];
             colorFlag = 0;
-            cc[concept] = colorArr[catFlag];
+            conceptColors[concept] = colorArr[catFlag];
             catFlag += 1;
         } else {
-            hc[concept] = [currentCat, concept];
+            hierarchyConcept[concept] = [currentCat, concept];
             catArr.push(concept);
-            cc[concept] = colorArr[colorFlag];
+            conceptColors[concept] = colorArr[colorFlag];
+            initialColors[concept] = conceptColors[currentCat];
         }
         colorFlag += 1;
-        cf[name] = [];
-        cf[name] = cf[name].concat(
-            tem["fir"][i][concept]["codes"],
-            tem["sec"][i][concept]["codes"],
-            tem["thr"][i][concept]["codes"]
-        );
     }
-    // append last cat to hc
-    hc[currentCat] = catArr;
+    // append last cat to hierarchyConcept
+    hierarchyConcept[currentCat] = catArr;
 }
 // tag or hierarchy click functions
 function clickT(event) {
@@ -348,23 +346,23 @@ function scrollElement(event) {
     });
 }
 // within library comparison
-function controlCommonWords(w, name="", flag="") {
-    if (flag == "") {
-        var udls = w.querySelectorAll(".udl");
+function controlCommonWords(w, name="") {
+    if (initialSelection) {
+        var udls = w.querySelectorAll(".udls");
         [...udls].forEach(function(u) {u.style.fontWeight = "normal"});
         var blodFuncs = w.querySelectorAll(".blodFunc");
         [...blodFuncs].forEach(function(b) {b.style.fontWeight = "normal"});
     } else {
-        if (flag == "within") {
-            var blodFuncs = w.querySelectorAll("."+name+"_funcs");
-            [...blodFuncs].forEach(function(b) {b.style.fontWeight = "600"});
-        } else {
+        if (document.getElementById('switch').checked) {
             var udls = w.querySelectorAll("."+name+"_keys");
             [...udls].forEach(function(u) {u.style.fontWeight = "600"});
+        } else {
+            var blodFuncs = w.querySelectorAll("."+name+"_funcs");
+            [...blodFuncs].forEach(function(b) {b.style.fontWeight = "600"});
         }
     }
 }
-function conceptFiles(flag="") {
+function conceptFiles() {
     var acrossCol = document.getElementsByClassName("acrossCol"),
         withinCol = document.getElementsByClassName("withinCol");
     if (initialSelection) {
@@ -372,11 +370,22 @@ function conceptFiles(flag="") {
         [...codes].forEach(function(c) {c.style.display = "block"});
         var codesWithin = document.getElementsByClassName("smallBlock");
         [...codesWithin].forEach(function(c) {c.style.display = "block"});
+        [...acrossCol].forEach(function(a) {
+            var hlsWthin = a.querySelectorAll(".highlights");
+            [...hlsWthin].forEach(function(h) {
+                h.style.backgroundColor = initialColors[h.classList[1]];
+                h.style.display = "block";
+            });
+            controlCommonWords(a);
+        });
         [...withinCol].forEach(function(w) {
             var hlsWthin = w.querySelectorAll(".highlights");
-            [...hlsWthin].forEach(function(h) {h.style.display = "block"});
+            [...hlsWthin].forEach(function(h) {
+                h.style.backgroundColor = initialColors[h.classList[1]];
+                h.style.display = "block";
+            });
             controlCommonWords(w);
-        })
+        });
         var visRange = document.getElementsByClassName("visRange");
         [...visRange].forEach(function(v) {v.style.display = "flex"});
         return;
@@ -407,19 +416,22 @@ function conceptFiles(flag="") {
         if (c.style.opacity != "0.3") {
             var conceptName = c.id.replace("tag_", "");
             var conceptLevel = conceptName.split("_")[0];
-            var conceptColor = cc[conceptName];
+            var conceptColor = conceptColors[conceptName];
             conceptArr.add(conceptName); // cat_preprocessing
             // make all elements related to concepts visable
             // highlights
             [...acrossCol].forEach(function(a) {
                 var hls = a.querySelectorAll("."+conceptName);
                 [...hls].forEach(function(h) {h.style.backgroundColor = conceptColor});
-                controlCommonWords(a, conceptName, flag);
+                controlCommonWords(a, conceptName);
             });
             [...withinCol].forEach(function(w) {
                 var hlsWthin = w.querySelectorAll("."+conceptName);
-                [...hlsWthin].forEach(function(h) {h.style.display = "block"});
-                controlCommonWords(w, conceptName, flag);
+                [...hlsWthin].forEach(function(h) {
+                    h.style.display = "block";
+                    h.style.backgroundColor = conceptColor;
+                });
+                controlCommonWords(w, conceptName);
             });
             // minimaps
             var conceptMarkers = document.getElementsByClassName(conceptName.replace(conceptLevel+"_", "")+"_marker");
@@ -472,13 +484,12 @@ toggleSwitch.addEventListener('change', switchMode, false);
 function switchMode(e) {
     var acrossCol = document.getElementsByClassName("acrossCol"),
         withinCol = document.getElementsByClassName("withinCol");
+    conceptFiles();
     if (e.target.checked) {
-        conceptFiles("across");
         [...acrossCol].forEach(function(a) {a.style.display = "block";});
         [...withinCol].forEach(function(w) {w.style.display = "none";});
     }
     else {
-        conceptFiles("within");
         [...acrossCol].forEach(function(a) {a.style.display = "none";});
         [...withinCol].forEach(function(w) {w.style.display = "block";});
     } 

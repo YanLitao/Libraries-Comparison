@@ -264,10 +264,7 @@ body {
     display: block;
     width: 41rem;
 }
-.w .codes .codeColumns .codeCol .udl {
-    font-weight: 600;
-}
-.w .codes .codeColumns .codeCol .blodFunc {
+.w .codes .codeColumns .codeCol .udls {
     font-weight: 600;
 }
 .w .codeColumns .withinCol {
@@ -289,6 +286,9 @@ body {
 }
 .w .codeColumns .withinCol .smallBlock .highlights {
     display: block;
+}
+.w .codeColumns .withinCol .smallBlock .highlights .blodFunc {
+    font-weight: 600;
 }
 .container .hierBtn {
     position: absolute;

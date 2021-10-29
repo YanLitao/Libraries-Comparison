@@ -21,14 +21,25 @@
                 <div class="tagName">Second Level Concepts</div>
                 <div id="secTagContainer" class="levelTag"></div>
             </div>
-            <div class="switch-btn">
-                Within Library
-                <label class="switch">
-                    <input id="switch" class="switch-check" type="checkbox" checked>
-                    <span class="slider round"></span>
-                </label>
-                Across Library
+            <div id="btns">
+                <div class="switch-btn btns">
+                    Within Library
+                    <label class="switch">
+                        <input id="switch" class="switch-check" type="checkbox" checked>
+                        <span class="slider round"></span>
+                    </label>
+                    Across Library
+                </div>
+                <div class="switch-btn btns">
+                    Hide Common Substrings
+                    <label class="switch">
+                        <input id="showSubstr" class="switch-check" type="checkbox" unchecked>
+                        <span class="slider round"></span>
+                    </label>
+                    Show Common Substrings
+                </div>
             </div>
+            
             <div class="tit">
                 <div class="titles" id="firT">
                     <div class="titName" onclick="switchWithin('fir')">1st Lib</div>

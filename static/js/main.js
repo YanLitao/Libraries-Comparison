@@ -200,6 +200,8 @@ function switchDomain(domain) {
     }
     var blank = document.getElementsByClassName("codeRange");
     [...blank].forEach(function(b) {b.remove()});
+    var smallBlock = document.getElementsByClassName("smallBlock");
+    [...smallBlock].forEach(function(b) {b.remove()});
     //Add codes and distributions
     initialSelection = true;
     getData(domain);
@@ -347,19 +349,16 @@ function scrollElement(event) {
 }
 // within library comparison
 function controlCommonWords(w, name="") {
-    if (initialSelection) {
+    if (document.getElementById('showSubstr').checked) {
+        var udls = w.querySelectorAll("."+name+"_keys");
+        [...udls].forEach(function(u) {u.style.fontWeight = "600"});
+        var blodFuncs = w.querySelectorAll("."+name+"_funcs");
+        [...blodFuncs].forEach(function(b) {b.style.fontWeight = "600"});
+    } else {
         var udls = w.querySelectorAll(".udls");
         [...udls].forEach(function(u) {u.style.fontWeight = "normal"});
         var blodFuncs = w.querySelectorAll(".blodFunc");
         [...blodFuncs].forEach(function(b) {b.style.fontWeight = "normal"});
-    } else {
-        if (document.getElementById('switch').checked) {
-            var udls = w.querySelectorAll("."+name+"_keys");
-            [...udls].forEach(function(u) {u.style.fontWeight = "600"});
-        } else {
-            var blodFuncs = w.querySelectorAll("."+name+"_funcs");
-            [...blodFuncs].forEach(function(b) {b.style.fontWeight = "600"});
-        }
     }
 }
 function conceptFiles() {
@@ -480,17 +479,20 @@ $.getJSON("static/data/nlp_tem.json", function(obj) {
 
 const toggleSwitch = document.getElementById('switch');
 toggleSwitch.addEventListener('change', switchMode, false);
+const substringSwitch = document.getElementById('showSubstr');
+substringSwitch.addEventListener('change', switchMode, false);
     
 function switchMode(e) {
     var acrossCol = document.getElementsByClassName("acrossCol"),
         withinCol = document.getElementsByClassName("withinCol");
     conceptFiles();
-    if (e.target.checked) {
-        [...acrossCol].forEach(function(a) {a.style.display = "block";});
-        [...withinCol].forEach(function(w) {w.style.display = "none";});
-    }
-    else {
-        [...acrossCol].forEach(function(a) {a.style.display = "none";});
-        [...withinCol].forEach(function(w) {w.style.display = "block";});
+    if (e.target.id == "switch") {
+        if (e.target.checked) {
+            [...acrossCol].forEach(function(a) {a.style.display = "block";});
+            [...withinCol].forEach(function(w) {w.style.display = "none";});
+        } else {
+            [...acrossCol].forEach(function(a) {a.style.display = "none";});
+            [...withinCol].forEach(function(w) {w.style.display = "block";});
+        }
     } 
 }

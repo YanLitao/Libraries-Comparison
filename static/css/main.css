@@ -101,6 +101,10 @@ body {
 .w .tags .tag:hover {
     opacity: 1.0 !important;
 }
+.w #btns {
+    width: 50rem;
+    height: 6rem;
+}
 .w .switch-btn {
     width: 50rem;
     height: 3rem;
@@ -231,7 +235,7 @@ body {
     margin: 0rem;
     width: 47rem;
     height: fit-content;
-    padding-bottom: 5rem;
+    padding-bottom: 1rem;
     position: relative;
 }
 .w .codes .codeColumns .codeCol .codeRange .marker {
@@ -265,7 +269,7 @@ body {
     width: 41rem;
 }
 .w .codes .codeColumns .codeCol .udls {
-    font-weight: 600;
+    font-weight: normal;
 }
 .w .codeColumns .withinCol {
     width: 50rem;
@@ -288,7 +292,7 @@ body {
     display: block;
 }
 .w .codeColumns .withinCol .smallBlock .highlights .blodFunc {
-    font-weight: 600;
+    font-weight: normal;
 }
 .container .hierBtn {
     position: absolute;

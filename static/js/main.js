@@ -111,6 +111,7 @@ function genCode(domain) {
             withinBlock.className = "smallBlock";
             withinBlock.id = f+"_within_block";
             withinBlock.innerHTML = data[domain]["within files"][f];
+            /*
             var withinHighlights = withinBlock.querySelectorAll(".highlights");
             var newPre = document.createElement("pre");
             newPre.id = f+"_code_within_pre";
@@ -122,6 +123,7 @@ function genCode(domain) {
             withinBlock.innerHTML = "";
             newPre.appendChild(newCode);
             withinBlock.appendChild(newPre);
+            */
             withinCol.appendChild(withinBlock);
         }
     }
@@ -349,16 +351,30 @@ function scrollElement(event) {
 }
 // within library comparison
 function controlCommonWords(w, name="") {
-    if (document.getElementById('showSubstr').checked) {
-        var udls = w.querySelectorAll("."+name+"_keys");
-        [...udls].forEach(function(u) {u.style.fontWeight = "600"});
-        var blodFuncs = w.querySelectorAll("."+name+"_funcs");
-        [...blodFuncs].forEach(function(b) {b.style.fontWeight = "600"});
+    if (name != "") {
+        var acrossName = "."+name+"_keys",
+            withinName = "."+name+"_funcs";
     } else {
-        var udls = w.querySelectorAll(".udls");
+        var acrossName = ".udls",
+            withinName = ".blodFunc";
+    }
+    if (initialSelection || name == "") {
+        var udls = w.querySelectorAll(acrossName);
         [...udls].forEach(function(u) {u.style.fontWeight = "normal"});
-        var blodFuncs = w.querySelectorAll(".blodFunc");
+        var blodFuncs = w.querySelectorAll(withinName);
         [...blodFuncs].forEach(function(b) {b.style.fontWeight = "normal"});
+        return
+    }
+    if (document.getElementById('showSubstr').checked) {
+        var udls = w.querySelectorAll(acrossName);
+        [...udls].forEach(function(u) {u.style.fontWeight = "600"});
+        var blodFuncs = w.querySelectorAll(withinName);
+        [...blodFuncs].forEach(function(b) {b.style.fontWeight = "normal"});
+    } else {
+        var udls = w.querySelectorAll(acrossName);
+        [...udls].forEach(function(u) {u.style.fontWeight = "normal"});
+        var blodFuncs = w.querySelectorAll(withinName);
+        [...blodFuncs].forEach(function(b) {b.style.fontWeight = "600"});
     }
 }
 function conceptFiles() {
@@ -373,7 +389,7 @@ function conceptFiles() {
             var hlsWthin = a.querySelectorAll(".highlights");
             [...hlsWthin].forEach(function(h) {
                 h.style.backgroundColor = initialColors[h.classList[1]];
-                h.style.display = "block";
+                h.style.display = "inline-block";
             });
             controlCommonWords(a);
         });
@@ -381,7 +397,7 @@ function conceptFiles() {
             var hlsWthin = w.querySelectorAll(".highlights");
             [...hlsWthin].forEach(function(h) {
                 h.style.backgroundColor = initialColors[h.classList[1]];
-                h.style.display = "block";
+                h.style.display = "inline-block";
             });
             controlCommonWords(w);
         });
@@ -393,16 +409,42 @@ function conceptFiles() {
     [...codes].forEach(function(c) {c.style.display = "none"});
     var codesWithin = document.getElementsByClassName("smallBlock");
     [...codesWithin].forEach(function(c) {c.style.display = "none"});
-    [...acrossCol].forEach(function(a) {
-        var hls = a.querySelectorAll(".highlights");
-        [...hls].forEach(function(h) {h.style.backgroundColor = "#fff"});
-        controlCommonWords(a);
-    });
-    [...withinCol].forEach(function(w) {
-        var hlsWthin = w.querySelectorAll(".highlights");
-        [...hlsWthin].forEach(function(h) {h.style.display = "none"});
-        controlCommonWords(w);
-    });
+    if (document.getElementById("switch").checked) {
+        var withinHighlightDisplay = "inline-block";
+        [...acrossCol].forEach(function(a) {
+            var hls = a.querySelectorAll(".highlights");
+            [...hls].forEach(function(h) {
+                h.style.backgroundColor = "#fff";
+                h.style.display = withinHighlightDisplay;
+            });
+            controlCommonWords(a);
+        });
+        [...withinCol].forEach(function(w) {
+            var hlsWthin = w.querySelectorAll(".highlights");
+            [...hlsWthin].forEach(function(h) {
+                h.style.backgroundColor = "#fff";
+                h.style.display = withinHighlightDisplay;
+            });
+            controlCommonWords(w);
+        });
+    } else {
+        var withinHighlightDisplay = "block";
+        [...acrossCol].forEach(function(a) {
+            var hls = a.querySelectorAll(".highlights");
+            [...hls].forEach(function(h) {
+                h.style.backgroundColor = "#fff";
+                h.style.display = "none";
+            });
+            controlCommonWords(a);
+        });
+        [...withinCol].forEach(function(w) {
+            var hlsWthin = w.querySelectorAll(".highlights");
+            [...hlsWthin].forEach(function(h) {
+                h.style.display = "none";
+            });
+            controlCommonWords(w);
+        });
+    }
     var spans = document.getElementsByClassName("markerSpan");
     [...spans].forEach(function(s) {s.style.opacity = "0"});
     var visRange = document.getElementsByClassName("visRange");
@@ -421,13 +463,16 @@ function conceptFiles() {
             // highlights
             [...acrossCol].forEach(function(a) {
                 var hls = a.querySelectorAll("."+conceptName);
-                [...hls].forEach(function(h) {h.style.backgroundColor = conceptColor});
+                [...hls].forEach(function(h) {
+                    h.style.display = withinHighlightDisplay;
+                    h.style.backgroundColor = conceptColor;
+                });
                 controlCommonWords(a, conceptName);
             });
             [...withinCol].forEach(function(w) {
                 var hlsWthin = w.querySelectorAll("."+conceptName);
                 [...hlsWthin].forEach(function(h) {
-                    h.style.display = "block";
+                    h.style.display = withinHighlightDisplay;
                     h.style.backgroundColor = conceptColor;
                 });
                 controlCommonWords(w, conceptName);
@@ -486,13 +531,41 @@ function switchMode(e) {
     var acrossCol = document.getElementsByClassName("acrossCol"),
         withinCol = document.getElementsByClassName("withinCol");
     conceptFiles();
-    if (e.target.id == "switch") {
-        if (e.target.checked) {
-            [...acrossCol].forEach(function(a) {a.style.display = "block";});
-            [...withinCol].forEach(function(w) {w.style.display = "none";});
-        } else {
-            [...acrossCol].forEach(function(a) {a.style.display = "none";});
-            [...withinCol].forEach(function(w) {w.style.display = "block";});
-        }
-    } 
+    if (document.getElementById("showSubstr").checked) {
+        [...acrossCol].forEach(function(a) {a.style.display = "block";});
+        [...withinCol].forEach(function(w) {w.style.display = "none";});
+    } else {
+        [...acrossCol].forEach(function(a) {a.style.display = "none";});
+        [...withinCol].forEach(function(w) {w.style.display = "block";});
+    }
+    var showFlag = document.getElementById("switch").checked,
+        smallBlocks = document.querySelectorAll(".smallBlock"),
+        codeBlocks = document.querySelectorAll(".codeBlock");
+    if (showFlag) {
+        [...smallBlocks].forEach(function(s) {
+            var codes = s.querySelectorAll("code");
+            [...codes].forEach(function(c) {
+                c.style.fontSize = "initial";
+            })
+        });
+        [...codeBlocks].forEach(function(s) {
+            var codes = s.querySelectorAll("code");
+            [...codes].forEach(function(c) {
+                c.style.fontSize = "initial";
+            })
+        });
+    } else {
+        [...smallBlocks].forEach(function(s) {
+            var codes = s.querySelectorAll("code");
+            [...codes].forEach(function(c) {
+                c.style.fontSize = "0rem";
+            })
+        });
+        [...codeBlocks].forEach(function(s) {
+            var codes = s.querySelectorAll("code");
+            [...codes].forEach(function(c) {
+                c.style.fontSize = "0rem";
+            })
+        });
+    }
 }

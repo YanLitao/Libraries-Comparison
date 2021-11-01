@@ -296,6 +296,9 @@ body {
     display: block;
     width: 41rem;
 }
+.w .codes .codeColumns .codeCol .codeRange .codeBlock code .highlights {
+    font-size: initial;
+}
 .w .codes .codeColumns .codeCol .udls {
     font-weight: normal;
 }
@@ -316,8 +319,9 @@ body {
     overflow-y: auto;
     word-wrap: break-word;
 }
-.w .codeColumns .withinCol .smallBlock .highlights {
-    display: block;
+.w .codeColumns .withinCol .smallBlock code .highlights {
+    display: inline-block;
+    font-size: initial;
 }
 .w .codeColumns .withinCol .smallBlock .highlights .blodFunc {
     font-weight: normal;

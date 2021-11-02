@@ -40,7 +40,7 @@ function genHVis(hVis, tem) {
             inside = document.createElement("div");
         out.className = "hVisOut";
         inside.className = "hVisIn";
-        inside.style.width = (tem[n[i]]/30)*9+"rem";
+        inside.style.width = (tem[n[i]]/30)*7+"rem";
         inside.innerText = tem[n[i]];
         out.appendChild(inside);
         hVis.appendChild(out);

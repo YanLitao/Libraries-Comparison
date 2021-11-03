@@ -37,11 +37,19 @@ function genHVis(hVis, tem) {
     const n = ["fir", "sec", "thr"];
     for (var i=0; i<3; i++) {
         var out = document.createElement("div"),
-            inside = document.createElement("div");
+            inside = document.createElement("div"),
+            condition = document.createElement("div");
         out.className = "hVisOut";
         inside.className = "hVisIn";
         inside.style.width = (tem[n[i]]/30)*7+"rem";
-        inside.innerText = tem[n[i]];
+        inside.id = hVis.id +"_" + n[i] + "_origin";
+        condition.className = "conditionVis";
+        condition.style.width = (tem[n[i]]/30)*7+"rem";
+        condition.id = hVis.id +"_" + n[i] + "_condition";
+        if (tem[n[i]] != "0") {
+            condition.innerText = tem[n[i]];
+        }
+        out.appendChild(condition);
         out.appendChild(inside);
         hVis.appendChild(out);
     }
@@ -58,6 +66,7 @@ function genHier(tem) {
             hVis = document.createElement("div");
         hDiv.id = tem[i]['name'];
         nameDiv.className = "hName";
+        hVis.id = tem[i]['name']+"_hVis";
         hVis.className = "hVis";
         if (level == "cat") {
             hDiv.className = "firH hDiv";
@@ -135,34 +144,10 @@ function getData(domain) {
 function showAllFirstLevelConcepts() {
     var viss = document.getElementsByClassName("visRange");
     [...viss].forEach(function(v) {v.style.backgroundColor = "#5d5f5f"});
-    document.getElementById("firTag").innerHTML = "";
-    document.getElementById("secTagContainer").innerHTML = "";
     for (var temp of data[currentDomain]["all templates"]) {
         if (temp.name.split("_")[0]=="cat") {
-            var tag = document.createElement("div");
-            tag.id = "tag_"+temp.name;
-            tag.className = "tag";
-            tag.innerText = temp.name.replace("cat_", "").replace(/_/g, " ");
-            
-            tag.style.backgroundColor = conceptColors[temp.name];
-            document.getElementById("firTag").appendChild(tag);
-            tag.addEventListener('click', clickT, false);
-
-            var secTag = document.createElement("div");
-            secTag.id = "sec_"+tag.id;
-            secTag.className = "levelTag secTag";
-            secTag.style.display = "none";
 
             for (var t of hierarchyConcept[temp.name]) {
-                if (t.split("_")[0] !== "cat") {
-                    var feaTag = document.createElement("div");
-                    feaTag.id = "tag_"+t;
-                    feaTag.innerHTML = t.replace("fea_", "").replace(/_/g, " ");
-                    feaTag.className = "tag";
-                    feaTag.style.backgroundColor = conceptColors[t];
-                    secTag.appendChild(feaTag);
-                    secTag.addEventListener('click', clickT, false);
-                }
                 var acrossCol = document.getElementsByClassName("acrossCol");
                 [...acrossCol].forEach(function(a) {
                     var hls = a.querySelectorAll("."+t);
@@ -179,8 +164,6 @@ function showAllFirstLevelConcepts() {
                     m.style.opacity = "1.0";
                 });
             }
-
-            document.getElementById("secTagContainer").appendChild(secTag);
         }
     }
 }
@@ -239,56 +222,21 @@ function genData(tem) {
     // append last cat to hierarchyConcept
     hierarchyConcept[currentCat] = catArr;
 }
-// tag or hierarchy click functions
-function clickT(event) {
-    if (event.target.id.includes("tag_")) {
-        var tagConcept = event.target.id.replace("tag_", "");
+function clickH(event) {
+    if (event.target.classList.contains("activated")) {
+        event.target.classList.remove("activated");
+        event.target.querySelector(".hName").style.backgroundColor = "transparent";
     } else {
-        var tagConcept = event.target.id;
+        event.target.className += " activated";
+        event.target.querySelector(".hName").style.backgroundColor = conceptColors[event.target.id];
     }
-    
-    if (tagConcept.split("_")[0] == "cat") {
-        var tags = document.querySelectorAll("#firTag > .tag");
-        [...tags].forEach(function(t) {t.style.opacity = "0.3"});
-        document.getElementById("tag_"+tagConcept).style.opacity = "1.0";
-        document.getElementById(tagConcept).style.backgroundColor = "#F1F5F9";
-        var secTags = document.getElementsByClassName("secTag");
-        [...secTags].forEach(function(t) {t.style.display = "none"});
-        document.getElementById("sec_tag_"+tagConcept).style.display = "block";
-    } else {
-        var tags = document.getElementById("secTagContainer").querySelectorAll(".secTag > .tag");
-        if (initialSelection) {
-            [...tags].forEach(function(t) {t.style.opacity = "0.3"});
-            document.getElementById("tag_"+tagConcept).style.opacity = "0.8";
-            document.getElementById(tagConcept).style.backgroundColor = "#F1F5F9";
-            initialSelection = false;
-        } else {
-            if (document.getElementById("tag_"+tagConcept).style.opacity == "0.8") {
-                document.getElementById("tag_"+tagConcept).style.opacity = "0.3";
-                document.getElementById(tagConcept).style.backgroundColor = "#fff";
-                var flag = 0;
-                [...tags].forEach(function(t) {
-                    if (t.style.opacity == "0.8") {
-                        flag = 1;
-                    }
-                });
-                if (flag == 0) {
-                    [...tags].forEach(function(t) {t.style.opacity = "0.8"});
-                    initialSelection = true;
-                }
-            } else {
-                document.getElementById("tag_"+tagConcept).style.opacity = "0.8";
-                document.getElementById(tagConcept).style.backgroundColor = "#F1F5F9";
-            }
-        }
-        conceptFiles();
-    }
+    conceptFiles();
 }
 function addHListener() {
-    var firH = document.getElementsByClassName("firH"),
-        secH = document.getElementsByClassName("secH");
-    [...firH].forEach(function(f) {f.addEventListener('click', clickT, false)});
-    [...secH].forEach(function(f) {f.addEventListener('click', clickT, false)});
+    var secH = document.getElementsByClassName("secH"),
+        firH = document.getElementsByClassName("firH");
+    [...firH].forEach(function(f) {f.addEventListener('click', clickH, false)});
+    [...secH].forEach(function(f) {f.addEventListener('click', clickH, false)});
 }
 function processLineData(domain) {
     for (var i=1; i<31; i++) {
@@ -377,9 +325,53 @@ function controlCommonWords(w, name="") {
         [...blodFuncs].forEach(function(b) {b.style.fontWeight = "600"});
     }
 }
+function updateHVis(fileMatched) {    
+    var conceptFreq = {};
+    for (var f of fileMatched) {
+        var lib = f.slice(0,3);
+        for (var c of data[currentDomain]["file concepts"][f]) {
+            if (!(c in conceptFreq)) {
+                conceptFreq[c] = {"fir": 0, "sec": 0, "thr": 0};
+            }
+            conceptFreq[c][lib] += 1;
+        }
+    }
+    var n = ["fir", "sec", "thr"];
+    for (var i of data[currentDomain]["all templates"]) {
+        if (initialSelection) {
+            for (var l of n) {
+                document.getElementById(i.name+"_hVis_"+l+"_condition").style.width = (i[l]/30)*7+"rem";
+                document.getElementById(i.name+"_hVis_"+l+"_condition").innerText = i[l];
+            }
+            continue;
+        } else if (i.name in conceptFreq) {
+            for (var l in conceptFreq[i.name]) {
+                document.getElementById(i.name+"_hVis_"+l+"_condition").style.width = (conceptFreq[i.name][l]/30)*7+"rem";
+                if (conceptFreq[i.name][l] != "0") {
+                   document.getElementById(i.name+"_hVis_"+l+"_condition").innerText = conceptFreq[i.name][l];
+                } else {
+                    document.getElementById(i.name+"_hVis_"+l+"_condition").innerText = "";
+                }
+            }
+        } else {
+            for (var l of n) {
+                document.getElementById(i.name+"_hVis_"+l+"_condition").style.width = "0rem";
+                document.getElementById(i.name+"_hVis_"+l+"_condition").innerText = "";
+            }
+        }
+    }
+}
 function conceptFiles() {
     var acrossCol = document.getElementsByClassName("acrossCol"),
         withinCol = document.getElementsByClassName("withinCol");
+    var initialSelectionFlag = 0;
+    var concepts = document.getElementsByClassName("secH");
+    [...concepts].forEach(function(c) {if (c.classList.contains("activated")) {initialSelectionFlag = 1}});
+    if (initialSelectionFlag) {
+        initialSelection = false;
+    } else {
+        initialSelection = true;
+    };
     if (initialSelection) {
         var codes = document.getElementsByClassName("codeRange");
         [...codes].forEach(function(c) {c.style.display = "block"});
@@ -452,10 +444,10 @@ function conceptFiles() {
     // get all selected concepts
     var conceptArr = new Set(),
         conceptColor = "#5d5f5f";
-    var concepts = document.getElementById("secTagContainer").querySelectorAll(".secTag > .tag");
+    var concepts = document.getElementsByClassName("secH");
     [...concepts].forEach(function(c) {
-        if (c.style.opacity != "0.3") {
-            var conceptName = c.id.replace("tag_", "");
+        if (c.classList.contains("activated")) {
+            var conceptName = c.id;
             var conceptLevel = conceptName.split("_")[0];
             var conceptColor = conceptColors[conceptName];
             conceptArr.add(conceptName); // cat_preprocessing
@@ -501,6 +493,7 @@ function conceptFiles() {
             }
         }
     }
+    updateHVis(fileMatched);
 }
 // function call
 $.getJSON("static/data/vis_tem.json", function(obj) {

@@ -8,7 +8,38 @@ var currentDomain = "nlp",
     fo = {"nlp": {"fir": [], "sec": [], "thr": []}, "vis": {"fir": [], "sec": [], "thr": []}},
     hierarchyConcept = {},
     lines = {"nlp": {"fir": [], "sec": [], "thr": []}, "vis": {"fir": [], "sec": [], "thr": []}},
-    colorArr = ["#F3B8FF", "#BDE0FE", "#ACDDDE", "#CAF1DE", "#A1E991", "#C5E1A5", "#F8DE7E", "#FFE7C7", "#F7D8BA", "#E69E8F", " #FFC8DD", "#FFAFCC"],
+    colorArr = [
+        "#ced065",
+        "#e7c9ff",
+        "#b8ef8c",
+        "#dfbaeb",
+        "#e4fb8f",
+        "#d8e3ff",
+        "#fcfc8e",
+        "#33fffb",
+        "#ffc385",
+        "#46f3c6",
+        "#ffd3cf",
+        "#74fabc",
+        "#d6c1ca",
+        "#abd46f",
+        "#fff0f8",
+        "#a1d67b",
+        "#9af8ff",
+        "#d1c97c",
+        "#4ddade",
+        "#ffd8ac",
+        "#6fffdf",
+        "#ffedb7",
+        "#73daaf",
+        "#f0ffe8",
+        "#82d99b",
+        "#b4ccc0",
+        "#a8ffbf",
+        "#c3cc8f",
+        "#f2ffc5",
+        "#b2d09b"
+    ],
     conceptColors = {},
     initialColors = {},
     initialSelection = true;
@@ -197,8 +228,7 @@ function switchDomain(domain) {
 }
 function genData(tem) {
     // generate three objects: conceptColors and hierarchyConcept (for hierarchy selections)
-    var colorFlag = 0,
-        catFlag = 1;
+    var colorFlag = 0;
     for (var i=0; i<tem["fir"].length; i++) {
         var concept = Object.keys(tem["fir"][i])[0];
         var level = concept.split("_")[0];
@@ -208,9 +238,7 @@ function genData(tem) {
             }
             var currentCat = concept,
                 catArr = [concept];
-            colorFlag = 0;
-            conceptColors[concept] = colorArr[catFlag];
-            catFlag += 1;
+            conceptColors[concept] = colorArr[colorFlag];
         } else {
             hierarchyConcept[concept] = [currentCat, concept];
             catArr.push(concept);
@@ -219,8 +247,18 @@ function genData(tem) {
         }
         colorFlag += 1;
     }
+    console.log(colorFlag);
     // append last cat to hierarchyConcept
     hierarchyConcept[currentCat] = catArr;
+}
+function removeAll() {
+    var secH = document.getElementsByClassName("secH"),
+        firH = document.getElementsByClassName("firH");
+    [...firH].forEach(function(f) {f.classList.remove("activated")});
+    [...secH].forEach(function(f) {f.classList.remove("activated")});
+    var hNames = document.getElementsByClassName("hName");
+    [...hNames].forEach(function(h) {h.style.backgroundColor = "transparent"});
+    conceptFiles();
 }
 function clickH(event) {
     if (event.target.classList.contains("activated")) {

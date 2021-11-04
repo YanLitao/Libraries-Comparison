@@ -97,6 +97,7 @@ function genHier(tem) {
             hVis = document.createElement("div");
         hDiv.id = tem[i]['name'];
         nameDiv.className = "hName";
+        nameDiv.style.backgroundColor = conceptColors[tem[i]['name']];
         hVis.id = tem[i]['name']+"_hVis";
         hVis.className = "hVis";
         if (level == "cat") {
@@ -151,19 +152,6 @@ function genCode(domain) {
             withinBlock.className = "smallBlock";
             withinBlock.id = f+"_within_block";
             withinBlock.innerHTML = data[domain]["within files"][f];
-            /*
-            var withinHighlights = withinBlock.querySelectorAll(".highlights");
-            var newPre = document.createElement("pre");
-            newPre.id = f+"_code_within_pre";
-            var newCode = document.createElement("code");
-            [...withinHighlights].forEach(function(w) {
-                newCode.appendChild(w);
-            })
-            newCode.className = withinBlock.querySelector("code").className;
-            withinBlock.innerHTML = "";
-            newPre.appendChild(newCode);
-            withinBlock.appendChild(newPre);
-            */
             withinCol.appendChild(withinBlock);
         }
     }
@@ -251,30 +239,48 @@ function genData(tem) {
     // append last cat to hierarchyConcept
     hierarchyConcept[currentCat] = catArr;
 }
-function removeAll() {
-    var secH = document.getElementsByClassName("secH"),
-        firH = document.getElementsByClassName("firH");
-    [...firH].forEach(function(f) {f.classList.remove("activated")});
-    [...secH].forEach(function(f) {f.classList.remove("activated")});
+function removeAll(flag) {
+    var hDiv = document.getElementsByClassName("hDiv");
+    [...hDiv].forEach(function(f) {
+        if (!f.classList.contains("activated")) {
+            f.classList.className += " activated";
+        }
+    });
     var hNames = document.getElementsByClassName("hName");
-    [...hNames].forEach(function(h) {h.style.backgroundColor = "transparent"});
-    conceptFiles();
+    [...hNames].forEach(function(h) {h.style.opacity = "1.0"});
+    initialSelection = true;
+    if (flag) {conceptFiles()};
 }
 function clickH(event) {
     if (event.target.classList.contains("activated")) {
         event.target.classList.remove("activated");
-        event.target.querySelector(".hName").style.backgroundColor = "transparent";
+        event.target.querySelector(".hName").style.opacity = "0.3";
+        var initialSelectionFlag = 0;
+        var concepts = document.getElementsByClassName("secH");
+        [...concepts].forEach(function(c) {if (c.classList.contains("activated")) {initialSelectionFlag = 1}});
+        if (initialSelectionFlag) {
+            initialSelection = false;
+        } else {
+            initialSelection = true;
+            removeAll(false);
+        };
     } else {
+        if (initialSelection) {
+            initialSelection = false;
+            var hDiv = document.getElementsByClassName("hDiv");
+            [...hDiv].forEach(function(h) {h.classList.remove("activated")});
+            var hNames = document.getElementsByClassName("hName");
+            [...hNames].forEach(function(h) {h.style.opacity = "0.3"});
+            console.log("yes");
+        }
         event.target.className += " activated";
-        event.target.querySelector(".hName").style.backgroundColor = conceptColors[event.target.id];
+        event.target.querySelector(".hName").style.opacity = "1.0";
     }
     conceptFiles();
 }
 function addHListener() {
-    var secH = document.getElementsByClassName("secH"),
-        firH = document.getElementsByClassName("firH");
-    [...firH].forEach(function(f) {f.addEventListener('click', clickH, false)});
-    [...secH].forEach(function(f) {f.addEventListener('click', clickH, false)});
+    var hDiv = document.getElementsByClassName("hDiv");
+    [...hDiv].forEach(function(f) {f.addEventListener('click', clickH, false)});
 }
 function processLineData(domain) {
     for (var i=1; i<31; i++) {
@@ -402,14 +408,7 @@ function updateHVis(fileMatched) {
 function conceptFiles() {
     var acrossCol = document.getElementsByClassName("acrossCol"),
         withinCol = document.getElementsByClassName("withinCol");
-    var initialSelectionFlag = 0;
-    var concepts = document.getElementsByClassName("secH");
-    [...concepts].forEach(function(c) {if (c.classList.contains("activated")) {initialSelectionFlag = 1}});
-    if (initialSelectionFlag) {
-        initialSelection = false;
-    } else {
-        initialSelection = true;
-    };
+    
     if (initialSelection) {
         var codes = document.getElementsByClassName("codeRange");
         [...codes].forEach(function(c) {c.style.display = "block"});
@@ -433,6 +432,8 @@ function conceptFiles() {
         });
         var visRange = document.getElementsByClassName("visRange");
         [...visRange].forEach(function(v) {v.style.display = "flex"});
+        removeAll(false);
+        updateHVis([]);
         return;
     }
     var codes = document.getElementsByClassName("codeRange");

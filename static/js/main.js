@@ -43,12 +43,6 @@ var currentDomain = "nlp",
     conceptColors = {},
     initialColors = {},
     initialSelection = true;
-function closeHierarchy() {
-    document.getElementById("menu").style.display = 'none';
-}
-function showHierarchy() {
-    document.getElementById("menu").style.display = 'block';
-}
 function sortFiles(domain) {
     var temp = {"fir": [], "sec": [], "thr": []};
     for (var f in data[domain]["file info"]) {
@@ -72,10 +66,10 @@ function genHVis(hVis, tem) {
             condition = document.createElement("div");
         out.className = "hVisOut";
         inside.className = "hVisIn";
-        inside.style.width = (tem[n[i]]/30)*7+"rem";
+        inside.style.width = (tem[n[i]]/30)*6.5+"rem";
         inside.id = hVis.id +"_" + n[i] + "_origin";
         condition.className = "conditionVis";
-        condition.style.width = (tem[n[i]]/30)*7+"rem";
+        condition.style.width = (tem[n[i]]/30)*6.5+"rem";
         condition.id = hVis.id +"_" + n[i] + "_condition";
         if (tem[n[i]] != "0") {
             condition.innerText = tem[n[i]];
@@ -107,6 +101,10 @@ function genHier(tem) {
             hDiv.className = "secH hDiv";
             nameDiv.innerHTML = "&#8226; "+concept.replace(/_/g, " ");
         }
+        var box = document.createElement("INPUT");
+        box.setAttribute("type", "checkbox");
+        box.className = "conceptBox";
+        hDiv.appendChild(box);
         hDiv.appendChild(nameDiv);
         genHVis(hVis, tem[i]);
         hDiv.appendChild(hVis);
@@ -235,7 +233,6 @@ function genData(tem) {
         }
         colorFlag += 1;
     }
-    console.log(colorFlag);
     // append last cat to hierarchyConcept
     hierarchyConcept[currentCat] = catArr;
 }
@@ -271,7 +268,6 @@ function clickH(event) {
             [...hDiv].forEach(function(h) {h.classList.remove("activated")});
             var hNames = document.getElementsByClassName("hName");
             [...hNames].forEach(function(h) {h.style.opacity = "0.3"});
-            console.log("yes");
         }
         event.target.className += " activated";
         event.target.querySelector(".hName").style.opacity = "1.0";
@@ -384,13 +380,13 @@ function updateHVis(fileMatched) {
     for (var i of data[currentDomain]["all templates"]) {
         if (initialSelection) {
             for (var l of n) {
-                document.getElementById(i.name+"_hVis_"+l+"_condition").style.width = (i[l]/30)*7+"rem";
+                document.getElementById(i.name+"_hVis_"+l+"_condition").style.width = (i[l]/30)*6.5+"rem";
                 document.getElementById(i.name+"_hVis_"+l+"_condition").innerText = i[l];
             }
             continue;
         } else if (i.name in conceptFreq) {
             for (var l in conceptFreq[i.name]) {
-                document.getElementById(i.name+"_hVis_"+l+"_condition").style.width = (conceptFreq[i.name][l]/30)*7+"rem";
+                document.getElementById(i.name+"_hVis_"+l+"_condition").style.width = (conceptFreq[i.name][l]/30)*6.5+"rem";
                 if (conceptFreq[i.name][l] != "0") {
                    document.getElementById(i.name+"_hVis_"+l+"_condition").innerText = conceptFreq[i.name][l];
                 } else {
@@ -404,6 +400,61 @@ function updateHVis(fileMatched) {
             }
         }
     }
+}
+function changeColors(conceptName,  acrossCol, withinCol, withinHighlightDisplay, assignedColor) {
+    var conceptLevel = conceptName.split("_")[0];
+    if (assignedColor) {
+        var conceptColor = assignedColor;
+    } else {
+        var conceptColor = conceptColors[conceptName];
+    }
+    // make all elements related to concepts visable
+    // highlights
+    [...acrossCol].forEach(function(a) {
+        var hls = a.querySelectorAll("."+conceptName);
+        [...hls].forEach(function(h) {
+            h.style.display = withinHighlightDisplay;
+            h.style.backgroundColor = conceptColor;
+        });
+        controlCommonWords(a, conceptName);
+    });
+    [...withinCol].forEach(function(w) {
+        var hlsWthin = w.querySelectorAll("."+conceptName);
+        [...hlsWthin].forEach(function(h) {
+            h.style.display = withinHighlightDisplay;
+            h.style.backgroundColor = conceptColor;
+        });
+        controlCommonWords(w, conceptName);
+    });
+    // minimaps
+    var conceptMarkers = document.getElementsByClassName(conceptName.replace(conceptLevel+"_", "")+"_marker");
+    [...conceptMarkers].forEach(function(c) {
+        c.style.opacity = "1.0";
+        c.style.backgroundColor = conceptColor;
+    })
+}
+function updateConceptRelated(conceptArr, hLevel, acrossCol, withinCol, withinHighlightDisplay) {
+    if (hLevel == 'secH') {
+        var concepts = document.getElementsByClassName("secH");
+        [...concepts].forEach(function(c) {
+            if (c.classList.contains("activated")) {
+                conceptArr.add(c.id);
+                changeColors(c.id, acrossCol, withinCol, withinHighlightDisplay); 
+            }
+        });
+    } else {
+        var firConcepts = document.getElementsByClassName("firH"),
+            concepts = [];
+        [...firConcepts].forEach(function(f) {
+            if (f.classList.contains("activated")) {
+                conceptArr.add(f.id);
+                hierarchyConcept[f.id].forEach(function(c) {
+                    changeColors(c, acrossCol, withinCol, withinHighlightDisplay, conceptColors[f.id]);
+                })
+            }
+        })       
+    } 
+    return conceptArr;
 }
 function conceptFiles() {
     var acrossCol = document.getElementsByClassName("acrossCol"),
@@ -481,41 +532,10 @@ function conceptFiles() {
     var visRange = document.getElementsByClassName("visRange");
     [...visRange].forEach(function(v) {v.style.display = "none";});
     // get all selected concepts
-    var conceptArr = new Set(),
-        conceptColor = "#5d5f5f";
-    var concepts = document.getElementsByClassName("secH");
-    [...concepts].forEach(function(c) {
-        if (c.classList.contains("activated")) {
-            var conceptName = c.id;
-            var conceptLevel = conceptName.split("_")[0];
-            var conceptColor = conceptColors[conceptName];
-            conceptArr.add(conceptName); // cat_preprocessing
-            // make all elements related to concepts visable
-            // highlights
-            [...acrossCol].forEach(function(a) {
-                var hls = a.querySelectorAll("."+conceptName);
-                [...hls].forEach(function(h) {
-                    h.style.display = withinHighlightDisplay;
-                    h.style.backgroundColor = conceptColor;
-                });
-                controlCommonWords(a, conceptName);
-            });
-            [...withinCol].forEach(function(w) {
-                var hlsWthin = w.querySelectorAll("."+conceptName);
-                [...hlsWthin].forEach(function(h) {
-                    h.style.display = withinHighlightDisplay;
-                    h.style.backgroundColor = conceptColor;
-                });
-                controlCommonWords(w, conceptName);
-            });
-            // minimaps
-            var conceptMarkers = document.getElementsByClassName(conceptName.replace(conceptLevel+"_", "")+"_marker");
-            [...conceptMarkers].forEach(function(c) {
-                c.style.opacity = "1.0";
-                c.style.backgroundColor = conceptColor;
-            })
-        }
-    });
+    var conceptArr = new Set();
+    conceptArr = updateConceptRelated(conceptArr, "firH", acrossCol, withinCol, withinHighlightDisplay);   
+    conceptArr = updateConceptRelated(conceptArr, "secH", acrossCol, withinCol, withinHighlightDisplay);
+    console.log(conceptArr);
     // filter the files
     var fileMatched = [];
     for (var f in data[currentDomain]["file concepts"]) {
@@ -525,40 +545,10 @@ function conceptFiles() {
             document.getElementById(f).style.display = "block";
             document.getElementById(f+"_within_block").style.display = "block";
             document.getElementById(f.replace("_", "")+"vis").style.display = "flex";
-            if (conceptArr.size == 1) {
-                document.getElementById(f.replace("_", "")+"vis").style.backgroundColor = conceptColor;
-            } else {
-                document.getElementById(f.replace("_", "")+"vis").style.backgroundColor = "#5d5f5f";
-            }
         }
     }
     updateHVis(fileMatched);
-}
-// function call
-$.getJSON("static/data/vis_tem.json", function(obj) {
-    data["vis"] = obj;
-    getData("vis");
-    genData(data["vis"]["api templates"]);
-    sortFiles("vis");
-    processLineData("vis");
-});
-// interface will show the NLP domain as default
-$.getJSON("static/data/nlp_tem.json", function(obj) {
-    data["nlp"] = obj;
-    getData("nlp");
-    genData(data["nlp"]["api templates"]);
-    sortFiles("nlp");
-    switchDomain("nlp");
-    addHListener();
-    processLineData("nlp");
-    genLineVis("nlp");
-});
-
-const toggleSwitch = document.getElementById('switch');
-toggleSwitch.addEventListener('change', switchMode, false);
-const substringSwitch = document.getElementById('showSubstr');
-substringSwitch.addEventListener('change', switchMode, false);
-    
+}    
 function switchMode(e) {
     var acrossCol = document.getElementsByClassName("acrossCol"),
         withinCol = document.getElementsByClassName("withinCol");
@@ -601,3 +591,26 @@ function switchMode(e) {
         });
     }
 }
+// function call
+$.getJSON("static/data/vis_tem.json", function(obj) {
+    data["vis"] = obj;
+    getData("vis");
+    genData(data["vis"]["api templates"]);
+    sortFiles("vis");
+    processLineData("vis");
+    // interface will show the NLP domain as default
+    $.getJSON("static/data/nlp_tem.json", function(obj) {
+        data["nlp"] = obj;
+        getData("nlp");
+        genData(data["nlp"]["api templates"]);
+        sortFiles("nlp");
+        switchDomain("nlp");
+        addHListener();
+        processLineData("nlp");
+        genLineVis("nlp");
+        const toggleSwitch = document.getElementById('switch');
+        toggleSwitch.addEventListener('change', switchMode, false);
+        const substringSwitch = document.getElementById('showSubstr');
+        substringSwitch.addEventListener('change', switchMode, false);
+    });
+});

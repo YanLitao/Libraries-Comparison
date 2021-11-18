@@ -47,7 +47,7 @@
 h1 {
     font-family: Verdana,Geneva,sans-serif; 
     line-height: 2;
-    font-size: 3rem;
+    font-size: 2.3rem;
     font-weight: 600;
 }
 h2 { 
@@ -73,15 +73,14 @@ body {
 .w {
     width: 130rem;
     margin: 0rem 0rem auto 40rem;
-}
-.w .logo {
-    width: 130rem;
-    height: 9rem;
-    padding-top: 3rem;
+    overflow: hidden;
 }
 .w #btns {
-    width: 50rem;
-    height: 6rem;
+    width: 100rem;
+    height: 3rem;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3rem;
 }
 .w .switch-btn {
     width: 50rem;
@@ -196,7 +195,7 @@ body {
 }
 .w .codes {
     width: 130rem;
-    height: 62rem;
+    height: 75rem;
     margin-top: 1rem;
     display: flex;
     justify-content: space-between;
@@ -204,11 +203,11 @@ body {
 }
 .w .codes .codeColumns {
     width: 43rem;
-    height: 62rem;
+    height: 75rem;
 }
 .w .codes .codeColumns .codeCol {
     width: 43rem;
-    height: 62rem;
+    height: 75rem;
     overflow-y: auto;
 }
 .w .codes .codeColumns .codeCol .codeRange {
@@ -309,7 +308,12 @@ body {
 }
 .container .menu .menuW {
     width: 36rem;
-    margin: 12rem 1rem;
+    margin: 0rem 1rem;
+}
+.container .menu .menuW .logo {
+    width: 36rem;
+    height: 9rem;
+    padding-top: 3rem;
 }
 .container .menu .menuW .menuTop {
     width: 36rem;
@@ -398,7 +402,7 @@ body {
 }
 .container .menu .menuW .hierarchy {
     width: 35rem;
-    height: 58rem;
+    height: 60rem;
     margin: auto 0.5rem;
 }
 .container .menu .menuW .hierarchy .hDiv {
@@ -415,6 +419,12 @@ body {
 }
 .container .menu .menuW .hierarchy .hDiv:hover {
     background-color: #F1F5F9 !important; 
+}
+.container .menu .menuW .hierarchy .hDiv .conceptBox {
+    float: left;
+    width: 0.8rem;
+    height: 0.8rem;
+    margin: 0.6rem 0rem;
 }
 .container .menu .menuW .hierarchy .hName {
     box-sizing: border-box;
@@ -433,7 +443,7 @@ body {
 .container .menu .menuW .hierarchy .hVis {
     box-sizing: border-box;
     padding-right: 0.2rem;
-    width: 21rem;
+    width: 19.5rem;
     height: 2rem;
     float: right;
     display: flex;
@@ -442,7 +452,7 @@ body {
     pointer-events:none
 }
 .container .menu .menuW .hierarchy .hVis .hVisOut {
-    width: 7rem;
+    width: 6.5rem;
     height: 1.2rem;
     position: relative;
 }

@@ -239,8 +239,8 @@ function genData(tem) {
 function removeAll(flag) {
     var hDiv = document.getElementsByClassName("hDiv");
     [...hDiv].forEach(function(f) {
-        if (!f.classList.contains("activated")) {
-            f.classList.className += " activated";
+        if (f.classList.contains("activated")) {
+            f.classList.remove("activated");
         }
     });
     var hNames = document.getElementsByClassName("hName");
@@ -251,12 +251,13 @@ function removeAll(flag) {
 function clickH(event) {
     if (event.target.classList.contains("activated")) {
         event.target.classList.remove("activated");
-        event.target.querySelector(".hName").style.opacity = "0.3";
+        //event.target.querySelector(".hName").style.opacity = "0.3";
         var initialSelectionFlag = 0;
         var concepts = document.getElementsByClassName("secH");
         [...concepts].forEach(function(c) {if (c.classList.contains("activated")) {initialSelectionFlag = 1}});
         if (initialSelectionFlag) {
             initialSelection = false;
+            event.target.querySelector(".conceptBox").checked = false;
         } else {
             initialSelection = true;
             removeAll(false);
@@ -266,11 +267,12 @@ function clickH(event) {
             initialSelection = false;
             var hDiv = document.getElementsByClassName("hDiv");
             [...hDiv].forEach(function(h) {h.classList.remove("activated")});
-            var hNames = document.getElementsByClassName("hName");
-            [...hNames].forEach(function(h) {h.style.opacity = "0.3"});
+            //var hNames = document.getElementsByClassName("hName");
+            //[...hNames].forEach(function(h) {h.style.opacity = "0.3"});
         }
+        event.target.querySelector(".conceptBox").checked = true;
         event.target.className += " activated";
-        event.target.querySelector(".hName").style.opacity = "1.0";
+        //event.target.querySelector(".hName").style.opacity = "1.0";
     }
     conceptFiles();
 }
@@ -397,6 +399,7 @@ function updateHVis(fileMatched) {
             for (var l of n) {
                 document.getElementById(i.name+"_hVis_"+l+"_condition").style.width = "0rem";
                 document.getElementById(i.name+"_hVis_"+l+"_condition").innerText = "";
+                document.getElementById(i.name).querySelector(".hName").style.opacity = "0.3";
             }
         }
     }
@@ -461,6 +464,8 @@ function conceptFiles() {
         withinCol = document.getElementsByClassName("withinCol");
     
     if (initialSelection) {
+        var conceptBoxs = document.getElementsByClassName("conceptBox");
+        [...conceptBoxs].forEach(function(c) {c.checked = false});
         var codes = document.getElementsByClassName("codeRange");
         [...codes].forEach(function(c) {c.style.display = "block"});
         var codesWithin = document.getElementsByClassName("smallBlock");
@@ -535,7 +540,6 @@ function conceptFiles() {
     var conceptArr = new Set();
     conceptArr = updateConceptRelated(conceptArr, "firH", acrossCol, withinCol, withinHighlightDisplay);   
     conceptArr = updateConceptRelated(conceptArr, "secH", acrossCol, withinCol, withinHighlightDisplay);
-    console.log(conceptArr);
     // filter the files
     var fileMatched = [];
     for (var f in data[currentDomain]["file concepts"]) {

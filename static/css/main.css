@@ -4,32 +4,37 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 /* Change the screen size to use different css */
-@media only screen and (min-width: 1000px) and (max-width: 1299px) {
+@media only screen and (min-width: 1000px) and (max-width: 1249px) {
+    html {
+        font-size: 7px;
+    }
+}
+@media only screen and (min-width: 1250px) and (max-width: 1499px) {
     html {
         font-size: 8px;
     }
 }
-@media only screen and (min-width: 1300px) and (max-width: 1499px) {
+@media only screen and (min-width: 1500px) and (max-width: 1699px) {
     html {
         font-size: 9px;
     }
 }
-@media only screen and (min-width: 1500px) and (max-width: 1699px) {
+@media only screen and (min-width: 1700px) and (max-width: 1849px) {
     html {
-        font-size: 10px;
+        font-size: 10px;    
     }
 }
-@media only screen and (min-width: 1700px) and (max-width: 1899px) {
+@media only screen and (min-width: 1850px) and (max-width: 2049px) {
     html {
         font-size: 11px;    
     }
 }
-@media only screen and (min-width: 1900px) and (max-width: 2099px) {
+@media only screen and (min-width: 2050px) and (max-width: 2199px) {
     html {
         font-size: 12px;    
     }
 }
-@media only screen and (min-width: 2100px) and (max-width: 2299px) {
+@media only screen and (min-width: 2200px) and (max-width: 2299px) {
     html {
         font-size: 13px;    
     }
@@ -66,7 +71,8 @@ body {
     background-color: #F1F5F9;
 }
 .container {
-    width: 170rem;
+    width: 100%;
+    height: 100%;
     position: relative;
 }
 /* .w is the main part of each page, that is, the center of the page */
@@ -83,12 +89,15 @@ body {
     margin-top: 3rem;
 }
 .w .switch-btn {
-    width: 50rem;
+    width: 45rem;
     height: 3rem;
     line-height: 2rem;
     font-family: sans-serif; 
     font-size: 1.2rem; 
     font-weight: 100;
+}
+.w #btns #highlightBtn {
+    width: 35rem;
 }
 .w .switch-btn .switch {
     margin: 1rem 1.5rem;
@@ -195,7 +204,7 @@ body {
 }
 .w .codes {
     width: 130rem;
-    height: 75rem;
+    height: 83rem;
     margin-top: 1rem;
     display: flex;
     justify-content: space-between;
@@ -203,11 +212,11 @@ body {
 }
 .w .codes .codeColumns {
     width: 43rem;
-    height: 75rem;
+    height: 83rem;
 }
 .w .codes .codeColumns .codeCol {
     width: 43rem;
-    height: 75rem;
+    height: 83rem;
     overflow-y: auto;
 }
 .w .codes .codeColumns .codeCol .codeRange {
@@ -240,23 +249,28 @@ body {
     padding: 2rem;
     border-radius: 1rem;
     background-color: #fff;
-    overflow-y: auto;
-    word-wrap: break-word;
+    overflow-y: hidden;
+    overflow-wrap: break-word;
 }
 .w .codes .codeColumns .codeCol code {
     display: block;
-    width: 41rem;
+    width: 38rem;
     font-size: initial;
+    overflow-wrap: break-word;
+    overflow-x: hidden;
 }
 .w .codes .codeColumns .codeCol .codeRange .codeBlock code .highlights {
     font-size: initial;
+    font-family: monospace;
+    overflow-wrap: break-word;
 }
 .w .codes .codeColumns .codeCol .udls {
     font-weight: normal;
+    font-family: monospace;
 }
 .w .codeColumns .withinCol {
     width: 43rem;
-    height: 62rem;
+    height: 83rem;
     overflow-y: auto;
     display: none;
 }
@@ -268,15 +282,22 @@ body {
     margin-bottom: 1rem;
     border-radius: 1rem;
     background-color: #fff;
-    overflow-y: auto;
-    word-wrap: break-word;
+    overflow-y: hidden;
+    overflow-wrap: break-word;
 }
 .w .codeColumns .withinCol .smallBlock code .highlights {
     display: inline-block;
     font-size: initial;
+    font-family: monospace;
+    overflow-wrap: break-word;
 }
 .w .codeColumns .withinCol .smallBlock .highlights .blodFunc {
     font-weight: normal;
+    font-family: monospace;
+}
+.w code {
+    font-family: monospace;
+    overflow-wrap: break-word;
 }
 .container .hierBtn {
     position: absolute;

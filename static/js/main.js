@@ -79,6 +79,9 @@ function genHVis(hVis, tem) {
         hVis.appendChild(out);
     }
 }
+function clickBox(event) {
+    $('#'+event.target.id.replace("_box", "")).trigger('click');
+}
 function genHier(tem) {
     //Generate hierarchy from json
     var hierDiv = document.getElementById("hierarchy");
@@ -94,16 +97,18 @@ function genHier(tem) {
         nameDiv.style.backgroundColor = conceptColors[tem[i]['name']];
         hVis.id = tem[i]['name']+"_hVis";
         hVis.className = "hVis";
+        var box = document.createElement("INPUT");
+        box.setAttribute("type", "checkbox");
+        box.className = "conceptBox";
+        box.id = hDiv.id+"_box";
         if (level == "cat") {
+            box.checked = true;
             hDiv.className = "firH hDiv";
             nameDiv.innerText = concept.replace(/_/g, " ");
         } else {
             hDiv.className = "secH hDiv";
             nameDiv.innerHTML = "&#8226; "+concept.replace(/_/g, " ");
         }
-        var box = document.createElement("INPUT");
-        box.setAttribute("type", "checkbox");
-        box.className = "conceptBox";
         hDiv.appendChild(box);
         hDiv.appendChild(nameDiv);
         genHVis(hVis, tem[i]);
@@ -246,18 +251,26 @@ function removeAll(flag) {
     var hNames = document.getElementsByClassName("hName");
     [...hNames].forEach(function(h) {h.style.opacity = "1.0"});
     initialSelection = true;
+    var firConcepts = document.getElementsByClassName("firH");
+    [...firConcepts].forEach(function(f) {
+        f.querySelector(".conceptBox").checked = true;
+    })
     if (flag) {conceptFiles()};
 }
 function clickH(event) {
-    if (event.target.classList.contains("activated")) {
-        event.target.classList.remove("activated");
-        //event.target.querySelector(".hName").style.opacity = "0.3";
+    if (event.target.classList.contains("hDiv")) {
+        var t = event.target;
+    } else {
+        var t = event.target.parentNode;
+    }
+    if (t.classList.contains("activated")) {
+        t.classList.remove("activated");
         var initialSelectionFlag = 0;
         var concepts = document.getElementsByClassName("secH");
         [...concepts].forEach(function(c) {if (c.classList.contains("activated")) {initialSelectionFlag = 1}});
         if (initialSelectionFlag) {
             initialSelection = false;
-            event.target.querySelector(".conceptBox").checked = false;
+            t.querySelector(".conceptBox").checked = false;
         } else {
             initialSelection = true;
             removeAll(false);
@@ -270,9 +283,8 @@ function clickH(event) {
             //var hNames = document.getElementsByClassName("hName");
             //[...hNames].forEach(function(h) {h.style.opacity = "0.3"});
         }
-        event.target.querySelector(".conceptBox").checked = true;
-        event.target.className += " activated";
-        //event.target.querySelector(".hName").style.opacity = "1.0";
+        t.querySelector(".conceptBox").checked = true;
+        t.className += " activated";
     }
     conceptFiles();
 }

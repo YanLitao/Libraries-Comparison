@@ -258,6 +258,7 @@ body {
     font-size: initial;
     overflow-wrap: break-word;
     overflow-x: hidden;
+    font-size: 1rem;
 }
 .w .codes .codeColumns .codeCol .codeRange .codeBlock code .highlights {
     font-size: initial;
@@ -298,6 +299,7 @@ body {
 .w code {
     font-family: monospace;
     overflow-wrap: break-word;
+    font-size: 1rem;
 }
 .container .hierBtn {
     position: absolute;

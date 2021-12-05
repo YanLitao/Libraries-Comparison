@@ -39,7 +39,7 @@ class stats():
     
 
 if __name__ == "__main__":
-    dir = "./vis_tem.json"
+    dir = "./all_tem.json"
     file_return = stats(dir)
     data = {
         "api templates": file_return.api_templates, 

@@ -6,27 +6,27 @@
 /* Change the screen size to use different css */
 @media only screen and (min-width: 1000px) and (max-width: 1249px) {
     html {
-        font-size: 7px;
+        font-size: 6.5px;
     }
 }
 @media only screen and (min-width: 1250px) and (max-width: 1499px) {
     html {
-        font-size: 8px;
+        font-size: 7.5px;
     }
 }
 @media only screen and (min-width: 1500px) and (max-width: 1699px) {
     html {
-        font-size: 9px;
+        font-size: 8.5px;
     }
 }
 @media only screen and (min-width: 1700px) and (max-width: 1849px) {
     html {
-        font-size: 10px;    
+        font-size: 9.5px;    
     }
 }
 @media only screen and (min-width: 1850px) and (max-width: 2049px) {
     html {
-        font-size: 11px;    
+        font-size: 10.5px;    
     }
 }
 @media only screen and (min-width: 2050px) and (max-width: 2199px) {
@@ -204,7 +204,7 @@ body {
 }
 .w .codes {
     width: 130rem;
-    height: 83rem;
+    height: 75rem;
     margin-top: 1rem;
     display: flex;
     justify-content: space-between;
@@ -212,12 +212,13 @@ body {
 }
 .w .codes .codeColumns {
     width: 43rem;
-    height: 83rem;
+    height: 75rem;
 }
 .w .codes .codeColumns .codeCol {
     width: 43rem;
-    height: 83rem;
+    height: 75rem;
     overflow-y: auto;
+    overflow-x: hidden;
 }
 .w .codes .codeColumns .codeCol .codeRange {
     margin: 0rem;
@@ -255,13 +256,12 @@ body {
 .w .codes .codeColumns .codeCol code {
     display: block;
     width: 38rem;
-    font-size: initial;
+    font-size: 1rem;
     overflow-wrap: break-word;
     overflow-x: hidden;
-    font-size: 1rem;
 }
 .w .codes .codeColumns .codeCol .codeRange .codeBlock code .highlights {
-    font-size: initial;
+    font-size: 1rem;
     font-family: monospace;
     overflow-wrap: break-word;
 }
@@ -271,12 +271,12 @@ body {
 }
 .w .codeColumns .withinCol {
     width: 43rem;
-    height: 83rem;
+    height: fit-content;
     overflow-y: auto;
     display: none;
 }
 .w .codeColumns .withinCol .smallBlock {
-    width: 41rem;
+    width: 42rem;
     height: fit-content;
     box-sizing: border-box;
     padding: 2rem;
@@ -285,10 +285,11 @@ body {
     background-color: #fff;
     overflow-y: hidden;
     overflow-wrap: break-word;
+    font-size: 1rem;
 }
 .w .codeColumns .withinCol .smallBlock code .highlights {
     display: inline-block;
-    font-size: initial;
+    font-size: 1rem;
     font-family: monospace;
     overflow-wrap: break-word;
 }
@@ -447,6 +448,7 @@ body {
     width: 0.8rem;
     height: 0.8rem;
     margin: 0.6rem 0rem;
+    margin-right: 0.1rem;
 }
 .container .menu .menuW .hierarchy .hName {
     box-sizing: border-box;

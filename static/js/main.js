@@ -102,7 +102,6 @@ function genHier(tem) {
         box.className = "conceptBox";
         box.id = hDiv.id+"_box";
         if (level == "cat") {
-            box.checked = true;
             hDiv.className = "firH hDiv";
             nameDiv.innerText = concept.replace(/_/g, " ");
         } else {
@@ -251,10 +250,6 @@ function removeAll(flag) {
     var hNames = document.getElementsByClassName("hName");
     [...hNames].forEach(function(h) {h.style.opacity = "1.0"});
     initialSelection = true;
-    var firConcepts = document.getElementsByClassName("firH");
-    [...firConcepts].forEach(function(f) {
-        f.querySelector(".conceptBox").checked = true;
-    })
     if (flag) {conceptFiles()};
 }
 function clickH(event) {
@@ -346,7 +341,7 @@ function scrollElement(event) {
     [...codes].forEach(function(c) {
         var elementTop = c.getBoundingClientRect().top,
             elementBottom = c.getBoundingClientRect().bottom;
-        if ((visableTop <= elementTop && elementTop < visableBottom) || (visableTop < elementBottom && elementBottom < visableBottom)) {
+        if ((visableTop <= elementTop && elementTop < visableBottom) || (visableTop < elementBottom && elementBottom < visableBottom) || (elementTop < visableTop && visableBottom < elementBottom)) {
             document.getElementById(c.id.replace("_", "")+"vis").style.opacity = "1.0";
         }
     });
@@ -416,6 +411,22 @@ function updateHVis(fileMatched) {
         }
     }
 }
+function resetHighlights(w, withinHighlightDisplay, conceptName="highlights", conceptColor="none") {
+    var hlsWthin = w.querySelectorAll("."+conceptName);
+    [...hlsWthin].forEach(function(h) {
+        if (conceptColor=="none") {
+            h.style.backgroundColor = initialColors[h.classList[1]];
+        } else {
+            h.style.backgroundColor = conceptColor;
+        }
+        h.style.display = withinHighlightDisplay;
+    });
+    if (conceptName == "highlights") {
+        controlCommonWords(w);
+    } else {
+        controlCommonWords(w, conceptName);
+    }
+}
 function changeColors(conceptName,  acrossCol, withinCol, withinHighlightDisplay, assignedColor) {
     var conceptLevel = conceptName.split("_")[0];
     if (assignedColor) {
@@ -425,22 +436,8 @@ function changeColors(conceptName,  acrossCol, withinCol, withinHighlightDisplay
     }
     // make all elements related to concepts visable
     // highlights
-    [...acrossCol].forEach(function(a) {
-        var hls = a.querySelectorAll("."+conceptName);
-        [...hls].forEach(function(h) {
-            h.style.display = withinHighlightDisplay;
-            h.style.backgroundColor = conceptColor;
-        });
-        controlCommonWords(a, conceptName);
-    });
-    [...withinCol].forEach(function(w) {
-        var hlsWthin = w.querySelectorAll("."+conceptName);
-        [...hlsWthin].forEach(function(h) {
-            h.style.display = withinHighlightDisplay;
-            h.style.backgroundColor = conceptColor;
-        });
-        controlCommonWords(w, conceptName);
-    });
+    [...acrossCol].forEach(function(a) {resetHighlights(a, withinHighlightDisplay, conceptName, conceptColor)});
+    [...withinCol].forEach(function(w) {resetHighlights(w, withinHighlightDisplay, conceptName, conceptColor)});
     // minimaps
     var conceptMarkers = document.getElementsByClassName(conceptName.replace(conceptLevel+"_", "")+"_marker");
     [...conceptMarkers].forEach(function(c) {
@@ -482,22 +479,8 @@ function conceptFiles() {
         [...codes].forEach(function(c) {c.style.display = "block"});
         var codesWithin = document.getElementsByClassName("smallBlock");
         [...codesWithin].forEach(function(c) {c.style.display = "block"});
-        [...acrossCol].forEach(function(a) {
-            var hlsWthin = a.querySelectorAll(".highlights");
-            [...hlsWthin].forEach(function(h) {
-                h.style.backgroundColor = initialColors[h.classList[1]];
-                h.style.display = "inline-block";
-            });
-            controlCommonWords(a);
-        });
-        [...withinCol].forEach(function(w) {
-            var hlsWthin = w.querySelectorAll(".highlights");
-            [...hlsWthin].forEach(function(h) {
-                h.style.backgroundColor = initialColors[h.classList[1]];
-                h.style.display = "inline-block";
-            });
-            controlCommonWords(w);
-        });
+        [...acrossCol].forEach(function(a) {resetHighlights(a, "inline-block")});
+        [...withinCol].forEach(function(w) {resetHighlights(w, "block")});
         var visRange = document.getElementsByClassName("visRange");
         [...visRange].forEach(function(v) {v.style.display = "flex"});
         removeAll(false);
@@ -510,39 +493,14 @@ function conceptFiles() {
     [...codesWithin].forEach(function(c) {c.style.display = "none"});
     if (document.getElementById("switch").checked) {
         var withinHighlightDisplay = "inline-block";
-        [...acrossCol].forEach(function(a) {
-            var hls = a.querySelectorAll(".highlights");
-            [...hls].forEach(function(h) {
-                h.style.backgroundColor = "#fff";
-                h.style.display = withinHighlightDisplay;
-            });
-            controlCommonWords(a);
-        });
-        [...withinCol].forEach(function(w) {
-            var hlsWthin = w.querySelectorAll(".highlights");
-            [...hlsWthin].forEach(function(h) {
-                h.style.backgroundColor = "#fff";
-                h.style.display = withinHighlightDisplay;
-            });
-            controlCommonWords(w);
-        });
+        [...acrossCol].forEach(function(a) {resetHighlights(a, withinHighlightDisplay)});
+        [...withinCol].forEach(function(w) {resetHighlights(w, withinHighlightDisplay)});
     } else {
         var withinHighlightDisplay = "block";
-        [...acrossCol].forEach(function(a) {
-            var hls = a.querySelectorAll(".highlights");
-            [...hls].forEach(function(h) {
-                h.style.backgroundColor = "#fff";
-                h.style.display = "none";
-            });
-            controlCommonWords(a);
-        });
-        [...withinCol].forEach(function(w) {
-            var hlsWthin = w.querySelectorAll(".highlights");
-            [...hlsWthin].forEach(function(h) {
-                h.style.display = "none";
-            });
-            controlCommonWords(w);
-        });
+        [...acrossCol].forEach(function(a) {resetHighlights(a, withinHighlightDisplay)});
+        [...withinCol].forEach(function(w) {resetHighlights(w, withinHighlightDisplay)});
+        var markers = document.getElementsByClassName("marker");
+        [...markers].forEach(function(m) {m.style.opacity = "0"});
     }
     var spans = document.getElementsByClassName("markerSpan");
     [...spans].forEach(function(s) {s.style.opacity = "0"});

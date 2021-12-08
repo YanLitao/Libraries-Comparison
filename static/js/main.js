@@ -124,7 +124,7 @@ function genCode(domain) {
             codeRange.className = "codeRange";
             codeRange.innerHTML = data[domain]["labeled files"][f];
             codeRange.id = f;
-
+            
             var codeMarker = document.createElement("div");
             codeMarker.className = "marker";
             codeRange.appendChild(codeMarker);
@@ -541,13 +541,13 @@ function switchMode(e) {
         [...smallBlocks].forEach(function(s) {
             var codes = s.querySelectorAll("code");
             [...codes].forEach(function(c) {
-                c.style.fontSize = "initial";
+                c.style.fontSize = "1rem";
             })
         });
         [...codeBlocks].forEach(function(s) {
             var codes = s.querySelectorAll("code");
             [...codes].forEach(function(c) {
-                c.style.fontSize = "initial";
+                c.style.fontSize = "1rem";
             })
         });
     } else {

@@ -72,32 +72,33 @@ body {
 }
 .container {
     width: 100%;
-    height: 100%;
+    height: 100vh;
     position: relative;
+    overflow: hidden;
 }
 /* .w is the main part of each page, that is, the center of the page */
 .w {
-    width: 130rem;
-    margin: 0rem 0rem auto 40rem;
+    width: 75%;
+    height: 100%;
+    margin: 0 0 auto 25%;
     overflow: hidden;
 }
 .w #btns {
-    width: 100rem;
-    height: 3rem;
+    width: 100%;
+    height: 3.3%;
     display: flex;
-    justify-content: space-between;
-    margin-top: 3rem;
+    margin-top: 3.3%;
 }
-.w .switch-btn {
-    width: 45rem;
-    height: 3rem;
+.w #btns .switch-btn {
+    width: 40%;
+    height: 100%;
     line-height: 2rem;
     font-family: sans-serif; 
     font-size: 1.2rem; 
     font-weight: 100;
 }
 .w #btns #highlightBtn {
-    width: 35rem;
+    width: 35%;
 }
 .w .switch-btn .switch {
     margin: 1rem 1.5rem;
@@ -151,20 +152,20 @@ body {
     border-radius: 50%;
 }
 .w .tit {
-    width: 130rem;
-    height: 8rem;
+    width: 100%;
+    height: 9%;
     display: flex;
     justify-content: space-between;
 }
 .w .tit .titles {
-    width: 42rem;
-    height: 8rem;
+    width: 32.3%;
+    height: 100%;
     position: relative;
 }
 .w .tit .titles .titName {
     float: left;
-    width: 8rem;
-    height: 8rem;
+    width: 20%;
+    height: 100%;
     font-family: sans-serif; 
     font-size: 2.0rem; 
     font-weight: 100; 
@@ -174,9 +175,9 @@ body {
     position: absolute;
     transform: rotate(-90deg);
     height: 1rem;
-    width: 8rem;
-    top: 3.5rem;
-    right: -2rem;
+    width: 20%;
+    bottom: 4rem;
+    right: -8%;
     text-align: start;
     font-family: sans-serif; 
     font-size: 1.0rem; 
@@ -185,15 +186,15 @@ body {
 }
 .w .tit .titles .vis {
     float: left;
-    width: 30rem;
-    height: 8rem;
+    width: 75%;
+    height: 100%;
     display: flex;
     justify-content: space-around;
     align-items: flex-end;
 }
 .w .tit .titles .vis .visRange {
-    width: 0.8rem;
-    height: 8rem;
+    width: 2.7%;
+    height: 100%;
     border-radius: 0.2rem;
     background-color: #5d5f5f;
     opacity: 0.8;
@@ -203,26 +204,26 @@ body {
     opacity: 1.0;
 }
 .w .codes {
-    width: 130rem;
-    height: 75rem;
+    width: 100%;
+    height: 83%;
     margin-top: 1rem;
     display: flex;
     justify-content: space-between;
     overflow-y: auto;
 }
 .w .codes .codeColumns {
-    width: 43rem;
-    height: 75rem;
+    width: 33%;
+    height: 100%;
 }
 .w .codes .codeColumns .codeCol {
-    width: 43rem;
-    height: 75rem;
+    width: 100%;
+    height: 100%;
     overflow-y: auto;
     overflow-x: hidden;
 }
 .w .codes .codeColumns .codeCol .codeRange {
     margin: 0rem;
-    width: 42rem;
+    width: 100%;
     height: fit-content;
     padding-bottom: 1rem;
     position: relative;
@@ -231,7 +232,7 @@ body {
     position: absolute;
     top: 0rem;
     right: 0rem;
-    width: 1rem;
+    width: 0%;
     height: 100%;
     border-radius: 1.5rem;
     background-color: #F1F5F9;
@@ -244,7 +245,7 @@ body {
     opacity: 0;
 }
 .w .codes .codeColumns .codeCol .codeRange .codeBlock {
-    width: 42rem;
+    width: 100%;
     height: fit-content;
     box-sizing: border-box;
     padding: 2rem;
@@ -255,7 +256,7 @@ body {
 }
 .w .codes .codeColumns .codeCol code {
     display: block;
-    width: 38rem;
+    width: 100%;
     font-size: 1rem;
     overflow-wrap: break-word;
     overflow-x: hidden;
@@ -270,13 +271,13 @@ body {
     font-family: monospace;
 }
 .w .codeColumns .withinCol {
-    width: 43rem;
+    width: 100%;
     height: fit-content;
     overflow-y: auto;
     display: none;
 }
 .w .codeColumns .withinCol .smallBlock {
-    width: 42rem;
+    width: 100%;
     height: fit-content;
     box-sizing: border-box;
     padding: 2rem;
@@ -302,45 +303,25 @@ body {
     overflow-wrap: break-word;
     font-size: 1rem;
 }
-.container .hierBtn {
-    position: absolute;
-    width: 25.5rem;
-    height: 4.5rem;
-    left: -10.5rem;
-    top: 50%;
-    font-family: Verdana,Geneva,sans-serif; 
-    line-height: 1.5;
-    font-size: 3rem;
-    font-weight: 600;
-    color: #fff;
-    text-align: center;
-    background-color: #7a7a7a;
-    border-radius: 0rem 0rem 1rem 1rem;
-    transform: rotate(270deg);
-    cursor: pointer;
-}
-.container .hierBtn:hover {
-    background-color: #5d5f5f;
-}
 .container .menu {
     position: absolute;
     left: 0rem;
     top: 0rem;
-    width: 38rem;
+    width: 24%;
     height: 100vh;
     background-color: #fff;
 }
 .container .menu .menuW {
-    width: 36rem;
-    margin: 0rem 1rem;
+    width: 95%;
+    margin: 0 2.5%;
 }
 .container .menu .menuW .logo {
-    width: 36rem;
+    width: 100%;
     height: 9rem;
     padding-top: 3rem;
 }
 .container .menu .menuW .menuTop {
-    width: 36rem;
+    width: 100%;
 }
 .container .menu .menuW h3 {
     height: 6rem;
@@ -350,9 +331,9 @@ body {
     font-size: 1.5rem;
 }
 .container .menu .menuW .domainBtn {
-    width: 32rem;
+    width: 92.5%;
     height: 1.5rem;
-    margin: 0.5rem 2rem;
+    margin: 0.5rem 5%;
     background-color: #F2F2F2;
     border-radius: 0.3rem;
     display: inline-flex;
@@ -360,7 +341,7 @@ body {
     align-items: center;
 }
 .container .menu .menuW .domainBtn .domainB {
-    width: 15.8rem;
+    width: 49%;
     height: 1.3rem;
     border-radius: 0.3rem;
     font-family: sans-serif; 
@@ -376,14 +357,14 @@ body {
     background-color: #fff;
 }
 .container .menu .menuW .libs {
-    width: 32rem;
+    width: 95%;
     height: 1.5rem;
     margin: 0.5rem auto;
     display: flex;
     justify-content: space-between;
 }
 .container .menu .menuW .libsT {
-    width: 5rem;
+    width: 14%;
     height: 1.5rem;
     font-family: sans-serif; 
     font-size: 1.2rem; 
@@ -391,7 +372,7 @@ body {
     line-height: 1.5rem;
 }
 .container .menu .menuW .lib {
-    width: 8rem;
+    width: 22.2%;
     height: 1.5rem;
     border-radius: 0.5rem;
     font-family: sans-serif; 
@@ -403,13 +384,13 @@ body {
     text-align: center;
 }
 .container .menu .menuW #hierarchyHead {
-    width: 36rem;
+    width: 100%;
     height: 6rem;
     float: left;
 }
 .container .menu .menuW #hierarchyHead #removeAllBtn {
     float: right;
-    width: 13rem;
+    width: 36%;
     height: 2rem;
     line-height: 2rem;
     margin: 2rem 2rem;
@@ -425,7 +406,7 @@ body {
     opacity: 1.0;
 }
 .container .menu .menuW .hierarchy {
-    width: 35rem;
+    width: 98%;
     height: 60rem;
     margin: auto 0.5rem;
 }
@@ -435,17 +416,17 @@ body {
     cursor: pointer;
 }
 .container .menu .menuW .hierarchy .firH {
-    width: 35rem;
+    width: 100%;
 }
 .container .menu .menuW .hierarchy .secH {
-    width: 34rem;
+    width: 98%;
 }
 .container .menu .menuW .hierarchy .hDiv:hover {
     background-color: #F1F5F9 !important; 
 }
 .container .menu .menuW .hierarchy .hDiv .conceptBox {
     float: left;
-    width: 0.8rem;
+    width: 3%;
     height: 0.8rem;
     margin: 0.6rem 0rem;
     margin-right: 0.1rem;
@@ -467,7 +448,7 @@ body {
 .container .menu .menuW .hierarchy .hVis {
     box-sizing: border-box;
     padding-right: 0.2rem;
-    width: 19.5rem;
+    width: 60%;
     height: 2rem;
     float: right;
     display: flex;
@@ -476,7 +457,7 @@ body {
     pointer-events:none
 }
 .container .menu .menuW .hierarchy .hVis .hVisOut {
-    width: 6.5rem;
+    width: 33.3%;
     height: 1.2rem;
     position: relative;
 }

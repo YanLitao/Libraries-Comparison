@@ -254,7 +254,10 @@ body {
     overflow-y: hidden;
     overflow-wrap: break-word;
 }
-.w .codes .codeColumns .codeCol code {
+.w .codes .codeColumns .codeCol pre{
+    white-space: pre-wrap;
+}
+.w .codes .codeColumns .codeCol pre code {
     display: block;
     width: 100%;
     font-size: 1rem;

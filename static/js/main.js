@@ -4,7 +4,7 @@ var currentDomain = "nlp",
         "nlp": ["NLTK", "TextBlob", "SpaCy"],
         "vis": ["D3.js", "Chart.js", "Recharts"]
     },
-    doms = {"nlp": "NLP", "vis": "Visualization"},
+    doms = {"nlp": "NLP", "vis": "Viz"},
     fo = {"nlp": {"fir": [], "sec": [], "thr": []}, "vis": {"fir": [], "sec": [], "thr": []}},
     hierarchyConcept = {},
     lines = {"nlp": {"fir": [], "sec": [], "thr": []}, "vis": {"fir": [], "sec": [], "thr": []}},
@@ -108,6 +108,7 @@ function genHier(tem) {
             hDiv.className = "secH hDiv";
             nameDiv.innerHTML = "&#8226; "+concept.replace(/_/g, " ");
         }
+        hDiv.title = tem[i]['definition'];
         hDiv.appendChild(box);
         hDiv.appendChild(nameDiv);
         genHVis(hVis, tem[i]);
@@ -124,6 +125,11 @@ function genCode(domain) {
             codeRange.className = "codeRange";
             codeRange.innerHTML = data[domain]["labeled files"][f];
             codeRange.id = f;
+
+            var codeLink = document.createElement("div");
+            codeLink.className = "codeLink";
+            codeLink.innerHTML = f+": <a href='"+data[domain]["file info"][f]['source']+"'>Link to the Source Code</a>";
+            codeRange.querySelector("#"+f).prepend(codeLink);
             
             var codeMarker = document.createElement("div");
             codeMarker.className = "marker";
@@ -156,6 +162,10 @@ function genCode(domain) {
             withinBlock.innerHTML = data[domain]["within files"][f];
             withinCol.appendChild(withinBlock);
         }
+        var allHighlights = document.getElementsByClassName("highlights");
+        [...allHighlights].forEach(function(a) {
+            a.title = a.classList[1];
+        })
     }
 }
 function getData(domain) {
@@ -261,7 +271,7 @@ function clickH(event) {
     if (t.classList.contains("activated")) {
         t.classList.remove("activated");
         var initialSelectionFlag = 0;
-        var concepts = document.getElementsByClassName("secH");
+        var concepts = document.getElementsByClassName("hDiv");
         [...concepts].forEach(function(c) {if (c.classList.contains("activated")) {initialSelectionFlag = 1}});
         if (initialSelectionFlag) {
             initialSelection = false;
@@ -334,7 +344,13 @@ function clickVis(event) {
 }
 function scrollElement(event) {
     var viss = document.getElementsByClassName(event.target.id.slice(0, 3)+"visRange");
-    [...viss].forEach(function(v) {v.style.opacity = "0.5"});
+    [...viss].forEach(function(v) {
+        if (!(v.classList.contains("unmatchedVis"))) {
+            v.style.opacity = "0.5";
+        } else {
+            v.style.opacity = "0.1";
+        }
+    });
     var codes = event.target.querySelectorAll('.codeRange');
     var visableTop = event.target.getBoundingClientRect().top, 
         visableBottom = event.target.getBoundingClientRect().bottom;
@@ -396,10 +412,10 @@ function updateHVis(fileMatched) {
         } else if (i.name in conceptFreq) {
             for (var l in conceptFreq[i.name]) {
                 document.getElementById(i.name+"_hVis_"+l+"_condition").style.width = (conceptFreq[i.name][l]/30)*6.5+"rem";
-                if (conceptFreq[i.name][l] != "0") {
-                   document.getElementById(i.name+"_hVis_"+l+"_condition").innerText = conceptFreq[i.name][l];
-                } else {
+                if (conceptFreq[i.name][l] == "0" || conceptFreq[i.name][l] == "1") {
                     document.getElementById(i.name+"_hVis_"+l+"_condition").innerText = "";
+                } else {
+                    document.getElementById(i.name+"_hVis_"+l+"_condition").innerText = conceptFreq[i.name][l];
                 }
             }
         } else {
@@ -482,7 +498,10 @@ function conceptFiles() {
         [...acrossCol].forEach(function(a) {resetHighlights(a, "inline-block")});
         [...withinCol].forEach(function(w) {resetHighlights(w, "block")});
         var visRange = document.getElementsByClassName("visRange");
-        [...visRange].forEach(function(v) {v.style.display = "flex"});
+        [...visRange].forEach(function(v) {
+            v.style.opacity = "0.8";
+            if (v.classList.contains("unmatchedVis")) {v.classList.remove("unmatchedVis")};
+        });
         removeAll(false);
         updateHVis([]);
         return;
@@ -505,7 +524,10 @@ function conceptFiles() {
     var spans = document.getElementsByClassName("markerSpan");
     [...spans].forEach(function(s) {s.style.opacity = "0"});
     var visRange = document.getElementsByClassName("visRange");
-    [...visRange].forEach(function(v) {v.style.display = "none";});
+    [...visRange].forEach(function(v) {
+        v.style.opacity = "0.1";
+        if (!(v.classList.contains("unmatchedVis"))) {v.classList.add("unmatchedVis")};
+    });
     // get all selected concepts
     var conceptArr = new Set();
     conceptArr = updateConceptRelated(conceptArr, "firH", acrossCol, withinCol, withinHighlightDisplay);   
@@ -518,7 +540,9 @@ function conceptFiles() {
             // make matched code examples visable
             document.getElementById(f).style.display = "block";
             document.getElementById(f+"_within_block").style.display = "block";
-            document.getElementById(f.replace("_", "")+"vis").style.display = "flex";
+            var matchedVis = document.getElementById(f.replace("_", "")+"vis");
+            matchedVis.classList.remove("unmatchedVis");
+            matchedVis.style.opacity = "0.8";
         }
     }
     updateHVis(fileMatched);
@@ -526,13 +550,14 @@ function conceptFiles() {
 function switchMode(e) {
     var acrossCol = document.getElementsByClassName("acrossCol"),
         withinCol = document.getElementsByClassName("withinCol");
-    conceptFiles();
+    if (e.target.id == "switch") {
+        conceptFiles();
+    }
     if (document.getElementById("showSubstr").checked) {
         [...acrossCol].forEach(function(a) {a.style.display = "block";});
         [...withinCol].forEach(function(w) {w.style.display = "none";});
     } else {
-        [...acrossCol].forEach(function(a) {a.style.display = "none";});
-        [...withinCol].forEach(function(w) {w.style.display = "block";});
+        document.getElementsByClassName("udls").style.fontWeight = "normal";
     }
     var showFlag = document.getElementById("switch").checked,
         smallBlocks = document.querySelectorAll(".smallBlock"),
@@ -541,26 +566,26 @@ function switchMode(e) {
         [...smallBlocks].forEach(function(s) {
             var codes = s.querySelectorAll("code");
             [...codes].forEach(function(c) {
-                c.style.fontSize = "1rem";
+                c.style.fontSize = "0rem";
             })
         });
         [...codeBlocks].forEach(function(s) {
             var codes = s.querySelectorAll("code");
             [...codes].forEach(function(c) {
-                c.style.fontSize = "1rem";
+                c.style.fontSize = "0rem";
             })
         });
     } else {
         [...smallBlocks].forEach(function(s) {
             var codes = s.querySelectorAll("code");
             [...codes].forEach(function(c) {
-                c.style.fontSize = "0rem";
+                c.style.fontSize = "1rem";
             })
         });
         [...codeBlocks].forEach(function(s) {
             var codes = s.querySelectorAll("code");
             [...codes].forEach(function(c) {
-                c.style.fontSize = "0rem";
+                c.style.fontSize = "1rem";
             })
         });
     }

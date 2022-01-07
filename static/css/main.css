@@ -203,6 +203,9 @@ body {
 .w .tit .titles .vis .visRange:hover {
     opacity: 1.0;
 }
+.w .tit .titles .vis .unmatchedVis {
+    opacity: 0.1;
+}
 .w .codes {
     width: 100%;
     height: 83%;
@@ -248,24 +251,35 @@ body {
     width: 100%;
     height: fit-content;
     box-sizing: border-box;
-    padding: 2rem;
+    padding: 0rem 0rem 1rem 0rem;
     border-radius: 1rem;
     background-color: #fff;
     overflow-y: hidden;
     overflow-wrap: break-word;
 }
+.w .codes .codeColumns .codeCol .codeRange .codeBlock .codeLink {
+    width: 100%;
+    height: 2rem;
+    font-size: 1.2rem;
+    line-height: 2rem;
+    text-align: center;
+    float: right;
+    background-color: #c2daf0;
+    border-radius: 1rem 1rem 0 0;
+}
 .w .codes .codeColumns .codeCol pre{
     white-space: pre-wrap;
+    padding: 0rem 2rem;
 }
 .w .codes .codeColumns .codeCol pre code {
     display: block;
     width: 100%;
-    font-size: 1rem;
+    font-size: 1.2rem;
     overflow-wrap: break-word;
     overflow-x: hidden;
 }
 .w .codes .codeColumns .codeCol .codeRange .codeBlock code .highlights {
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-family: monospace;
     overflow-wrap: break-word;
 }
@@ -293,7 +307,7 @@ body {
 }
 .w .codeColumns .withinCol .smallBlock code .highlights {
     display: inline-block;
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-family: monospace;
     overflow-wrap: break-word;
 }
@@ -304,7 +318,7 @@ body {
 .w code {
     font-family: monospace;
     overflow-wrap: break-word;
-    font-size: 1rem;
+    font-size: 1.2rem;
 }
 .container .menu {
     position: absolute;
@@ -320,15 +334,16 @@ body {
 }
 .container .menu .menuW .logo {
     width: 100%;
-    height: 9rem;
-    padding-top: 3rem;
+    height: 6rem;
+    padding-top: 1rem;
 }
 .container .menu .menuW .menuTop {
     width: 100%;
 }
 .container .menu .menuW h3 {
-    height: 6rem;
-    line-height: 6rem;
+    margin-top: 3rem;
+    height: 3rem;
+    line-height: 3rem;
     display: inline-block;
     padding-left: 1rem;
     font-size: 1.5rem;
@@ -396,7 +411,7 @@ body {
     width: 36%;
     height: 2rem;
     line-height: 2rem;
-    margin: 2rem 2rem;
+    margin: 3rem 2rem;
     background-color: #5d5f5f;
     color: #fff;
     font-size: 1.2rem;
@@ -410,12 +425,13 @@ body {
 }
 .container .menu .menuW .hierarchy {
     width: 98%;
-    height: 60rem;
+    height: 67rem;
     margin: auto 0.5rem;
+    overflow-y: auto;
 }
 .container .menu .menuW .hierarchy .hDiv {
     float: right;
-    height: 2rem;
+    height: fit-content;
     cursor: pointer;
 }
 .container .menu .menuW .hierarchy .firH {
@@ -437,21 +453,23 @@ body {
 .container .menu .menuW .hierarchy .hName {
     box-sizing: border-box;
     width: fit-content;
-    height: 1.5rem;
+    max-width: 35%;
+    height: fit-content;
     float: left;
     padding-left: 0.2rem;
     padding-right: 0.2rem;
     margin: 0.25rem 0rem;
     font-family: sans-serif; 
     font-weight: 100; 
+    font-size: 1.5rem;
     line-height: 1.5rem;
     pointer-events:none;
-    border-radius: 0.5rem;
+    border-radius: 0.2rem;
 }
 .container .menu .menuW .hierarchy .hVis {
     box-sizing: border-box;
     padding-right: 0.2rem;
-    width: 60%;
+    width: 22rem;
     height: 2rem;
     float: right;
     display: flex;
@@ -466,7 +484,6 @@ body {
 }
 .container .menu .menuW .hierarchy .hVis .hVisOut .hVisIn {
     height: 1.2rem;
-    border-radius: 0.5rem;
     background-color: #5d5f5f;
     opacity: 0.5;
     z-index: 1;
@@ -476,7 +493,6 @@ body {
     left: 0rem;
     top: 0rem;
     height: 1.2rem;
-    border-radius: 0.5rem;
     background-color: #5d5f5f;
     font-family: sans-serif; 
     font-weight: 100; 

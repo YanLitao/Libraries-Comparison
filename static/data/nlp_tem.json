@@ -968,196 +968,196 @@
   "all templates": [
     {
       "name": "cat_Preprocessing",
-      "color": "",
+      "definition": "Text processing is a method used under the NLP to clean the text and prepare it for the model building. ",
       "fir": 29,
       "sec": 9,
       "thr": 19
     },
     {
       "name": "fea_parsing",
-      "color": "",
+      "definition": "Determining the syntactic structure of a text by analyzing its constituent words. e.g. “Tom ate an apple” -> (proper_noun: tom, verb: ate, determiner: an, noun: apple)",
       "fir": 4,
       "sec": 2,
       "thr": 1
     },
     {
       "name": "fea_tokenization",
-      "color": "",
+      "definition": "Tokenization breaks the raw text into words, sentences called tokens. For example, the text “It is raining” can be tokenized into ‘It’, ‘is’, ‘raining’.",
       "fir": 22,
       "sec": 0,
       "thr": 9
     },
     {
       "name": "fea_lemmatization",
-      "color": "",
+      "definition": "Reduce a given word to its root word. e.g. better -> good, given -> give",
       "fir": 12,
       "sec": 2,
       "thr": 5
     },
     {
       "name": "fea_word_vectors",
-      "color": "",
+      "definition": "In a simple 1-of-N encoding every element in the vector is associated with a word in the vocabulary.",
       "fir": 0,
       "sec": 0,
       "thr": 2
     },
     {
       "name": "fea_nlp_datasets",
-      "color": "",
+      "definition": "A large body of text",
       "fir": 16,
       "sec": 0,
       "thr": 3
     },
     {
       "name": "fea_stemming",
-      "color": "",
+      "definition": "Reduce a given word to its root word. e.g. playing -> play, studies -> studi",
       "fir": 4,
       "sec": 0,
       "thr": 0
     },
     {
       "name": "fea_regular_expression",
-      "color": "",
+      "definition": "Regular expressions or RegEx is a sequence of characters mainly used to find or replace patterns embedded in the text.",
       "fir": 1,
       "sec": 0,
       "thr": 1
     },
     {
       "name": "fea_word_frequency",
-      "color": "",
+      "definition": "Count the times of the terms used in a text document or table",
       "fir": 3,
       "sec": 0,
       "thr": 1
     },
     {
       "name": "fea_tagger",
-      "color": "",
+      "definition": "The process of classifying words into their parts of speech and labeling them accordingly. e.g. 'and' is a coordinating conjunction; 'now' is adverbs",
       "fir": 3,
       "sec": 2,
       "thr": 1
     },
     {
       "name": "fea_text_simplify",
-      "color": "",
+      "definition": "Simplify the grammar and structure of the text.",
       "fir": 0,
       "sec": 3,
       "thr": 1
     },
     {
       "name": "fea_n_grams",
-      "color": "",
+      "definition": "n-gram is a contiguous sequence of n items from a given sample of text or speech",
       "fir": 2,
       "sec": 3,
       "thr": 3
     },
     {
       "name": "cat_Basic_Analysis",
-      "color": "",
+      "definition": "A combination of many basic NLP operations for a particular purpose.",
       "fir": 14,
       "sec": 6,
       "thr": 8
     },
     {
       "name": "fea_Part_of_Speech",
-      "color": "",
+      "definition": "POS is a special label assigned to each token (word) in a text corpus to indicate the part of speech and often also other grammatical categories such as tense, number (plural/singular), case etc",
       "fir": 9,
       "sec": 2,
       "thr": 2
     },
     {
       "name": "fea_named_entity_recognition",
-      "color": "",
+      "definition": "NER is a technique to identify the key elements in a text, like names of people, places, brands, monetary values, etc.",
       "fir": 1,
       "sec": 0,
       "thr": 2
     },
     {
       "name": "fea_dependency_parsing",
-      "color": "",
+      "definition": "Dependency parsing is a technique used to identify semantic relations between words in a sentence.",
       "fir": 1,
       "sec": 0,
       "thr": 1
     },
     {
       "name": "fea_spellcheck",
-      "color": "",
+      "definition": "Spell-checking is the process of detecting and suggesting incorrect spelled words in a paragraph",
       "fir": 0,
       "sec": 2,
       "thr": 1
     },
     {
       "name": "fea_text_similarity",
-      "color": "",
+      "definition": "Text similarity has to determine how 'close' two pieces of text are both in surface closeness [lexical similarity] and meaning [semantic similarity]",
       "fir": 1,
       "sec": 0,
       "thr": 1
     },
     {
       "name": "fea_text_scoring",
-      "color": "",
+      "definition": "Text scoring is a process to associate a numerical value with a sentence based on the used algorithm's priority.",
       "fir": 4,
       "sec": 2,
       "thr": 1
     },
     {
       "name": "cat_Advanced_Analysis",
-      "color": "",
+      "definition": "Advanced analysis is a first-level concept, which contains 8 second-level concepts",
       "fir": 10,
       "sec": 21,
       "thr": 10
     },
     {
       "name": "fea_Neural_Network_Models",
-      "color": "",
+      "definition": "",
       "fir": 0,
       "sec": 0,
       "thr": 6
     },
     {
       "name": "fea_sentiment_analysis",
-      "color": "",
+      "definition": "Sentiment analysis is to determine whether data is positive, negative or neutral.",
       "fir": 1,
       "sec": 9,
       "thr": 1
     },
     {
       "name": "fea_translation",
-      "color": "",
+      "definition": "Machine Translation (MT) is the task of automatically converting one natural language into another, preserving the meaning of the input text, and producing fluent text in the output language. ",
       "fir": 0,
       "sec": 6,
       "thr": 0
     },
     {
       "name": "fea_language_detection",
-      "color": "",
+      "definition": "Language identification or language detection is the problem of determining which natural language given content is in",
       "fir": 0,
       "sec": 5,
       "thr": 1
     },
     {
       "name": "fea_classification",
-      "color": "",
+      "definition": "Text classification is a machine learning technique that assigns a set of predefined categories to open-ended text. ",
       "fir": 6,
       "sec": 5,
       "thr": 3
     },
     {
       "name": "fea_chatbot",
-      "color": "",
+      "definition": "An NLP based chatbot is a computer program or artificial intelligence that communicates with a customer via textual or sound methods. ",
       "fir": 1,
       "sec": 0,
       "thr": 0
     },
     {
       "name": "fea_summarizer",
-      "color": "",
+      "definition": "Text summarization in NLP is the process of summarizing the information in large texts for quicker consumption.",
       "fir": 3,
       "sec": 0,
       "thr": 1
     },
     {
       "name": "fea_text_segmentation",
-      "color": "",
+      "definition": "Text segmentation is the process of dividing written text into meaningful units, such as words, sentences, or topics.",
       "fir": 0,
       "sec": 0,
       "thr": 0
@@ -1728,334 +1728,417 @@
   },
   "file info": {
     "fir_4": {
+      "source": "https://github.com/rameshjes/Semantic-Textual-Similarity/blob/master/monolingualWordAligner/nltkUtil",
       "nlines": 427,
       "nchara": 30785
     },
     "fir_16": {
+      "source": "https://github.com/nityansuman/marvin/blob/main/src/subjective",
       "nlines": 186,
       "nchara": 11394
     },
     "fir_17": {
+      "source": "https://github.com/nityansuman/marvin/blob/main/src/objective",
       "nlines": 215,
       "nchara": 14346
     },
     "fir_23": {
+      "source": "https://github.com/alexgreene/WikiQuiz/blob/master/python/Article",
       "nlines": 119,
       "nchara": 9583
     },
     "fir_1": {
+      "source": "https://github.com/dhyeythumar/Search-Engine/blob/master/Python_scripts/text_processing",
       "nlines": 62,
       "nchara": 3897
     },
     "fir_2": {
+      "source": "https://github.com/maneeshavinayak/Clustering-News-Headlines/blob/master/clustering/hierarchical",
       "nlines": 61,
       "nchara": 5381
     },
     "fir_3": {
+      "source": "https://github.com/codequipo/TheDailyNews/blob/master/flask_server/app",
       "nlines": 230,
       "nchara": 18194
     },
     "fir_6": {
+      "source": "https://github.com/nickduran/align-linguistic-alignment/blob/master/align/prepare_transcripts",
       "nlines": 542,
       "nchara": 44964
     },
     "fir_8": {
+      "source": "https://github.com/akashp1712/summarize-webpage/blob/master/implementation/word_frequency_summarize_parser",
       "nlines": 169,
       "nchara": 40050
     },
     "fir_9": {
+      "source": "https://github.com/LuciaLlavero/ryuzaki_bot/blob/master/ryuzaki_bot_desktop",
       "nlines": 64,
       "nchara": 6301
     },
     "fir_10": {
+      "source": "https://github.com/LuciaLlavero/ryuzaki_bot/blob/master/ryuzaki_bot",
       "nlines": 64,
       "nchara": 6077
     },
     "fir_11": {
+      "source": "https://github.com/somnathrakshit/geograpy3/blob/master/geograpy/extraction",
       "nlines": 80,
       "nchara": 4754
     },
     "fir_12": {
+      "source": "https://github.com/rocketk/wordcounter/blob/master/wordcounter/word_counter",
       "nlines": 108,
       "nchara": 8623
     },
     "fir_13": {
+      "source": "https://github.com/kethort/TwitterLDATopicModeling/blob/master/src/tweets_on_LDA",
       "nlines": 158,
       "nchara": 17324
     },
     "fir_14": {
+      "source": "https://github.com/kethort/TwitterLDATopicModeling/blob/master/src/create_LDA_model",
       "nlines": 160,
       "nchara": 17858
     },
     "fir_18": {
+      "source": "https://github.com/daltonfury42/truecase/blob/master/truecase/TrueCaser",
       "nlines": 178,
       "nchara": 13017
     },
     "fir_19": {
+      "source": "https://github.com/akashp1712/nlp-akash/blob/master/text-summarization/text_rank_sentences",
       "nlines": 180,
       "nchara": 12899
     },
     "fir_20": {
+      "source": "https://github.com/akashp1712/nlp-akash/blob/master/text-summarization/TF_IDF_Summarization",
       "nlines": 242,
       "nchara": 18329
     },
     "fir_21": {
+      "source": "https://github.com/akashp1712/nlp-akash/blob/master/text-summarization/Word_Frequency_Summarization",
       "nlines": 144,
       "nchara": 13685
     },
     "fir_25": {
+      "source": "",
       "nlines": 74,
       "nchara": 6426
     },
     "fir_29": {
+      "source": "https://github.com/weblineindia/AIML-NLP-Text-Scoring/blob/master/scoring",
       "nlines": 119,
       "nchara": 9361
     },
     "fir_30": {
+      "source": "https://github.com/gregyjames/twitter-stock-sentiment/blob/main/main",
       "nlines": 439,
       "nchara": 34069
     },
     "fir_24": {
+      "source": "https://github.com/g-paras/sentiment-analysis-api/blob/master/model_nltk",
       "nlines": 123,
       "nchara": 8968
     },
     "fir_5": {
+      "source": "https://github.com/vasisouv/tweets-preprocessor/blob/master/twitter_preprocessor",
       "nlines": 143,
       "nchara": 12738
     },
     "fir_7": {
+      "source": "https://github.com/emdaniels/character-extraction/blob/master/characterExtraction",
       "nlines": 215,
       "nchara": 13964
     },
     "fir_28": {
+      "source": "",
       "nlines": 50,
       "nchara": 4219
     },
     "fir_22": {
+      "source": "https://github.com/mertkahyaoglu/twitter-sentiment-analysis/blob/master/classify",
       "nlines": 37,
       "nchara": 2671
     },
     "fir_27": {
+      "source": "",
       "nlines": 33,
       "nchara": 2733
     },
     "fir_26": {
+      "source": "",
       "nlines": 40,
       "nchara": 4039
     },
     "fir_15": {
+      "source": "https://github.com/arne-cl/nltk-maxent-pos-tagger/blob/master/mxpost",
       "nlines": 435,
       "nchara": 25111
     },
     "sec_7": {
+      "source": "https://textblob.readthedocs.io/en/dev/advanced_usage.html",
       "nlines": 5,
       "nchara": 683
     },
     "sec_10": {
+      "source": "https://github.com/huudangdev/generator-question-textblob-nlp/blob/master/app",
       "nlines": 162,
       "nchara": 16542
     },
     "sec_2": {
+      "source": "https://stackabuse.com/python-for-nlp-introduction-to-the-textblob-library/",
       "nlines": 21,
       "nchara": 1792
     },
     "sec_12": {
+      "source": "https://github.com/dpasch01/textblob-service/blob/master/textblob-service",
       "nlines": 75,
       "nchara": 5423
     },
     "sec_6": {
+      "source": "https://textblob.readthedocs.io/en/dev/advanced_usage.html",
       "nlines": 6,
       "nchara": 720
     },
     "sec_9": {
+      "source": "https://github.com/arif-zaman/airplane-crash/blob/master/Airplane.ipynb",
       "nlines": 50,
       "nchara": 5532
     },
     "sec_27": {
+      "source": "https://github.com/platisd/bad-commit-message-blocker/blob/master/bad_commit_message_blocker",
       "nlines": 98,
       "nchara": 7517
     },
     "sec_1": {
+      "source": "https://stackabuse.com/python-for-nlp-introduction-to-the-textblob-library/",
       "nlines": 21,
       "nchara": 2388
     },
     "sec_8": {
+      "source": "https://textblob.readthedocs.io/en/dev/advanced_usage.html",
       "nlines": 6,
       "nchara": 671
     },
     "sec_17": {
+      "source": "https://github.com/OjasBarawal/Spell-Checker/blob/main/app",
       "nlines": 20,
       "nchara": 1373
     },
     "sec_26": {
+      "source": "https://github.com/stepthom/textblob-sentiment-analysis/blob/master/doAnalysis",
       "nlines": 147,
       "nchara": 13678
     },
     "sec_29": {
+      "source": "https://github.com/shirosaidev/stocksight/blob/master/sentiment",
       "nlines": 111,
       "nchara": 8876
     },
     "sec_15": {
+      "source": "https://github.com/quantumsnowball/AppleDaily20200907/blob/master/sentiment",
       "nlines": 48,
       "nchara": 5194
     },
     "sec_20": {
+      "source": "https://github.com/cyschneck/Billy-Bot/blob/master/shakespeare_sentiment",
       "nlines": 80,
       "nchara": 6910
     },
     "sec_21": {
+      "source": "https://github.com/avaiyang/Movie-Rating-and-Prediction-Model/blob/master/twittersearch",
       "nlines": 61,
       "nchara": 3753
     },
     "sec_24": {
+      "source": "https://github.com/g-paras/sentiment-analysis-api/blob/master/app",
       "nlines": 127,
       "nchara": 9000
     },
     "sec_25": {
+      "source": "https://github.com/cosimoiaia/Facebook-Sentiment-Analysis/blob/master/simple_facebook_sentiment_analysis",
       "nlines": 52,
       "nchara": 3712
     },
     "sec_28": {
+      "source": "https://github.com/vinitshahdeo/jobtweets/blob/master/jobtweets",
       "nlines": 52,
       "nchara": 3472
     },
     "sec_30": {
+      "source": "https://github.com/the-javapocalypse/Twitter-Sentiment-Analysis/blob/master/main",
       "nlines": 147,
       "nchara": 13371
     },
     "sec_14": {
+      "source": "https://github.com/DeepakJha01/GUI-Translator/blob/master/main/gui_translator",
       "nlines": 14,
       "nchara": 1650
     },
     "sec_16": {
+      "source": "https://github.com/RomanKornev/Translate/blob/master/main",
       "nlines": 42,
       "nchara": 3889
     },
     "sec_19": {
+      "source": "https://github.com/PasaOpasen/TranslatorBot/blob/master/translator_tools",
       "nlines": 141,
       "nchara": 7667
     },
     "sec_22": {
+      "source": "https://github.com/dhyeythumar/Search-Engine/blob/master/Python_scripts/lang_trans1",
       "nlines": 163,
       "nchara": 11450
     },
     "sec_23": {
+      "source": "https://github.com/dhyeythumar/Search-Engine/blob/master/Python_scripts/lang_trans",
       "nlines": 37,
       "nchara": 2815
     },
     "sec_11": {
+      "source": "https://github.com/khaledabbud/SA_of_Tweets_After_QS_Assassination_AR_FA/blob/master/textblob_lang_classification",
       "nlines": 33,
       "nchara": 2506
     },
     "sec_18": {
+      "source": "https://github.com/PasaOpasen/SpeechLogger/blob/master/ThirdTry/text_logger5",
       "nlines": 28,
       "nchara": 2630
     },
     "sec_4": {
+      "source": "https://gist.github.com/sloria/6342158",
       "nlines": 39,
       "nchara": 2994
     },
     "sec_5": {
+      "source": "https://gist.github.com/sloria/6338202#file-tweet_classify-py",
       "nlines": 39,
       "nchara": 3301
     },
     "sec_13": {
+      "source": "https://github.com/muthuvenki/Trend-Analysis/blob/master/sentimental_anlysis/views",
       "nlines": 67,
       "nchara": 4194
     },
     "thr_17": {
+      "source": "",
       "nlines": 83,
       "nchara": 6607
     },
     "thr_10": {
+      "source": "https://www.machinelearningplus.com/spacy-tutorial-nlp/#mergingandsplittingtokenswithretokenize",
       "nlines": 23,
       "nchara": 1770
     },
     "thr_12": {
+      "source": "",
       "nlines": 129,
       "nchara": 7019
     },
     "thr_18": {
+      "source": "",
       "nlines": 18,
       "nchara": 1742
     },
     "thr_20": {
+      "source": "",
       "nlines": 26,
       "nchara": 2326
     },
     "thr_27": {
+      "source": "",
       "nlines": 20,
       "nchara": 1723
     },
     "thr_22": {
+      "source": "",
       "nlines": 17,
       "nchara": 1530
     },
     "thr_26": {
+      "source": "",
       "nlines": 10,
       "nchara": 902
     },
     "thr_13": {
+      "source": "https://spacy.io/api/tok2vec",
       "nlines": 11,
       "nchara": 894
     },
     "thr_5": {
+      "source": "",
       "nlines": 8,
       "nchara": 571
     },
     "thr_6": {
+      "source": "",
       "nlines": 40,
       "nchara": 3965
     },
     "thr_25": {
+      "source": "",
       "nlines": 30,
       "nchara": 2747
     },
     "thr_24": {
+      "source": "",
       "nlines": 8,
       "nchara": 874
     },
     "thr_11": {
+      "source": "",
       "nlines": 127,
       "nchara": 10367
     },
     "thr_19": {
+      "source": "",
       "nlines": 6,
       "nchara": 610
     },
     "thr_8": {
+      "source": "https://spacy.io/universe/project/contextualSpellCheck",
       "nlines": 10,
       "nchara": 909
     },
     "thr_7": {
+      "source": "https://spacy.io/universe/project/spacy-textblob",
       "nlines": 11,
       "nchara": 1738
     },
     "thr_9": {
+      "source": "https://spacy.io/universe/project/spacy-langdetect",
       "nlines": 12,
       "nchara": 1074
     },
     "thr_1": {
+      "source": "",
       "nlines": 121,
       "nchara": 11894
     },
     "thr_2": {
+      "source": "",
       "nlines": 69,
       "nchara": 5490
     },
     "thr_3": {
+      "source": "",
       "nlines": 49,
       "nchara": 5293
     },
     "thr_4": {
+      "source": "",
       "nlines": 82,
       "nchara": 6636
     },
     "thr_14": {
+      "source": "",
       "nlines": 117,
       "nchara": 10414
     },
     "thr_15": {
+      "source": "",
       "nlines": 160,
       "nchara": 14810
     }

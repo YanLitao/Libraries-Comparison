@@ -1,4 +1,5 @@
-var currentDomain = "nlp",
+var maxFileNum = 31,
+    currentDomain = "nlp",
     data = {"nlp": {}, "vis": {}},
     libraries = {
         "nlp": ["NLTK", "TextBlob", "SpaCy"],
@@ -66,10 +67,10 @@ function genHVis(hVis, tem) {
             condition = document.createElement("div");
         out.className = "hVisOut";
         inside.className = "hVisIn";
-        inside.style.width = (tem[n[i]]/30)*6.5+"rem";
+        inside.style.width = (tem[n[i]]/maxFileNum)*6.5+"rem";
         inside.id = hVis.id +"_" + n[i] + "_origin";
         condition.className = "conditionVis";
-        condition.style.width = (tem[n[i]]/30)*6.5+"rem";
+        condition.style.width = (tem[n[i]]/maxFileNum)*6.5+"rem";
         condition.id = hVis.id +"_" + n[i] + "_condition";
         if (tem[n[i]] != "0") {
             condition.innerText = tem[n[i]];
@@ -106,7 +107,7 @@ function genHier(tem) {
             nameDiv.innerText = concept.replace(/_/g, " ");
         } else {
             hDiv.className = "secH hDiv";
-            nameDiv.innerHTML = "&#8226; "+concept.replace(/_/g, " ");
+            nameDiv.innerHTML = concept.replace(/_/g, " ");
         }
         hDiv.title = tem[i]['definition'];
         hDiv.appendChild(box);
@@ -118,8 +119,7 @@ function genHier(tem) {
 }
 function genCode(domain) {
     for (var l in fo[domain]) {
-        var colDiv = document.getElementById(l+"Code"),
-            withinCol = document.getElementById(l+"CodeWithin");
+        var colDiv = document.getElementById(l+"Code");
         for (var f of fo[domain][l]) {
             var codeRange = document.createElement("div");
             codeRange.className = "codeRange";
@@ -128,7 +128,15 @@ function genCode(domain) {
 
             var codeLink = document.createElement("div");
             codeLink.className = "codeLink";
-            codeLink.innerHTML = f+": <a href='"+data[domain]["file info"][f]['source']+"'>Link to the Source Code</a>";
+            if (data[domain]["file info"][f]['source']) {
+                codeLink.innerHTML = f+": <a href='"+data[domain]["file info"][f]['source']+"'>Link to the Source Code</a>";
+            } else {
+                codeLink.innerText = f;
+            }
+            if (f=="fir_31") {
+                console.log(f, codeRange, codeRange.querySelector("#"+f));
+            }
+            
             codeRange.querySelector("#"+f).prepend(codeLink);
             
             var codeMarker = document.createElement("div");
@@ -156,11 +164,11 @@ function genCode(domain) {
             })
 
             // add within codes
-            var withinBlock = document.createElement("div");
+            /*var withinBlock = document.createElement("div");
             withinBlock.className = "smallBlock";
             withinBlock.id = f+"_within_block";
             withinBlock.innerHTML = data[domain]["within files"][f];
-            withinCol.appendChild(withinBlock);
+            withinCol.appendChild(withinBlock);*/
         }
         var allHighlights = document.getElementsByClassName("highlights");
         [...allHighlights].forEach(function(a) {
@@ -184,11 +192,11 @@ function showAllFirstLevelConcepts() {
                     var hls = a.querySelectorAll("."+t);
                     [...hls].forEach(function(h) {h.style.backgroundColor = conceptColors[temp.name]});
                 });
-                var withinCol = document.getElementsByClassName("withinCol");
+                /*var withinCol = document.getElementsByClassName("withinCol");
                 [...withinCol].forEach(function(a) {
                     var hls = a.querySelectorAll("."+t);
                     [...hls].forEach(function(h) {h.style.backgroundColor = conceptColors[temp.name]});
-                });
+                });*/
                 var makers = document.getElementsByClassName(t.slice(4)+"_marker");
                 [...makers].forEach(function(m) {
                     m.style.backgroundColor = conceptColors[temp.name];
@@ -321,7 +329,7 @@ function genLineVis(domain) {
     }
     for (var o in lines[domain]) {
         var visDiv = document.getElementById(o+"Vis");
-        for (var i=0; i<30; i++) {
+        for (var i=0; i<maxFileNum; i++) {
             if (i<fo[domain][o].length) {
                 var visRange = document.createElement("div");
                 visRange.id = fo[domain][o][i].replace("_", "")+"vis";
@@ -365,29 +373,27 @@ function scrollElement(event) {
 // within library comparison
 function controlCommonWords(w, name="") {
     if (name != "") {
-        var acrossName = "."+name+"_keys",
-            withinName = "."+name+"_funcs";
+        var acrossName = "."+name+"_keys";
     } else {
-        var acrossName = ".udls",
-            withinName = ".blodFunc";
+        var acrossName = ".udls";
     }
     if (initialSelection || name == "") {
         var udls = w.querySelectorAll(acrossName);
         [...udls].forEach(function(u) {u.style.fontWeight = "normal"});
-        var blodFuncs = w.querySelectorAll(withinName);
-        [...blodFuncs].forEach(function(b) {b.style.fontWeight = "normal"});
+        //var blodFuncs = w.querySelectorAll(withinName);
+        //[...blodFuncs].forEach(function(b) {b.style.fontWeight = "normal"});
         return
     }
     if (document.getElementById('showSubstr').checked) {
         var udls = w.querySelectorAll(acrossName);
         [...udls].forEach(function(u) {u.style.fontWeight = "600"});
-        var blodFuncs = w.querySelectorAll(withinName);
-        [...blodFuncs].forEach(function(b) {b.style.fontWeight = "normal"});
+        //var blodFuncs = w.querySelectorAll(withinName);
+        //[...blodFuncs].forEach(function(b) {b.style.fontWeight = "normal"});
     } else {
         var udls = w.querySelectorAll(acrossName);
         [...udls].forEach(function(u) {u.style.fontWeight = "normal"});
-        var blodFuncs = w.querySelectorAll(withinName);
-        [...blodFuncs].forEach(function(b) {b.style.fontWeight = "600"});
+        //var blodFuncs = w.querySelectorAll(withinName);
+        //[...blodFuncs].forEach(function(b) {b.style.fontWeight = "600"});
     }
 }
 function updateHVis(fileMatched) {    
@@ -405,13 +411,13 @@ function updateHVis(fileMatched) {
     for (var i of data[currentDomain]["all templates"]) {
         if (initialSelection) {
             for (var l of n) {
-                document.getElementById(i.name+"_hVis_"+l+"_condition").style.width = (i[l]/30)*6.5+"rem";
+                document.getElementById(i.name+"_hVis_"+l+"_condition").style.width = (i[l]/maxFileNum)*6.5+"rem";
                 document.getElementById(i.name+"_hVis_"+l+"_condition").innerText = i[l];
             }
             continue;
         } else if (i.name in conceptFreq) {
             for (var l in conceptFreq[i.name]) {
-                document.getElementById(i.name+"_hVis_"+l+"_condition").style.width = (conceptFreq[i.name][l]/30)*6.5+"rem";
+                document.getElementById(i.name+"_hVis_"+l+"_condition").style.width = (conceptFreq[i.name][l]/maxFileNum)*6.5+"rem";
                 if (conceptFreq[i.name][l] == "0" || conceptFreq[i.name][l] == "1") {
                     document.getElementById(i.name+"_hVis_"+l+"_condition").innerText = "";
                 } else {
@@ -443,7 +449,7 @@ function resetHighlights(w, withinHighlightDisplay, conceptName="highlights", co
         controlCommonWords(w, conceptName);
     }
 }
-function changeColors(conceptName,  acrossCol, withinCol, withinHighlightDisplay, assignedColor) {
+function changeColors(conceptName,  acrossCol, withinHighlightDisplay, assignedColor) {
     var conceptLevel = conceptName.split("_")[0];
     if (assignedColor) {
         var conceptColor = assignedColor;
@@ -453,7 +459,7 @@ function changeColors(conceptName,  acrossCol, withinCol, withinHighlightDisplay
     // make all elements related to concepts visable
     // highlights
     [...acrossCol].forEach(function(a) {resetHighlights(a, withinHighlightDisplay, conceptName, conceptColor)});
-    [...withinCol].forEach(function(w) {resetHighlights(w, withinHighlightDisplay, conceptName, conceptColor)});
+    //[...withinCol].forEach(function(w) {resetHighlights(w, withinHighlightDisplay, conceptName, conceptColor)});
     // minimaps
     var conceptMarkers = document.getElementsByClassName(conceptName.replace(conceptLevel+"_", "")+"_marker");
     [...conceptMarkers].forEach(function(c) {
@@ -461,13 +467,13 @@ function changeColors(conceptName,  acrossCol, withinCol, withinHighlightDisplay
         c.style.backgroundColor = conceptColor;
     })
 }
-function updateConceptRelated(conceptArr, hLevel, acrossCol, withinCol, withinHighlightDisplay) {
+function updateConceptRelated(conceptArr, hLevel, acrossCol, withinHighlightDisplay) {
     if (hLevel == 'secH') {
         var concepts = document.getElementsByClassName("secH");
         [...concepts].forEach(function(c) {
             if (c.classList.contains("activated")) {
                 conceptArr.add(c.id);
-                changeColors(c.id, acrossCol, withinCol, withinHighlightDisplay); 
+                changeColors(c.id, acrossCol, withinHighlightDisplay); 
             }
         });
     } else {
@@ -477,7 +483,7 @@ function updateConceptRelated(conceptArr, hLevel, acrossCol, withinCol, withinHi
             if (f.classList.contains("activated")) {
                 conceptArr.add(f.id);
                 hierarchyConcept[f.id].forEach(function(c) {
-                    changeColors(c, acrossCol, withinCol, withinHighlightDisplay, conceptColors[f.id]);
+                    changeColors(c, acrossCol, withinHighlightDisplay, conceptColors[f.id]);
                 })
             }
         })       
@@ -485,18 +491,18 @@ function updateConceptRelated(conceptArr, hLevel, acrossCol, withinCol, withinHi
     return conceptArr;
 }
 function conceptFiles() {
-    var acrossCol = document.getElementsByClassName("acrossCol"),
-        withinCol = document.getElementsByClassName("withinCol");
+    var acrossCol = document.getElementsByClassName("acrossCol");
+        //withinCol = document.getElementsByClassName("withinCol");
     
     if (initialSelection) {
         var conceptBoxs = document.getElementsByClassName("conceptBox");
         [...conceptBoxs].forEach(function(c) {c.checked = false});
         var codes = document.getElementsByClassName("codeRange");
         [...codes].forEach(function(c) {c.style.display = "block"});
-        var codesWithin = document.getElementsByClassName("smallBlock");
-        [...codesWithin].forEach(function(c) {c.style.display = "block"});
+        //var codesWithin = document.getElementsByClassName("smallBlock");
+        //[...codesWithin].forEach(function(c) {c.style.display = "block"});
         [...acrossCol].forEach(function(a) {resetHighlights(a, "inline-block")});
-        [...withinCol].forEach(function(w) {resetHighlights(w, "block")});
+        //[...withinCol].forEach(function(w) {resetHighlights(w, "block")});
         var visRange = document.getElementsByClassName("visRange");
         [...visRange].forEach(function(v) {
             v.style.opacity = "0.8";
@@ -508,16 +514,16 @@ function conceptFiles() {
     }
     var codes = document.getElementsByClassName("codeRange");
     [...codes].forEach(function(c) {c.style.display = "none"});
-    var codesWithin = document.getElementsByClassName("smallBlock");
-    [...codesWithin].forEach(function(c) {c.style.display = "none"});
+    //var codesWithin = document.getElementsByClassName("smallBlock");
+    //[...codesWithin].forEach(function(c) {c.style.display = "none"});
     if (document.getElementById("switch").checked) {
         var withinHighlightDisplay = "inline-block";
         [...acrossCol].forEach(function(a) {resetHighlights(a, withinHighlightDisplay)});
-        [...withinCol].forEach(function(w) {resetHighlights(w, withinHighlightDisplay)});
+        //[...withinCol].forEach(function(w) {resetHighlights(w, withinHighlightDisplay)});
     } else {
         var withinHighlightDisplay = "block";
         [...acrossCol].forEach(function(a) {resetHighlights(a, withinHighlightDisplay)});
-        [...withinCol].forEach(function(w) {resetHighlights(w, withinHighlightDisplay)});
+        //[...withinCol].forEach(function(w) {resetHighlights(w, withinHighlightDisplay)});
         var markers = document.getElementsByClassName("marker");
         [...markers].forEach(function(m) {m.style.opacity = "0"});
     }
@@ -530,8 +536,8 @@ function conceptFiles() {
     });
     // get all selected concepts
     var conceptArr = new Set();
-    conceptArr = updateConceptRelated(conceptArr, "firH", acrossCol, withinCol, withinHighlightDisplay);   
-    conceptArr = updateConceptRelated(conceptArr, "secH", acrossCol, withinCol, withinHighlightDisplay);
+    conceptArr = updateConceptRelated(conceptArr, "firH", acrossCol, withinHighlightDisplay);   
+    conceptArr = updateConceptRelated(conceptArr, "secH", acrossCol, withinHighlightDisplay);
     // filter the files
     var fileMatched = [];
     for (var f in data[currentDomain]["file concepts"]) {
@@ -539,7 +545,7 @@ function conceptFiles() {
             fileMatched.push(f);
             // make matched code examples visable
             document.getElementById(f).style.display = "block";
-            document.getElementById(f+"_within_block").style.display = "block";
+            //document.getElementById(f+"_within_block").style.display = "block";
             var matchedVis = document.getElementById(f.replace("_", "")+"vis");
             matchedVis.classList.remove("unmatchedVis");
             matchedVis.style.opacity = "0.8";
@@ -548,14 +554,14 @@ function conceptFiles() {
     updateHVis(fileMatched);
 }    
 function switchMode(e) {
-    var acrossCol = document.getElementsByClassName("acrossCol"),
-        withinCol = document.getElementsByClassName("withinCol");
+    var acrossCol = document.getElementsByClassName("acrossCol");
+        //withinCol = document.getElementsByClassName("withinCol");
     if (e.target.id == "switch") {
         conceptFiles();
     }
     if (document.getElementById("showSubstr").checked) {
         [...acrossCol].forEach(function(a) {a.style.display = "block";});
-        [...withinCol].forEach(function(w) {w.style.display = "none";});
+        //[...withinCol].forEach(function(w) {w.style.display = "none";});
     } else {
         document.getElementsByClassName("udls").style.fontWeight = "normal";
     }

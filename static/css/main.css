@@ -205,6 +205,7 @@ body {
 }
 .w .tit .titles .vis .unmatchedVis {
     opacity: 0.1;
+    pointer-events: none;
 }
 .w .codes {
     width: 100%;
@@ -263,6 +264,7 @@ body {
     font-size: 1.2rem;
     line-height: 2rem;
     text-align: center;
+    margin-bottom: 1rem;
     float: right;
     background-color: #c2daf0;
     border-radius: 1rem 1rem 0 0;
@@ -274,12 +276,12 @@ body {
 .w .codes .codeColumns .codeCol pre code {
     display: block;
     width: 100%;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     overflow-wrap: break-word;
     overflow-x: hidden;
 }
 .w .codes .codeColumns .codeCol .codeRange .codeBlock code .highlights {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-family: monospace;
     overflow-wrap: break-word;
 }
@@ -307,7 +309,7 @@ body {
 }
 .w .codeColumns .withinCol .smallBlock code .highlights {
     display: inline-block;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-family: monospace;
     overflow-wrap: break-word;
 }
@@ -433,6 +435,7 @@ body {
     float: right;
     height: fit-content;
     cursor: pointer;
+    padding: 0.5rem 0rem;
 }
 .container .menu .menuW .hierarchy .firH {
     width: 100%;
@@ -445,8 +448,8 @@ body {
 }
 .container .menu .menuW .hierarchy .hDiv .conceptBox {
     float: left;
-    width: 3%;
-    height: 0.8rem;
+    width: 5%;
+    height: 1rem;
     margin: 0.6rem 0rem;
     margin-right: 0.1rem;
 }
@@ -454,6 +457,7 @@ body {
     box-sizing: border-box;
     width: fit-content;
     max-width: 35%;
+    min-height: 1.8rem;
     height: fit-content;
     float: left;
     padding-left: 0.2rem;
@@ -469,8 +473,8 @@ body {
 .container .menu .menuW .hierarchy .hVis {
     box-sizing: border-box;
     padding-right: 0.2rem;
-    width: 22rem;
-    height: 2rem;
+    width: 21rem;
+    height: 100%;
     float: right;
     display: flex;
     justify-content: space-between;
@@ -479,11 +483,11 @@ body {
 }
 .container .menu .menuW .hierarchy .hVis .hVisOut {
     width: 33.3%;
-    height: 1.2rem;
+    height: 1.8rem;
     position: relative;
 }
 .container .menu .menuW .hierarchy .hVis .hVisOut .hVisIn {
-    height: 1.2rem;
+    height: 1.8rem;
     background-color: #5d5f5f;
     opacity: 0.5;
     z-index: 1;
@@ -492,11 +496,12 @@ body {
     position: absolute;
     left: 0rem;
     top: 0rem;
-    height: 1.2rem;
+    height: 1.8rem;
     background-color: #5d5f5f;
     font-family: sans-serif; 
     font-weight: 100; 
-    line-height: 1.2rem;
+    font-size: 1.4rem;
+    line-height: 1.8rem;
     color: #fff;
     text-align: center;
     z-index: 2;

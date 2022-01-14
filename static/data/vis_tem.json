@@ -2074,7 +2074,7 @@
     },
     {
       "name": "fea_Pie_Chart",
-      "definition": "",
+      "definition": "Including pie charts and donut charts.",
       "fir": 3,
       "sec": 11,
       "thr": 5
@@ -2095,21 +2095,21 @@
     },
     {
       "name": "fea_Bullet_Chart",
-      "definition": "",
+      "definition": "A bullet graph is a variation of a bar graph",
       "fir": 1,
       "sec": 0,
       "thr": 0
     },
     {
       "name": "fea_Chord_Diagram",
-      "definition": "",
+      "definition": "A chord diagram represents flows or connections between several entities",
       "fir": 2,
       "sec": 0,
       "thr": 0
     },
     {
       "name": "fea_Force_Directed_Graph",
-      "definition": "",
+      "definition": "Force-directed graph drawing algorithms assign forces among the set of edges and the set of nodes of a graph drawing.",
       "fir": 2,
       "sec": 0,
       "thr": 0
@@ -2123,21 +2123,21 @@
     },
     {
       "name": "fea_Radial_Area_Chart",
-      "definition": "",
+      "definition": "Radial Area Chart is a variation of Area Chart",
       "fir": 1,
       "sec": 0,
       "thr": 0
     },
     {
       "name": "fea_Sankey_Diagram",
-      "definition": "",
+      "definition": "Sankey diagrams are a type of flow diagram in which the width of the arrows is proportional to the flow rate.",
       "fir": 1,
       "sec": 0,
       "thr": 1
     },
     {
       "name": "fea_Stream_Graph",
-      "definition": "",
+      "definition": "A Stream graph is a type of stacked area chart.",
       "fir": 1,
       "sec": 0,
       "thr": 0
@@ -2152,21 +2152,21 @@
     },
     {
       "name": "fea_Heatmap",
-      "definition": "",
+      "definition": "Heatmap is a data visualization technique that shows magnitude of a phenomenon as color in two dimensions.",
       "fir": 3,
       "sec": 0,
       "thr": 1
     },
     {
       "name": "fea_Treemap",
-      "definition": "",
+      "definition": "Treemapping is a method for displaying hierarchical data using nested figures, usually rectangles",
       "fir": 1,
       "sec": 0,
       "thr": 3
     },
     {
       "name": "fea_Tree",
-      "definition": "",
+      "definition": "A dendrogram shows a hierarchical structure. It is constituted of a root node that gives birth to several nodes connected by edges or branches. ",
       "fir": 5,
       "sec": 0,
       "thr": 0
@@ -7626,212 +7626,212 @@
       "nchara": 10657
     },
     "fir_32": {
-      "source": "",
+      "source": "https://bl.ocks.org/mbostock/3048740",
       "nlines": 79,
       "nchara": 9012
     },
     "fir_33": {
-      "source": "",
+      "source": "https://bl.ocks.org/mbostock/3087986",
       "nlines": 53,
       "nchara": 6221
     },
     "fir_34": {
-      "source": "",
+      "source": "http://bl.ocks.org/mbostock/3202354",
       "nlines": 104,
       "nchara": 10688
     },
     "fir_35": {
-      "source": "",
+      "source": "https://bl.ocks.org/mbostock/3213173",
       "nlines": 99,
       "nchara": 9856
     },
     "fir_36": {
-      "source": "",
+      "source": "https://bl.ocks.org/mbostock/3886208",
       "nlines": 83,
       "nchara": 9339
     },
     "fir_37": {
-      "source": "",
+      "source": "https://bl.ocks.org/mbostock/3887118",
       "nlines": 88,
       "nchara": 8120
     },
     "fir_38": {
-      "source": "",
+      "source": "https://bl.ocks.org/mbostock/3887193",
       "nlines": 44,
       "nchara": 4779
     },
     "fir_39": {
-      "source": "",
+      "source": "https://bl.ocks.org/mbostock/3887235",
       "nlines": 41,
       "nchara": 4723
     },
     "fir_40": {
-      "source": "",
+      "source": "https://bl.ocks.org/mbostock/3888852",
       "nlines": 68,
       "nchara": 7244
     },
     "fir_41": {
-      "source": "",
+      "source": "https://bl.ocks.org/mbostock/4060954",
       "nlines": 68,
       "nchara": 7094
     },
     "fir_42": {
-      "source": "",
+      "source": "https://bl.ocks.org/mbostock/4061961",
       "nlines": 54,
       "nchara": 5594
     },
     "fir_43": {
-      "source": "",
+      "source": "https://bl.ocks.org/mbostock/4062006",
       "nlines": 80,
       "nchara": 8882
     },
     "fir_44": {
-      "source": "",
+      "source": "https://bl.ocks.org/mbostock/4063269",
       "nlines": 58,
       "nchara": 6958
     },
     "fir_45": {
-      "source": "",
+      "source": "https://bl.ocks.org/mbostock/4063318",
       "nlines": 71,
       "nchara": 9578
     },
     "fir_46": {
-      "source": "",
+      "source": "https://bl.ocks.org/mbostock/4063530",
       "nlines": 32,
       "nchara": 4927
     },
     "fir_47": {
-      "source": "",
+      "source": "https://bl.ocks.org/mbostock/4063550",
       "nlines": 46,
       "nchara": 6741
     },
     "fir_48": {
-      "source": "",
+      "source": "https://bl.ocks.org/mbostock/4063570",
       "nlines": 46,
       "nchara": 5555
     },
     "fir_49": {
-      "source": "",
+      "source": "https://bl.ocks.org/mbostock/4063582",
       "nlines": 84,
       "nchara": 9834
     },
     "fir_50": {
-      "source": "",
+      "source": "https://bl.ocks.org/mbostock/4342045",
       "nlines": 33,
       "nchara": 3148
     },
     "sec_31": {
-      "source": "",
+      "source": "https://tobiasahlin.com/blog/chartjs-charts-to-get-you-started/",
       "nlines": 22,
       "nchara": 2549
     },
     "sec_32": {
-      "source": "",
+      "source": "https://tobiasahlin.com/blog/chartjs-charts-to-get-you-started/",
       "nlines": 40,
       "nchara": 5010
     },
     "sec_33": {
-      "source": "",
+      "source": "https://tobiasahlin.com/blog/chartjs-charts-to-get-you-started/",
       "nlines": 17,
       "nchara": 2043
     },
     "sec_34": {
-      "source": "",
+      "source": "https://tobiasahlin.com/blog/chartjs-charts-to-get-you-started/",
       "nlines": 32,
       "nchara": 3274
     },
     "sec_35": {
-      "source": "",
+      "source": "https://tobiasahlin.com/blog/chartjs-charts-to-get-you-started/",
       "nlines": 19,
       "nchara": 2077
     },
     "sec_36": {
-      "source": "",
+      "source": "https://tobiasahlin.com/blog/chartjs-charts-to-get-you-started/",
       "nlines": 19,
       "nchara": 2077
     },
     "sec_37": {
-      "source": "",
+      "source": "https://tobiasahlin.com/blog/chartjs-charts-to-get-you-started/",
       "nlines": 20,
       "nchara": 2353
     },
     "sec_38": {
-      "source": "",
+      "source": "https://tobiasahlin.com/blog/chartjs-charts-to-get-you-started/",
       "nlines": 23,
       "nchara": 2185
     },
     "sec_39": {
-      "source": "",
+      "source": "https://tobiasahlin.com/blog/chartjs-charts-to-get-you-started/",
       "nlines": 38,
       "nchara": 4530
     },
     "sec_40": {
-      "source": "",
+      "source": "https://tobiasahlin.com/blog/chartjs-charts-to-get-you-started/",
       "nlines": 64,
       "nchara": 4786
     },
     "sec_41": {
-      "source": "",
+      "source": "https://ordinarycoders.com/blog/article/11-chart-js-examples",
       "nlines": 36,
       "nchara": 4032
     },
     "sec_42": {
-      "source": "",
+      "source": "https://ordinarycoders.com/blog/article/11-chart-js-examples",
       "nlines": 29,
       "nchara": 3166
     },
     "sec_43": {
-      "source": "",
+      "source": "https://ordinarycoders.com/blog/article/11-chart-js-examples",
       "nlines": 33,
       "nchara": 3332
     },
     "sec_44": {
-      "source": "",
+      "source": "https://ordinarycoders.com/blog/article/11-chart-js-examples",
       "nlines": 37,
       "nchara": 2961
     },
     "sec_45": {
-      "source": "",
+      "source": "https://ordinarycoders.com/blog/article/11-chart-js-examples",
       "nlines": 44,
       "nchara": 3501
     },
     "sec_46": {
-      "source": "",
+      "source": "https://ordinarycoders.com/blog/article/11-chart-js-examples",
       "nlines": 32,
       "nchara": 1750
     },
     "sec_47": {
-      "source": "",
+      "source": "https://ordinarycoders.com/blog/article/11-chart-js-examples",
       "nlines": 31,
       "nchara": 1745
     },
     "sec_48": {
-      "source": "",
+      "source": "https://ordinarycoders.com/blog/article/11-chart-js-examples",
       "nlines": 31,
       "nchara": 1744
     },
     "sec_49": {
-      "source": "",
+      "source": "https://ordinarycoders.com/blog/article/11-chart-js-examples",
       "nlines": 59,
       "nchara": 4474
     },
     "sec_50": {
-      "source": "",
+      "source": "https://ordinarycoders.com/blog/article/11-chart-js-examples",
       "nlines": 35,
       "nchara": 3278
     },
     "thr_31": {
-      "source": "",
+      "source": "https://bitbucket.org/delainetech/transporter_react",
       "nlines": 44,
       "nchara": 7250
     },
     "thr_32": {
-      "source": "",
+      "source": "https://bitbucket.org/delainetech/transporter_react",
       "nlines": 107,
       "nchara": 12910
     },
     "thr_33": {
-      "source": "",
+      "source": "https://bitbucket.org/delainetech/transporter_react",
       "nlines": 195,
       "nchara": 29132
     },
@@ -7841,7 +7841,7 @@
       "nchara": 35456
     },
     "thr_35": {
-      "source": "",
+      "source": "https://bitbucket.org/delainetech/transporter_react",
       "nlines": 430,
       "nchara": 48753
     },
@@ -7851,57 +7851,57 @@
       "nchara": 10039
     },
     "thr_37": {
-      "source": "",
+      "source": "https://codepen.io/kimjuny90/pen/WOOpgN",
       "nlines": 51,
       "nchara": 5083
     },
     "thr_38": {
-      "source": "",
+      "source": "https://codepen.io/starnavi/pen/QWjXKjz",
       "nlines": 212,
       "nchara": 26357
     },
     "thr_39": {
-      "source": "",
+      "source": "https://codepen.io/ivanodintsov/pen/eXOBQK",
       "nlines": 133,
       "nchara": 12093
     },
     "thr_40": {
-      "source": "",
+      "source": "https://codepen.io/joyguy89/pen/LbVqmj",
       "nlines": 90,
       "nchara": 13358
     },
     "thr_41": {
-      "source": "",
+      "source": "https://codepen.io/techniq/pen/JKkBZo",
       "nlines": 71,
       "nchara": 12537
     },
     "thr_42": {
-      "source": "",
+      "source": "https://codepen.io/adamdharrington/pen/GdpMyG",
       "nlines": 295,
       "nchara": 28543
     },
     "thr_43": {
-      "source": "",
+      "source": "https://codepen.io/paulmichaelxd/pen/WBrWEb",
       "nlines": 161,
       "nchara": 14215
     },
     "thr_44": {
-      "source": "",
+      "source": "https://codepen.io/nick123pig/pen/ZyOPpy",
       "nlines": 288,
       "nchara": 25043
     },
     "thr_45": {
-      "source": "",
+      "source": "https://codepen.io/paulmichaelxd/pen/LoGpjW",
       "nlines": 86,
       "nchara": 8316
     },
     "thr_46": {
-      "source": "",
+      "source": "https://codepen.io/joyguy89/pen/vyLGae",
       "nlines": 96,
       "nchara": 13680
     },
     "thr_47": {
-      "source": "",
+      "source": "https://codepen.io/joyguy89/pen/BQNyXP",
       "nlines": 118,
       "nchara": 13993
     },
@@ -7911,12 +7911,12 @@
       "nchara": 7551
     },
     "thr_49": {
-      "source": "",
+      "source": "https://codepen.io/joyguy89/pen/LbVqmj",
       "nlines": 90,
       "nchara": 13489
     },
     "thr_50": {
-      "source": "",
+      "source": "https://codepen.io/akshay-karangale/pen/mzzYrQ",
       "nlines": 91,
       "nchara": 13137
     }

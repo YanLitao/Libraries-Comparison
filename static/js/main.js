@@ -1,4 +1,4 @@
-var maxFileNum = 31,
+var maxFileNum = 50,
     currentDomain = "nlp",
     data = {"nlp": {}, "vis": {}},
     libraries = {
@@ -9,38 +9,46 @@ var maxFileNum = 31,
     fo = {"nlp": {"fir": [], "sec": [], "thr": []}, "vis": {"fir": [], "sec": [], "thr": []}},
     hierarchyConcept = {},
     lines = {"nlp": {"fir": [], "sec": [], "thr": []}, "vis": {"fir": [], "sec": [], "thr": []}},
-    colorArr = [
-        "#ced065",
-        "#e7c9ff",
-        "#b8ef8c",
-        "#dfbaeb",
-        "#e4fb8f",
-        "#d8e3ff",
-        "#fcfc8e",
-        "#33fffb",
-        "#ffc385",
-        "#46f3c6",
-        "#ffd3cf",
-        "#74fabc",
-        "#d6c1ca",
-        "#abd46f",
-        "#daaec5",
-        "#a1d67b",
-        "#9af8ff",
-        "#d1c97c",
-        "#4ddade",
-        "#ffd8ac",
-        "#6fffdf",
-        "#ffedb7",
-        "#73daaf",
-        "#f0ffe8",
-        "#82d99b",
-        "#b4ccc0",
-        "#a8ffbf",
-        "#c3cc8f",
-        "#f2ffc5",
-        "#b2d09b"
-    ],
+    colorArr = ["#ef697d",
+"#75eaa2",
+"#c481e9",
+"#a1ac2c",
+"#3c98f3",
+"#bea833",
+"#988feb",
+"#e1df6e",
+"#7899e9",
+"#94af45",
+"#e089d6",
+"#63b85c",
+"#ee6fa9",
+"#b5ea87",
+"#c89ede",
+"#8faf5a",
+"#66a1e5",
+"#da9c41",
+"#3ba7e5",
+"#ef785a",
+"#45dbf1",
+"#e29263",
+"#5ce7e4",
+"#e38988",
+"#79e9c9",
+"#e190b5",
+"#51b78a",
+"#abbaf3",
+"#bca84a",
+"#3fa1cc",
+"#eac786",
+"#68c3ef",
+"#c49c61",
+"#8097cc",
+"#d7e298",
+"#41bbc5",
+"#a1a865",
+"#37a6a8",
+"#88bd81",
+"#31b7a3"],
     conceptColors = {},
     initialColors = {},
     initialSelection = true;
@@ -72,7 +80,7 @@ function genHVis(hVis, tem) {
         condition.className = "conditionVis";
         condition.style.width = (tem[n[i]]/maxFileNum)*6.5+"rem";
         condition.id = hVis.id +"_" + n[i] + "_condition";
-        if (tem[n[i]] != "0") {
+        if (Number(tem[n[i]]) >= 5) {
             condition.innerText = tem[n[i]];
         }
         out.appendChild(condition);
@@ -418,7 +426,7 @@ function updateHVis(fileMatched) {
         } else if (i.name in conceptFreq) {
             for (var l in conceptFreq[i.name]) {
                 document.getElementById(i.name+"_hVis_"+l+"_condition").style.width = (conceptFreq[i.name][l]/maxFileNum)*6.5+"rem";
-                if (conceptFreq[i.name][l] == "0" || conceptFreq[i.name][l] == "1") {
+                if (Number(conceptFreq[i.name][l]) < 5) {
                     document.getElementById(i.name+"_hVis_"+l+"_condition").innerText = "";
                 } else {
                     document.getElementById(i.name+"_hVis_"+l+"_condition").innerText = conceptFreq[i.name][l];
@@ -585,13 +593,13 @@ function switchMode(e) {
         [...smallBlocks].forEach(function(s) {
             var codes = s.querySelectorAll("code");
             [...codes].forEach(function(c) {
-                c.style.fontSize = "1rem";
+                c.style.fontSize = "1.4rem";
             })
         });
         [...codeBlocks].forEach(function(s) {
             var codes = s.querySelectorAll("code");
             [...codes].forEach(function(c) {
-                c.style.fontSize = "1rem";
+                c.style.fontSize = "1.4rem";
             })
         });
     }

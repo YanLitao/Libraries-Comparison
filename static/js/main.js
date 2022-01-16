@@ -141,9 +141,6 @@ function genCode(domain) {
             } else {
                 codeLink.innerText = f;
             }
-            if (f=="fir_31") {
-                console.log(f, codeRange, codeRange.querySelector("#"+f));
-            }
             
             codeRange.querySelector("#"+f).prepend(codeLink);
             
@@ -227,7 +224,7 @@ function switchDomain(domain) {
     var libs = document.getElementsByClassName("lib"),
         titles = document.getElementsByClassName("titName");
     for (var i=0; i<3; i++) {
-        libs[i].innerText = libraries[domain][i];
+        libs[i].innerText = libraries[domain][i]+": 50";
         titles[i].innerText = libraries[domain][i];
     }
     var blank = document.getElementsByClassName("codeRange");

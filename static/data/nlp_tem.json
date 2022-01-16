@@ -4,41 +4,56 @@
       {
         "cat_Preprocessing": {
           "color": "rgb(246, 183, 60)",
-          "num": 33,
+          "num": 48,
           "codes": [
-            "0",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17",
-            "18",
-            "19",
-            "20",
-            "21",
-            "22",
-            "23",
-            "24",
-            "25",
-            "26",
-            "27",
-            "28",
-            "29",
-            "30",
-            "31",
-            "32"
+            "fir_4.js",
+            "fir_16.js",
+            "fir_17.js",
+            "fir_23.js",
+            "fir_37.js",
+            "fir_40.js",
+            "fir_1.js",
+            "fir_2.js",
+            "fir_3.js",
+            "fir_6.js",
+            "fir_8.js",
+            "fir_9.js",
+            "fir_10.js",
+            "fir_11.js",
+            "fir_12.js",
+            "fir_13.js",
+            "fir_14.js",
+            "fir_18.js",
+            "fir_19.js",
+            "fir_20.js",
+            "fir_21.js",
+            "fir_25.js",
+            "fir_29.js",
+            "fir_30.js",
+            "fir_31.js",
+            "fir_33.js",
+            "fir_34.js",
+            "fir_41.js",
+            "fir_42.js",
+            "fir_43.js",
+            "fir_45.js",
+            "fir_47.js",
+            "fir_48.js",
+            "fir_24.js",
+            "fir_5.js",
+            "fir_7.js",
+            "fir_28.js",
+            "fir_35.js",
+            "fir_36.js",
+            "fir_38.js",
+            "fir_39.js",
+            "fir_44.js",
+            "fir_49.js",
+            "fir_50.js",
+            "fir_22.js",
+            "fir_27.js",
+            "fir_32.js",
+            "fir_26.js"
           ]
         }
       },
@@ -51,8 +66,8 @@
             "fir_16.js",
             "fir_17.js",
             "fir_23.js",
-            "fir_37.py",
-            "fir_40.py"
+            "fir_37.js",
+            "fir_40.js"
           ]
         }
       },
@@ -83,17 +98,17 @@
             "fir_25.js",
             "fir_29.js",
             "fir_30.js",
-            "fir_31.py",
-            "fir_33.py",
-            "fir_34.py",
-            "fir_37.py",
-            "fir_40.py",
-            "fir_41.py",
-            "fir_42.py",
-            "fir_43.py",
-            "fir_45.py",
-            "fir_47.py",
-            "fir_48.py"
+            "fir_31.js",
+            "fir_33.js",
+            "fir_34.js",
+            "fir_37.js",
+            "fir_40.js",
+            "fir_41.js",
+            "fir_42.js",
+            "fir_43.js",
+            "fir_45.js",
+            "fir_47.js",
+            "fir_48.js"
           ]
         }
       },
@@ -114,8 +129,8 @@
             "fir_29.js",
             "fir_30.js",
             "fir_24.js",
-            "fir_37.py",
-            "fir_42.py"
+            "fir_37.js",
+            "fir_42.js"
           ]
         }
       },
@@ -147,19 +162,19 @@
             "fir_5.js",
             "fir_7.js",
             "fir_28.js",
-            "fir_31.py",
-            "fir_33.py",
-            "fir_34.py",
-            "fir_35.py",
-            "fir_36.py",
-            "fir_38.py",
-            "fir_39.py",
-            "fir_41.py",
-            "fir_43.py",
-            "fir_44.py",
-            "fir_48.py",
-            "fir_49.py",
-            "fir_50.py"
+            "fir_31.js",
+            "fir_33.js",
+            "fir_34.js",
+            "fir_35.js",
+            "fir_36.js",
+            "fir_38.js",
+            "fir_39.js",
+            "fir_41.js",
+            "fir_43.js",
+            "fir_44.js",
+            "fir_48.js",
+            "fir_49.js",
+            "fir_50.js"
           ]
         }
       },
@@ -172,8 +187,8 @@
             "fir_8.js",
             "fir_20.js",
             "fir_21.js",
-            "fir_38.py",
-            "fir_43.py"
+            "fir_38.js",
+            "fir_43.js"
           ]
         }
       },
@@ -205,10 +220,10 @@
             "fir_4.js",
             "fir_6.js",
             "fir_27.js",
-            "fir_32.py",
-            "fir_34.py",
-            "fir_35.py",
-            "fir_49.py"
+            "fir_32.js",
+            "fir_34.js",
+            "fir_35.js",
+            "fir_49.js"
           ]
         }
       },
@@ -226,31 +241,43 @@
           "codes": [
             "fir_6.js",
             "fir_26.js",
-            "fir_44.py",
-            "fir_47.py"
+            "fir_44.js",
+            "fir_47.js"
           ]
         }
       },
       {
         "cat_Basic_Analysis": {
           "color": "rgb(246, 183, 60)",
-          "num": 15,
+          "num": 27,
           "codes": [
-            "0",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14"
+            "fir_32.js",
+            "fir_49.js",
+            "fir_4.js",
+            "fir_16.js",
+            "fir_17.js",
+            "fir_23.js",
+            "fir_6.js",
+            "fir_11.js",
+            "fir_12.js",
+            "fir_30.js",
+            "fir_24.js",
+            "fir_37.js",
+            "fir_44.js",
+            "fir_45.js",
+            "fir_48.js",
+            "fir_33.js",
+            "fir_35.js",
+            "fir_36.js",
+            "fir_41.js",
+            "fir_42.js",
+            "fir_47.js",
+            "fir_50.js",
+            "fir_19.js",
+            "fir_8.js",
+            "fir_20.js",
+            "fir_21.js",
+            "fir_29.js"
           ]
         }
       },
@@ -259,8 +286,8 @@
           "color": "rgb(246, 183, 60)",
           "num": 2,
           "codes": [
-            "fir_32.py",
-            "fir_49.py"
+            "fir_32.js",
+            "fir_49.js"
           ]
         }
       },
@@ -278,12 +305,12 @@
             "fir_12.js",
             "fir_30.js",
             "fir_24.js",
-            "fir_32.py",
-            "fir_37.py",
-            "fir_44.py",
-            "fir_45.py",
-            "fir_48.py",
-            "fir_49.py"
+            "fir_32.js",
+            "fir_37.js",
+            "fir_44.js",
+            "fir_45.js",
+            "fir_48.js",
+            "fir_49.js"
           ]
         }
       },
@@ -317,13 +344,13 @@
           "color": "rgb(246, 183, 60)",
           "num": 7,
           "codes": [
-            "fir_33.py",
-            "fir_35.py",
-            "fir_36.py",
-            "fir_41.py",
-            "fir_42.py",
-            "fir_47.py",
-            "fir_50.py"
+            "fir_33.js",
+            "fir_35.js",
+            "fir_36.js",
+            "fir_41.js",
+            "fir_42.js",
+            "fir_47.js",
+            "fir_50.js"
           ]
         }
       },
@@ -333,7 +360,7 @@
           "num": 2,
           "codes": [
             "fir_19.js",
-            "fir_42.py"
+            "fir_42.js"
           ]
         }
       },
@@ -359,17 +386,24 @@
       {
         "cat_Advanced_Analysis": {
           "color": "rgb(246, 183, 60)",
-          "num": 9,
+          "num": 16,
           "codes": [
-            "0",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"
+            "fir_9.js",
+            "fir_30.js",
+            "fir_24.js",
+            "fir_28.js",
+            "fir_22.js",
+            "fir_27.js",
+            "fir_15.js",
+            "fir_32.js",
+            "fir_45.js",
+            "fir_46.js",
+            "fir_36.js",
+            "fir_3.js",
+            "fir_8.js",
+            "fir_21.js",
+            "fir_37.js",
+            "fir_40.js"
           ]
         }
       },
@@ -393,9 +427,9 @@
             "fir_22.js",
             "fir_27.js",
             "fir_15.js",
-            "fir_32.py",
-            "fir_45.py",
-            "fir_46.py"
+            "fir_32.js",
+            "fir_45.js",
+            "fir_46.js"
           ]
         }
       },
@@ -404,7 +438,7 @@
           "color": "rgb(246, 183, 60)",
           "num": 1,
           "codes": [
-            "fir_36.py"
+            "fir_36.js"
           ]
         }
       },
@@ -447,20 +481,13 @@
           "color": "rgb(246, 183, 60)",
           "num": 2,
           "codes": [
-            "fir_37.py",
-            "fir_40.py"
+            "fir_37.js",
+            "fir_40.js"
           ]
         }
       },
       {
         "fea_Neural_Network_Models": {
-          "color": "#12232E",
-          "num": 0,
-          "codes": []
-        }
-      },
-      {
-        "fea_": {
           "color": "#12232E",
           "num": 0,
           "codes": []
@@ -471,16 +498,29 @@
       {
         "cat_Preprocessing": {
           "color": "rgb(246, 183, 60)",
-          "num": 8,
+          "num": 21,
           "codes": [
-            "0",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7"
+            "sec_7.js",
+            "sec_10.js",
+            "sec_34.js",
+            "sec_37.js",
+            "sec_39.js",
+            "sec_48.js",
+            "sec_50.js",
+            "sec_2.js",
+            "sec_12.js",
+            "sec_31.js",
+            "sec_33.js",
+            "sec_6.js",
+            "sec_35.js",
+            "sec_38.js",
+            "sec_40.js",
+            "sec_41.js",
+            "sec_9.js",
+            "sec_27.js",
+            "sec_32.js",
+            "sec_1.js",
+            "sec_8.js"
           ]
         }
       },
@@ -499,11 +539,11 @@
           "color": "rgb(246, 183, 60)",
           "num": 5,
           "codes": [
-            "sec_34.py",
-            "sec_37.py",
-            "sec_39.py",
-            "sec_48.py",
-            "sec_50.py"
+            "sec_34.js",
+            "sec_37.js",
+            "sec_39.js",
+            "sec_48.js",
+            "sec_50.js"
           ]
         }
       },
@@ -514,8 +554,8 @@
           "codes": [
             "sec_2.js",
             "sec_12.js",
-            "sec_31.py",
-            "sec_33.py"
+            "sec_31.js",
+            "sec_33.js"
           ]
         }
       },
@@ -561,12 +601,12 @@
           "codes": [
             "sec_10.js",
             "sec_6.js",
-            "sec_34.py",
-            "sec_35.py",
-            "sec_38.py",
-            "sec_39.py",
-            "sec_40.py",
-            "sec_41.py"
+            "sec_34.js",
+            "sec_35.js",
+            "sec_38.js",
+            "sec_39.js",
+            "sec_40.js",
+            "sec_41.js"
           ]
         }
       },
@@ -578,7 +618,7 @@
             "sec_2.js",
             "sec_9.js",
             "sec_27.js",
-            "sec_32.py"
+            "sec_32.js"
           ]
         }
       },
@@ -596,11 +636,16 @@
       {
         "cat_Basic_Analysis": {
           "color": "rgb(246, 183, 60)",
-          "num": 3,
+          "num": 8,
           "codes": [
-            "0",
-            "1",
-            "2"
+            "sec_45.js",
+            "sec_2.js",
+            "sec_6.js",
+            "sec_12.js",
+            "sec_17.js",
+            "sec_31.js",
+            "sec_26.js",
+            "sec_29.js"
           ]
         }
       },
@@ -609,7 +654,7 @@
           "color": "rgb(246, 183, 60)",
           "num": 1,
           "codes": [
-            "sec_45.py"
+            "sec_45.js"
           ]
         }
       },
@@ -644,7 +689,7 @@
           "codes": [
             "sec_12.js",
             "sec_17.js",
-            "sec_31.py"
+            "sec_31.js"
           ]
         }
       },
@@ -677,33 +722,49 @@
           "color": "rgb(246, 183, 60)",
           "num": 1,
           "codes": [
-            "sec_31.py"
+            "sec_31.js"
           ]
         }
       },
       {
         "cat_Advanced_Analysis": {
           "color": "rgb(246, 183, 60)",
-          "num": 18,
+          "num": 34,
           "codes": [
-            "0",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17"
+            "sec_9.js",
+            "sec_20.js",
+            "sec_4.js",
+            "sec_5.js",
+            "sec_13.js",
+            "sec_36.js",
+            "sec_44.js",
+            "sec_12.js",
+            "sec_19.js",
+            "sec_23.js",
+            "sec_11.js",
+            "sec_18.js",
+            "sec_31.js",
+            "sec_32.js",
+            "sec_46.js",
+            "sec_26.js",
+            "sec_29.js",
+            "sec_15.js",
+            "sec_21.js",
+            "sec_24.js",
+            "sec_25.js",
+            "sec_28.js",
+            "sec_30.js",
+            "sec_33.js",
+            "sec_37.js",
+            "sec_42.js",
+            "sec_43.js",
+            "sec_47.js",
+            "sec_48.js",
+            "sec_49.js",
+            "sec_50.js",
+            "sec_14.js",
+            "sec_16.js",
+            "sec_22.js"
           ]
         }
       },
@@ -724,8 +785,8 @@
             "sec_4.js",
             "sec_5.js",
             "sec_13.js",
-            "sec_36.py",
-            "sec_44.py"
+            "sec_36.js",
+            "sec_44.js"
           ]
         }
       },
@@ -746,9 +807,9 @@
             "sec_23.js",
             "sec_11.js",
             "sec_18.js",
-            "sec_31.py",
-            "sec_32.py",
-            "sec_46.py"
+            "sec_31.js",
+            "sec_32.js",
+            "sec_46.js"
           ]
         }
       },
@@ -766,15 +827,15 @@
             "sec_25.js",
             "sec_28.js",
             "sec_30.js",
-            "sec_32.py",
-            "sec_33.py",
-            "sec_37.py",
-            "sec_42.py",
-            "sec_43.py",
-            "sec_47.py",
-            "sec_48.py",
-            "sec_49.py",
-            "sec_50.py"
+            "sec_32.js",
+            "sec_33.js",
+            "sec_37.js",
+            "sec_42.js",
+            "sec_43.js",
+            "sec_47.js",
+            "sec_48.js",
+            "sec_49.js",
+            "sec_50.js"
           ]
         }
       },
@@ -796,8 +857,8 @@
             "sec_19.js",
             "sec_22.js",
             "sec_23.js",
-            "sec_33.py",
-            "sec_46.py"
+            "sec_33.js",
+            "sec_46.js"
           ]
         }
       },
@@ -814,37 +875,45 @@
           "num": 0,
           "codes": []
         }
-      },
-      {
-        "fea_": {
-          "color": "#12232E",
-          "num": 0,
-          "codes": []
-        }
       }
     ],
     "thr": [
       {
         "cat_Preprocessing": {
           "color": "rgb(246, 183, 60)",
-          "num": 16,
+          "num": 31,
           "codes": [
-            "0",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15"
+            "thr_17.js",
+            "thr_1.js",
+            "thr_2.js",
+            "thr_3.js",
+            "thr_14.js",
+            "thr_10.js",
+            "thr_12.js",
+            "thr_18.js",
+            "thr_20.js",
+            "thr_27.js",
+            "thr_34.js",
+            "thr_36.js",
+            "thr_38.js",
+            "thr_45.js",
+            "thr_46.js",
+            "thr_49.js",
+            "thr_50.js",
+            "thr_22.js",
+            "thr_26.js",
+            "thr_33.js",
+            "thr_37.js",
+            "thr_39.js",
+            "thr_41.js",
+            "thr_13.js",
+            "thr_44.js",
+            "thr_5.js",
+            "thr_6.js",
+            "thr_25.js",
+            "thr_24.js",
+            "thr_11.js",
+            "thr_19.js"
           ]
         }
       },
@@ -871,13 +940,13 @@
             "thr_18.js",
             "thr_20.js",
             "thr_27.js",
-            "thr_34.py",
-            "thr_36.py",
-            "thr_38.py",
-            "thr_45.py",
-            "thr_46.py",
-            "thr_49.py",
-            "thr_50.py"
+            "thr_34.js",
+            "thr_36.js",
+            "thr_38.js",
+            "thr_45.js",
+            "thr_46.js",
+            "thr_49.js",
+            "thr_50.js"
           ]
         }
       },
@@ -891,10 +960,10 @@
             "thr_12.js",
             "thr_22.js",
             "thr_26.js",
-            "thr_33.py",
-            "thr_37.py",
-            "thr_39.py",
-            "thr_41.py"
+            "thr_33.js",
+            "thr_37.js",
+            "thr_39.js",
+            "thr_41.js"
           ]
         }
       },
@@ -905,7 +974,7 @@
           "codes": [
             "thr_17.js",
             "thr_13.js",
-            "thr_44.py"
+            "thr_44.js"
           ]
         }
       },
@@ -951,8 +1020,8 @@
           "num": 3,
           "codes": [
             "thr_24.js",
-            "thr_41.py",
-            "thr_45.py"
+            "thr_41.js",
+            "thr_45.js"
           ]
         }
       },
@@ -979,17 +1048,27 @@
       {
         "cat_Basic_Analysis": {
           "color": "rgb(246, 183, 60)",
-          "num": 9,
+          "num": 19,
           "codes": [
-            "0",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"
+            "thr_12.js",
+            "thr_24.js",
+            "thr_34.js",
+            "thr_36.js",
+            "thr_37.js",
+            "thr_38.js",
+            "thr_39.js",
+            "thr_48.js",
+            "thr_14.js",
+            "thr_18.js",
+            "thr_31.js",
+            "thr_32.js",
+            "thr_35.js",
+            "thr_47.js",
+            "thr_49.js",
+            "thr_4.js",
+            "thr_8.js",
+            "thr_10.js",
+            "thr_7.js"
           ]
         }
       },
@@ -1007,12 +1086,12 @@
           "codes": [
             "thr_12.js",
             "thr_24.js",
-            "thr_34.py",
-            "thr_36.py",
-            "thr_37.py",
-            "thr_38.py",
-            "thr_39.py",
-            "thr_48.py"
+            "thr_34.js",
+            "thr_36.js",
+            "thr_37.js",
+            "thr_38.js",
+            "thr_39.js",
+            "thr_48.js"
           ]
         }
       },
@@ -1023,13 +1102,13 @@
           "codes": [
             "thr_14.js",
             "thr_18.js",
-            "thr_31.py",
-            "thr_32.py",
-            "thr_35.py",
-            "thr_37.py",
-            "thr_47.py",
-            "thr_48.py",
-            "thr_49.py"
+            "thr_31.js",
+            "thr_32.js",
+            "thr_35.js",
+            "thr_37.js",
+            "thr_47.js",
+            "thr_48.js",
+            "thr_49.js"
           ]
         }
       },
@@ -1039,7 +1118,7 @@
           "num": 2,
           "codes": [
             "thr_4.js",
-            "thr_47.py"
+            "thr_47.js"
           ]
         }
       },
@@ -1087,14 +1166,20 @@
       {
         "cat_Advanced_Analysis": {
           "color": "rgb(246, 183, 60)",
-          "num": 6,
+          "num": 12,
           "codes": [
-            "0",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5"
+            "thr_1.js",
+            "thr_15.js",
+            "thr_17.js",
+            "thr_9.js",
+            "thr_7.js",
+            "thr_6.js",
+            "thr_36.js",
+            "thr_38.js",
+            "thr_2.js",
+            "thr_3.js",
+            "thr_4.js",
+            "thr_14.js"
           ]
         }
       },
@@ -1147,8 +1232,8 @@
           "num": 3,
           "codes": [
             "thr_6.js",
-            "thr_36.py",
-            "thr_38.py"
+            "thr_36.js",
+            "thr_38.js"
           ]
         }
       },
@@ -1179,15 +1264,6 @@
             "thr_15.js"
           ]
         }
-      },
-      {
-        "fea_": {
-          "color": "rgb(246, 183, 60)",
-          "num": 1,
-          "codes": [
-            "thr_42.py"
-          ]
-        }
       }
     ]
   },
@@ -1195,9 +1271,9 @@
     {
       "name": "cat_Preprocessing",
       "definition": "Text processing is a method used under the NLP to clean the text and prepare it for the model building. ",
-      "fir": 33,
-      "sec": 8,
-      "thr": 16
+      "fir": 48,
+      "sec": 21,
+      "thr": 31
     },
     {
       "name": "fea_parsing",
@@ -1279,9 +1355,9 @@
     {
       "name": "cat_Basic_Analysis",
       "definition": "A combination of many basic NLP operations for a particular purpose.",
-      "fir": 15,
-      "sec": 3,
-      "thr": 9
+      "fir": 27,
+      "sec": 8,
+      "thr": 19
     },
     {
       "name": "fea_chunking",
@@ -1349,9 +1425,9 @@
     {
       "name": "cat_Advanced_Analysis",
       "definition": "Advanced analysis is a first-level concept, which contains 8 second-level concepts",
-      "fir": 9,
-      "sec": 18,
-      "thr": 6
+      "fir": 16,
+      "sec": 34,
+      "thr": 12
     },
     {
       "name": "fea_chatbot",
@@ -2039,241 +2115,332 @@
     ],
     "fir_31": [
       "fea_tokenization",
-      "fea_nlp_datasets"
+      "fea_nlp_datasets",
+      "cat_Preprocessing"
     ],
     "fir_32": [
       "fea_classification",
       "fea_Part_of_Speech",
       "fea_tagger",
-      "fea_chunking"
+      "fea_chunking",
+      "cat_Basic_Analysis",
+      "cat_Preprocessing",
+      "cat_Advanced_Analysis"
     ],
     "fir_33": [
       "fea_tokenization",
       "fea_nlp_datasets",
-      "fea_text_frequency"
+      "fea_text_frequency",
+      "cat_Preprocessing",
+      "cat_Basic_Analysis"
     ],
     "fir_34": [
       "fea_tokenization",
       "fea_nlp_datasets",
-      "fea_tagger"
+      "fea_tagger",
+      "cat_Preprocessing"
     ],
     "fir_35": [
       "fea_nlp_datasets",
       "fea_tagger",
-      "fea_text_frequency"
+      "fea_text_frequency",
+      "cat_Preprocessing",
+      "cat_Basic_Analysis"
     ],
     "fir_36": [
       "fea_clustering",
       "fea_nlp_datasets",
-      "fea_text_frequency"
+      "fea_text_frequency",
+      "cat_Preprocessing",
+      "cat_Basic_Analysis",
+      "cat_Advanced_Analysis"
     ],
     "fir_37": [
       "fea_Part_of_Speech",
       "fea_lemmatization",
       "fea_tokenization",
       "fea_tree",
-      "fea_parsing"
+      "fea_parsing",
+      "cat_Preprocessing",
+      "cat_Advanced_Analysis",
+      "cat_Basic_Analysis"
     ],
     "fir_38": [
       "fea_nlp_datasets",
-      "fea_stemming"
+      "fea_stemming",
+      "cat_Preprocessing"
     ],
     "fir_39": [
-      "fea_nlp_datasets"
+      "fea_nlp_datasets",
+      "cat_Preprocessing"
     ],
     "fir_40": [
       "fea_tree",
       "fea_tokenization",
-      "fea_parsing"
+      "fea_parsing",
+      "cat_Advanced_Analysis",
+      "cat_Preprocessing"
     ],
     "fir_41": [
       "fea_tokenization",
       "fea_nlp_datasets",
-      "fea_text_frequency"
+      "fea_text_frequency",
+      "cat_Preprocessing",
+      "cat_Basic_Analysis"
     ],
     "fir_42": [
       "fea_text_similarity",
       "fea_lemmatization",
       "fea_tokenization",
-      "fea_text_frequency"
+      "fea_text_frequency",
+      "cat_Basic_Analysis",
+      "cat_Preprocessing"
     ],
     "fir_43": [
       "fea_tokenization",
       "fea_nlp_datasets",
-      "fea_stemming"
+      "fea_stemming",
+      "cat_Preprocessing"
     ],
     "fir_44": [
       "fea_n_grams",
       "fea_nlp_datasets",
-      "fea_Part_of_Speech"
+      "fea_Part_of_Speech",
+      "cat_Preprocessing",
+      "cat_Basic_Analysis"
     ],
     "fir_45": [
       "fea_classification",
       "fea_tokenization",
-      "fea_Part_of_Speech"
+      "fea_Part_of_Speech",
+      "cat_Preprocessing",
+      "cat_Basic_Analysis",
+      "cat_Advanced_Analysis"
     ],
     "fir_46": [
-      "fea_classification"
+      "fea_classification",
+      "cat_Advanced_Analysis"
     ],
     "fir_47": [
       "fea_tokenization",
       "fea_n_grams",
-      "fea_text_frequency"
+      "fea_text_frequency",
+      "cat_Basic_Analysis",
+      "cat_Preprocessing"
     ],
     "fir_48": [
       "fea_tokenization",
       "fea_nlp_datasets",
-      "fea_Part_of_Speech"
+      "fea_Part_of_Speech",
+      "cat_Preprocessing",
+      "cat_Basic_Analysis"
     ],
     "fir_49": [
       "fea_nlp_datasets",
       "fea_tagger",
       "fea_Part_of_Speech",
-      "fea_chunking"
+      "fea_chunking",
+      "cat_Basic_Analysis",
+      "cat_Preprocessing"
     ],
     "fir_50": [
       "fea_nlp_datasets",
-      "fea_text_frequency"
+      "fea_text_frequency",
+      "cat_Preprocessing",
+      "cat_Basic_Analysis"
     ],
     "sec_31": [
       "fea_spellcheck",
       "fea_text_segmentation",
       "fea_language_detection",
-      "fea_lemmatization"
+      "fea_lemmatization",
+      "cat_Basic_Analysis",
+      "cat_Preprocessing",
+      "cat_Advanced_Analysis"
     ],
     "sec_32": [
       "fea_language_detection",
       "fea_sentiment_analysis",
-      "fea_text_simplify"
+      "fea_text_simplify",
+      "cat_Advanced_Analysis",
+      "cat_Preprocessing"
     ],
     "sec_33": [
       "fea_sentiment_analysis",
       "fea_translation",
-      "fea_lemmatization"
+      "fea_lemmatization",
+      "cat_Advanced_Analysis",
+      "cat_Preprocessing"
     ],
     "sec_34": [
       "fea_tokenization",
-      "fea_tagger"
+      "fea_tagger",
+      "cat_Preprocessing"
     ],
     "sec_35": [
-      "fea_tagger"
+      "fea_tagger",
+      "cat_Preprocessing"
     ],
     "sec_36": [
-      "fea_classification"
+      "fea_classification",
+      "cat_Advanced_Analysis"
     ],
     "sec_37": [
       "fea_sentiment_analysis",
-      "fea_tokenization"
+      "fea_tokenization",
+      "cat_Advanced_Analysis",
+      "cat_Preprocessing"
     ],
     "sec_38": [
-      "fea_tagger"
+      "fea_tagger",
+      "cat_Preprocessing"
     ],
     "sec_39": [
       "fea_tokenization",
-      "fea_tagger"
+      "fea_tagger",
+      "cat_Preprocessing"
     ],
     "sec_40": [
-      "fea_tagger"
+      "fea_tagger",
+      "cat_Preprocessing"
     ],
     "sec_41": [
-      "fea_tagger"
+      "fea_tagger",
+      "cat_Preprocessing"
     ],
     "sec_42": [
-      "fea_sentiment_analysis"
+      "fea_sentiment_analysis",
+      "cat_Advanced_Analysis"
     ],
     "sec_43": [
-      "fea_sentiment_analysis"
+      "fea_sentiment_analysis",
+      "cat_Advanced_Analysis"
     ],
     "sec_44": [
-      "fea_classification"
+      "fea_classification",
+      "cat_Advanced_Analysis"
     ],
     "sec_45": [
-      "fea_chunking"
+      "fea_chunking",
+      "cat_Basic_Analysis"
     ],
     "sec_46": [
       "fea_language_detection",
-      "fea_translation"
+      "fea_translation",
+      "cat_Advanced_Analysis"
     ],
     "sec_47": [
-      "fea_sentiment_analysis"
+      "fea_sentiment_analysis",
+      "cat_Advanced_Analysis"
     ],
     "sec_48": [
       "fea_sentiment_analysis",
-      "fea_tokenization"
+      "fea_tokenization",
+      "cat_Advanced_Analysis",
+      "cat_Preprocessing"
     ],
     "sec_49": [
-      "fea_sentiment_analysis"
+      "fea_sentiment_analysis",
+      "cat_Advanced_Analysis"
     ],
     "sec_50": [
       "fea_sentiment_analysis",
-      "fea_tokenization"
+      "fea_tokenization",
+      "cat_Advanced_Analysis",
+      "cat_Preprocessing"
     ],
     "thr_31": [
-      "fea_named_entity_recognition"
+      "fea_named_entity_recognition",
+      "cat_Basic_Analysis"
     ],
     "thr_32": [
-      "fea_named_entity_recognition"
+      "fea_named_entity_recognition",
+      "cat_Basic_Analysis"
     ],
     "thr_33": [
-      "fea_lemmatization"
+      "fea_lemmatization",
+      "cat_Preprocessing"
     ],
     "thr_34": [
       "fea_tokenization",
-      "fea_Part_of_Speech"
+      "fea_Part_of_Speech",
+      "cat_Preprocessing",
+      "cat_Basic_Analysis"
     ],
     "thr_35": [
-      "fea_named_entity_recognition"
+      "fea_named_entity_recognition",
+      "cat_Basic_Analysis"
     ],
     "thr_36": [
       "fea_tokenization",
       "fea_Part_of_Speech",
-      "fea_summarizer"
+      "fea_summarizer",
+      "cat_Advanced_Analysis",
+      "cat_Preprocessing",
+      "cat_Basic_Analysis"
     ],
     "thr_37": [
       "fea_lemmatization",
       "fea_Part_of_Speech",
-      "fea_named_entity_recognition"
+      "fea_named_entity_recognition",
+      "cat_Basic_Analysis",
+      "cat_Preprocessing"
     ],
     "thr_38": [
       "fea_tokenization",
       "fea_Part_of_Speech",
-      "fea_summarizer"
+      "fea_summarizer",
+      "cat_Advanced_Analysis",
+      "cat_Preprocessing",
+      "cat_Basic_Analysis"
     ],
     "thr_39": [
       "fea_lemmatization",
-      "fea_Part_of_Speech"
+      "fea_Part_of_Speech",
+      "cat_Preprocessing",
+      "cat_Basic_Analysis"
     ],
     "thr_41": [
       "fea_lemmatization",
-      "fea_tagger"
+      "fea_tagger",
+      "cat_Preprocessing"
     ],
     "thr_42": [
-      "fea_"
+      "fea_",
+      null
     ],
     "thr_44": [
-      "fea_word_vectors"
+      "fea_word_vectors",
+      "cat_Preprocessing"
     ],
     "thr_45": [
       "fea_tokenization",
-      "fea_tagger"
+      "fea_tagger",
+      "cat_Preprocessing"
     ],
     "thr_46": [
-      "fea_tokenization"
+      "fea_tokenization",
+      "cat_Preprocessing"
     ],
     "thr_47": [
       "fea_dependency_parsing",
-      "fea_named_entity_recognition"
+      "fea_named_entity_recognition",
+      "cat_Basic_Analysis"
     ],
     "thr_48": [
       "fea_Part_of_Speech",
-      "fea_named_entity_recognition"
+      "fea_named_entity_recognition",
+      "cat_Basic_Analysis"
     ],
     "thr_49": [
       "fea_tokenization",
-      "fea_named_entity_recognition"
+      "fea_named_entity_recognition",
+      "cat_Basic_Analysis",
+      "cat_Preprocessing"
     ],
     "thr_50": [
-      "fea_tokenization"
+      "fea_tokenization",
+      "cat_Preprocessing"
     ]
   },
   "file info": {

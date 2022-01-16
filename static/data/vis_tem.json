@@ -4,55 +4,58 @@
       {
         "cat_Customizable_Components": {
           "color": "rgb(246, 183, 60)",
-          "num": 47,
+          "num": 50,
           "codes": [
-            "0",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17",
-            "18",
-            "19",
-            "20",
-            "21",
-            "22",
-            "23",
-            "24",
-            "25",
-            "26",
-            "27",
-            "28",
-            "29",
-            "30",
-            "31",
-            "32",
-            "33",
-            "34",
-            "35",
-            "36",
-            "37",
-            "38",
-            "39",
-            "40",
-            "41",
-            "42",
-            "43",
-            "44",
-            "45",
-            "46"
+            "fir_14.js",
+            "fir_35.js",
+            "fir_40.js",
+            "fir_3.js",
+            "fir_6.js",
+            "fir_13.js",
+            "fir_21.js",
+            "fir_4.js",
+            "fir_34.js",
+            "fir_36.js",
+            "fir_37.js",
+            "fir_16.js",
+            "fir_29.js",
+            "fir_11.js",
+            "fir_7.js",
+            "fir_12.js",
+            "fir_15.js",
+            "fir_17.js",
+            "fir_24.js",
+            "fir_25.js",
+            "fir_26.js",
+            "fir_28.js",
+            "fir_5.js",
+            "fir_9.js",
+            "fir_31.js",
+            "fir_33.js",
+            "fir_38.js",
+            "fir_39.js",
+            "fir_42.js",
+            "fir_44.js",
+            "fir_45.js",
+            "fir_46.js",
+            "fir_47.js",
+            "fir_48.js",
+            "fir_49.js",
+            "fir_1.js",
+            "fir_2.js",
+            "fir_8.js",
+            "fir_10.js",
+            "fir_19.js",
+            "fir_20.js",
+            "fir_23.js",
+            "fir_30.js",
+            "fir_22.js",
+            "fir_32.js",
+            "fir_41.js",
+            "fir_43.js",
+            "fir_50.js",
+            "fir_27.js",
+            "fir_18.js"
           ]
         }
       },
@@ -91,8 +94,8 @@
           "codes": [
             "fir_16.js",
             "fir_29.js",
-            "fir_4.js",
-            "fir_11.js"
+            "fir_11.js",
+            "fir_4.js"
           ]
         }
       },
@@ -163,6 +166,7 @@
             "fir_20.js",
             "fir_23.js",
             "fir_30.js",
+            "fir_22.js",
             "fir_4.js",
             "fir_5.js",
             "fir_9.js",
@@ -179,8 +183,7 @@
             "fir_44.js",
             "fir_45.js",
             "fir_49.js",
-            "fir_50.js",
-            "fir_22.js"
+            "fir_50.js"
           ]
         }
       },
@@ -297,47 +300,54 @@
       {
         "cat_Data_Processing": {
           "color": "rgb(246, 183, 60)",
-          "num": 39,
+          "num": 46,
           "codes": [
-            "0",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17",
-            "18",
-            "19",
-            "20",
-            "21",
-            "22",
-            "23",
-            "24",
-            "25",
-            "26",
-            "27",
-            "28",
-            "29",
-            "30",
-            "31",
-            "32",
-            "33",
-            "34",
-            "35",
-            "36",
-            "37",
-            "38"
+            "fir_14.js",
+            "fir_3.js",
+            "fir_6.js",
+            "fir_16.js",
+            "fir_7.js",
+            "fir_11.js",
+            "fir_26.js",
+            "fir_1.js",
+            "fir_8.js",
+            "fir_10.js",
+            "fir_32.js",
+            "fir_33.js",
+            "fir_34.js",
+            "fir_43.js",
+            "fir_44.js",
+            "fir_45.js",
+            "fir_46.js",
+            "fir_49.js",
+            "fir_21.js",
+            "fir_29.js",
+            "fir_15.js",
+            "fir_24.js",
+            "fir_25.js",
+            "fir_28.js",
+            "fir_2.js",
+            "fir_19.js",
+            "fir_23.js",
+            "fir_30.js",
+            "fir_22.js",
+            "fir_4.js",
+            "fir_5.js",
+            "fir_9.js",
+            "fir_35.js",
+            "fir_36.js",
+            "fir_37.js",
+            "fir_38.js",
+            "fir_39.js",
+            "fir_40.js",
+            "fir_42.js",
+            "fir_47.js",
+            "fir_48.js",
+            "fir_50.js",
+            "fir_13.js",
+            "fir_17.js",
+            "fir_41.js",
+            "fir_18.js"
           ]
         }
       },
@@ -474,21 +484,27 @@
       {
         "cat_Interactions_and_Animations": {
           "color": "rgb(246, 183, 60)",
-          "num": 13,
+          "num": 19,
           "codes": [
-            "0",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12"
+            "fir_24.js",
+            "fir_22.js",
+            "fir_49.js",
+            "fir_10.js",
+            "fir_6.js",
+            "fir_16.js",
+            "fir_29.js",
+            "fir_11.js",
+            "fir_15.js",
+            "fir_25.js",
+            "fir_26.js",
+            "fir_23.js",
+            "fir_4.js",
+            "fir_5.js",
+            "fir_31.js",
+            "fir_33.js",
+            "fir_42.js",
+            "fir_8.js",
+            "fir_41.js"
           ]
         }
       },
@@ -538,31 +554,63 @@
           "color": "rgb(246, 183, 60)",
           "num": 5,
           "codes": [
+            "fir_24.js",
             "fir_8.js",
             "fir_41.js",
             "fir_42.js",
-            "fir_49.js",
-            "fir_24.js"
+            "fir_49.js"
           ]
         }
       },
       {
         "cat_Visualization_Types": {
           "color": "rgb(246, 183, 60)",
-          "num": 12,
+          "num": 44,
           "codes": [
-            "0",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11"
+            "fir_14.js",
+            "fir_3.js",
+            "fir_6.js",
+            "fir_13.js",
+            "fir_16.js",
+            "fir_12.js",
+            "fir_15.js",
+            "fir_17.js",
+            "fir_1.js",
+            "fir_2.js",
+            "fir_8.js",
+            "fir_10.js",
+            "fir_28.js",
+            "fir_30.js",
+            "fir_36.js",
+            "fir_38.js",
+            "fir_39.js",
+            "fir_40.js",
+            "fir_20.js",
+            "fir_35.js",
+            "fir_37.js",
+            "fir_50.js",
+            "fir_44.js",
+            "fir_46.js",
+            "fir_42.js",
+            "fir_27.js",
+            "fir_43.js",
+            "fir_23.js",
+            "fir_31.js",
+            "fir_32.js",
+            "fir_26.js",
+            "fir_41.js",
+            "fir_4.js",
+            "fir_5.js",
+            "fir_9.js",
+            "fir_29.js",
+            "fir_34.js",
+            "fir_45.js",
+            "fir_49.js",
+            "fir_24.js",
+            "fir_25.js",
+            "fir_33.js",
+            "fir_47.js",
+            "fir_48.js"
           ]
         }
       },
@@ -598,11 +646,11 @@
           "color": "rgb(246, 183, 60)",
           "num": 5,
           "codes": [
-            "fir_36.js",
             "fir_13.js",
             "fir_12.js",
             "fir_28.js",
-            "fir_30.js"
+            "fir_30.js",
+            "fir_36.js"
           ]
         }
       },
@@ -622,10 +670,10 @@
           "color": "rgb(246, 183, 60)",
           "num": 4,
           "codes": [
+            "fir_20.js",
             "fir_35.js",
             "fir_37.js",
-            "fir_50.js",
-            "fir_20.js"
+            "fir_50.js"
           ]
         }
       },
@@ -653,8 +701,8 @@
           "color": "rgb(246, 183, 60)",
           "num": 2,
           "codes": [
-            "fir_43.js",
-            "fir_27.js"
+            "fir_27.js",
+            "fir_43.js"
           ]
         }
       },
@@ -663,8 +711,8 @@
           "color": "rgb(246, 183, 60)",
           "num": 2,
           "codes": [
-            "fir_31.js",
-            "fir_23.js"
+            "fir_23.js",
+            "fir_31.js"
           ]
         }
       },
@@ -719,9 +767,9 @@
           "color": "rgb(246, 183, 60)",
           "num": 3,
           "codes": [
+            "fir_29.js",
             "fir_34.js",
-            "fir_45.js",
-            "fir_29.js"
+            "fir_45.js"
           ]
         }
       },
@@ -739,11 +787,11 @@
           "color": "rgb(246, 183, 60)",
           "num": 5,
           "codes": [
+            "fir_24.js",
+            "fir_25.js",
             "fir_33.js",
             "fir_47.js",
-            "fir_48.js",
-            "fir_24.js",
-            "fir_25.js"
+            "fir_48.js"
           ]
         }
       }
@@ -752,36 +800,53 @@
       {
         "cat_Customizable_Components": {
           "color": "rgb(246, 183, 60)",
-          "num": 28,
+          "num": 45,
           "codes": [
-            "0",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17",
-            "18",
-            "19",
-            "20",
-            "21",
-            "22",
-            "23",
-            "24",
-            "25",
-            "26",
-            "27"
+            "sec_3.js",
+            "sec_10.js",
+            "sec_8.js",
+            "sec_14.js",
+            "sec_17.js",
+            "sec_18.js",
+            "sec_21.js",
+            "sec_25.js",
+            "sec_26.js",
+            "sec_27.js",
+            "sec_30.js",
+            "sec_31.js",
+            "sec_37.js",
+            "sec_39.js",
+            "sec_2.js",
+            "sec_5.js",
+            "sec_9.js",
+            "sec_12.js",
+            "sec_16.js",
+            "sec_19.js",
+            "sec_11.js",
+            "sec_15.js",
+            "sec_22.js",
+            "sec_23.js",
+            "sec_24.js",
+            "sec_28.js",
+            "sec_29.js",
+            "sec_32.js",
+            "sec_33.js",
+            "sec_34.js",
+            "sec_35.js",
+            "sec_36.js",
+            "sec_38.js",
+            "sec_40.js",
+            "sec_6.js",
+            "sec_13.js",
+            "sec_20.js",
+            "sec_44.js",
+            "sec_45.js",
+            "sec_46.js",
+            "sec_47.js",
+            "sec_48.js",
+            "sec_49.js",
+            "sec_1.js",
+            "sec_4.js"
           ]
         }
       },
@@ -946,13 +1011,14 @@
       {
         "cat_Data_Processing": {
           "color": "rgb(246, 183, 60)",
-          "num": 5,
+          "num": 6,
           "codes": [
-            "0",
-            "1",
-            "2",
-            "3",
-            "4"
+            "sec_25.js",
+            "sec_19.js",
+            "sec_23.js",
+            "sec_24.js",
+            "sec_20.js",
+            "sec_12.js"
           ]
         }
       },
@@ -1003,19 +1069,24 @@
       {
         "cat_Interactions_and_Animations": {
           "color": "rgb(246, 183, 60)",
-          "num": 11,
+          "num": 16,
           "codes": [
-            "0",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10"
+            "sec_21.js",
+            "sec_25.js",
+            "sec_5.js",
+            "sec_9.js",
+            "sec_12.js",
+            "sec_16.js",
+            "sec_11.js",
+            "sec_13.js",
+            "sec_14.js",
+            "sec_18.js",
+            "sec_2.js",
+            "sec_15.js",
+            "sec_6.js",
+            "sec_20.js",
+            "sec_1.js",
+            "sec_10.js"
           ]
         }
       },
@@ -1071,38 +1142,8 @@
       {
         "cat_Visualization_Types": {
           "color": "rgb(246, 183, 60)",
-          "num": 18,
+          "num": 49,
           "codes": [
-            "0",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17"
-          ]
-        }
-      },
-      {
-        "fea_Line_Chart": {
-          "color": "rgb(246, 183, 60)",
-          "num": 18,
-          "codes": [
-            "sec_32.js",
-            "sec_39.js",
-            "sec_41.js",
-            "sec_42.js",
             "sec_8.js",
             "sec_14.js",
             "sec_18.js",
@@ -1116,7 +1157,68 @@
             "sec_13.js",
             "sec_1.js",
             "sec_4.js",
-            "sec_10.js"
+            "sec_10.js",
+            "sec_32.js",
+            "sec_39.js",
+            "sec_41.js",
+            "sec_42.js",
+            "sec_17.js",
+            "sec_35.js",
+            "sec_30.js",
+            "sec_12.js",
+            "sec_16.js",
+            "sec_29.js",
+            "sec_20.js",
+            "sec_31.js",
+            "sec_37.js",
+            "sec_38.js",
+            "sec_43.js",
+            "sec_44.js",
+            "sec_50.js",
+            "sec_25.js",
+            "sec_5.js",
+            "sec_11.js",
+            "sec_15.js",
+            "sec_33.js",
+            "sec_36.js",
+            "sec_46.js",
+            "sec_47.js",
+            "sec_48.js",
+            "sec_26.js",
+            "sec_19.js",
+            "sec_21.js",
+            "sec_27.js",
+            "sec_40.js",
+            "sec_49.js",
+            "sec_24.js",
+            "sec_34.js",
+            "sec_45.js"
+          ]
+        }
+      },
+      {
+        "fea_Line_Chart": {
+          "color": "rgb(246, 183, 60)",
+          "num": 18,
+          "codes": [
+            "sec_8.js",
+            "sec_14.js",
+            "sec_18.js",
+            "sec_2.js",
+            "sec_9.js",
+            "sec_22.js",
+            "sec_23.js",
+            "sec_28.js",
+            "sec_3.js",
+            "sec_6.js",
+            "sec_13.js",
+            "sec_1.js",
+            "sec_4.js",
+            "sec_10.js",
+            "sec_32.js",
+            "sec_39.js",
+            "sec_41.js",
+            "sec_42.js"
           ]
         }
       },
@@ -1125,8 +1227,8 @@
           "color": "rgb(246, 183, 60)",
           "num": 2,
           "codes": [
-            "sec_35.js",
-            "sec_17.js"
+            "sec_17.js",
+            "sec_35.js"
           ]
         }
       },
@@ -1135,20 +1237,20 @@
           "color": "rgb(246, 183, 60)",
           "num": 14,
           "codes": [
-            "sec_31.js",
-            "sec_37.js",
-            "sec_38.js",
-            "sec_39.js",
-            "sec_43.js",
-            "sec_44.js",
-            "sec_50.js",
             "sec_30.js",
             "sec_12.js",
             "sec_16.js",
             "sec_23.js",
             "sec_29.js",
             "sec_20.js",
-            "sec_10.js"
+            "sec_10.js",
+            "sec_31.js",
+            "sec_37.js",
+            "sec_38.js",
+            "sec_39.js",
+            "sec_43.js",
+            "sec_44.js",
+            "sec_50.js"
           ]
         }
       },
@@ -1157,17 +1259,17 @@
           "color": "rgb(246, 183, 60)",
           "num": 11,
           "codes": [
-            "sec_33.js",
-            "sec_36.js",
-            "sec_46.js",
-            "sec_47.js",
-            "sec_48.js",
             "sec_25.js",
             "sec_5.js",
             "sec_11.js",
             "sec_15.js",
             "sec_3.js",
-            "sec_10.js"
+            "sec_10.js",
+            "sec_33.js",
+            "sec_36.js",
+            "sec_46.js",
+            "sec_47.js",
+            "sec_48.js"
           ]
         }
       },
@@ -1186,10 +1288,10 @@
           "color": "rgb(246, 183, 60)",
           "num": 4,
           "codes": [
-            "sec_40.js",
-            "sec_49.js",
             "sec_21.js",
-            "sec_27.js"
+            "sec_27.js",
+            "sec_40.js",
+            "sec_49.js"
           ]
         }
       },
@@ -1219,9 +1321,9 @@
           "color": "rgb(246, 183, 60)",
           "num": 3,
           "codes": [
+            "sec_24.js",
             "sec_34.js",
-            "sec_45.js",
-            "sec_24.js"
+            "sec_45.js"
           ]
         }
       },
@@ -1279,48 +1381,58 @@
       {
         "cat_Customizable_Components": {
           "color": "rgb(246, 183, 60)",
-          "num": 40,
+          "num": 50,
           "codes": [
-            "0",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17",
-            "18",
-            "19",
-            "20",
-            "21",
-            "22",
-            "23",
-            "24",
-            "25",
-            "26",
-            "27",
-            "28",
-            "29",
-            "30",
-            "31",
-            "32",
-            "33",
-            "34",
-            "35",
-            "36",
-            "37",
-            "38",
-            "39"
+            "thr_14.js",
+            "thr_2.js",
+            "thr_3.js",
+            "thr_13.js",
+            "thr_21.js",
+            "thr_4.js",
+            "thr_29.js",
+            "thr_34.js",
+            "thr_44.js",
+            "thr_50.js",
+            "thr_8.js",
+            "thr_16.js",
+            "thr_17.js",
+            "thr_18.js",
+            "thr_20.js",
+            "thr_24.js",
+            "thr_25.js",
+            "thr_26.js",
+            "thr_28.js",
+            "thr_41.js",
+            "thr_43.js",
+            "thr_45.js",
+            "thr_1.js",
+            "thr_5.js",
+            "thr_10.js",
+            "thr_11.js",
+            "thr_15.js",
+            "thr_22.js",
+            "thr_23.js",
+            "thr_27.js",
+            "thr_30.js",
+            "thr_32.js",
+            "thr_33.js",
+            "thr_35.js",
+            "thr_37.js",
+            "thr_42.js",
+            "thr_47.js",
+            "thr_48.js",
+            "thr_36.js",
+            "thr_6.js",
+            "thr_7.js",
+            "thr_9.js",
+            "thr_12.js",
+            "thr_38.js",
+            "thr_39.js",
+            "thr_46.js",
+            "thr_31.js",
+            "thr_40.js",
+            "thr_49.js",
+            "thr_19.js"
           ]
         }
       },
@@ -1330,15 +1442,15 @@
           "num": 10,
           "codes": [
             "thr_14.js",
-            "thr_34.js",
-            "thr_44.js",
-            "thr_50.js",
             "thr_2.js",
             "thr_3.js",
             "thr_13.js",
             "thr_21.js",
             "thr_4.js",
-            "thr_29.js"
+            "thr_29.js",
+            "thr_34.js",
+            "thr_44.js",
+            "thr_50.js"
           ]
         }
       },
@@ -1347,6 +1459,7 @@
           "color": "rgb(246, 183, 60)",
           "num": 19,
           "codes": [
+            "thr_14.js",
             "thr_2.js",
             "thr_3.js",
             "thr_8.js",
@@ -1364,8 +1477,7 @@
             "thr_41.js",
             "thr_43.js",
             "thr_45.js",
-            "thr_50.js",
-            "thr_14.js"
+            "thr_50.js"
           ]
         }
       },
@@ -1571,8 +1683,8 @@
           "color": "rgb(246, 183, 60)",
           "num": 2,
           "codes": [
-            "0",
-            "1"
+            "thr_29.js",
+            "thr_30.js"
           ]
         }
       },
@@ -1617,17 +1729,25 @@
       {
         "cat_Interactions_and_Animations": {
           "color": "rgb(246, 183, 60)",
-          "num": 9,
+          "num": 17,
           "codes": [
-            "0",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"
+            "thr_32.js",
+            "thr_2.js",
+            "thr_3.js",
+            "thr_13.js",
+            "thr_24.js",
+            "thr_1.js",
+            "thr_4.js",
+            "thr_15.js",
+            "thr_29.js",
+            "thr_41.js",
+            "thr_5.js",
+            "thr_30.js",
+            "thr_6.js",
+            "thr_7.js",
+            "thr_35.js",
+            "thr_10.js",
+            "thr_39.js"
           ]
         }
       },
@@ -1645,15 +1765,15 @@
           "color": "rgb(246, 183, 60)",
           "num": 9,
           "codes": [
-            "thr_15.js",
-            "thr_41.js",
             "thr_2.js",
             "thr_3.js",
             "thr_13.js",
             "thr_24.js",
             "thr_1.js",
             "thr_4.js",
-            "thr_29.js"
+            "thr_15.js",
+            "thr_29.js",
+            "thr_41.js"
           ]
         }
       },
@@ -1688,46 +1808,8 @@
       {
         "cat_Visualization_Types": {
           "color": "rgb(246, 183, 60)",
-          "num": 23,
+          "num": 50,
           "codes": [
-            "0",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17",
-            "18",
-            "19",
-            "20",
-            "21",
-            "22"
-          ]
-        }
-      },
-      {
-        "fea_Line_Chart": {
-          "color": "rgb(246, 183, 60)",
-          "num": 23,
-          "codes": [
-            "thr_37.js",
-            "thr_39.js",
-            "thr_40.js",
-            "thr_42.js",
-            "thr_47.js",
-            "thr_49.js",
-            "thr_50.js",
             "thr_2.js",
             "thr_3.js",
             "thr_13.js",
@@ -1743,7 +1825,72 @@
             "thr_30.js",
             "thr_6.js",
             "thr_7.js",
-            "thr_12.js"
+            "thr_12.js",
+            "thr_37.js",
+            "thr_39.js",
+            "thr_40.js",
+            "thr_42.js",
+            "thr_47.js",
+            "thr_49.js",
+            "thr_50.js",
+            "thr_14.js",
+            "thr_8.js",
+            "thr_11.js",
+            "thr_27.js",
+            "thr_9.js",
+            "thr_38.js",
+            "thr_46.js",
+            "thr_20.js",
+            "thr_24.js",
+            "thr_25.js",
+            "thr_26.js",
+            "thr_41.js",
+            "thr_48.js",
+            "thr_22.js",
+            "thr_31.js",
+            "thr_36.js",
+            "thr_44.js",
+            "thr_23.js",
+            "thr_34.js",
+            "thr_43.js",
+            "thr_45.js",
+            "thr_17.js",
+            "thr_18.js",
+            "thr_32.js",
+            "thr_33.js",
+            "thr_19.js",
+            "thr_35.js"
+          ]
+        }
+      },
+      {
+        "fea_Line_Chart": {
+          "color": "rgb(246, 183, 60)",
+          "num": 23,
+          "codes": [
+            "thr_2.js",
+            "thr_3.js",
+            "thr_13.js",
+            "thr_16.js",
+            "thr_21.js",
+            "thr_28.js",
+            "thr_1.js",
+            "thr_4.js",
+            "thr_5.js",
+            "thr_10.js",
+            "thr_15.js",
+            "thr_29.js",
+            "thr_30.js",
+            "thr_6.js",
+            "thr_7.js",
+            "thr_12.js",
+            "thr_37.js",
+            "thr_39.js",
+            "thr_40.js",
+            "thr_42.js",
+            "thr_47.js",
+            "thr_49.js",
+            "thr_50.js"
           ]
         }
       },
@@ -1752,8 +1899,6 @@
           "color": "rgb(246, 183, 60)",
           "num": 11,
           "codes": [
-            "thr_38.js",
-            "thr_46.js",
             "thr_14.js",
             "thr_8.js",
             "thr_13.js",
@@ -1762,7 +1907,9 @@
             "thr_11.js",
             "thr_27.js",
             "thr_29.js",
-            "thr_9.js"
+            "thr_9.js",
+            "thr_38.js",
+            "thr_46.js"
           ]
         }
       },
@@ -1771,10 +1918,6 @@
           "color": "rgb(246, 183, 60)",
           "num": 12,
           "codes": [
-            "thr_38.js",
-            "thr_41.js",
-            "thr_48.js",
-            "thr_50.js",
             "thr_14.js",
             "thr_2.js",
             "thr_3.js",
@@ -1782,7 +1925,11 @@
             "thr_21.js",
             "thr_24.js",
             "thr_25.js",
-            "thr_26.js"
+            "thr_26.js",
+            "thr_38.js",
+            "thr_41.js",
+            "thr_48.js",
+            "thr_50.js"
           ]
         }
       },
@@ -1791,11 +1938,11 @@
           "color": "rgb(246, 183, 60)",
           "num": 5,
           "codes": [
+            "thr_13.js",
+            "thr_22.js",
             "thr_31.js",
             "thr_36.js",
-            "thr_44.js",
-            "thr_13.js",
-            "thr_22.js"
+            "thr_44.js"
           ]
         }
       },
@@ -1804,11 +1951,11 @@
           "color": "rgb(246, 183, 60)",
           "num": 5,
           "codes": [
+            "thr_23.js",
             "thr_34.js",
             "thr_43.js",
             "thr_45.js",
-            "thr_50.js",
-            "thr_23.js"
+            "thr_50.js"
           ]
         }
       },
@@ -1845,9 +1992,9 @@
           "color": "rgb(246, 183, 60)",
           "num": 3,
           "codes": [
-            "thr_32.js",
             "thr_17.js",
-            "thr_18.js"
+            "thr_18.js",
+            "thr_32.js"
           ]
         }
       },
@@ -1895,9 +2042,9 @@
           "color": "rgb(246, 183, 60)",
           "num": 3,
           "codes": [
+            "thr_19.js",
             "thr_35.js",
-            "thr_44.js",
-            "thr_19.js"
+            "thr_44.js"
           ]
         }
       },
@@ -1914,9 +2061,9 @@
     {
       "name": "cat_Customizable_Components",
       "definition": "A first-level concept",
-      "fir": 47,
-      "sec": 28,
-      "thr": 40
+      "fir": 50,
+      "sec": 45,
+      "thr": 50
     },
     {
       "name": "fea_Multiple_Charts",
@@ -1970,8 +2117,8 @@
     {
       "name": "cat_Data_Processing",
       "definition": "A first-level concept",
-      "fir": 39,
-      "sec": 5,
+      "fir": 46,
+      "sec": 6,
       "thr": 2
     },
     {
@@ -2012,9 +2159,9 @@
     {
       "name": "cat_Interactions_and_Animations",
       "definition": "A first-level concept",
-      "fir": 13,
-      "sec": 11,
-      "thr": 9
+      "fir": 19,
+      "sec": 16,
+      "thr": 17
     },
     {
       "name": "fea_Selection",
@@ -2047,9 +2194,9 @@
     {
       "name": "cat_Visualization_Types",
       "definition": "",
-      "fir": 12,
-      "sec": 18,
-      "thr": 23
+      "fir": 44,
+      "sec": 49,
+      "thr": 50
     },
     {
       "name": "fea_Line_Chart",
@@ -2333,7 +2480,8 @@
       "fea_Axis",
       "fea_Multiple_Charts",
       "fea_Shapes",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Visualization_Types"
     ],
     "fir_3": [
       "cat_Data_Processing",
@@ -2345,7 +2493,8 @@
       "fea_Axis",
       "fea_Legend",
       "fea_Shapes",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Visualization_Types"
     ],
     "fir_6": [
       "fea_Text",
@@ -2360,7 +2509,8 @@
       "fea_Mouse_Events",
       "fea_Legend",
       "fea_Shapes",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Visualization_Types"
     ],
     "fir_13": [
       "fea_Text",
@@ -2374,7 +2524,8 @@
       "fea_Legend",
       "fea_Shapes",
       "fea_Canvas",
-      "fea_Bar_Chart"
+      "fea_Bar_Chart",
+      "cat_Visualization_Types"
     ],
     "fir_21": [
       "fea_Text",
@@ -2399,7 +2550,8 @@
       "fea_Axis",
       "fea_Mouse_Events",
       "fea_Shapes",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Visualization_Types"
     ],
     "fir_29": [
       "fea_Text",
@@ -2413,7 +2565,8 @@
       "fea_Axis",
       "fea_Mouse_Events",
       "fea_Shapes",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Visualization_Types"
     ],
     "fir_7": [
       "fea_Text",
@@ -2448,7 +2601,8 @@
       "fea_Axis",
       "fea_Shapes",
       "fea_Canvas",
-      "fea_Bar_Chart"
+      "fea_Bar_Chart",
+      "cat_Visualization_Types"
     ],
     "fir_15": [
       "fea_Text",
@@ -2460,7 +2614,8 @@
       "fea_Axis",
       "fea_Mouse_Events",
       "fea_Shapes",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Visualization_Types"
     ],
     "fir_17": [
       "fea_Text",
@@ -2470,7 +2625,8 @@
       "cat_Customizable_Components",
       "fea_Axis",
       "fea_Shapes",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Visualization_Types"
     ],
     "fir_24": [
       "fea_Text",
@@ -2482,7 +2638,8 @@
       "cat_Customizable_Components",
       "fea_Tree",
       "fea_Shapes",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Visualization_Types"
     ],
     "fir_25": [
       "fea_Text",
@@ -2494,7 +2651,8 @@
       "fea_Mouse_Events",
       "fea_Tree",
       "fea_Shapes",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Visualization_Types"
     ],
     "fir_26": [
       "fea_Text",
@@ -2507,7 +2665,8 @@
       "fea_Mouse_Events",
       "fea_Sankey_Diagram",
       "fea_Shapes",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Visualization_Types"
     ],
     "fir_28": [
       "fea_Text",
@@ -2517,7 +2676,8 @@
       "fea_Axis",
       "fea_Shapes",
       "fea_Canvas",
-      "fea_Bar_Chart"
+      "fea_Bar_Chart",
+      "cat_Visualization_Types"
     ],
     "fir_1": [
       "cat_Data_Processing",
@@ -2528,7 +2688,8 @@
       "cat_Customizable_Components",
       "fea_Axis",
       "fea_Shapes",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Visualization_Types"
     ],
     "fir_2": [
       "cat_Data_Processing",
@@ -2537,7 +2698,8 @@
       "cat_Customizable_Components",
       "fea_Axis",
       "fea_Shapes",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Visualization_Types"
     ],
     "fir_4": [
       "fea_Text",
@@ -2551,7 +2713,9 @@
       "cat_Customizable_Componenets",
       "fea_Legend",
       "fea_Shapes",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Visualization_Types",
+      "cat_Customizable_Components"
     ],
     "fir_5": [
       "fea_Text",
@@ -2563,7 +2727,9 @@
       "fea_Mouse_Events",
       "cat_Customizable_Componenets",
       "fea_Shapes",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Visualization_Types",
+      "cat_Customizable_Components"
     ],
     "fir_9": [
       "fea_Text",
@@ -2573,7 +2739,9 @@
       "fea_Axis",
       "cat_Customizable_Componenets",
       "fea_Shapes",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Customizable_Components",
+      "cat_Visualization_Types"
     ],
     "fir_8": [
       "cat_Data_Processing",
@@ -2588,7 +2756,8 @@
       "cat_Customizable_Components",
       "fea_Axis",
       "fea_Shapes",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Visualization_Types"
     ],
     "fir_10": [
       "cat_Data_Processing",
@@ -2600,7 +2769,8 @@
       "fea_Axis",
       "fea_Zoom",
       "fea_Shapes",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Visualization_Types"
     ],
     "fir_19": [
       "cat_Data_Processing",
@@ -2614,7 +2784,8 @@
       "cat_Customizable_Components",
       "fea_Axis",
       "fea_Shapes",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Visualization_Types"
     ],
     "fir_23": [
       "cat_Data_Processing",
@@ -2626,7 +2797,8 @@
       "fea_Axis",
       "fea_Mouse_Events",
       "fea_Shapes",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Visualization_Types"
     ],
     "fir_30": [
       "cat_Data_Processing",
@@ -2636,7 +2808,8 @@
       "fea_Axis",
       "fea_Shapes",
       "fea_Canvas",
-      "fea_Bar_Chart"
+      "fea_Bar_Chart",
+      "cat_Visualization_Types"
     ],
     "fir_22": [
       "fea_Selection",
@@ -2652,7 +2825,8 @@
       "fea_Shapes",
       "cat_Customizable_Components",
       "fea_Canvas",
-      "fea_Chord_Diagram"
+      "fea_Chord_Diagram",
+      "cat_Visualization_Types"
     ],
     "fir_18": [
       "fea_Shapes",
@@ -2666,7 +2840,8 @@
       "cat_Customizable_Components",
       "fea_Axis",
       "fea_Legend",
-      "fea_Shapes"
+      "fea_Shapes",
+      "cat_Visualization_Types"
     ],
     "sec_14": [
       "fea_Tooltip",
@@ -2677,7 +2852,8 @@
       "fea_Axis",
       "fea_Legend",
       "fea_Shapes",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Visualization_Types"
     ],
     "sec_17": [
       "fea_Tooltip",
@@ -2685,7 +2861,8 @@
       "cat_Customizable_Components",
       "fea_Legend",
       "fea_Shapes",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Visualization_Types"
     ],
     "sec_18": [
       "fea_Line_Chart",
@@ -2694,7 +2871,8 @@
       "cat_Customizable_Components",
       "fea_Axis",
       "fea_Legend",
-      "fea_Shapes"
+      "fea_Shapes",
+      "cat_Visualization_Types"
     ],
     "sec_21": [
       "fea_Tooltip",
@@ -2703,7 +2881,8 @@
       "fea_Bubble_Chart",
       "fea_Legend",
       "fea_Shapes",
-      "fea_Mouse_Events"
+      "fea_Mouse_Events",
+      "cat_Visualization_Types"
     ],
     "sec_25": [
       "cat_Data_Processing",
@@ -2715,28 +2894,32 @@
       "fea_Legend",
       "fea_Shapes",
       "fea_Mouse_Events",
-      "fea_Pie_Chart"
+      "fea_Pie_Chart",
+      "cat_Visualization_Types"
     ],
     "sec_26": [
       "fea_Text",
       "fea_Scatter_Plot",
       "cat_Customizable_Components",
       "fea_Legend",
-      "fea_Shapes"
+      "fea_Shapes",
+      "cat_Visualization_Types"
     ],
     "sec_27": [
       "fea_Text",
       "cat_Customizable_Components",
       "fea_Bubble_Chart",
       "fea_Legend",
-      "fea_Shapes"
+      "fea_Shapes",
+      "cat_Visualization_Types"
     ],
     "sec_30": [
       "fea_Text",
       "cat_Customizable_Components",
       "fea_Legend",
       "fea_Shapes",
-      "fea_Bar_Chart"
+      "fea_Bar_Chart",
+      "cat_Visualization_Types"
     ],
     "sec_2": [
       "fea_Tooltip",
@@ -2744,7 +2927,8 @@
       "cat_Interactions_and_Animations",
       "fea_Animations",
       "cat_Customizable_Components",
-      "fea_Shapes"
+      "fea_Shapes",
+      "cat_Visualization_Types"
     ],
     "sec_5": [
       "fea_Text",
@@ -2755,7 +2939,8 @@
       "fea_Axis",
       "fea_Shapes",
       "fea_Mouse_Events",
-      "fea_Pie_Chart"
+      "fea_Pie_Chart",
+      "cat_Visualization_Types"
     ],
     "sec_9": [
       "fea_Text",
@@ -2766,7 +2951,8 @@
       "cat_Customizable_Components",
       "fea_Axis",
       "fea_Shapes",
-      "fea_Mouse_Events"
+      "fea_Mouse_Events",
+      "cat_Visualization_Types"
     ],
     "sec_12": [
       "fea_Text",
@@ -2778,7 +2964,8 @@
       "fea_Axis",
       "fea_Shapes",
       "fea_Mouse_Events",
-      "fea_Bar_Chart"
+      "fea_Bar_Chart",
+      "cat_Visualization_Types"
     ],
     "sec_16": [
       "fea_Tooltip",
@@ -2786,7 +2973,8 @@
       "cat_Customizable_Components",
       "fea_Shapes",
       "fea_Mouse_Events",
-      "fea_Bar_Chart"
+      "fea_Bar_Chart",
+      "cat_Visualization_Types"
     ],
     "sec_19": [
       "fea_Text",
@@ -2796,7 +2984,8 @@
       "fea_Data_Transformation",
       "cat_Customizable_Components",
       "fea_Axis",
-      "fea_Shapes"
+      "fea_Shapes",
+      "cat_Visualization_Types"
     ],
     "sec_11": [
       "fea_Text",
@@ -2805,7 +2994,8 @@
       "cat_Customizable_Components",
       "fea_Shapes",
       "fea_Mouse_Events",
-      "fea_Pie_Chart"
+      "fea_Pie_Chart",
+      "cat_Visualization_Types"
     ],
     "sec_15": [
       "fea_Text",
@@ -2813,14 +3003,16 @@
       "fea_Animations",
       "cat_Customizable_Components",
       "fea_Axis",
-      "fea_Pie_Chart"
+      "fea_Pie_Chart",
+      "cat_Visualization_Types"
     ],
     "sec_22": [
       "fea_Text",
       "fea_Line_Chart",
       "cat_Customizable_Components",
       "fea_Axis",
-      "fea_Shapes"
+      "fea_Shapes",
+      "cat_Visualization_Types"
     ],
     "sec_23": [
       "fea_Text",
@@ -2830,7 +3022,8 @@
       "cat_Customizable_Components",
       "fea_Axis",
       "fea_Shapes",
-      "fea_Bar_Chart"
+      "fea_Bar_Chart",
+      "cat_Visualization_Types"
     ],
     "sec_24": [
       "fea_Text",
@@ -2838,21 +3031,24 @@
       "fea_Radar_Chart",
       "fea_Data_Transformation",
       "cat_Customizable_Components",
-      "fea_Shapes"
+      "fea_Shapes",
+      "cat_Visualization_Types"
     ],
     "sec_28": [
       "fea_Text",
       "fea_Line_Chart",
       "cat_Customizable_Components",
       "fea_Axis",
-      "fea_Shapes"
+      "fea_Shapes",
+      "cat_Visualization_Types"
     ],
     "sec_29": [
       "fea_Text",
       "cat_Customizable_Components",
       "fea_Axis",
       "fea_Shapes",
-      "fea_Bar_Chart"
+      "fea_Bar_Chart",
+      "cat_Visualization_Types"
     ],
     "sec_3": [
       "fea_Line_Chart",
@@ -2860,7 +3056,8 @@
       "fea_Axis",
       "fea_Multiple_Charts",
       "fea_Shapes",
-      "fea_Pie_Chart"
+      "fea_Pie_Chart",
+      "cat_Visualization_Types"
     ],
     "sec_6": [
       "fea_Line_Chart",
@@ -2868,7 +3065,8 @@
       "fea_Animations",
       "cat_Customizable_Components",
       "fea_Axis",
-      "fea_Shapes"
+      "fea_Shapes",
+      "cat_Visualization_Types"
     ],
     "sec_13": [
       "fea_Line_Chart",
@@ -2876,7 +3074,8 @@
       "cat_Customizable_Components",
       "fea_Axis",
       "fea_Shapes",
-      "fea_Mouse_Events"
+      "fea_Mouse_Events",
+      "cat_Visualization_Types"
     ],
     "sec_20": [
       "cat_Data_Processing",
@@ -2886,19 +3085,22 @@
       "cat_Customizable_Components",
       "fea_Axis",
       "fea_Shapes",
-      "fea_Bar_Chart"
+      "fea_Bar_Chart",
+      "cat_Visualization_Types"
     ],
     "sec_1": [
       "fea_Line_Chart",
       "cat_Interactions_and_Animations",
       "fea_Animations",
       "cat_Customizable_Components",
-      "fea_Shapes"
+      "fea_Shapes",
+      "cat_Visualization_Types"
     ],
     "sec_4": [
       "fea_Line_Chart",
       "fea_Shapes",
-      "cat_Customizable_Components"
+      "cat_Customizable_Components",
+      "cat_Visualization_Types"
     ],
     "sec_10": [
       "fea_Line_Chart",
@@ -2908,7 +3110,8 @@
       "fea_Multiple_Charts",
       "fea_Shapes",
       "fea_Pie_Chart",
-      "fea_Bar_Chart"
+      "fea_Bar_Chart",
+      "cat_Visualization_Types"
     ],
     "thr_14": [
       "fea_Text",
@@ -2919,7 +3122,8 @@
       "fea_Legend",
       "fea_Multiple_Charts",
       "fea_Shapes",
-      "fea_Bar_Chart"
+      "fea_Bar_Chart",
+      "cat_Visualization_Types"
     ],
     "thr_2": [
       "fea_Tooltip",
@@ -2931,7 +3135,9 @@
       "fea_Zoom",
       "fea_Shapes",
       "fea_Canvas",
-      "fea_Bar_Chart"
+      "fea_Bar_Chart",
+      "cat_Visualization_Types",
+      "cat_Interactions_and_Animations"
     ],
     "thr_3": [
       "fea_Tooltip",
@@ -2943,7 +3149,9 @@
       "fea_Zoom",
       "fea_Shapes",
       "fea_Canvas",
-      "fea_Bar_Chart"
+      "fea_Bar_Chart",
+      "cat_Visualization_Types",
+      "cat_Interactions_and_Animations"
     ],
     "thr_8": [
       "fea_Tooltip",
@@ -2952,7 +3160,8 @@
       "fea_Axis",
       "fea_Legend",
       "fea_Shapes",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Visualization_Types"
     ],
     "thr_13": [
       "fea_Tooltip",
@@ -2965,7 +3174,9 @@
       "fea_Zoom",
       "fea_Shapes",
       "fea_Canvas",
-      "fea_Pie_Chart"
+      "fea_Pie_Chart",
+      "cat_Visualization_Types",
+      "cat_Interactions_and_Animations"
     ],
     "thr_16": [
       "fea_Tooltip",
@@ -2974,19 +3185,22 @@
       "fea_Axis",
       "fea_Legend",
       "fea_Shapes",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Visualization_Types"
     ],
     "thr_17": [
       "fea_Legend",
       "cat_Customizable_Components",
       "fea_Radar_Chart",
-      "fea_Shapes"
+      "fea_Shapes",
+      "cat_Visualization_Types"
     ],
     "thr_18": [
       "fea_Legend",
       "cat_Customizable_Components",
       "fea_Radar_Chart",
-      "fea_Shapes"
+      "fea_Shapes",
+      "cat_Visualization_Types"
     ],
     "thr_20": [
       "fea_Tooltip",
@@ -2995,7 +3209,8 @@
       "fea_Legend",
       "fea_Shapes",
       "fea_Canvas",
-      "fea_Bar_Chart"
+      "fea_Bar_Chart",
+      "cat_Visualization_Types"
     ],
     "thr_21": [
       "fea_Tooltip",
@@ -3007,7 +3222,8 @@
       "fea_Multiple_Charts",
       "fea_Shapes",
       "fea_Canvas",
-      "fea_Bar_Chart"
+      "fea_Bar_Chart",
+      "cat_Visualization_Types"
     ],
     "thr_24": [
       "fea_Tooltip",
@@ -3017,7 +3233,9 @@
       "fea_Zoom",
       "fea_Shapes",
       "fea_Canvas",
-      "fea_Bar_Chart"
+      "fea_Bar_Chart",
+      "cat_Visualization_Types",
+      "cat_Interactions_and_Animations"
     ],
     "thr_25": [
       "fea_Tooltip",
@@ -3026,7 +3244,8 @@
       "fea_Legend",
       "fea_Shapes",
       "fea_Canvas",
-      "fea_Bar_Chart"
+      "fea_Bar_Chart",
+      "cat_Visualization_Types"
     ],
     "thr_26": [
       "fea_Tooltip",
@@ -3035,7 +3254,8 @@
       "fea_Legend",
       "fea_Shapes",
       "fea_Canvas",
-      "fea_Bar_Chart"
+      "fea_Bar_Chart",
+      "cat_Visualization_Types"
     ],
     "thr_28": [
       "fea_Line_Chart",
@@ -3043,7 +3263,8 @@
       "fea_Axis",
       "fea_Legend",
       "fea_Shapes",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Visualization_Types"
     ],
     "thr_1": [
       "fea_Tooltip",
@@ -3051,7 +3272,9 @@
       "cat_Customizable_Components",
       "fea_Axis",
       "fea_Zoom",
-      "fea_Shapes"
+      "fea_Shapes",
+      "cat_Interactions_and_Animations",
+      "cat_Visualization_Types"
     ],
     "thr_4": [
       "fea_Tooltip",
@@ -3062,7 +3285,9 @@
       "fea_Axis",
       "fea_Zoom",
       "fea_Shapes",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Visualization_Types",
+      "cat_Interactions_and_Animations"
     ],
     "thr_5": [
       "fea_Text",
@@ -3074,7 +3299,8 @@
       "fea_Axis",
       "fea_Mouse_Events",
       "fea_Shapes",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Visualization_Types"
     ],
     "thr_10": [
       "fea_Tooltip",
@@ -3083,7 +3309,8 @@
       "fea_Animations",
       "cat_Customizable_Components",
       "fea_Axis",
-      "fea_Shapes"
+      "fea_Shapes",
+      "cat_Visualization_Types"
     ],
     "thr_11": [
       "fea_Tooltip",
@@ -3091,7 +3318,8 @@
       "cat_Customizable_Components",
       "fea_Axis",
       "fea_Shapes",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Visualization_Types"
     ],
     "thr_15": [
       "fea_Tooltip",
@@ -3102,13 +3330,15 @@
       "fea_Mouse_Events",
       "fea_Zoom",
       "fea_Shapes",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Visualization_Types"
     ],
     "thr_22": [
       "fea_Shapes",
       "cat_Customizable_Components",
       "fea_Pie_Chart",
-      "fea_Tooltip"
+      "fea_Tooltip",
+      "cat_Visualization_Types"
     ],
     "thr_23": [
       "fea_Tooltip",
@@ -3116,7 +3346,8 @@
       "cat_Customizable_Components",
       "fea_Axis",
       "fea_Shapes",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Visualization_Types"
     ],
     "thr_27": [
       "fea_Tooltip",
@@ -3124,7 +3355,8 @@
       "cat_Customizable_Components",
       "fea_Axis",
       "fea_Shapes",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Visualization_Types"
     ],
     "thr_29": [
       "cat_Data_Processing",
@@ -3137,7 +3369,9 @@
       "fea_Axis",
       "fea_Zoom",
       "fea_Shapes",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Visualization_Types",
+      "cat_Interactions_and_Animations"
     ],
     "thr_30": [
       "cat_Data_Processing",
@@ -3149,7 +3383,8 @@
       "fea_Axis",
       "fea_Mouse_Events",
       "fea_Shapes",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Visualization_Types"
     ],
     "thr_6": [
       "fea_Line_Chart",
@@ -3158,7 +3393,8 @@
       "fea_Axis",
       "fea_Mouse_Events",
       "fea_Shapes",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Visualization_Types"
     ],
     "thr_7": [
       "fea_Line_Chart",
@@ -3167,33 +3403,40 @@
       "fea_Axis",
       "fea_Mouse_Events",
       "fea_Shapes",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Visualization_Types"
     ],
     "thr_9": [
       "fea_Area_Chart",
       "cat_Customizable_Components",
       "fea_Axis",
       "fea_Shapes",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Visualization_Types"
     ],
     "thr_12": [
       "fea_Line_Chart",
       "cat_Customizable_Components",
       "fea_Axis",
       "fea_Shapes",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Visualization_Types"
     ],
     "thr_19": [
       "fea_Shapes",
       "cat_Customizable_Components",
-      "fea_Treemap"
+      "fea_Treemap",
+      "cat_Visualization_Types"
     ],
     "fir_31": [
       "fea_Text",
       "fea_Force_Directed_Graph",
       "fea_Mouse_Events",
       "fea_Shapes",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Visualization_Types",
+      "cat_Customizable_Components",
+      "cat_Interactions_and_Animations"
     ],
     "fir_32": [
       "fea_Import_Data",
@@ -3202,7 +3445,10 @@
       "fea_Shapes",
       "fea_Axis",
       "fea_Radial_Area_Chart",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Data_Processing",
+      "cat_Customizable_Components",
+      "cat_Visualization_Types"
     ],
     "fir_33": [
       "fea_Text",
@@ -3210,7 +3456,11 @@
       "fea_Tree",
       "fea_Mouse_Events",
       "fea_Shapes",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Customizable_Components",
+      "cat_Visualization_Types",
+      "cat_Data_Processing",
+      "cat_Interactions_and_Animations"
     ],
     "fir_34": [
       "fea_Heatmap",
@@ -3220,7 +3470,10 @@
       "fea_Axis",
       "fea_Legend",
       "fea_Shapes",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Data_Processing",
+      "cat_Customizable_Components",
+      "cat_Visualization_Types"
     ],
     "fir_35": [
       "fea_Text",
@@ -3230,7 +3483,10 @@
       "fea_Axis",
       "fea_Multiple_Charts",
       "fea_Shapes",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Customizable_Components",
+      "cat_Data_Processing",
+      "cat_Visualization_Types"
     ],
     "fir_36": [
       "fea_Text",
@@ -3240,7 +3496,10 @@
       "fea_Legend",
       "fea_Shapes",
       "fea_Canvas",
-      "fea_Bar_Chart"
+      "fea_Bar_Chart",
+      "cat_Customizable_Components",
+      "cat_Data_Processing",
+      "cat_Visualization_Types"
     ],
     "fir_37": [
       "fea_Scatter_Plot",
@@ -3248,7 +3507,10 @@
       "fea_Axis",
       "fea_Legend",
       "fea_Shapes",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Customizable_Components",
+      "cat_Data_Processing",
+      "cat_Visualization_Types"
     ],
     "fir_38": [
       "fea_Text",
@@ -3256,7 +3518,10 @@
       "fea_Axis",
       "fea_Shapes",
       "fea_Canvas",
-      "fea_Pie_Chart"
+      "fea_Pie_Chart",
+      "cat_Customizable_Components",
+      "cat_Visualization_Types",
+      "cat_Data_Processing"
     ],
     "fir_39": [
       "fea_Text",
@@ -3264,7 +3529,10 @@
       "fea_Axis",
       "fea_Shapes",
       "fea_Canvas",
-      "fea_Pie_Chart"
+      "fea_Pie_Chart",
+      "cat_Customizable_Components",
+      "cat_Visualization_Types",
+      "cat_Data_Processing"
     ],
     "fir_40": [
       "fea_Text",
@@ -3274,7 +3542,10 @@
       "fea_Legend",
       "fea_Multiple_Charts",
       "fea_Shapes",
-      "fea_Pie_Chart"
+      "fea_Pie_Chart",
+      "cat_Customizable_Components",
+      "cat_Visualization_Types",
+      "cat_Data_Processing"
     ],
     "fir_41": [
       "fea_Stream_Graph",
@@ -3282,7 +3553,11 @@
       "fea_Data_Transformation",
       "fea_Axis",
       "fea_Shapes",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Data_Processing",
+      "cat_Customizable_Components",
+      "cat_Visualization_Types",
+      "cat_Interactions_and_Animations"
     ],
     "fir_42": [
       "fea_Text",
@@ -3290,7 +3565,11 @@
       "fea_Import_Data",
       "fea_Animations",
       "fea_Mouse_Events",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Visualization_Types",
+      "cat_Data_Processing",
+      "cat_Customizable_Components",
+      "cat_Interactions_and_Animations"
     ],
     "fir_43": [
       "fea_Data_Format",
@@ -3298,7 +3577,10 @@
       "fea_Data_Transformation",
       "fea_Axis",
       "fea_Shapes",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Customizable_Components",
+      "cat_Data_Processing",
+      "cat_Visualization_Types"
     ],
     "fir_44": [
       "fea_Text",
@@ -3308,7 +3590,10 @@
       "fea_Bubble_Chart",
       "fea_Axis",
       "fea_Shapes",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Customizable_Components",
+      "cat_Data_Processing",
+      "cat_Visualization_Types"
     ],
     "fir_45": [
       "fea_Text",
@@ -3318,7 +3603,10 @@
       "fea_Data_Grouping",
       "fea_Data_Format",
       "fea_Axis",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Data_Processing",
+      "cat_Customizable_Components",
+      "cat_Visualization_Types"
     ],
     "fir_46": [
       "fea_Text",
@@ -3328,21 +3616,30 @@
       "fea_Data_Transformation",
       "fea_Bubble_Chart",
       "fea_Shapes",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Customizable_Components",
+      "cat_Data_Processing",
+      "cat_Visualization_Types"
     ],
     "fir_47": [
       "fea_Text",
       "fea_Import_Data",
       "fea_Tree",
       "fea_Shapes",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Customizable_Components",
+      "cat_Visualization_Types",
+      "cat_Data_Processing"
     ],
     "fir_48": [
       "fea_Text",
       "fea_Import_Data",
       "fea_Tree",
       "fea_Shapes",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Customizable_Components",
+      "cat_Visualization_Types",
+      "cat_Data_Processing"
     ],
     "fir_49": [
       "fea_Text",
@@ -3354,100 +3651,145 @@
       "fea_Treemap",
       "fea_Axis",
       "fea_Shapes",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Customizable_Components",
+      "cat_Data_Processing",
+      "cat_Visualization_Types",
+      "cat_Interactions_and_Animations"
     ],
     "fir_50": [
       "fea_Scatter_Plot",
       "fea_Import_Data",
       "fea_Geo_Maps",
       "fea_Axis",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Customizable_Components",
+      "cat_Visualization_Types",
+      "cat_Data_Processing"
     ],
     "sec_31": [
       "fea_Legend",
       "fea_Text",
-      "fea_Bar_Chart"
+      "fea_Bar_Chart",
+      "cat_Visualization_Types",
+      "cat_Customizable_Components"
     ],
     "sec_32": [
       "fea_Line_Chart",
-      "fea_Text"
+      "fea_Text",
+      "cat_Visualization_Types",
+      "cat_Customizable_Components"
     ],
     "sec_33": [
       "fea_Text",
-      "fea_Pie_Chart"
+      "fea_Pie_Chart",
+      "cat_Visualization_Types",
+      "cat_Customizable_Components"
     ],
     "sec_34": [
       "fea_Text",
-      "fea_Radar_Chart"
+      "fea_Radar_Chart",
+      "cat_Visualization_Types",
+      "cat_Customizable_Components"
     ],
     "sec_35": [
       "fea_Text",
-      "fea_Area_Chart"
+      "fea_Area_Chart",
+      "cat_Visualization_Types",
+      "cat_Customizable_Components"
     ],
     "sec_36": [
       "fea_Text",
-      "fea_Pie_Chart"
+      "fea_Pie_Chart",
+      "cat_Visualization_Types",
+      "cat_Customizable_Components"
     ],
     "sec_37": [
       "fea_Legend",
       "fea_Text",
-      "fea_Bar_Chart"
+      "fea_Bar_Chart",
+      "cat_Visualization_Types",
+      "cat_Customizable_Components"
     ],
     "sec_38": [
       "fea_Text",
-      "fea_Bar_Chart"
+      "fea_Bar_Chart",
+      "cat_Visualization_Types",
+      "cat_Customizable_Components"
     ],
     "sec_39": [
       "fea_Line_Chart",
       "fea_Text",
       "fea_Legend",
-      "fea_Bar_Chart"
+      "fea_Bar_Chart",
+      "cat_Visualization_Types",
+      "cat_Customizable_Components"
     ],
     "sec_40": [
       "fea_Text",
       "fea_Bubble_Chart",
-      "fea_Axis"
+      "fea_Axis",
+      "cat_Visualization_Types",
+      "cat_Customizable_Components"
     ],
     "sec_41": [
-      "fea_Line_Chart"
+      "fea_Line_Chart",
+      "cat_Visualization_Types"
     ],
     "sec_42": [
-      "fea_Line_Chart"
+      "fea_Line_Chart",
+      "cat_Visualization_Types"
     ],
     "sec_43": [
-      "fea_Bar_Chart"
+      "fea_Bar_Chart",
+      "cat_Visualization_Types"
     ],
     "sec_44": [
       "fea_Axis",
-      "fea_Bar_Chart"
+      "fea_Bar_Chart",
+      "cat_Visualization_Types",
+      "cat_Customizable_Components"
     ],
     "sec_45": [
       "fea_Axis",
-      "fea_Radar_Chart"
+      "fea_Radar_Chart",
+      "cat_Visualization_Types",
+      "cat_Customizable_Components"
     ],
     "sec_46": [
       "fea_Axis",
-      "fea_Pie_Chart"
+      "fea_Pie_Chart",
+      "cat_Visualization_Types",
+      "cat_Customizable_Components"
     ],
     "sec_47": [
       "fea_Axis",
-      "fea_Pie_Chart"
+      "fea_Pie_Chart",
+      "cat_Visualization_Types",
+      "cat_Customizable_Components"
     ],
     "sec_48": [
       "fea_Axis",
-      "fea_Pie_Chart"
+      "fea_Pie_Chart",
+      "cat_Visualization_Types",
+      "cat_Customizable_Components"
     ],
     "sec_49": [
       "fea_Bubble_Chart",
-      "fea_Axis"
+      "fea_Axis",
+      "cat_Visualization_Types",
+      "cat_Customizable_Components"
     ],
     "sec_50": [
-      "fea_Bar_Chart"
+      "fea_Bar_Chart",
+      "cat_Visualization_Types"
     ],
     "thr_31": [
       "fea_Shapes",
       "fea_Canvas",
-      "fea_Pie_Chart"
+      "fea_Pie_Chart",
+      "cat_Customizable_Components",
+      "cat_Visualization_Types"
     ],
     "thr_32": [
       "fea_Selection",
@@ -3457,13 +3799,18 @@
       "fea_Canvas",
       "fea_Axis",
       "fea_Shapes",
-      "fea_Mouse_Events"
+      "fea_Mouse_Events",
+      "cat_Interactions_and_Animations",
+      "cat_Visualization_Types",
+      "cat_Customizable_Components"
     ],
     "thr_33": [
       "fea_Shapes",
       "fea_Sankey_Diagram",
       "fea_Canvas",
-      "fea_Tooltip"
+      "fea_Tooltip",
+      "cat_Visualization_Types",
+      "cat_Customizable_Components"
     ],
     "thr_34": [
       "fea_Scatter_Plot",
@@ -3471,42 +3818,58 @@
       "fea_Axis",
       "fea_Legend",
       "fea_Multiple_Charts",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Visualization_Types",
+      "cat_Customizable_Components"
     ],
     "thr_35": [
       "fea_Animations",
       "fea_Treemap",
       "fea_Mouse_Events",
-      "fea_Tooltip"
+      "fea_Tooltip",
+      "cat_Visualization_Types",
+      "cat_Interactions_and_Animations",
+      "cat_Customizable_Components"
     ],
     "thr_36": [
       "fea_Text",
       "fea_Shapes",
-      "fea_Pie_Chart"
+      "fea_Pie_Chart",
+      "cat_Customizable_Components",
+      "cat_Visualization_Types"
     ],
     "thr_37": [
       "fea_Line_Chart",
       "fea_Canvas",
       "fea_Axis",
-      "fea_Tooltip"
+      "fea_Tooltip",
+      "cat_Visualization_Types",
+      "cat_Customizable_Components"
     ],
     "thr_38": [
       "fea_Area_Chart",
       "fea_Axis",
       "fea_Shapes",
       "fea_Canvas",
-      "fea_Bar_Chart"
+      "fea_Bar_Chart",
+      "cat_Visualization_Types",
+      "cat_Customizable_Components"
     ],
     "thr_39": [
       "fea_Line_Chart",
       "fea_Animations",
       "fea_Canvas",
-      "fea_Axis"
+      "fea_Axis",
+      "cat_Visualization_Types",
+      "cat_Customizable_Components",
+      "cat_Interactions_and_Animations"
     ],
     "thr_40": [
       "fea_Line_Chart",
       "fea_Shapes",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Visualization_Types",
+      "cat_Customizable_Components"
     ],
     "thr_41": [
       "fea_Tooltip",
@@ -3514,13 +3877,18 @@
       "fea_Legend",
       "fea_Zoom",
       "fea_Canvas",
-      "fea_Bar_Chart"
+      "fea_Bar_Chart",
+      "cat_Visualization_Types",
+      "cat_Customizable_Components",
+      "cat_Interactions_and_Animations"
     ],
     "thr_42": [
       "fea_Line_Chart",
       "fea_Canvas",
       "fea_Axis",
-      "fea_Tooltip"
+      "fea_Tooltip",
+      "cat_Visualization_Types",
+      "cat_Customizable_Components"
     ],
     "thr_43": [
       "fea_Heatmap",
@@ -3528,7 +3896,9 @@
       "fea_Scatter_Plot",
       "fea_Axis",
       "fea_Legend",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Visualization_Types",
+      "cat_Customizable_Components"
     ],
     "thr_44": [
       "fea_Text",
@@ -3536,37 +3906,49 @@
       "fea_Treemap",
       "fea_Multiple_Charts",
       "fea_Shapes",
-      "fea_Pie_Chart"
+      "fea_Pie_Chart",
+      "cat_Visualization_Types",
+      "cat_Customizable_Components"
     ],
     "thr_45": [
       "fea_Scatter_Plot",
       "fea_Tooltip",
       "fea_Axis",
       "fea_Legend",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Visualization_Types",
+      "cat_Customizable_Components"
     ],
     "thr_46": [
       "fea_Area_Chart",
       "fea_Axis",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Visualization_Types",
+      "cat_Customizable_Components"
     ],
     "thr_47": [
       "fea_Line_Chart",
       "fea_Shapes",
       "fea_Canvas",
-      "fea_Tooltip"
+      "fea_Tooltip",
+      "cat_Visualization_Types",
+      "cat_Customizable_Components"
     ],
     "thr_48": [
       "fea_Tooltip",
       "fea_Axis",
       "fea_Shapes",
       "fea_Canvas",
-      "fea_Bar_Chart"
+      "fea_Bar_Chart",
+      "cat_Visualization_Types",
+      "cat_Customizable_Components"
     ],
     "thr_49": [
       "fea_Line_Chart",
       "fea_Shapes",
-      "fea_Canvas"
+      "fea_Canvas",
+      "cat_Visualization_Types",
+      "cat_Customizable_Components"
     ],
     "thr_50": [
       "fea_Scatter_Plot",
@@ -3576,7 +3958,9 @@
       "fea_Legend",
       "fea_Multiple_Charts",
       "fea_Canvas",
-      "fea_Bar_Chart"
+      "fea_Bar_Chart",
+      "cat_Visualization_Types",
+      "cat_Customizable_Components"
     ]
   },
   "file info": {

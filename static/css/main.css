@@ -346,6 +346,7 @@ body {
     margin-top: 3rem;
     height: 3rem;
     line-height: 3rem;
+    font-weight: 600;
     display: inline-block;
     padding-left: 1rem;
     font-size: 1.5rem;
@@ -384,7 +385,7 @@ body {
     justify-content: space-between;
 }
 .container .menu .menuW .libsT {
-    width: 14%;
+    width: 28%;
     height: 1.5rem;
     font-family: sans-serif; 
     font-size: 1.2rem; 
@@ -427,7 +428,7 @@ body {
 }
 .container .menu .menuW .hierarchy {
     width: 98%;
-    height: 67rem;
+    height: 73vh;
     margin: auto 0.5rem;
     overflow-y: auto;
 }
@@ -451,8 +452,7 @@ body {
 }
 .container .menu .menuW .hierarchy .hDiv .conceptBox {
     float: left;
-    width: 5%;
-    height: 1rem;
+    zoom: 1.2;
     margin: 0.6rem 0rem;
     margin-right: 0.1rem;
 }
@@ -469,9 +469,13 @@ body {
     font-family: sans-serif; 
     font-weight: 100; 
     font-size: 1.5rem;
-    line-height: 1.5rem;
+    line-height: 1.8rem;
     pointer-events:none;
     border-radius: 0.2rem;
+}
+.container .menu .menuW .hierarchy .firH .hName {
+    width: 38%;
+    max-width: 38%;
 }
 .container .menu .menuW .hierarchy .hVis {
     box-sizing: border-box;

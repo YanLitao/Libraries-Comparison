@@ -2,8 +2,8 @@ var maxFileNum = 50,
     currentDomain = "nlp",
     data = {"nlp": {}, "vis": {}},
     libraries = {
-        "nlp": ["NLTK", "TextBlob", "spaCy"],
-        "vis": ["D3.js", "Chart.js", "Recharts"]
+        "nlp": {"NLTK": [0, "https://www.nltk.org"], "TextBlob": [0, "https://textblob.readthedocs.io/en/dev/"], "spaCy": [0, "https://spacy.io"]},
+        "vis": {"D3.js": [0, "https://d3js.org"], "Chart.js": [0, "https://www.chartjs.org"], "Recharts": [0, "https://recharts.org/en-US/"]}
     },
     doms = {"nlp": "NLP", "vis": "Viz"},
     fo = {"nlp": {"fir": [], "sec": [], "thr": []}, "vis": {"fir": [], "sec": [], "thr": []}},
@@ -57,6 +57,11 @@ function sortFiles(domain) {
     for (var f in data[domain]["file info"]) {
         var obj = {"name": f, "nlines": data[domain]["file info"][f]["nlines"]};
         temp[f.split("_")[0]].push(obj);
+    }
+    for (var k=0; k<3; k++) {
+        var libName = Object.keys(libraries[domain])[k],
+            orderName = Object.keys(temp)[k];
+        libraries[domain][libName][0] = temp[orderName].length;
     }
     for (var l in temp) {
         temp[l].sort(function(a, b) { 
@@ -137,7 +142,7 @@ function genCode(domain) {
             var codeLink = document.createElement("div");
             codeLink.className = "codeLink";
             if (data[domain]["file info"][f]['source']) {
-                codeLink.innerHTML = f+": <a href='"+data[domain]["file info"][f]['source']+"'>Link to the Source Code</a>";
+                codeLink.innerHTML = f+": <a href='"+data[domain]["file info"][f]['source']+"' target='_blank'>Link to the Source Code</a>";
             } else {
                 codeLink.innerText = f;
             }
@@ -223,9 +228,11 @@ function switchDomain(domain) {
     document.getElementById("webTitle").innerText = doms[domain]+" Libraries Comparison";
     var libs = document.getElementsByClassName("lib"),
         titles = document.getElementsByClassName("titName");
-    for (var i=0; i<3; i++) {
-        libs[i].innerText = libraries[domain][i]+": 50";
-        titles[i].innerText = libraries[domain][i];
+
+    for (var libInd=0; libInd<3; libInd++) {
+        var libName = Object.keys(libraries[domain])[libInd];
+        libs[libInd].innerText = libName+": "+libraries[domain][libName][0]+"/"+libraries[domain][libName][0];
+        titles[libInd].innerHTML = "<a href='"+libraries[domain][libName][1]+"' target='_blank'>"+libName+"</a>";
     }
     var blank = document.getElementsByClassName("codeRange");
     [...blank].forEach(function(b) {b.remove()});
@@ -242,8 +249,8 @@ function switchDomain(domain) {
 function genData(tem) {
     // generate three objects: conceptColors and hierarchyConcept (for hierarchy selections)
     var colorFlag = 0;
-    for (var i=0; i<tem["fir"].length; i++) {
-        var concept = Object.keys(tem["fir"][i])[0];
+    for (const [i,con] of tem.entries()) {
+        var concept = con['name'];
         var level = concept.split("_")[0];
         if (level == "cat") {
             if (i > 0) {
@@ -402,9 +409,11 @@ function controlCommonWords(w, name="") {
     }
 }
 function updateHVis(fileMatched) {    
-    var conceptFreq = {};
+    var conceptFreq = {},
+        libFiles = {"fir": 0, "sec": 0, "thr": 0};
     for (var f of fileMatched) {
         var lib = f.slice(0,3);
+        libFiles[lib] += 1;
         for (var c of data[currentDomain]["file concepts"][f]) {
             if (!(c in conceptFreq)) {
                 conceptFreq[c] = {"fir": 0, "sec": 0, "thr": 0};
@@ -413,6 +422,15 @@ function updateHVis(fileMatched) {
         }
     }
     var n = ["fir", "sec", "thr"];
+    var libs = document.getElementsByClassName("lib");
+    for (var libInd=0; libInd<3; libInd++) {
+        var libName = Object.keys(libraries[currentDomain])[libInd];
+        if (initialSelection) {
+            libs[libInd].innerText = libName+": "+libraries[currentDomain][libName][0]+"/"+libraries[currentDomain][libName][0];
+        } else {
+            libs[libInd].innerText = libName+": "+libFiles[n[libInd]]+"/"+libraries[currentDomain][libName][0];
+        }
+    }
     for (var i of data[currentDomain]["all templates"]) {
         if (initialSelection) {
             for (var l of n) {
@@ -563,27 +581,38 @@ function conceptFiles() {
     updateHVis(fileMatched);
 }    
 function switchMode(e) {
-    var acrossCol = document.getElementsByClassName("acrossCol");
-        //withinCol = document.getElementsByClassName("withinCol");
+    //var acrossCol = document.getElementsByClassName("acrossCol");
+    //withinCol = document.getElementsByClassName("withinCol");
     if (e.target.id == "switch") {
         conceptFiles();
     }
+    var allUdls = document.querySelectorAll(".udls");
+    [...allUdls].forEach(function(a) {
+        a.style.fontWeight = "normal";
+    })
     if (document.getElementById("showSubstr").checked) {
-        [...acrossCol].forEach(function(a) {a.style.display = "block";});
+        //[...acrossCol].forEach(function(a) {a.style.display = "block";});
         //[...withinCol].forEach(function(w) {w.style.display = "none";});
-    } else {
-        document.getElementsByClassName("udls").style.fontWeight = "normal";
-    }
+        var secHs = document.querySelectorAll(".secH");
+        [...secHs].forEach(function(s) {
+            if (s.classList.contains("activated")) {
+                var feaUdls = document.querySelectorAll("."+s.id+"_keys");
+                [...feaUdls].forEach(function(a) {
+                    a.style.fontWeight = "600";
+                })
+            }
+        })
+    } 
     var showFlag = document.getElementById("switch").checked,
-        smallBlocks = document.querySelectorAll(".smallBlock"),
+        //smallBlocks = document.querySelectorAll(".smallBlock"),
         codeBlocks = document.querySelectorAll(".codeBlock");
     if (showFlag) {
-        [...smallBlocks].forEach(function(s) {
+        /*[...smallBlocks].forEach(function(s) {
             var codes = s.querySelectorAll("code");
             [...codes].forEach(function(c) {
                 c.style.fontSize = "0rem";
             })
-        });
+        });*/
         [...codeBlocks].forEach(function(s) {
             var codes = s.querySelectorAll("code");
             [...codes].forEach(function(c) {
@@ -591,12 +620,12 @@ function switchMode(e) {
             })
         });
     } else {
-        [...smallBlocks].forEach(function(s) {
+        /*[...smallBlocks].forEach(function(s) {
             var codes = s.querySelectorAll("code");
             [...codes].forEach(function(c) {
                 c.style.fontSize = "1.4rem";
             })
-        });
+        });*/
         [...codeBlocks].forEach(function(s) {
             var codes = s.querySelectorAll("code");
             [...codes].forEach(function(c) {
@@ -605,18 +634,53 @@ function switchMode(e) {
         });
     }
 }
+function wider(ele) {
+    if (ele.classList.contains("hideLib") || ele.classList.contains("wider")) {
+        return
+    } else {
+        ele.classList.add("wider");
+    }
+}
+function removeWider(ele) {
+    if (ele.classList.contains("wider")) {
+        ele.classList.remove("wider");
+    }
+}
+function showLib(event) {
+    var lib = event.target.id.replace("Lib", "");
+    if (document.getElementById(lib+"T").classList.contains('hideLib')) {
+        document.getElementById(lib+"T").classList.remove('hideLib');
+        document.getElementById(lib+"CodeCol").classList.remove('hideLib');
+        event.target.style.opacity = "0.8";
+    } else {
+        document.getElementById(lib+"T").classList.add('hideLib');
+        document.getElementById(lib+"CodeCol").classList.add('hideLib');
+        event.target.style.opacity = "0.3";
+    }
+    if (document.querySelectorAll('.codes > .hideLib').length>0) {
+        var allT = document.querySelectorAll('.titles'),
+            allC = document.querySelectorAll('.codeColumns');
+        [...allT].forEach(wider);
+        [...allC].forEach(wider);
+    } else {
+        var allT = document.querySelectorAll('.titles'),
+            allC = document.querySelectorAll('.codeColumns');
+        [...allT].forEach(removeWider);
+        [...allC].forEach(removeWider);
+    }
+}
 // function call
 $.getJSON("static/data/vis_tem.json", function(obj) {
     data["vis"] = obj;
     getData("vis");
-    genData(data["vis"]["api templates"]);
+    genData(data["vis"]["all templates"]);
     sortFiles("vis");
     processLineData("vis");
     // interface will show the NLP domain as default
     $.getJSON("static/data/nlp_tem.json", function(obj) {
         data["nlp"] = obj;
         getData("nlp");
-        genData(data["nlp"]["api templates"]);
+        genData(data["nlp"]["all templates"]);
         sortFiles("nlp");
         switchDomain("nlp");
         addHListener();

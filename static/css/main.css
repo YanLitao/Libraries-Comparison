@@ -162,14 +162,30 @@ body {
     height: 100%;
     position: relative;
 }
+.w .tit .titles.hideLib {
+    display: none;
+}
+.w .tit .titles.wider {
+    width: 48%;
+}
 .w .tit .titles .titName {
     float: left;
     width: 20%;
+    height: 100%;
+}
+.w .tit .titles .titName a {
+    display: inline-block;
     height: 100%;
     font-family: sans-serif; 
     font-size: 2.0rem; 
     font-weight: 100; 
     line-height: 13rem;
+    color: inherit; /* blue colors for links too */
+    text-decoration: inherit; /* no underline */
+    opacity: 0.8;
+}
+.w .tit .titles .titName a:hover {
+    opacity: 1.0;
 }
 .w .tit .titles .axisName {
     position: absolute;
@@ -218,6 +234,12 @@ body {
 .w .codes .codeColumns {
     width: 33%;
     height: 100%;
+}
+.w .codes .codeColumns.hideLib {
+    display: none;
+}
+.w .codes .codeColumns.wider {
+    width: 49%;
 }
 .w .codes .codeColumns .codeCol {
     width: 100%;
@@ -385,7 +407,7 @@ body {
     justify-content: space-between;
 }
 .container .menu .menuW .libsT {
-    width: 28%;
+    width: 15%;
     height: 1.5rem;
     font-family: sans-serif; 
     font-size: 1.2rem; 
@@ -393,7 +415,7 @@ body {
     line-height: 1.5rem;
 }
 .container .menu .menuW .lib {
-    width: 22.2%;
+    width: 27%;
     height: 1.5rem;
     border-radius: 0.5rem;
     font-family: sans-serif; 
@@ -403,6 +425,11 @@ body {
     color: #fff;
     background-color: #5d5f5f;
     text-align: center;
+    opacity: 0.8;
+    cursor: pointer;
+}
+.container .menu .menuW .lib:hover {
+    opacity: 1.0;
 }
 .container .menu .menuW #hierarchyHead {
     width: 100%;
@@ -421,7 +448,7 @@ body {
     border-radius: 0.5rem;
     text-align: center;
     cursor: pointer;
-    opacity: 0.7;
+    opacity: 0.8;
 }
 .container .menu .menuW #hierarchyHead #removeAllBtn:hover {
     opacity: 1.0;
